@@ -668,7 +668,7 @@ window.PD_DATA = {
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Lò nung',en:'Muffle furnace'}}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'1400 °C'}, { k:{vi:'Buồng',en:'Chamber'},v:'7.2 L'} ] },
                     { name: { vi: 'Hệ thống CVD', en: 'CVD system' }, img: './assets/images/prod-g3.jpg', sku: 'DG-HT-CVD01', desc: { vi: 'Hệ CVD tổng hợp graphene / CNT.', en: 'CVD system for graphene / CNT synthesis.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'CVD'}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'1100 °C'}, { k:{vi:'Khí',en:'Gas lines'},v:'CH₄ / H₂ / Ar'} ] },
-                    { name: { vi: 'Autoclave thuỷ nhiệt 100 mL', en: 'Hydrothermal autoclave 100 mL' }, img: './assets/images/prod-g3.jpg', sku: 'DG-HT-AC100', desc: { vi: 'Bình thuỷ nhiệt lót PTFE cho tổng hợp nano.', en: 'PTFE-lined hydrothermal autoclave for nano synthesis.' },
+                    { name: { vi: 'Autoclave thuỷ nhiệt 100 mL', en: 'Hydrothermal autoclave 100 mL' }, img: './assets/images/autoclave.png', sku: 'DG-HT-AC100', desc: { vi: 'Bình thuỷ nhiệt lót PTFE cho tổng hợp nano.', en: 'PTFE-lined hydrothermal autoclave for nano synthesis.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Autoclave thuỷ nhiệt',en:'Hydrothermal autoclave'}}, { k:{vi:'Thể tích',en:'Volume'},v:'100 mL'}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'200 °C'}, { k:{vi:'Lót',en:'Lining'},v:'PTFE'} ] }
                 ]
             },
