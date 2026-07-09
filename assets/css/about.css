@@ -47,12 +47,15 @@
 
 .about-one__img>img {
    width: 100%;
+   aspect-ratio: 3 / 4;
+   object-fit: cover;
+   object-position: center;
    border-radius: var(--fixpro-bdr-radius);
 }
 
 .about-one__img-2 {
    position: absolute;
-   top: 170px;
+   top: 290px;
    right: -130px;
    max-width: 320px;
    width: 100%;
@@ -81,6 +84,9 @@
 
 .about-one__img-2>img {
    width: 100%;
+   aspect-ratio: 3 / 4;
+   object-fit: cover;
+   object-position: center;
    border-radius: 50px;
    border: 20px solid var(--fixpro-white);
 }

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <rect width="48" height="48" rx="11" fill="#0068FF"/>
-  <g fill="#ffffff">
-    <rect x="7" y="9" width="34" height="23" rx="8"/>
-    <path d="M13 30 L13 40 L24 31 Z"/>
-  </g>
-  <text x="24" y="26" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" fill="#0068FF" text-anchor="middle">Zalo</text>
-</svg>

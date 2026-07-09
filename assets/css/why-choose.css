@@ -87,6 +87,7 @@
 .why-choose-one__img {
     position: relative;
     display: block;
+    width: 122%;
     overflow: hidden;
     border-radius: var(--fixpro-bdr-radius);
     z-index: 1;
@@ -112,6 +113,9 @@
 
 .why-choose-one__img img {
     width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center;
     border-radius: var(--fixpro-bdr-radius);
     transition: all 500ms ease;
 }
@@ -122,8 +126,10 @@
 
 .why-choose-one__img-2 {
     position: absolute;
-    right: -360px;
-    bottom: -127px;
+    right: -420px;
+    bottom: -140px;
+    max-width: 320px;
+    width: 100%;
     overflow: hidden;
     border-radius: var(--fixpro-bdr-radius);
     z-index: 1;
@@ -149,7 +155,10 @@
 }
 
 .why-choose-one__img-2 img {
-    width: auto;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
     border-radius: var(--fixpro-bdr-radius);
     transition: all 500ms ease;
 }
@@ -160,10 +169,10 @@
 
 .why-choose-one__shape-1 {
     position: absolute;
-    top: 30px;
-    right: -200px;
-    bottom: -80px;
-    left: 180px;
+    top: 80px;
+    right: -215px;
+    bottom: -95px;
+    left: 260px;
     border: 10px solid var(--fixpro-base);
     border-radius: 50px;
     animation: topBottom 3s ease-in-out infinite;
@@ -172,9 +181,17 @@
 
 .why-choose-one__video-link {
     position: absolute;
-    top: 225px;
-    right: -50px;
+    top: 70%;
+    right: -162px;
+    transform: translateY(-50%);
     z-index: 2;
+}
+
+/* Logo badge: desktop only */
+@media (max-width: 991px) {
+    .why-choose-one__video-link {
+        display: none;
+    }
 }
 
 .why-choose-one__video-icon {
@@ -207,6 +224,23 @@
 .why-choose-one__video-icon:hover {
     background-color: var(--fixpro-base);
     color: var(--fixpro-white);
+}
+
+/* Static (non-clickable) logo badge variant */
+.why-choose-one__video-icon--logo {
+    pointer-events: none;
+    cursor: default;
+}
+
+.why-choose-one__video-icon--logo:hover {
+    background-color: var(--fixpro-white);
+    color: var(--fixpro-base);
+}
+
+.why-choose-one__video-icon--logo img {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
 }
 
 .why-choose-one__video-icon:before {
