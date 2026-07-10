@@ -7,7 +7,25 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://digifund.vn/product-detail.html</loc>
+    <loc>https://digifund.vn/product-detail.html?group=1</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://digifund.vn/product-detail.html?group=2</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://digifund.vn/product-detail.html?group=3</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://digifund.vn/product-detail.html?group=4</loc>
     <lastmod>2026-07-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

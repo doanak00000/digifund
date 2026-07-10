@@ -209,7 +209,8 @@
             ],
             responsive: {
                 0: {
-                    items: 1,
+                    items: 3,
+                    margin: 10,
                 },
                 768: {
                     items: 2,
