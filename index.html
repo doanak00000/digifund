@@ -64,6 +64,33 @@
           }
         },
         {
+          "@type": "LocalBusiness",
+          "@id": "https://digifund.vn/#localbusiness",
+          "name": "Digifund - Silicon Wafer & Vật liệu bán dẫn",
+          "image": "https://digifund.vn/assets/images/siliconwafer.png",
+          "url": "https://digifund.vn/",
+          "telephone": "+84979324567",
+          "email": "digifundvietnam@gmail.com",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Tầng 14, toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ",
+            "addressLocality": "Thành phố Hồ Chí Minh",
+            "addressCountry": "VN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 10.7797,
+            "longitude": 106.6870
+          },
+          "areaServed": { "@type": "Country", "name": "Việt Nam" },
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00" }
+          ],
+          "parentOrganization": { "@id": "https://digifund.vn/#organization" }
+        },
+        {
           "@type": "WebSite",
           "@id": "https://digifund.vn/#website",
           "url": "https://digifund.vn/",
@@ -752,8 +779,9 @@
     <li><a href="#home" data-i18n="nav-home">Trang Chủ</a></li>
     <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <li><a href="#products" data-i18n="nav-products">Sản Phẩm</a></li>
-    <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác</a></li>
+    <li><a href="#collaboration" data-i18n="nav-projects">Nghiên Cứu</a></li>
     <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li>
+    <li><a href="./kien-thuc.html" data-i18n="nav-knowledge">Blog</a></li>
     <li>
         <a href="#contact" data-i18n="nav-contact">Liên Hệ</a>
     </li>
@@ -793,8 +821,9 @@
     <li><a href="#home" data-i18n="nav-home">Trang Chủ</a></li>
     <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <li><a href="#products" data-i18n="nav-products">Sản Phẩm</a></li>
-    <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác</a></li>
+    <li><a href="#collaboration" data-i18n="nav-projects">Nghiên Cứu</a></li>
     <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li>
+    <li><a href="./kien-thuc.html" data-i18n="nav-knowledge">Blog</a></li>
     <li>
         <a href="#contact" data-i18n="nav-contact">Liên Hệ</a>
 </ul>
@@ -1324,6 +1353,25 @@
     <!--Why Choose One Start -->
     <section id="why-choose" class="why-choose-one">
         <div class="container">
+            <style>
+            .wc-seo { }
+            .wc-seo__title { font-family: "Titillium Web", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: clamp(20px,2.4vw,26px); font-weight: 600; color: #15233f; line-height: 1.4; margin: 0 0 16px; }
+            .wc-seo p { font-size: 16px; line-height: 1.8; color: #4d586b; margin: 0 0 14px; }
+            .wc-seo p strong { color: #15233f; }
+            .wc-seo__links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+            .wc-seo__links a { display: inline-flex; align-items: center; gap: 8px; background: #f4f8ff; border: 1px solid #e2e9f4; border-radius: 30px; padding: 10px 18px; font-size: 14.5px; font-weight: 600; color: #15233f; text-decoration: none; transition: .25s; }
+            .wc-seo__links a:hover { border-color: #2563eb; color: #2563eb; background: #fff; transform: translateY(-2px); }
+            [data-theme="dark"] .wc-seo__title { color: #e6edf3; }
+            [data-theme="dark"] .wc-seo p { color: #9da7b3; }
+            [data-theme="dark"] .wc-seo p strong { color: #e6edf3; }
+            [data-theme="dark"] .wc-seo__links a { background: #161b22; border-color: #21262d; color: #e6edf3; }
+            /* 4 card đều nhau, cao bằng nhau */
+            .why-choose-one__cards { margin-top: 54px; }
+            .why-choose-one__cards > [class*="col-"] { display: flex; margin-bottom: 26px; }
+            .why-choose-one__cards .why-choose-one__list { width: 100%; margin: 0; }
+            .why-choose-one__cards .why-choose-one__list li { height: 100%; margin-bottom: 0; align-items: center; }
+            @media (max-width: 767px){ .why-choose-one__cards { margin-top: 30px; } .why-choose-one__cards > [class*="col-"] { margin-bottom: 14px; } .wc-seo p { font-size: 15px; } }
+            </style>
             <div class="row">
                 <div class="col-xl-6">
                     <div class="why-choose-one__left">
@@ -1331,46 +1379,15 @@
                             <h6 class="section-title__tagline"><span class="section-title__tagline-border"></span data-i18n="tag-why">TẠI SAO CHỌN CHÚNG TÔI</h6>
                 <h3 class="section-title__title title-animation" style="perspective: 400px;" data-i18n="h3-why">Tại Sao Chọn Chúng Tôi</h3>
                         </div>
-                        <p class="why-choose-one__text" data-i18n="why-text">Digifund cam kết cung cấp silicon wafer chất lượng cao nhất với hiệu suất ổn định. Quy trình kiểm soát chất lượng nghiêm ngặt của chúng tôi đảm bảo mỗi wafer đều đáp ứng tiêu chuẩn khắt khe của ngành sản xuất bán dẫn.</p>
-                        <div class="why-choose-one__list-box">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <ul class="why-choose-one__list list-unstyled">
-                                        <li class="wow fadeInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInLeft;">
-                                            <div class="icon">
-                                                <i class="fas fa-shield-halved"></i>
-                                            </div>
-                                            <div class="content">
-                                                <h3>
-                                                    Đảm Bảo Chất Lượng</h3>                                            </div>
-                                        </li>
-                                        <li class="wow fadeInLeft animated" data-wow-delay="400ms" style="visibility: visible; animation-delay: 400ms; animation-name: fadeInLeft;">
-                                            <div class="icon">
-                                                <i class="fas fa-gear"></i>
-                                            </div>
-                                            <div class="content">
-                                                <h3 data-i18n="why2">Giao Hàng Đúng Hẹn</h3>                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <ul class="why-choose-one__list list-unstyled">
-                                        <li class="wow fadeInRight animated" data-wow-delay="200ms" style="visibility: visible; animation-delay: 200ms; animation-name: fadeInRight;">
-                                            <div class="icon">
-                                                <i class="fas fa-users"></i>
-                                            </div>
-                                            <div class="content">
-                                                <h3 data-i18n="why3">Hợp Tác Nghiên Cứu - Hỗ Trợ Kĩ Thuật</h3>                                            </div>
-                                        </li>
-                                        <li class="wow fadeInRight animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                                            <div class="icon">
-                                                <i class="fas fa-dollar-sign"></i>
-                                            </div>
-                                            <div class="content">
-                                                <h3 data-i18n="why4">Giá Cạnh Tranh</h3>                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div class="wc-seo">
+                            <h3 class="wc-seo__title" data-i18n="seo-h2">Nhà cung cấp Silicon Wafer &amp; vật liệu bán dẫn tại Việt Nam</h3>
+                            <p data-i18n="seo-p1"><strong>Digifund</strong> cam kết cung cấp <strong>silicon wafer</strong> chất lượng cao nhất với quy trình kiểm soát nghiêm ngặt. Chúng tôi là đơn vị cung cấp silicon wafer, substrate và vật liệu bán dẫn độ tinh khiết cao tại Việt Nam — vật liệu nền để chế tạo chip bán dẫn, vi mạch, cảm biến và pin mặt trời, với đa dạng wafer <strong>Si, SiC, GaAs, Sapphire, InP, SOI</strong> kích thước từ 2 inch đến 12 inch (50–300mm), phục vụ nghiên cứu và sản xuất.</p>
+                            <p data-i18n="seo-p2">Bên cạnh silicon wafer, Digifund còn cung cấp <strong>bia phún xạ (sputtering target)</strong>, hoá chất chip bán dẫn độ tinh khiết cao, thiết bị phòng sạch và vật tư phòng thí nghiệm — đồng hành cùng các viện nghiên cứu, trường đại học và doanh nghiệp trong hệ sinh thái bán dẫn tại Việt Nam.</p>
+                            <div class="wc-seo__links">
+                                <a href="./silicon-wafer-la-gi.html"><i class="fas fa-book-open"></i> Silicon Wafer là gì?</a>
+                                <a href="./phan-loai-silicon-wafer.html"><i class="fas fa-layer-group"></i> Phân loại Silicon Wafer</a>
+                                <a href="./ung-dung-silicon-wafer.html"><i class="fas fa-microchip"></i> Ứng dụng Silicon Wafer</a>
+                                <a href="./product-detail.html?group=1"><i class="fas fa-compact-disc"></i> Xem catalog</a>
                             </div>
                         </div>
                     </div>
@@ -1392,6 +1409,40 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row why-choose-one__cards">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                    <ul class="why-choose-one__list list-unstyled">
+                        <li>
+                            <div class="icon"><i class="fas fa-shield-halved"></i></div>
+                            <div class="content"><h3 data-i18n="why1">Đảm Bảo Chất Lượng</h3></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                    <ul class="why-choose-one__list list-unstyled">
+                        <li>
+                            <div class="icon"><i class="fas fa-gear"></i></div>
+                            <div class="content"><h3 data-i18n="why2">Giao Hàng Đúng Hẹn</h3></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                    <ul class="why-choose-one__list list-unstyled">
+                        <li>
+                            <div class="icon"><i class="fas fa-users"></i></div>
+                            <div class="content"><h3 data-i18n="why3">Hợp Tác Nghiên Cứu - Hỗ Trợ Kĩ Thuật</h3></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-6">
+                    <ul class="why-choose-one__list list-unstyled">
+                        <li>
+                            <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="content"><h3 data-i18n="why4">Giá Cạnh Tranh</h3></div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1947,8 +1998,9 @@
                                             <ul class="footer-widget__link list-unstyled">
                                                 <li><a href="#about">Giới Thiệu</a></li>
                                                 <li><a href="#products">Sản Phẩm</a></li>
+                                                <li><a href="./kien-thuc.html">Blog Silicon Wafer</a></li>
                                                 <li><a href="#team">Đội Ngũ</a></li>
-                                                <li><a href="#collaboration">Hợp Tác</a></li>
+                                                <li><a href="#collaboration">Nghiên Cứu</a></li>
                                                 <li><a href="#contact">Liên Hệ</a></li>
                                             </ul>
                                         </div>
@@ -2048,8 +2100,9 @@
     <li><a href="#">Trang Chủ</a></li>
     <li><a href="#">Giới Thiệu</a></li>
     <li><a href="#products">Sản Phẩm</a></li>
-    <li><a href="#collaboration">Hợp Tác</a></li>
+    <li><a href="#collaboration">Nghiên Cứu</a></li>
     <li><a href="#">Đội Ngũ</a></li>
+    <li><a href="./kien-thuc.html">Blog</a></li>
     <li>
         <a href="#">Liên Hệ</a>
     </li>
@@ -2180,7 +2233,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var i18n = {
         vi: {
             'nav-home': 'Trang Chủ', 'nav-about': 'Giới Thiệu', 'nav-products': 'Sản Phẩm',
-            'nav-projects': 'Hợp Tác', 'nav-team': 'Đội Ngũ', 'nav-blog': 'Tin Tức', 'nav-contact': 'Liên Hệ',
+            'nav-projects': 'Nghiên Cứu', 'nav-knowledge': 'Blog', 'nav-team': 'Đội Ngũ', 'nav-contact': 'Liên Hệ',
             'tag-about': 'VỀ CHÚNG TÔI', 'tag-products': 'SẢN PHẨM', 'tag-why': 'TẠI SAO CHỌN CHÚNG TÔI',
             'tag-projects': 'SẢN PHẨM', 'tag-contact': 'LIÊN HỆ', 'tag-team': 'BAN LÃNH ĐẠO', 'tag-collab': 'HỢP TÁC & CÔNG BỐ', 'tag-blog': 'TIN TỨC NGÀNH',
             'h3-about': 'Về Digifund', 'h3-products': 'Sản Phẩm Của Chúng Tôi',
@@ -2272,6 +2325,9 @@ document.addEventListener('DOMContentLoaded', function() {
             'newsletter': 'Đăng Ký Nhận Bản Tin',
             'newsletter-desc': 'Cập Nhật Sản Phẩm Mới Nhất',
             'pg-h3': 'Các Nhóm Sản Phẩm Chính',
+            'seo-h2': 'Nhà cung cấp Silicon Wafer &amp; vật liệu bán dẫn tại Việt Nam',
+            'seo-p1': '<strong>Digifund</strong> cam kết cung cấp <strong>silicon wafer</strong> chất lượng cao nhất với quy trình kiểm soát nghiêm ngặt. Chúng tôi là đơn vị cung cấp silicon wafer, substrate và vật liệu bán dẫn độ tinh khiết cao tại Việt Nam — vật liệu nền để chế tạo chip bán dẫn, vi mạch, cảm biến và pin mặt trời, với đa dạng wafer <strong>Si, SiC, GaAs, Sapphire, InP, SOI</strong> kích thước từ 2 inch đến 12 inch (50–300mm), phục vụ nghiên cứu và sản xuất.',
+            'seo-p2': 'Bên cạnh silicon wafer, Digifund còn cung cấp <strong>bia phún xạ (sputtering target)</strong>, hoá chất chip bán dẫn độ tinh khiết cao, thiết bị phòng sạch và vật tư phòng thí nghiệm — đồng hành cùng các viện nghiên cứu, trường đại học và doanh nghiệp trong hệ sinh thái bán dẫn tại Việt Nam.',
             'pg-sub': 'Digifund cung cấp giải pháp vật liệu và thiết bị toàn diện cho ngành bán dẫn, năng lượng tái tạo và công nghệ cao.',
             'pg-catalog': 'Xem catalog', 'pg-quote': 'Báo giá',
             'pg1-badge': 'Nhóm 1', 'pg2-badge': 'Nhóm 2', 'pg3-badge': 'Nhóm 3', 'pg4-badge': 'Nhóm 4',
@@ -2292,7 +2348,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
          en: {
             'nav-home': 'Home', 'nav-about': 'About', 'nav-products': 'Products',
-            'nav-projects': 'Collaboration', 'nav-team': 'Team', 'nav-blog': 'Blog', 'nav-contact': 'Contact',
+            'nav-projects': 'Research', 'nav-knowledge': 'Blog', 'nav-team': 'Team', 'nav-contact': 'Contact',
             'tag-about': 'ABOUT US', 'tag-products': 'PRODUCTS', 'tag-why': 'WHY CHOOSE US',
             'tag-projects': 'PRODUCTS', 'tag-contact': 'CONTACT', 'tag-team': 'OUR LEADERSHIP', 'tag-collab': 'COLLABORATION & PUBLICATION', 'tag-blog': 'INDUSTRY INSIGHTS',
             'h3-about': 'About Digifund', 'h3-products': 'Our Products',
@@ -2372,6 +2428,9 @@ document.addEventListener('DOMContentLoaded', function() {
             'binh-luan-07': '07 Comments',
             'title-tag': 'Digifund - Premium Silicon Wafers Supplier',
             'pg-h3': 'Our Main Product Groups',
+            'seo-h2': 'Silicon Wafer &amp; Semiconductor Materials Supplier in Vietnam',
+            'seo-p1': '<strong>Digifund</strong> is committed to supplying the highest-quality <strong>silicon wafers</strong> under strict quality control. We are a supplier of high-purity silicon wafers, substrates and semiconductor materials in Vietnam — the base material for fabricating semiconductor chips, integrated circuits, sensors and solar cells — with a wide range of wafers (<strong>Si, SiC, GaAs, Sapphire, InP, SOI</strong>) in sizes from 2 inch to 12 inch (50–300mm) for research and manufacturing.',
+            'seo-p2': 'Beyond silicon wafers, Digifund also supplies <strong>sputtering targets</strong>, high-purity semiconductor chemicals, cleanroom equipment and laboratory consumables — partnering with research institutes, universities and enterprises across Vietnam\'s growing semiconductor ecosystem.',
             'pg-sub': 'Digifund delivers complete materials and equipment solutions for the semiconductor, renewable energy and high-tech industries.',
             'pg-catalog': 'View catalog', 'pg-quote': 'Get a quote',
             'pg1-badge': 'Group 1', 'pg2-badge': 'Group 2', 'pg3-badge': 'Group 3', 'pg4-badge': 'Group 4',
@@ -2402,7 +2461,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'pg-h3','pg-sub','pg1-badge','pg2-badge','pg3-badge','pg4-badge',
             'pg1-title','pg2-title','pg3-title','pg4-title',
             'pg1-i1','pg1-i2','pg2-i1','pg2-i2','pg3-i1','pg3-i2','pg3-i3','pg4-i1','pg4-i2',
-            'about-p1','about-p2','about-p3','about-exp'];
+            'about-p1','about-p2','about-p3','about-exp','seo-h2','seo-p1','seo-p2'];
         htmlKeys.forEach(function(k){
             var els = document.querySelectorAll('[data-i18n="' + k + '"]');
             els.forEach(function(el){ el.innerHTML = t[k]; });

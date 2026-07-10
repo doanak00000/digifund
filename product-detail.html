@@ -786,6 +786,57 @@
                 if (_ogt) _ogt.setAttribute('content', T(g.title) + ' | Digifund');
             } catch (e) {}
 
+            // SEO: structured data (Breadcrumb + ItemList sản phẩm + FAQ) theo nhóm
+            try {
+                var _pgUrl = 'https://digifund.vn/product-detail.html?group=' + groupId;
+                var _items = [];
+                (g.items || []).forEach(function (it) {
+                    (it.variants || []).forEach(function (v) {
+                        if (v && v.name) _items.push(T(v.name));
+                    });
+                    if ((!it.variants || !it.variants.length) && it.name) _items.push(T(it.name));
+                });
+                _items = _items.slice(0, 25);
+                var _listEl = _items.map(function (nm, i) {
+                    return { "@type": "ListItem", "position": i + 1, "name": nm };
+                });
+                var _ld = {
+                    "@context": "https://schema.org",
+                    "@graph": [
+                        {
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://digifund.vn/" },
+                                { "@type": "ListItem", "position": 2, "name": "Sản phẩm", "item": "https://digifund.vn/#products" },
+                                { "@type": "ListItem", "position": 3, "name": T(g.title), "item": _pgUrl }
+                            ]
+                        },
+                        {
+                            "@type": "ItemList",
+                            "name": T(g.title),
+                            "url": _pgUrl,
+                            "numberOfItems": _listEl.length,
+                            "itemListElement": _listEl
+                        },
+                        {
+                            "@type": "FAQPage",
+                            "mainEntity": [
+                                { "@type": "Question", "name": "Làm sao để đặt mua " + T(g.title).toLowerCase() + " tại Digifund?", "acceptedAnswer": { "@type": "Answer", "text": "Bạn có thể liên hệ Digifund qua hotline 0979 324 567 hoặc email digifundvietnam@gmail.com để được tư vấn thông số và nhận báo giá theo yêu cầu." } },
+                                { "@type": "Question", "name": "Digifund có cung cấp silicon wafer và vật liệu bán dẫn theo thông số riêng không?", "acceptedAnswer": { "@type": "Answer", "text": "Có. Digifund cung cấp silicon wafer, substrate và vật liệu bán dẫn với nhiều kích thước, độ tinh khiết và thông số kỹ thuật khác nhau, đáp ứng yêu cầu riêng của từng dự án nghiên cứu và sản xuất." } },
+                                { "@type": "Question", "name": "Digifund giao hàng ở đâu?", "acceptedAnswer": { "@type": "Answer", "text": "Digifund có trụ sở tại TP. Hồ Chí Minh và cung cấp sản phẩm trên toàn quốc." } }
+                            ]
+                        }
+                    ]
+                };
+                var _s = document.createElement('script');
+                _s.type = 'application/ld+json';
+                _s.id = 'pd-jsonld';
+                _s.textContent = JSON.stringify(_ld);
+                var _old = document.getElementById('pd-jsonld');
+                if (_old) _old.remove();
+                document.head.appendChild(_s);
+            } catch (e) {}
+
             REG = {};
             CFG = {};
             var lastSection = null, navHtml = '', contentHtml = '';
