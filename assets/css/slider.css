@@ -1321,11 +1321,16 @@
   # Banner: full-bleed image + semi-transparent dark overlay
   --------------------------------------------------------------*/
 .main-slider__bg-box {
-    left: 0;
-    right: 0;
-    width: 100%;
-    -webkit-mask: none;
-    mask: none;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+}
+
+/* Disable the template's old split-layout edge gradient; the .item::before overlay handles darkening */
+.main-slider__bg::before {
+    display: none !important;
 }
 
 .main-slider .item::before {
