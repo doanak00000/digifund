@@ -355,9 +355,9 @@
 </head>
 <body>
     <header class="pdp-top">
-        <a class="pdp-top__logo" href="./index.html" aria-label="Digifund"><img src="./assets/images/logo-2.png" alt="Digifund"><span class="pdp-top__name">DIGIFUND</span></a>
+        <a class="pdp-top__logo" href="./" aria-label="Digifund"><img src="./assets/images/logo-2.png" alt="Digifund"><span class="pdp-top__name">DIGIFUND</span></a>
         <div class="pdp-top__right">
-            <a class="pdp-back" href="./index.html#products"><i class="fas fa-arrow-left"></i> <span id="tBack">Về trang chủ</span></a>
+            <a class="pdp-back" href="./#products"><i class="fas fa-arrow-left"></i> <span id="tBack">Về trang chủ</span></a>
             <button class="pdp-toggle" id="langToggle" title="EN/VI">VI</button>
             <button class="pdp-toggle" id="themeToggle" title="Sáng/Tối"><i class="fas fa-moon"></i></button>
         </div>
@@ -366,8 +366,8 @@
     <section class="pdp-hero">
         <div class="pdp-hero__wafer"></div>
         <p class="pdp-hero__crumb">
-            <a href="./index.html" id="tHome">Trang chủ</a> ›
-            <a href="./index.html#products" id="tAllProd">Tất cả sản phẩm</a> ›
+            <a href="./" id="tHome">Trang chủ</a> ›
+            <a href="./#products" id="tAllProd">Tất cả sản phẩm</a> ›
             <span id="heroCrumb"></span>
         </p>
         <span class="pdp-hero__badge" id="heroBadge"></span>
@@ -383,7 +383,7 @@
     </main>
 
     <footer class="pdp-foot">
-        © 2026 Digifund. <a href="./index.html" id="tFootBack">Về trang chủ</a>
+        © 2026 Digifund. <a href="./" id="tFootBack">Về trang chủ</a>
     </footer>
 
     <!-- Product detail modal -->
@@ -644,7 +644,7 @@
                                 '<ul class="cfg-result__specs">' + lines + '</ul>' +
                                 '<div class="cfg-result__actions">' +
                                     '<button type="button" class="pdt-btn" data-key="' + e.key + '"><i class="fas fa-circle-info"></i> ' + esc(T(STR.viewdetail)) + '</button>' +
-                                    '<a href="./index.html#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
+                                    '<a href="./#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
@@ -690,14 +690,14 @@
                     '<ul class="cfg-result__specs">' + lines + '</ul>' +
                     '<div class="cfg-result__actions">' +
                         '<button type="button" class="pdt-btn" data-key="' + picked.key + '"><i class="fas fa-circle-info"></i> ' + esc(T(STR.viewdetail)) + '</button>' +
-                        '<a href="./index.html#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
+                        '<a href="./#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
                     '</div>' +
                 '</div>';
             } else {
                 resHtml = '<div class="cfg-result cfg-result--none">' +
                     '<div class="cfg-result__tag cfg-result__tag--none"><i class="fas fa-wrench"></i> ' + esc(T(STR.custom)) + '</div>' +
                     '<p class="cfg-result__cdesc">' + esc(T(STR.customdesc)) + '</p>' +
-                    '<div class="cfg-result__actions"><a href="./index.html#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a></div>' +
+                    '<div class="cfg-result__actions"><a href="./#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a></div>' +
                 '</div>';
             }
 
@@ -738,7 +738,7 @@
                     '<p class="pdm-meta"><b>' + esc(T(STR.contact)) + ':</b> sales@digifund.vn</p>' +
                     specsHtml +
                     '<div class="pdm-actions">' +
-                        '<a href="./index.html#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
+                        '<a href="./#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
                     '</div>' +
                 '</div>';
             document.getElementById('pdmGrid').innerHTML = grid;
@@ -877,7 +877,7 @@
                         '</div>' +
                     '</div>' +
                     prod +
-                    '<div class="pdp-cat__cta"><a href="./index.html#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quotecat)) + '</a></div>' +
+                    '<div class="pdp-cat__cta"><a href="./#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quotecat)) + '</a></div>' +
                 '</section>';
             });
             document.getElementById('pdpNav').innerHTML = navHtml;
