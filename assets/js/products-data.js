@@ -700,13 +700,13 @@ window.PD_DATA = {
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Cốc',en:'Beaker'}}, { k:{vi:'Thể tích',en:'Volume'},v:'1000 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
                     { name: { vi: 'Bình tam giác 250 mL', en: 'Erlenmeyer 250 mL' }, img: './assets/images/binhtamgiac250ml.png', sku: 'DG-GL-EF250', desc: { vi: 'Bình tam giác (Erlenmeyer) 250 mL', en: 'Erlenmeyer flask 250 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình tam giác',en:'Erlenmeyer'}}, { k:{vi:'Thể tích',en:'Volume'},v:'250 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
-                    { name: { vi: 'Bình tam giác 500 mL', en: 'Erlenmeyer 500 mL' }, img: './assets/images/prod-g3.jpg', sku: 'DG-GL-EF500', desc: { vi: 'Bình tam giác (Erlenmeyer) 500 mL', en: 'Erlenmeyer flask 500 mL' },
+                    { name: { vi: 'Bình tam giác 500 mL', en: 'Erlenmeyer 500 mL' }, img: './assets/images/binhtamgiac500ml.png', sku: 'DG-GL-EF500', desc: { vi: 'Bình tam giác (Erlenmeyer) 500 mL', en: 'Erlenmeyer flask 500 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình tam giác',en:'Erlenmeyer'}}, { k:{vi:'Thể tích',en:'Volume'},v:'500 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
-                    { name: { vi: 'Bình định mức 100 mL', en: 'Volumetric flask 100 mL' }, img: './assets/images/prod-g3.jpg', sku: 'DG-GL-VF100', desc: { vi: 'Bình định mức class A, 100 mL', en: 'Class A volumetric flask, 100 mL' },
+                    { name: { vi: 'Bình định mức 100 mL', en: 'Volumetric flask 100 mL' }, img: './assets/images/binhdinhmuc100ml.png', sku: 'DG-GL-VF100', desc: { vi: 'Bình định mức class A, 100 mL', en: 'Class A volumetric flask, 100 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình định mức',en:'Volumetric'}}, { k:{vi:'Thể tích',en:'Volume'},v:'100 mL'}, { k:{vi:'Cấp',en:'Class'},v:'A'} ] },
-                    { name: { vi: 'Bình cầu đáy tròn 250 mL', en: 'Round-bottom flask 250 mL' }, img: './assets/images/prod-g3.jpg', sku: 'DG-GL-RB250', desc: { vi: 'Bình cầu đáy tròn cổ nhám 24/29, 250 mL', en: 'Round-bottom flask 24/29 joint, 250 mL' },
+                    { name: { vi: 'Bình cầu đáy tròn 250 mL', en: 'Round-bottom flask 250 mL' }, img: './assets/images/binhcaudaytron250ml.png', sku: 'DG-GL-RB250', desc: { vi: 'Bình cầu đáy tròn cổ nhám 24/29, 250 mL', en: 'Round-bottom flask 24/29 joint, 250 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình cầu',en:'Round-bottom'}}, { k:{vi:'Thể tích',en:'Volume'},v:'250 mL'}, { k:{vi:'Cổ nhám',en:'Joint'},v:'24/29'} ] },
-                    { name: { vi: 'Ống đong 100 mL', en: 'Graduated cylinder 100 mL' }, img: './assets/images/prod-g3.jpg', sku: 'DG-GL-CY100', desc: { vi: 'Ống đong chia vạch, 100 mL', en: 'Graduated cylinder, 100 mL' },
+                    { name: { vi: 'Ống đong 100 mL', en: 'Graduated cylinder 100 mL' }, img: './assets/images/ongdong100ml.png', sku: 'DG-GL-CY100', desc: { vi: 'Ống đong chia vạch, 100 mL', en: 'Graduated cylinder, 100 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Ống đong',en:'Cylinder'}}, { k:{vi:'Thể tích',en:'Volume'},v:'100 mL'}, { k:{vi:'Cấp',en:'Class'},v:'B'} ] }
                 ]
             },
@@ -725,13 +725,13 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Găng tay nitrile phòng sạch', en: 'Cleanroom nitrile gloves' }, img: './assets/images/prod-g3.jpg', sku: 'DG-CR-GL100', desc: { vi: 'Găng tay nitrile không bột, Class 100.', en: 'Powder-free nitrile gloves, Class 100.' },
+                    { name: { vi: 'Găng tay nitrile phòng sạch', en: 'Cleanroom nitrile gloves' }, img: './assets/images/gangtaynitrile.png', sku: 'DG-CR-GL100', desc: { vi: 'Găng tay nitrile không bột, Class 100.', en: 'Powder-free nitrile gloves, Class 100.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Găng tay nitrile',en:'Nitrile gloves'}}, { k:{vi:'Cấp',en:'Class'},v:'ISO 5 (Class 100)'}, { k:{vi:'Cỡ',en:'Size'},v:'S / M / L'} ] },
-                    { name: { vi: 'Bộ áo liền thân (bunny suit)', en: 'Bunny suit (coverall)' }, img: './assets/images/prod-g3.jpg', sku: 'DG-CR-BS001', desc: { vi: 'Bộ áo liền thân chống tĩnh điện cho phòng sạch.', en: 'Anti-static cleanroom coverall.' },
+                    { name: { vi: 'Bộ áo liền thân (bunny suit)', en: 'Bunny suit (coverall)' }, img: './assets/images/bunnysuit.png', sku: 'DG-CR-BS001', desc: { vi: 'Bộ áo liền thân chống tĩnh điện cho phòng sạch.', en: 'Anti-static cleanroom coverall.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Áo liền thân',en:'Coverall'}}, { k:{vi:'Cấp',en:'Class'},v:'ISO 4'}, { k:{vi:'Cỡ',en:'Size'},v:'M / L / XL'} ] },
-                    { name: { vi: 'Khẩu trang phòng sạch', en: 'Cleanroom face mask' }, img: './assets/images/prod-g3.jpg', sku: 'DG-CR-FM001', desc: { vi: 'Khẩu trang ít xơ sợi cho phòng sạch.', en: 'Low-lint cleanroom face mask.' },
+                    { name: { vi: 'Khẩu trang phòng sạch', en: 'Cleanroom face mask' }, img: './assets/images/khautrangphongsach.png', sku: 'DG-CR-FM001', desc: { vi: 'Khẩu trang ít xơ sợi cho phòng sạch.', en: 'Low-lint cleanroom face mask.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Khẩu trang',en:'Face mask'}}, { k:{vi:'Cấp',en:'Class'},v:'ISO 6'} ] },
-                    { name: { vi: 'Khăn lau phòng sạch', en: 'Cleanroom wipes' }, img: './assets/images/prod-g3.jpg', sku: 'DG-CR-WP009', desc: { vi: 'Khăn lau polyester 9"×9" ít xơ sợi.', en: 'Low-lint polyester wipes 9"×9".' },
+                    { name: { vi: 'Khăn lau phòng sạch', en: 'Cleanroom wipes' }, img: './assets/images/khanlauphongsach.png', sku: 'DG-CR-WP009', desc: { vi: 'Khăn lau polyester 9"×9" ít xơ sợi.', en: 'Low-lint polyester wipes 9"×9".' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Khăn lau',en:'Wipes'}}, { k:{vi:'Kích thước',en:'Size'},v:'9"×9"'}, { k:{vi:'Vật liệu',en:'Material'},v:'Polyester'} ] }
                 ]
             }
