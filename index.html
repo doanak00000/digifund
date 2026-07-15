@@ -509,6 +509,29 @@
             /* Why-choose: show Digifund logo badge centered on the image */
             .why-choose-one__video-link { display: block !important; top: 50% !important; left: 50%; right: auto !important; bottom: auto; transform: translate(-50%, -50%) !important; }
         }
+        /* Tablet 768–1199: why-choose giống mobile — 1 ảnh full-width + logo Digifund ở giữa */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            /* giảm padding khổng lồ của template (120px 0 247px) để bớt khoảng trắng */
+            .why-choose-one { padding: 46px 0 44px !important; }
+            .about-one { padding-top: 40px !important; padding-bottom: 24px !important; }
+            .why-choose-one__right { display: block !important; width: 100% !important; max-width: 100% !important; margin: 26px 0 0 !important; }
+            .why-choose-one__img-box { position: relative !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+            .why-choose-one__img { position: static !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+            .why-choose-one__img img { width: 100% !important; height: auto !important; aspect-ratio: 16 / 8; object-fit: cover; border-radius: 16px; }
+            .why-choose-one__img-2, .why-choose-one__shape-1 { display: none !important; }
+            .why-choose-one__video-link { display: block !important; position: absolute !important; top: 50% !important; left: 50% !important; right: auto !important; bottom: auto !important; transform: translate(-50%, -50%) !important; }
+        }
+        /* 768–991: 3 feature card xếp dọc — thu gọn để bớt khoảng trắng */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .feature-one { padding: 40px 0 26px !important; }
+            .feature-one__single { margin-bottom: 18px; }
+            .feature-one__single-inner { padding: 22px 26px 24px !important; }
+            .feature-one__icon-and-title { align-items: center; gap: 16px; }
+            .feature-one__icon { width: 58px !important; height: 58px !important; }
+            .feature-one__icon span, .feature-one__icon i { font-size: 27px !important; }
+            .feature-one__title { font-size: 19px; line-height: 26px; }
+            .feature-one__text { margin: 12px 0 0 !important; font-size: 14.5px; }
+        }
         [data-theme="dark"] .team-one__title a { color: #e6edf3; }
         [data-theme="dark"] .team-one__sub-title { color: #3b82f6; }
         [data-theme="dark"] .blog-one__title a { color: #e6edf3; }
@@ -541,6 +564,17 @@
         .header-tools__sep { width: 1px; height: 18px; background: #d4ddea; }
         .toggle-btn--inline { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 30px; padding: 0; border: none; border-radius: 999px; background: transparent; color: #334155; cursor: pointer; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
         .toggle-btn--inline:hover { background: #ffffff; color: #2563eb; box-shadow: 0 1px 4px rgba(20,40,80,0.12); }
+        .mobile-tools-center { display: none; }
+        .mobile-burger { display: none; }
+        [data-theme="dark"] .mobile-burger { color: #e6edf3 !important; }
+        [data-theme="dark"] .mobile-tools-center { background: #161b22; border-color: #30363d; }
+        [data-theme="dark"] .mobile-tools-center .toggle-btn--inline { color: #c9d1d9; }
+        [data-theme="dark"] .mobile-tools-center .header-tools__sep { background: #30363d; }
+        /* Hàng nút VI/EN + sáng-tối trong menu mobile */
+        .mobile-nav__tools { display: flex; align-items: center; gap: 10px; margin: 18px 0 6px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.12); }
+        .mobile-nav__tools-label { color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 600; }
+        .mobile-nav__tools .toggle-btn--inline { width: auto; min-width: 44px; height: 38px; padding: 0 16px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; color: #fff; background: rgba(255,255,255,0.06); font-size: 14px; }
+        .mobile-nav__tools .toggle-btn--inline:hover { background: #2563eb; border-color: #2563eb; color: #fff; box-shadow: none; }
         [data-theme="dark"] .header-tools { background: #161b22; border-color: #30363d; }
         [data-theme="dark"] .header-tools__sep { background: #30363d; }
         [data-theme="dark"] .toggle-btn--inline { color: #c9d1d9; }
@@ -552,15 +586,32 @@
         [data-theme="dark"] .nav-bar { background: #e6edf3; }
         /* Mobile: thu gọn header (logo nhỏ lại, bớt padding, không xuống dòng) */
         @media (max-width: 991px) {
-            .main-menu__wrapper-inner { padding: 0 15px !important; flex-wrap: nowrap !important; }
+            /* Header mobile: [logo] ......... [🌙 VI] [≡] */
+            .main-menu, .main-menu__wrapper, .main-menu__wrapper-inner { width: 100%; max-width: 100%; box-sizing: border-box; }
+            .main-menu__wrapper-inner { display: flex !important; align-items: center; justify-content: flex-start; padding: 0 15px !important; flex-wrap: nowrap !important; overflow: hidden; }
             .main-menu__logo { padding: 10px 0 !important; }
             .brand img { height: 40px !important; }
             .brand__name { font-size: 18px; }
-            .main-menu__right { gap: 10px; }
+            .main-menu__nav-sidebar-icon { display: none !important; }
+            .main-menu__right { display: none !important; }
+            .main-menu__main-menu-box { display: none !important; }
+            .main-menu__left { flex: 0 0 auto; }
+            /* cụm sáng-tối + VI/EN dồn sang phải (margin-left:auto), burger ngay sau */
+            .mobile-tools-center { display: inline-flex !important; flex: 0 0 auto; align-items: center; gap: 2px; margin-left: auto; background: #eef2f7; border: 1px solid #e2e8f0; border-radius: 999px; padding: 3px; }
+            .mobile-tools-center .toggle-btn--inline { color: #334155; width: 40px; height: 30px; }
+            .mobile-tools-center .header-tools__sep { width: 1px; height: 18px; background: #d4ddea; }
+            /* hamburger góc phải, ngay sau cụm toggle */
+            .mobile-burger { display: inline-flex !important; flex: 0 0 auto; align-items: center; justify-content: center; margin-left: 8px; width: 40px; height: 40px; font-size: 24px; color: #15233f; }
         }
         @media (max-width: 480px) {
             .brand img { height: 34px !important; }
             .brand__name { font-size: 16px; letter-spacing: .5px; }
+        }
+        /* Từ 992px trở lên: hiện PC view đầy đủ (nav ngang), ẩn phần mobile */
+        @media (min-width: 992px) {
+            .mobile-tools-center, .mobile-burger { display: none !important; }
+            .main-menu .mobile-nav__toggler { display: none !important; }
+            .main-menu__main-menu-box .main-menu__list { display: flex !important; }
         }
 
         /* Slider nav arrows removed in favour of the contact buttons */
@@ -573,6 +624,11 @@
         @media (max-width: 767px) { .main-slider__contact { right: 15px; gap: 10px; } .main-slider__contact a { width: 42px; height: 42px; font-size: 15px; } }
 
         /* ===== Product Groups (4 nhóm sản phẩm chính) ===== */
+        /* Tiêu đề dùng Titillium Web cho dấu tiếng Việt đọc thoáng hơn */
+        .main-slider__title, .section-title__title, .about-one__title, .feature-one__title, .why-choose-one__title { font-family: "Titillium Web", -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important; letter-spacing: 0 !important; }
+        /* Giãn khoảng cách đoạn văn phần Giới thiệu */
+        .about-one__text { margin-bottom: 15px; line-height: 1.85; }
+        .about-one__text:last-of-type { margin-bottom: 0; }
         .product-groups { position: relative; padding: 100px 0 80px; background: linear-gradient(180deg, #f2f6fd 0%, #ffffff 65%); }
         .product-groups .section-title { text-align: center; margin-bottom: 50px; }
         .product-groups .section-title__tagline { justify-content: center; }
@@ -774,14 +830,20 @@
                         <a href="#" class="brand"><img src="./assets/images/logo-2.png" alt="Digifund" style="height:64px;width:auto;display:block;"><span class="brand__name">DIGIFUND</span></a>
                     </div>
                 </div>
+                <div class="mobile-tools-center">
+                    <a href="#" class="toggle-btn toggle-btn--inline" title="Sáng/Tối" aria-label="Sáng/Tối"><i class="fas fa-moon"></i></a>
+                    <span class="header-tools__sep"></span>
+                    <a href="#" class="toggle-btn toggle-btn--inline" title="EN/VI">VI</a>
+                </div>
+                <div class="mobile-burger" role="button" tabindex="0" aria-label="Menu"><i class="fas fa-bars"></i></div>
                 <div class="main-menu__main-menu-box">
                     <a href="#" class="mobile-nav__toggler"><i class="fas fa-bars"></i></a>
                     <ul class="main-menu__list">
     <li><a href="#home" data-i18n="nav-home">Trang Chủ</a></li>
     <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <li><a href="#products" data-i18n="nav-products">Sản Phẩm</a></li>
-    <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác &amp; Nghiên Cứu</a></li>
-    <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li>
+    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác &amp; Nghiên Cứu</a></li> -->
+    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li> -->
     <li><a href="./kien-thuc.html" data-i18n="nav-knowledge">Blog</a></li>
     <li>
         <a href="#contact" data-i18n="nav-contact">Liên Hệ</a>
@@ -816,14 +878,20 @@
                         <a href="#" class="brand"><img src="./assets/images/logo-2.png" alt="Digifund" style="height:64px;width:auto;display:block;"><span class="brand__name">DIGIFUND</span></a>
                     </div>
                 </div>
+                <div class="mobile-tools-center">
+                    <a href="#" class="toggle-btn toggle-btn--inline" title="Sáng/Tối" aria-label="Sáng/Tối"><i class="fas fa-moon"></i></a>
+                    <span class="header-tools__sep"></span>
+                    <a href="#" class="toggle-btn toggle-btn--inline" title="EN/VI">VI</a>
+                </div>
+                <div class="mobile-burger" role="button" tabindex="0" aria-label="Menu"><i class="fas fa-bars"></i></div>
                 <div class="main-menu__main-menu-box">
                     <a href="#" class="mobile-nav__toggler"><i class="fas fa-bars"></i></a>
                     <ul class="main-menu__list">
     <li><a href="#home" data-i18n="nav-home">Trang Chủ</a></li>
     <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <li><a href="#products" data-i18n="nav-products">Sản Phẩm</a></li>
-    <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác &amp; Nghiên Cứu</a></li>
-    <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li>
+    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác &amp; Nghiên Cứu</a></li> -->
+    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li> -->
     <li><a href="./kien-thuc.html" data-i18n="nav-knowledge">Blog</a></li>
     <li>
         <a href="#contact" data-i18n="nav-contact">Liên Hệ</a>
@@ -1238,6 +1306,7 @@
                                 <h3 class="feature-one__title"><a href="#" data-i18n="feature1">Wafer<br>Chất Lượng Cao</a>
                                 </h3>
                             </div>
+                            <p class="feature-one__text" data-i18n="feat1-sub">Độ tinh khiết cao, kiểm định từng lô.</p>
                         </div>
                     </div>
                 </div>
@@ -1256,6 +1325,7 @@
                                 <h3 class="feature-one__title"><a href="#" data-i18n="feature2">Vận Chuyển<br>Toàn Cầu</a>
                                 </h3>
                             </div>
+                            <p class="feature-one__text" data-i18n="feat2-sub">Giao hàng nhanh, đóng gói an toàn.</p>
                         </div>
                     </div>
                 </div>
@@ -1275,6 +1345,7 @@
                                         <br>Chứng Nhận</a>
                                 </h3>
                             </div>
+                            <p class="feature-one__text" data-i18n="feat3-sub">Thông số đạt chuẩn ngành bán dẫn.</p>
                         </div>
                     </div>
                 </div>
@@ -1336,7 +1407,7 @@
                                     </div>
                                     <div class="content">
                                         <h4 data-i18n="about-client">Khách Hàng Toàn Cầu</h4>
-                                        <p>Cam kết giá tốt nhất cho mọi đơn hàng</p>
+                                        <p>Phục vụ đối tác trong nước và quốc tế</p>
                                     </div>
                                 </li>
                             </ul>
@@ -1589,8 +1660,8 @@
                                                     <option>Đánh Bóng Wafer</option>
                                                     <option>Epitaxial Wafer</option>
                                                     <option>Wafer SOI</option>
-                                                </select><div class="nice-select selectmenu wide" tabindex="0"><span class="current">Service Type
-                                                    </span><ul class="list"><li data-value="Loại Sản Phẩm" class="option selected">Service Type
+                                                </select><div class="nice-select selectmenu wide" tabindex="0"><span class="current">Loại Sản Phẩm
+                                                    </span><ul class="list"><li data-value="Loại Sản Phẩm" class="option selected">Loại Sản Phẩm
                                                     </li><li data-value="Prime Grade Wafer" class="option">Prime Grade Wafer</li><li data-value="Tiêu Chuẩn Wafer" class="option">Tiêu Chuẩn Wafer</li><li data-value="Đánh Bóng Wafer" class="option">Đánh Bóng Wafer</li><li data-value="Epitaxial Wafer" class="option">Epitaxial Wafer</li><li data-value="Wafer SOI" class="option">Wafer SOI</li></ul></div>
                                             </div>
                                         </div>
@@ -1647,15 +1718,17 @@
     </section>
     <!--Video One End -->
 
-    <!--Team One Start -->
-    <section id="team" class="team-one">
+    <!-- ===== TAM AN: Doi ngu (Ban lanh dao) + Hop tac & Nghien cuu — cho bo sung anh/du lieu that.
+     Bo dong mo comment nay va dong dong comment o cuoi de hien lai. =====
+
+<section id="team" class="team-one">
         <div class="container">
             <div class="section-title text-center sec-title-animation animation-style1">
                 <h6 class="section-title__tagline"><span class="section-title__tagline-border"></span data-i18n="tag-team">BAN LÃNH ĐẠO</h6>
                 <h3 class="section-title__title title-animation" style="perspective: 400px;" data-i18n="h3-team">Đội Ngũ Chuyên Gia</h3>
             </div>
             <div class="row">
-                <!--Team One Single Start-->
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInLeft;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1682,8 +1755,8 @@
                         </div>
                     </div>
                 </div>
-                <!--Team One Single End-->
-                <!--Team One Single Start-->
+                
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInLeft;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1710,8 +1783,8 @@
                         </div>
                     </div>
                 </div>
-                <!--Team One Single End-->
-                <!--Team One Single Start-->
+                
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight animated" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1738,8 +1811,8 @@
                         </div>
                     </div>
                 </div>
-                <!--Team One Single End-->
-                <!--Team One Single Start-->
+                
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight animated" data-wow-delay="700ms" style="visibility: visible; animation-delay: 700ms; animation-name: fadeInRight;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1766,13 +1839,13 @@
                         </div>
                     </div>
                 </div>
-                <!--Team One Single End-->
+                
             </div>
         </div>
     </section>
-    <!--Team One End -->
+    
 
-    <!--Collaboration & Publication Start -->
+    
     <section id="collaboration" class="team-one">
         <div class="container">
             <div class="section-title text-center sec-title-animation animation-style1">
@@ -1780,7 +1853,7 @@
                 <h3 class="section-title__title title-animation" style="perspective: 400px;" data-i18n="h3-collab">Hợp Tác & Nghiên Cứu</h3>
             </div>
             <div class="row">
-                <!--Collab Single Start-->
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1796,8 +1869,8 @@
                         </div>
                     </div>
                 </div>
-                <!--Collab Single End-->
-                <!--Collab Single Start-->
+                
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1813,8 +1886,8 @@
                         </div>
                     </div>
                 </div>
-                <!--Collab Single End-->
-                <!--Collab Single Start-->
+                
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1830,8 +1903,8 @@
                         </div>
                     </div>
                 </div>
-                <!--Collab Single End-->
-                <!--Collab Single Start-->
+                
+                
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated" data-wow-delay="700ms" style="visibility: visible; animation-delay: 700ms; animation-name: fadeInUp;">
                     <div class="team-one__single">
                         <div class="team-one__img-box">
@@ -1847,11 +1920,12 @@
                         </div>
                     </div>
                 </div>
-                <!--Collab Single End-->
+                
             </div>
         </div>
     </section>
-    <!--Collaboration & Publication End -->
+
+-->
 
     <!-- Brand/Partner section tam thoi an. Xoa dong comment nay va the dong cuoi de bat lai.
     <section id="partners" class="brand-one">
@@ -2019,8 +2093,9 @@
                                                 <li><a href="#about">Giới Thiệu</a></li>
                                                 <li><a href="#products">Sản Phẩm</a></li>
                                                 <li><a href="./kien-thuc.html">Blog Silicon Wafer</a></li>
-                                                <li><a href="#team">Đội Ngũ</a></li>
-                                                <li><a href="#collaboration">Hợp Tác &amp; Nghiên Cứu</a></li>
+                                                <!-- tạm ẩn (chờ dữ liệu): <li><a href="#team">Đội Ngũ</a></li> -->
+                                                <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration">Hợp Tác &amp; Nghiên Cứu</a></li> -->
+
                                                 <li><a href="#contact">Liên Hệ</a></li>
                                             </ul>
                                         </div>
@@ -2120,8 +2195,8 @@
     <li><a href="#">Trang Chủ</a></li>
     <li><a href="#">Giới Thiệu</a></li>
     <li><a href="#products">Sản Phẩm</a></li>
-    <li><a href="#collaboration">Hợp Tác &amp; Nghiên Cứu</a></li>
-    <li><a href="#">Đội Ngũ</a></li>
+    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration">Hợp Tác &amp; Nghiên Cứu</a></li> -->
+    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#">Đội Ngũ</a></li> -->
     <li><a href="./kien-thuc.html">Blog</a></li>
     <li>
         <a href="#">Liên Hệ</a>
@@ -2271,6 +2346,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'slide5-title': 'Hóa Chất Chip Bán Dẫn <br> <span>Có Độ Tinh Khiết Cao</span>',
             'slide-text': 'Digifund cung cấp silicon wafer chất lượng cao cho các nhà sản xuất bán dẫn toàn cầu, <br> hỗ trợ sản xuất chip tiên tiến với vật liệu cao cấp.',
             'feature1': 'Wafer<br>Chất Lượng Cao', 'feature2': 'Vận Chuyển<br>Toàn Cầu', 'feature3': 'Tiêu Chuẩn<br>Chứng Nhận',
+            'feat1-sub': 'Độ tinh khiết cao, kiểm định từng lô.', 'feat2-sub': 'Giao hàng nhanh, đóng gói an toàn.', 'feat3-sub': 'Thông số đạt chuẩn ngành bán dẫn.',
             'feature-text': 'Mỗi wafer đều được kiểm tra đạt chuẩn ISO về chất lượng cho sản xuất bán dẫn.',
             'about-text': 'Digifund chuyên cung cấp silicon wafer cao cấp cho các công ty bán dẫn trên toàn thế giới.',
             'about-p1': 'Digifund là nhà cung cấp uy tín các vật liệu tiên tiến và giải pháp công nghệ, phục vụ ngành công nghiệp bán dẫn và năng lượng tái tạo. Được thành lập năm 2023, chúng tôi tập trung kết nối hai trụ cột then chốt của tương lai: Bán dẫn và Năng lượng sạch.',
@@ -2386,6 +2462,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'slide5-title': 'Semiconductor Chip Chemicals <br> <span>of High Purity</span>',
             'slide-text': 'Digifund delivers high-quality silicon wafers to semiconductor manufacturers worldwide, <br> supporting cutting-edge chip production with premium-grade materials.',
             'feature1': 'Premium<br>Quality Wafers', 'feature2': 'Global<br>Shipping', 'feature3': 'Certified<br>Standards',
+            'feat1-sub': 'High purity, inspected per batch.', 'feat2-sub': 'Fast delivery, secure packaging.', 'feat3-sub': 'Specs meeting semiconductor standards.',
             'feature-text': 'Every wafer is inspected to meet ISO-certified quality benchmarks for semiconductor fabrication.',
             'about-text': 'Digifund specializes in supplying premium-grade silicon wafers to semiconductor companies worldwide.',
             'about-p1': 'Digifund is a trusted supplier of advanced materials and technology solutions, serving the semiconductor and renewable energy industries. Founded in 2023, we focus on bridging two key pillars of the future: Semiconductors and Clean Energy.',
@@ -2626,6 +2703,24 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+})();
+</script>
+<script>
+// Mở menu mobile khi bấm hamburger chèn riêng (.mobile-burger)
+(function () {
+    function bind() {
+        var burgers = document.querySelectorAll('.mobile-burger');
+        var wrapper = document.querySelector('.mobile-nav__wrapper');
+        if (!wrapper) return;
+        for (var i = 0; i < burgers.length; i++) {
+            burgers[i].addEventListener('click', function (e) {
+                e.preventDefault();
+                wrapper.classList.add('expanded');
+            });
+        }
+    }
+    if (document.readyState !== 'loading') bind();
+    else document.addEventListener('DOMContentLoaded', bind);
 })();
 </script>
 </html>
