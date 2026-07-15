@@ -746,6 +746,7 @@ window.PD_DATA = {
             /* --- A. Hoá chất tổng hợp nano & bán dẫn (card) --- */
             {
                 code: 'A',
+                img: './assets/images/bannerhoachatonghop.png',
                 name: { vi: 'Hoá chất tổng hợp vật liệu nano & bán dẫn', en: 'Chemicals for Nano & Semiconductor Synthesis' },
                 apps: { vi: 'Tổng hợp vật liệu nano, mực in điện tử, pin, cảm biến, R&D', en: 'Nanomaterial synthesis, electronic inks, batteries, sensors, R&D' },
                 layout: 'cards',
@@ -758,13 +759,13 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Graphene oxide (phân tán)', en: 'Graphene oxide dispersion' }, img: './assets/images/prod-g4.jpg', sku: 'DG-CH-GO001', desc: { vi: 'Dung dịch graphene oxide 4 mg/mL trong nước.', en: 'Graphene oxide dispersion 4 mg/mL in water.' },
+                    { name: { vi: 'Graphene oxide (phân tán)', en: 'Graphene oxide dispersion' }, img: './assets/images/grapheneoxide.png', sku: 'DG-CH-GO001', desc: { vi: 'Dung dịch graphene oxide 4 mg/mL trong nước.', en: 'Graphene oxide dispersion 4 mg/mL in water.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'Graphene oxide'}, { k:{vi:'Nồng độ',en:'Concentration'},v:'4 mg/mL'}, { k:{vi:'Quy cách',en:'Packaging'},v:'100 mL'} ] },
-                    { name: { vi: 'Ống nano carbon đa lớp (MWCNT)', en: 'MWCNT' }, img: './assets/images/prod-g4.jpg', sku: 'DG-CH-CNT01', desc: { vi: 'Ống nano carbon đa lớp, >95%.', en: 'Multi-wall carbon nanotubes, >95%.' },
+                    { name: { vi: 'Ống nano carbon đa lớp (MWCNT)', en: 'MWCNT' }, img: './assets/images/ongnanocarbon.png', sku: 'DG-CH-CNT01', desc: { vi: 'Ống nano carbon đa lớp, >95%.', en: 'Multi-wall carbon nanotubes, >95%.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'MWCNT'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'>95%'}, { k:{vi:'Đường kính',en:'Diameter'},v:'10–20 nm'} ] },
-                    { name: { vi: 'Nano vàng 20 nm', en: 'Gold nanoparticles 20 nm' }, img: './assets/images/prod-g4.jpg', sku: 'DG-CH-AUNP20', desc: { vi: 'Keo nano vàng 20 nm trong nước.', en: 'Gold nanoparticle colloid, 20 nm in water.' },
+                    { name: { vi: 'Nano vàng 20 nm', en: 'Gold nanoparticles 20 nm' }, img: './assets/images/nanovang.png', sku: 'DG-CH-AUNP20', desc: { vi: 'Keo nano vàng 20 nm trong nước.', en: 'Gold nanoparticle colloid, 20 nm in water.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Nano vàng',en:'Au nanoparticles'}}, { k:{vi:'Kích thước',en:'Size'},v:'20 nm'}, { k:{vi:'Quy cách',en:'Packaging'},v:'25 mL'} ] },
-                    { name: { vi: 'Bột nano TiO₂', en: 'TiO₂ nanopowder' }, img: './assets/images/prod-g4.jpg', sku: 'DG-CH-TIO2NP', desc: { vi: 'Bột nano TiO₂ anatase 20 nm, 99.9%.', en: 'TiO₂ anatase nanopowder 20 nm, 99.9%.' },
+                    { name: { vi: 'Bột nano TiO₂', en: 'TiO₂ nanopowder' }, img: './assets/images/botnanotio2.png', sku: 'DG-CH-TIO2NP', desc: { vi: 'Bột nano TiO₂ anatase 20 nm, 99.9%.', en: 'TiO₂ anatase nanopowder 20 nm, 99.9%.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'TiO₂ (anatase)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.9%'}, { k:{vi:'Kích thước',en:'Size'},v:'20 nm'} ] }
                 ]
             },
@@ -784,15 +785,15 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Photoresist dương', en: 'Positive photoresist' }, img: './assets/images/prod-g4.jpg', sku: 'DG-FB-PRP01', desc: { vi: 'Photoresist dương cho quang khắc UV.', en: 'Positive-tone photoresist for UV lithography.' },
+                    { name: { vi: 'Photoresist dương', en: 'Positive photoresist' }, img: './assets/images/photorerist.png', sku: 'DG-FB-PRP01', desc: { vi: 'Photoresist dương cho quang khắc UV.', en: 'Positive-tone photoresist for UV lithography.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Photoresist (dương)',en:'Photoresist (positive)'}}, { k:{vi:'Cấp',en:'Grade'},v:{vi:'Bán dẫn',en:'Semiconductor'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'500 mL'} ] },
-                    { name: { vi: 'Developer (TMAH 2.38%)', en: 'Developer (TMAH 2.38%)' }, img: './assets/images/prod-g4.jpg', sku: 'DG-FB-DEV01', desc: { vi: 'Dung dịch hiện hình TMAH 2.38%.', en: 'TMAH 2.38% developer solution.' },
+                    { name: { vi: 'Developer (TMAH 2.38%)', en: 'Developer (TMAH 2.38%)' }, img: './assets/images/developertmah.png', sku: 'DG-FB-DEV01', desc: { vi: 'Dung dịch hiện hình TMAH 2.38%.', en: 'TMAH 2.38% developer solution.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'Developer (TMAH)'}, { k:{vi:'Nồng độ',en:'Concentration'},v:'2.38%'}, { k:{vi:'Cấp',en:'Grade'},v:'EL'} ] },
-                    { name: { vi: 'Etchant oxide đệm (BOE)', en: 'Buffered oxide etch (BOE)' }, img: './assets/images/prod-g4.jpg', sku: 'DG-FB-BOE71', desc: { vi: 'BOE 7:1 ăn mòn SiO₂.', en: 'BOE 7:1 for SiO₂ etching.' },
+                    { name: { vi: 'Etchant oxide đệm (BOE)', en: 'Buffered oxide etch (BOE)' }, img: './assets/images/etchantoxide.png', sku: 'DG-FB-BOE71', desc: { vi: 'BOE 7:1 ăn mòn SiO₂.', en: 'BOE 7:1 for SiO₂ etching.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'BOE 7:1'}, { k:{vi:'Cấp',en:'Grade'},v:{vi:'Bán dẫn',en:'Semiconductor'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'1 L'} ] },
-                    { name: { vi: 'Dung dịch CMP (silica)', en: 'CMP slurry (silica)' }, img: './assets/images/prod-g4.jpg', sku: 'DG-FB-CMP01', desc: { vi: 'Slurry silica cho đánh bóng cơ-hoá (CMP).', en: 'Colloidal silica slurry for CMP.' },
+                    { name: { vi: 'Dung dịch CMP (silica)', en: 'CMP slurry (silica)' }, img: './assets/images/cmp.png', sku: 'DG-FB-CMP01', desc: { vi: 'Slurry silica cho đánh bóng cơ-hoá (CMP).', en: 'Colloidal silica slurry for CMP.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'CMP slurry'}, { k:{vi:'Hạt mài',en:'Abrasive'},v:{vi:'Silica keo',en:'Colloidal silica'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'1 L'} ] },
-                    { name: { vi: 'Acetone (cấp bán dẫn)', en: 'Acetone (semiconductor grade)' }, img: './assets/images/prod-g4.jpg', sku: 'DG-FB-ACE01', desc: { vi: 'Acetone tinh khiết cao cho làm sạch wafer.', en: 'High-purity acetone for wafer cleaning.' },
+                    { name: { vi: 'Acetone (cấp bán dẫn)', en: 'Acetone (semiconductor grade)' }, img: './assets/images/acetone.png', sku: 'DG-FB-ACE01', desc: { vi: 'Acetone tinh khiết cao cho làm sạch wafer.', en: 'High-purity acetone for wafer cleaning.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'Acetone'}, { k:{vi:'Cấp',en:'Grade'},v:{vi:'Bán dẫn (EL)',en:'Semiconductor (EL)'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'1 L'} ] }
                 ]
             }
