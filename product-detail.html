@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){try{var t=localStorage.getItem('digifund-theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>
     <title>Chi Tiết Sản Phẩm - Digifund</title>
     <meta name="description" content="Chi tiết sản phẩm & vật liệu bán dẫn của Digifund: silicon wafer, substrate, bia phún xạ (sputtering target), thiết bị phòng sạch, hoá chất — thông số kỹ thuật đầy đủ, báo giá theo yêu cầu.">
     <meta name="keywords" content="silicon wafer, substrate, wafer bán dẫn, bia phún xạ, sputtering target, SiC wafer, GaAs wafer, thiết bị phòng sạch, hoá chất bán dẫn, Digifund">
@@ -201,7 +202,7 @@
         .pdf-count { font-size: 12.5px; color: #6b7793; margin: 14px 2px 0; }
         [data-theme="dark"] .pdf-bar { background: #161b22; border-color: #21262d; }
         [data-theme="dark"] .pdf-label { color: #9aa6bd; }
-        [data-theme="dark"] .pdf-chip { background: #0d1117; border-color: #30363d; color: #c9d1d9; }
+        [data-theme="dark"] .pdf-chip { background: #0d1117; border-color: #21262d; color: #c9d1d9; }
         [data-theme="dark"] .pdf-count { color: #9aa6bd; }
 
         /* Configurator (bộ chọn cấu hình) */
@@ -309,8 +310,8 @@
 
         /* Dark mode */
         [data-theme="dark"] body { background: #0d1117; color: #c9d1d9; }
-        [data-theme="dark"] .pdp-top { background: #161b22; border-color: #21262d; }
-        [data-theme="dark"] .pdp-back, [data-theme="dark"] .pdp-toggle { background: #161b22; color: #e6edf3; border-color: #30363d; }
+        [data-theme="dark"] .pdp-top { background: #2d3137; border-color: #21262d; }
+        [data-theme="dark"] .pdp-back, [data-theme="dark"] .pdp-toggle { background: #161b22; color: #e6edf3; border-color: #21262d; }
         [data-theme="dark"] .pd-item__name { color: #e6edf3; }
         [data-theme="dark"] .pd-item__head { border-color: #21262d; }
         [data-theme="dark"] .pd-section { background: #161b22; }
@@ -330,11 +331,11 @@
         [data-theme="dark"] .pdm-table td { color: #c9d1d9; border-color: #21262d; }
         [data-theme="dark"] .pdm-desc, [data-theme="dark"] .pdm-meta { color: #9aa6bd; }
         [data-theme="dark"] .pdm-close { background: rgba(255,255,255,0.1); color: #e6edf3; }
-        [data-theme="dark"] .pd-empty-note { background: #161b22; border-color: #30363d; color: #9aa6bd; }
+        [data-theme="dark"] .pd-empty-note { background: #161b22; border-color: #21262d; color: #9aa6bd; }
         [data-theme="dark"] .pd-config { border-color: #21262d; }
         [data-theme="dark"] .cfg-media { background: #161b22; border-color: #21262d; }
         [data-theme="dark"] .cfg-label { color: #9aa6bd; }
-        [data-theme="dark"] .cfg-opt { background: #0d1117; border-color: #30363d; color: #c9d1d9; }
+        [data-theme="dark"] .cfg-opt { background: #0d1117; border-color: #21262d; color: #c9d1d9; }
         [data-theme="dark"] .cfg-result { border-color: #21262d; }
         [data-theme="dark"] .cfg-result__name { color: #e6edf3; }
         [data-theme="dark"] .cfg-result__sku, [data-theme="dark"] .cfg-result__cdesc { color: #9aa6bd; }
@@ -942,7 +943,7 @@
         // Theme
         function applyTheme(t) {
             document.documentElement.setAttribute('data-theme', t);
-            document.getElementById('themeToggle').innerHTML = t === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            document.getElementById('themeToggle').innerHTML = t === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
             localStorage.setItem('digifund-theme', t);
         }
         var theme = localStorage.getItem('digifund-theme') || 'light';
