@@ -48,6 +48,14 @@
 </script>
 </head>
 <body class="blog-page">
+    <!--Start Preloader-->
+    <div id="site-preloader" class="js-preloader" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#ffffff;">
+        <img src="./assets/images/logo-2.png" alt="Digifund" style="width:170px;height:auto;animation:sitePreloaderPulse 1.4s ease-in-out infinite;">
+    </div>
+    <style>@keyframes sitePreloaderPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.94)}}</style>
+    <script>(function(){function hide(){var p=document.getElementById('site-preloader');if(!p)return;p.style.transition='opacity .45s ease';p.style.opacity='0';setTimeout(function(){p.style.display='none';},450);}if(document.readyState==='complete'){setTimeout(hide,300);}else{window.addEventListener('load',function(){setTimeout(hide,300);});}setTimeout(hide,6000);})();</script>
+    <!--End Preloader-->
+
 
 <header class="bl-header">
   <div class="bl-container bl-header__inner">
