@@ -692,6 +692,8 @@
         .main-slider__contact a:hover { background: #2563eb; border-color: #2563eb; transform: translateY(-3px); }
         .main-slider__contact a.main-slider__contact--zalo:hover { background: #0068ff; border-color: #0068ff; }
         .main-slider__contact a.main-slider__contact--linkedin:hover { background: #0a66c2; border-color: #0a66c2; }
+        .video-one__video-link.has-social { display: flex; gap: 30px; justify-content: center; align-items: center; }
+        .video-one__video-icon--linkedin { background-color: #0a66c2; }
         @media (max-width: 767px) { .main-slider__contact { right: 15px; gap: 10px; } .main-slider__contact a { width: 42px; height: 42px; font-size: 15px; } }
 
         /* ===== Product Groups (4 nhóm sản phẩm chính) ===== */
@@ -1692,11 +1694,16 @@
                 <h3 class="section-title__title title-animation" style="perspective: 400px;" data-i18n="h3-contact">Liên Hệ Với Chúng Tôi</h3>
                 </div>
                 <p class="video-one__text">Bạn có câu hỏi về sản phẩm silicon wafer của chúng tôi? <br>Liên hệ đội ngũ của chúng tôi để biết thông số kỹ thuật, báo giá<br>và đặt hàng theo yêu cầu. Chúng tôi phản hồi trong 24 giờ.</p>
-                <div class="video-one__video-link">
+                <div class="video-one__video-link has-social">
                     <a href="https://zalo.me/0979324567" target="_blank" rel="noopener" title="Nhắn tin qua Zalo" aria-label="Nhắn tin qua Zalo">
                         <div class="video-one__video-icon">
                             <img src="./assets/images/zalo.png" alt="Zalo" style="width:42px;height:42px;border-radius:10px;display:block;">
                             <i class="ripple"></i>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/company/digifund.vn" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+                        <div class="video-one__video-icon video-one__video-icon--linkedin">
+                            <i class="fab fa-linkedin-in" style="font-size:42px;"></i>
                         </div>
                     </a>
                 </div>
