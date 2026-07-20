@@ -544,6 +544,11 @@ xs sidebar
   position: relative;
   display: block;
   padding-top: 43px;
+  padding-right: 20px;
+}
+
+.sidebar-contact-info ul li a {
+  word-break: break-word;
 }
 
 .sidebar-contact-info ul {

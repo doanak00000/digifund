@@ -765,6 +765,8 @@ window.PD_DATA = {
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'MWCNT'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'>95%'}, { k:{vi:'Đường kính',en:'Diameter'},v:'10–20 nm'} ] },
                     { name: { vi: 'Nano vàng 20 nm', en: 'Gold nanoparticles 20 nm' }, img: './assets/images/nanovang.png', sku: 'DG-CH-AUNP20', desc: { vi: 'Keo nano vàng 20 nm trong nước.', en: 'Gold nanoparticle colloid, 20 nm in water.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Nano vàng',en:'Au nanoparticles'}}, { k:{vi:'Kích thước',en:'Size'},v:'20 nm'}, { k:{vi:'Quy cách',en:'Packaging'},v:'25 mL'} ] },
+                    { name: { vi: 'Bột nano TiO₂ P25', en: 'TiO₂ P25 nanopowder' }, img: './assets/images/botnanotio2.png', sku: 'DG-CH-TIO2P25', desc: { vi: 'Bột nano TiO₂ P25 (anatase/rutile ~80/20), ~21 nm, ≥99.5%.', en: 'TiO₂ P25 nanopowder (anatase/rutile ~80/20), ~21 nm, ≥99.5%.' },
+                      specs: [ { k:{vi:'Loại',en:'Type'},v:'TiO₂ P25 (anatase/rutile)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'≥99.5%'}, { k:{vi:'Kích thước',en:'Size'},v:'~21 nm'} ] },
                     { name: { vi: 'Bột nano TiO₂', en: 'TiO₂ nanopowder' }, img: './assets/images/botnanotio2.png', sku: 'DG-CH-TIO2NP', desc: { vi: 'Bột nano TiO₂ anatase 20 nm, 99.9%.', en: 'TiO₂ anatase nanopowder 20 nm, 99.9%.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'TiO₂ (anatase)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.9%'}, { k:{vi:'Kích thước',en:'Size'},v:'20 nm'} ] }
                 ]

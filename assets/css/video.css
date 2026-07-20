@@ -326,12 +326,15 @@
     position: relative;
     display: block;
     flex: 1;
+    min-width: 0;
 }
 
 .video-one-contact__info-list li .content p {
     margin-bottom: 0;
     line-height: 30px;
     color: var(--fixpro-white);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .video-one-contact__info-list li .content p a {
