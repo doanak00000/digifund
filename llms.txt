@@ -15,6 +15,12 @@
 - **Đội ngũ / Team:** Quy tụ các chuyên gia bán dẫn từ Việt Nam và Mỹ (semiconductor experts from Vietnam and the United States)
 - **Giờ làm việc / Hours:** T2–T6 08:00–17:00, T7 09:00–13:00
 
+## Ban lãnh đạo & nhà sáng lập (Founders & leadership)
+
+- **Lâm Kim Thao** — CEO & đồng sáng lập (Co-founder)
+- **Lâm Khả Doãn** — Đồng sáng lập (Co-founder), Senior Software Engineer
+- **Trần Mỹ Nghệ** — Chuyên gia Silicon Wafer; Thạc sĩ, chuyên gia wafer tại châu Âu
+
 ## Sản phẩm chính (Main products)
 
 - **Silicon Wafer & Substrate** — Si, SiC, GaAs, Sapphire, SOI: https://digifund.vn/product-detail.html?group=1
