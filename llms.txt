@@ -23,10 +23,10 @@
 
 ## Sản phẩm chính (Main products)
 
-- **Silicon Wafer & Substrate** — Si, SiC, GaAs, Sapphire, SOI: https://digifund.vn/product-detail.html?group=1
-- **Vật liệu & thiết bị năng lượng tái tạo** (renewable energy materials & equipment): https://digifund.vn/product-detail.html?group=2
-- **Thiết bị phòng sạch & phòng thí nghiệm** (cleanroom & lab equipment): https://digifund.vn/product-detail.html?group=3
-- **Hoá chất & vật tư công nghệ cao** (high-tech chemicals & consumables): https://digifund.vn/product-detail.html?group=4
+- **Silicon Wafer & Substrate** — Si, SiC, GaAs, Sapphire, SOI: https://digifund.vn/san-pham-silicon-wafer-substrate.html
+- **Vật liệu & thiết bị năng lượng tái tạo** (renewable energy materials & equipment): https://digifund.vn/san-pham-nang-luong-tai-tao.html
+- **Thiết bị phòng sạch & phòng thí nghiệm** (cleanroom & lab equipment): https://digifund.vn/san-pham-thiet-bi-phong-sach.html
+- **Hoá chất & vật tư công nghệ cao** (high-tech chemicals & consumables): https://digifund.vn/san-pham-hoa-chat-vat-tu.html
 - **Bia phún xạ / Sputtering target**
 
 ## Câu hỏi thường gặp (FAQ)
