@@ -6,8 +6,8 @@
    - variant      : { name, img, desc(=caption), specs(=Technical Properties), sku, link, longDesc }
    Mỗi value có thể là chuỗi (dùng chung) hoặc {vi, en}. */
 
-var WAFER_IMG = './assets/images/siliconwafer.png';
-var SIC_IMG = './assets/images/wafercarbide.png';
+var WAFER_IMG = './assets/images/siliconwafer.jpg';
+var SIC_IMG = './assets/images/wafercarbide.jpg';
 
 window.PD_DATA = {
     '1': {
@@ -570,7 +570,7 @@ window.PD_DATA = {
             /* --- A. Bia phún xạ (cấu hình theo vật liệu/kích thước/độ tinh khiết) --- */
             {
                 code: 'A',
-                img: './assets/images/biaphongxa.png',
+                img: './assets/images/biaphongxa.jpg',
                 name: { vi: 'Bia phún xạ (Sputtering targets)', en: 'Sputtering Targets' },
                 subtitle: { vi: 'Bia PVD cho lắng đọng màng mỏng – kim loại, oxide, hợp kim', en: 'PVD targets for thin-film deposition – metals, oxides, alloys' },
                 apps: { vi: 'Lắng đọng màng mỏng PVD, pin mặt trời, lớp dẫn điện, lớp phủ quang học', en: 'PVD thin-film deposition, solar cells, conductive layers, optical coatings' },
@@ -588,27 +588,27 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: 'Ti target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-TI2099', desc: { vi: 'Bia Titanium (Ti), Ø2", 99.99%, dày 3 mm, dạng tròn', en: 'Titanium (Ti) target, Ø2", 99.99%, 3 mm, round' },
+                    { name: 'Ti target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-TI2099', desc: { vi: 'Bia Titanium (Ti), Ø2", 99.99%, dày 3 mm, dạng tròn', en: 'Titanium (Ti) target, Ø2", 99.99%, 3 mm, round' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Ti (Titanium)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'3 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Ti target Ø3" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-TI3099', desc: { vi: 'Bia Titanium (Ti), Ø3", 99.99%, dày 5 mm', en: 'Titanium (Ti) target, Ø3", 99.99%, 5 mm' },
+                    { name: 'Ti target Ø3" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-TI3099', desc: { vi: 'Bia Titanium (Ti), Ø3", 99.99%, dày 5 mm', en: 'Titanium (Ti) target, Ø3", 99.99%, 5 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Ti (Titanium)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'3"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'5 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Cu target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-CU2099', desc: { vi: 'Bia Đồng (Cu), Ø2", 99.99%, dày 3 mm', en: 'Copper (Cu) target, Ø2", 99.99%, 3 mm' },
+                    { name: 'Cu target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-CU2099', desc: { vi: 'Bia Đồng (Cu), Ø2", 99.99%, dày 3 mm', en: 'Copper (Cu) target, Ø2", 99.99%, 3 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Cu (Copper)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'3 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Cu target Ø3" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-CU3099', desc: { vi: 'Bia Đồng (Cu), Ø3", 99.99%, dày 5 mm', en: 'Copper (Cu) target, Ø3", 99.99%, 5 mm' },
+                    { name: 'Cu target Ø3" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-CU3099', desc: { vi: 'Bia Đồng (Cu), Ø3", 99.99%, dày 5 mm', en: 'Copper (Cu) target, Ø3", 99.99%, 5 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Cu (Copper)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'3"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'5 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Al target Ø2" 99.999%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-AL2059', desc: { vi: 'Bia Nhôm (Al), Ø2", 99.999%, dày 3 mm', en: 'Aluminum (Al) target, Ø2", 99.999%, 3 mm' },
+                    { name: 'Al target Ø2" 99.999%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-AL2059', desc: { vi: 'Bia Nhôm (Al), Ø2", 99.999%, dày 3 mm', en: 'Aluminum (Al) target, Ø2", 99.999%, 3 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Al (Aluminum)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.999%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'3 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Au target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-AU2099', desc: { vi: 'Bia Vàng (Au), Ø2", 99.99%, dày 1 mm', en: 'Gold (Au) target, Ø2", 99.99%, 1 mm' },
+                    { name: 'Au target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-AU2099', desc: { vi: 'Bia Vàng (Au), Ø2", 99.99%, dày 1 mm', en: 'Gold (Au) target, Ø2", 99.99%, 1 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Au (Gold)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'1 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Ag target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-AG2099', desc: { vi: 'Bia Bạc (Ag), Ø2", 99.99%, dày 3 mm', en: 'Silver (Ag) target, Ø2", 99.99%, 3 mm' },
+                    { name: 'Ag target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-AG2099', desc: { vi: 'Bia Bạc (Ag), Ø2", 99.99%, dày 3 mm', en: 'Silver (Ag) target, Ø2", 99.99%, 3 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Ag (Silver)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'3 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Cr target Ø2" 99.95%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-CR2095', desc: { vi: 'Bia Crom (Cr), Ø2", 99.95%, dày 3 mm', en: 'Chromium (Cr) target, Ø2", 99.95%, 3 mm' },
+                    { name: 'Cr target Ø2" 99.95%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-CR2095', desc: { vi: 'Bia Crom (Cr), Ø2", 99.95%, dày 3 mm', en: 'Chromium (Cr) target, Ø2", 99.95%, 3 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Cr (Chromium)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.95%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'3 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'Mo target Ø2" 99.95%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-MO2095', desc: { vi: 'Bia Molypden (Mo), Ø2", 99.95%, dày 3 mm', en: 'Molybdenum (Mo) target, Ø2", 99.95%, 3 mm' },
+                    { name: 'Mo target Ø2" 99.95%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-MO2095', desc: { vi: 'Bia Molypden (Mo), Ø2", 99.95%, dày 3 mm', en: 'Molybdenum (Mo) target, Ø2", 99.95%, 3 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'Mo (Molybdenum)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.95%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'3 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'ITO target Ø3" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-ITO3099', desc: { vi: 'Bia ITO (In₂O₃:SnO₂ 90:10), Ø3", 99.99%, dày 5 mm', en: 'ITO target (In₂O₃:SnO₂ 90:10), Ø3", 99.99%, 5 mm' },
+                    { name: 'ITO target Ø3" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-ITO3099', desc: { vi: 'Bia ITO (In₂O₃:SnO₂ 90:10), Ø3", 99.99%, dày 5 mm', en: 'ITO target (In₂O₃:SnO₂ 90:10), Ø3", 99.99%, 5 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'ITO'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'3"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'5 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] },
-                    { name: 'ZnO target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.png', sku: 'DG-ST-ZNO2099', desc: { vi: 'Bia ZnO, Ø2", 99.99%, dày 3 mm', en: 'ZnO target, Ø2", 99.99%, 3 mm' },
+                    { name: 'ZnO target Ø2" 99.99%', img: './assets/images/biaphongxa_sanpham.jpg', sku: 'DG-ST-ZNO2099', desc: { vi: 'Bia ZnO, Ø2", 99.99%, dày 3 mm', en: 'ZnO target, Ø2", 99.99%, 3 mm' },
                       specs: [ { k:{vi:'Vật liệu',en:'Material'},v:'ZnO'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.99%'}, { k:{vi:'Kích thước',en:'Size'},v:'2"'}, { k:{vi:'Độ dày',en:'Thickness'},v:'3 mm'}, { k:{vi:'Hình dạng',en:'Shape'},v:{vi:'Tròn',en:'Round'}} ] }
                 ]
             },
@@ -616,7 +616,7 @@ window.PD_DATA = {
             /* --- B. Bình phản ứng xúc tác (card) --- */
             {
                 code: 'B',
-                img: './assets/images/anhdaidien_binhphanung.png',
+                img: './assets/images/anhdaidien_binhphanung.jpg',
                 name: { vi: 'Bình phản ứng xúc tác chuyển hóa năng lượng', en: 'Reactors for Catalytic Energy Conversion' },
                 apps: { vi: 'Chuyển hóa năng lượng, xúc tác, CH₄ oxidation, khử CO₂, tách nước', en: 'Energy conversion, catalysis, CH₄ oxidation, CO₂ reduction, water splitting' },
                 layout: 'cards',
@@ -631,11 +631,11 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Bình phản ứng tầng cố định', en: 'Fixed-bed reactor' }, img: './assets/images/binhphanungtangcodinh.png', sku: 'DG-RX-FB100', desc: { vi: 'Bình phản ứng tầng cố định cho xúc tác dị thể.', en: 'Fixed-bed reactor for heterogeneous catalysis.' },
+                    { name: { vi: 'Bình phản ứng tầng cố định', en: 'Fixed-bed reactor' }, img: './assets/images/binhphanungtangcodinh.jpg', sku: 'DG-RX-FB100', desc: { vi: 'Bình phản ứng tầng cố định cho xúc tác dị thể.', en: 'Fixed-bed reactor for heterogeneous catalysis.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Tầng cố định',en:'Fixed-bed'}}, { k:{vi:'Thể tích',en:'Volume'},v:'100 mL'}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'600 °C'}, { k:{vi:'Áp suất',en:'Max pressure'},v:'50 bar'}, { k:{vi:'Vật liệu',en:'Material'},v:'SS316'} ] },
-                    { name: { vi: 'Bình phản ứng quang xúc tác', en: 'Photocatalytic reactor' }, img: './assets/images/binhphanungquangxuctac.png', sku: 'DG-RX-PH250', desc: { vi: 'Bình thạch anh có nguồn UV cho phản ứng quang xúc tác.', en: 'Quartz reactor with UV source for photocatalysis.' },
+                    { name: { vi: 'Bình phản ứng quang xúc tác', en: 'Photocatalytic reactor' }, img: './assets/images/binhphanungquangxuctac.jpg', sku: 'DG-RX-PH250', desc: { vi: 'Bình thạch anh có nguồn UV cho phản ứng quang xúc tác.', en: 'Quartz reactor with UV source for photocatalysis.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Quang xúc tác',en:'Photocatalytic'}}, { k:{vi:'Thể tích',en:'Volume'},v:'250 mL'}, { k:{vi:'Nguồn sáng',en:'Light source'},v:'UV 365 nm'}, { k:{vi:'Vật liệu',en:'Material'},v:{vi:'Thạch anh',en:'Quartz'}} ] },
-                    { name: { vi: 'Tế bào điện hoá khử CO₂', en: 'Electrochemical CO₂ cell' }, img: './assets/images/tebaodienhoakhuco2.png', sku: 'DG-RX-EC050', desc: { vi: 'H-cell 3 điện cực cho khử CO₂ / tách nước.', en: 'Three-electrode H-cell for CO₂ reduction / water splitting.' },
+                    { name: { vi: 'Tế bào điện hoá khử CO₂', en: 'Electrochemical CO₂ cell' }, img: './assets/images/tebaodienhoakhuco2.jpg', sku: 'DG-RX-EC050', desc: { vi: 'H-cell 3 điện cực cho khử CO₂ / tách nước.', en: 'Three-electrode H-cell for CO₂ reduction / water splitting.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Điện hoá (H-cell)',en:'Electrochemical (H-cell)'}}, { k:{vi:'Thể tích',en:'Volume'},v:'50 mL'}, { k:{vi:'Điện cực',en:'Electrodes'},v:'3-electrode'}, { k:{vi:'Vật liệu',en:'Material'},v:{vi:'Thuỷ tinh',en:'Glass'}} ] }
                 ]
             }
@@ -650,7 +650,7 @@ window.PD_DATA = {
             /* --- A. Thiết bị gia nhiệt / tổng hợp nano (card) --- */
             {
                 code: 'A',
-                img: './assets/images/banner_thietbigianhiet.png',
+                img: './assets/images/banner_thietbigianhiet.jpg',
                 name: { vi: 'Thiết bị gia nhiệt & tổng hợp vật liệu nano', en: 'Heating Equipment & Nanomaterial Synthesis' },
                 apps: { vi: 'Nung kết, xử lý nhiệt, tổng hợp graphene/CNT, vật liệu nano, ủ wafer', en: 'Sintering, heat treatment, graphene/CNT growth, nanomaterials, wafer annealing' },
                 layout: 'cards',
@@ -663,13 +663,13 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Máy khuấy từ gia nhiệt', en: 'Magnetic hotplate stirrer' }, img: './assets/images/maykhuaytugianhiet.png', sku: 'DG-HT-MS340', desc: { vi: 'Máy khuấy từ có gia nhiệt cho phòng thí nghiệm.', en: 'Laboratory magnetic hotplate stirrer.' },
+                    { name: { vi: 'Máy khuấy từ gia nhiệt', en: 'Magnetic hotplate stirrer' }, img: './assets/images/maykhuaytugianhiet.jpg', sku: 'DG-HT-MS340', desc: { vi: 'Máy khuấy từ có gia nhiệt cho phòng thí nghiệm.', en: 'Laboratory magnetic hotplate stirrer.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Máy khuấy từ gia nhiệt',en:'Magnetic hotplate stirrer'}}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'340 °C'}, { k:{vi:'Tốc độ khuấy',en:'Stir speed'},v:'100–1500 rpm'}, { k:{vi:'Dung tích',en:'Capacity'},v:'≤ 20 L'} ] },
-                    { name: { vi: 'Lò nung 1400 °C', en: 'Muffle furnace 1400 °C' }, img: './assets/images/lonung1400.png', sku: 'DG-HT-MF1400', desc: { vi: 'Lò nung buồng cho nung kết / xử lý nhiệt.', en: 'Box muffle furnace for sintering / heat treatment.' },
+                    { name: { vi: 'Lò nung 1400 °C', en: 'Muffle furnace 1400 °C' }, img: './assets/images/lonung1400.jpg', sku: 'DG-HT-MF1400', desc: { vi: 'Lò nung buồng cho nung kết / xử lý nhiệt.', en: 'Box muffle furnace for sintering / heat treatment.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Lò nung',en:'Muffle furnace'}}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'1400 °C'}, { k:{vi:'Buồng',en:'Chamber'},v:'7.2 L'} ] },
-                    { name: { vi: 'Hệ thống CVD', en: 'CVD system' }, img: './assets/images/hethongCVD.png', sku: 'DG-HT-CVD01', desc: { vi: 'Hệ CVD tổng hợp graphene / CNT.', en: 'CVD system for graphene / CNT synthesis.' },
+                    { name: { vi: 'Hệ thống CVD', en: 'CVD system' }, img: './assets/images/hethongCVD.jpg', sku: 'DG-HT-CVD01', desc: { vi: 'Hệ CVD tổng hợp graphene / CNT.', en: 'CVD system for graphene / CNT synthesis.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'CVD'}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'1100 °C'}, { k:{vi:'Khí',en:'Gas lines'},v:'CH₄ / H₂ / Ar'} ] },
-                    { name: { vi: 'Autoclave thuỷ nhiệt 100 mL', en: 'Hydrothermal autoclave 100 mL' }, img: './assets/images/autoclave.png', sku: 'DG-HT-AC100', desc: { vi: 'Bình thuỷ nhiệt lót PTFE cho tổng hợp nano.', en: 'PTFE-lined hydrothermal autoclave for nano synthesis.' },
+                    { name: { vi: 'Autoclave thuỷ nhiệt 100 mL', en: 'Hydrothermal autoclave 100 mL' }, img: './assets/images/autoclave.jpg', sku: 'DG-HT-AC100', desc: { vi: 'Bình thuỷ nhiệt lót PTFE cho tổng hợp nano.', en: 'PTFE-lined hydrothermal autoclave for nano synthesis.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Autoclave thuỷ nhiệt',en:'Hydrothermal autoclave'}}, { k:{vi:'Thể tích',en:'Volume'},v:'100 mL'}, { k:{vi:'Nhiệt độ',en:'Max temp'},v:'200 °C'}, { k:{vi:'Lót',en:'Lining'},v:'PTFE'} ] }
                 ]
             },
@@ -677,7 +677,7 @@ window.PD_DATA = {
             /* --- B. Dụng cụ thuỷ tinh (cấu hình theo loại/thể tích) --- */
             {
                 code: 'B',
-                img: './assets/images/banner_dungcuthuytinhphongthinghiem.png',
+                img: './assets/images/banner_dungcuthuytinhphongthinghiem.jpg',
                 name: { vi: 'Dụng cụ thuỷ tinh phòng thí nghiệm', en: 'Laboratory Glassware' },
                 subtitle: { vi: 'Borosilicate 3.3 – chịu nhiệt, kháng hoá chất', en: 'Borosilicate 3.3 – heat & chemical resistant' },
                 apps: { vi: 'Thí nghiệm hoá học, pha chế, đo lường, tổng hợp vật liệu', en: 'Chemistry experiments, preparation, measurement, material synthesis' },
@@ -692,21 +692,21 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Cốc 250 mL', en: 'Beaker 250 mL' }, img: './assets/images/coc250ml.png', sku: 'DG-GL-BK250', desc: { vi: 'Cốc thuỷ tinh borosilicate có mỏ, 250 mL', en: 'Borosilicate beaker, 250 mL' },
+                    { name: { vi: 'Cốc 250 mL', en: 'Beaker 250 mL' }, img: './assets/images/coc250ml.jpg', sku: 'DG-GL-BK250', desc: { vi: 'Cốc thuỷ tinh borosilicate có mỏ, 250 mL', en: 'Borosilicate beaker, 250 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Cốc',en:'Beaker'}}, { k:{vi:'Thể tích',en:'Volume'},v:'250 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
-                    { name: { vi: 'Cốc 500 mL', en: 'Beaker 500 mL' }, img: './assets/images/coc500ml.png', sku: 'DG-GL-BK500', desc: { vi: 'Cốc thuỷ tinh borosilicate có mỏ, 500 mL', en: 'Borosilicate beaker, 500 mL' },
+                    { name: { vi: 'Cốc 500 mL', en: 'Beaker 500 mL' }, img: './assets/images/coc500ml.jpg', sku: 'DG-GL-BK500', desc: { vi: 'Cốc thuỷ tinh borosilicate có mỏ, 500 mL', en: 'Borosilicate beaker, 500 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Cốc',en:'Beaker'}}, { k:{vi:'Thể tích',en:'Volume'},v:'500 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
-                    { name: { vi: 'Cốc 1000 mL', en: 'Beaker 1000 mL' }, img: './assets/images/coc1000ml.png', sku: 'DG-GL-BK1000', desc: { vi: 'Cốc thuỷ tinh borosilicate có mỏ, 1000 mL', en: 'Borosilicate beaker, 1000 mL' },
+                    { name: { vi: 'Cốc 1000 mL', en: 'Beaker 1000 mL' }, img: './assets/images/coc1000ml.jpg', sku: 'DG-GL-BK1000', desc: { vi: 'Cốc thuỷ tinh borosilicate có mỏ, 1000 mL', en: 'Borosilicate beaker, 1000 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Cốc',en:'Beaker'}}, { k:{vi:'Thể tích',en:'Volume'},v:'1000 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
-                    { name: { vi: 'Bình tam giác 250 mL', en: 'Erlenmeyer 250 mL' }, img: './assets/images/binhtamgiac250ml.png', sku: 'DG-GL-EF250', desc: { vi: 'Bình tam giác (Erlenmeyer) 250 mL', en: 'Erlenmeyer flask 250 mL' },
+                    { name: { vi: 'Bình tam giác 250 mL', en: 'Erlenmeyer 250 mL' }, img: './assets/images/binhtamgiac250ml.jpg', sku: 'DG-GL-EF250', desc: { vi: 'Bình tam giác (Erlenmeyer) 250 mL', en: 'Erlenmeyer flask 250 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình tam giác',en:'Erlenmeyer'}}, { k:{vi:'Thể tích',en:'Volume'},v:'250 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
-                    { name: { vi: 'Bình tam giác 500 mL', en: 'Erlenmeyer 500 mL' }, img: './assets/images/binhtamgiac500ml.png', sku: 'DG-GL-EF500', desc: { vi: 'Bình tam giác (Erlenmeyer) 500 mL', en: 'Erlenmeyer flask 500 mL' },
+                    { name: { vi: 'Bình tam giác 500 mL', en: 'Erlenmeyer 500 mL' }, img: './assets/images/binhtamgiac500ml.jpg', sku: 'DG-GL-EF500', desc: { vi: 'Bình tam giác (Erlenmeyer) 500 mL', en: 'Erlenmeyer flask 500 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình tam giác',en:'Erlenmeyer'}}, { k:{vi:'Thể tích',en:'Volume'},v:'500 mL'}, { k:{vi:'Vật liệu',en:'Material'},v:'Borosilicate 3.3'} ] },
-                    { name: { vi: 'Bình định mức 100 mL', en: 'Volumetric flask 100 mL' }, img: './assets/images/binhdinhmuc100ml.png', sku: 'DG-GL-VF100', desc: { vi: 'Bình định mức class A, 100 mL', en: 'Class A volumetric flask, 100 mL' },
+                    { name: { vi: 'Bình định mức 100 mL', en: 'Volumetric flask 100 mL' }, img: './assets/images/binhdinhmuc100ml.jpg', sku: 'DG-GL-VF100', desc: { vi: 'Bình định mức class A, 100 mL', en: 'Class A volumetric flask, 100 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình định mức',en:'Volumetric'}}, { k:{vi:'Thể tích',en:'Volume'},v:'100 mL'}, { k:{vi:'Cấp',en:'Class'},v:'A'} ] },
-                    { name: { vi: 'Bình cầu đáy tròn 250 mL', en: 'Round-bottom flask 250 mL' }, img: './assets/images/binhcaudaytron250ml.png', sku: 'DG-GL-RB250', desc: { vi: 'Bình cầu đáy tròn cổ nhám 24/29, 250 mL', en: 'Round-bottom flask 24/29 joint, 250 mL' },
+                    { name: { vi: 'Bình cầu đáy tròn 250 mL', en: 'Round-bottom flask 250 mL' }, img: './assets/images/binhcaudaytron250ml.jpg', sku: 'DG-GL-RB250', desc: { vi: 'Bình cầu đáy tròn cổ nhám 24/29, 250 mL', en: 'Round-bottom flask 24/29 joint, 250 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Bình cầu',en:'Round-bottom'}}, { k:{vi:'Thể tích',en:'Volume'},v:'250 mL'}, { k:{vi:'Cổ nhám',en:'Joint'},v:'24/29'} ] },
-                    { name: { vi: 'Ống đong 100 mL', en: 'Graduated cylinder 100 mL' }, img: './assets/images/ongdong100ml.png', sku: 'DG-GL-CY100', desc: { vi: 'Ống đong chia vạch, 100 mL', en: 'Graduated cylinder, 100 mL' },
+                    { name: { vi: 'Ống đong 100 mL', en: 'Graduated cylinder 100 mL' }, img: './assets/images/ongdong100ml.jpg', sku: 'DG-GL-CY100', desc: { vi: 'Ống đong chia vạch, 100 mL', en: 'Graduated cylinder, 100 mL' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Ống đong',en:'Cylinder'}}, { k:{vi:'Thể tích',en:'Volume'},v:'100 mL'}, { k:{vi:'Cấp',en:'Class'},v:'B'} ] }
                 ]
             },
@@ -725,13 +725,13 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Găng tay nitrile phòng sạch', en: 'Cleanroom nitrile gloves' }, img: './assets/images/gangtaynitrile.png', sku: 'DG-CR-GL100', desc: { vi: 'Găng tay nitrile không bột, Class 100.', en: 'Powder-free nitrile gloves, Class 100.' },
+                    { name: { vi: 'Găng tay nitrile phòng sạch', en: 'Cleanroom nitrile gloves' }, img: './assets/images/gangtaynitrile.jpg', sku: 'DG-CR-GL100', desc: { vi: 'Găng tay nitrile không bột, Class 100.', en: 'Powder-free nitrile gloves, Class 100.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Găng tay nitrile',en:'Nitrile gloves'}}, { k:{vi:'Cấp',en:'Class'},v:'ISO 5 (Class 100)'}, { k:{vi:'Cỡ',en:'Size'},v:'S / M / L'} ] },
-                    { name: { vi: 'Bộ áo liền thân (bunny suit)', en: 'Bunny suit (coverall)' }, img: './assets/images/bunnysuit.png', sku: 'DG-CR-BS001', desc: { vi: 'Bộ áo liền thân chống tĩnh điện cho phòng sạch.', en: 'Anti-static cleanroom coverall.' },
+                    { name: { vi: 'Bộ áo liền thân (bunny suit)', en: 'Bunny suit (coverall)' }, img: './assets/images/bunnysuit.jpg', sku: 'DG-CR-BS001', desc: { vi: 'Bộ áo liền thân chống tĩnh điện cho phòng sạch.', en: 'Anti-static cleanroom coverall.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Áo liền thân',en:'Coverall'}}, { k:{vi:'Cấp',en:'Class'},v:'ISO 4'}, { k:{vi:'Cỡ',en:'Size'},v:'M / L / XL'} ] },
-                    { name: { vi: 'Khẩu trang phòng sạch', en: 'Cleanroom face mask' }, img: './assets/images/khautrangphongsach.png', sku: 'DG-CR-FM001', desc: { vi: 'Khẩu trang ít xơ sợi cho phòng sạch.', en: 'Low-lint cleanroom face mask.' },
+                    { name: { vi: 'Khẩu trang phòng sạch', en: 'Cleanroom face mask' }, img: './assets/images/khautrangphongsach.jpg', sku: 'DG-CR-FM001', desc: { vi: 'Khẩu trang ít xơ sợi cho phòng sạch.', en: 'Low-lint cleanroom face mask.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Khẩu trang',en:'Face mask'}}, { k:{vi:'Cấp',en:'Class'},v:'ISO 6'} ] },
-                    { name: { vi: 'Khăn lau phòng sạch', en: 'Cleanroom wipes' }, img: './assets/images/khanlauphongsach.png', sku: 'DG-CR-WP009', desc: { vi: 'Khăn lau polyester 9"×9" ít xơ sợi.', en: 'Low-lint polyester wipes 9"×9".' },
+                    { name: { vi: 'Khăn lau phòng sạch', en: 'Cleanroom wipes' }, img: './assets/images/khanlauphongsach.jpg', sku: 'DG-CR-WP009', desc: { vi: 'Khăn lau polyester 9"×9" ít xơ sợi.', en: 'Low-lint polyester wipes 9"×9".' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Khăn lau',en:'Wipes'}}, { k:{vi:'Kích thước',en:'Size'},v:'9"×9"'}, { k:{vi:'Vật liệu',en:'Material'},v:'Polyester'} ] }
                 ]
             }
@@ -746,7 +746,7 @@ window.PD_DATA = {
             /* --- A. Hoá chất tổng hợp nano & bán dẫn (card) --- */
             {
                 code: 'A',
-                img: './assets/images/bannerhoachatonghop.png',
+                img: './assets/images/bannerhoachatonghop.jpg',
                 name: { vi: 'Hoá chất tổng hợp vật liệu nano & bán dẫn', en: 'Chemicals for Nano & Semiconductor Synthesis' },
                 apps: { vi: 'Tổng hợp vật liệu nano, mực in điện tử, pin, cảm biến, R&D', en: 'Nanomaterial synthesis, electronic inks, batteries, sensors, R&D' },
                 layout: 'cards',
@@ -759,15 +759,15 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Graphene oxide (phân tán)', en: 'Graphene oxide dispersion' }, img: './assets/images/grapheneoxide.png', sku: 'DG-CH-GO001', desc: { vi: 'Dung dịch graphene oxide 4 mg/mL trong nước.', en: 'Graphene oxide dispersion 4 mg/mL in water.' },
+                    { name: { vi: 'Graphene oxide (phân tán)', en: 'Graphene oxide dispersion' }, img: './assets/images/grapheneoxide.jpg', sku: 'DG-CH-GO001', desc: { vi: 'Dung dịch graphene oxide 4 mg/mL trong nước.', en: 'Graphene oxide dispersion 4 mg/mL in water.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'Graphene oxide'}, { k:{vi:'Nồng độ',en:'Concentration'},v:'4 mg/mL'}, { k:{vi:'Quy cách',en:'Packaging'},v:'100 mL'} ] },
-                    { name: { vi: 'Ống nano carbon đa lớp (MWCNT)', en: 'MWCNT' }, img: './assets/images/ongnanocarbon.png', sku: 'DG-CH-CNT01', desc: { vi: 'Ống nano carbon đa lớp, >95%.', en: 'Multi-wall carbon nanotubes, >95%.' },
+                    { name: { vi: 'Ống nano carbon đa lớp (MWCNT)', en: 'MWCNT' }, img: './assets/images/ongnanocarbon.jpg', sku: 'DG-CH-CNT01', desc: { vi: 'Ống nano carbon đa lớp, >95%.', en: 'Multi-wall carbon nanotubes, >95%.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'MWCNT'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'>95%'}, { k:{vi:'Đường kính',en:'Diameter'},v:'10–20 nm'} ] },
-                    { name: { vi: 'Nano vàng 20 nm', en: 'Gold nanoparticles 20 nm' }, img: './assets/images/nanovang.png', sku: 'DG-CH-AUNP20', desc: { vi: 'Keo nano vàng 20 nm trong nước.', en: 'Gold nanoparticle colloid, 20 nm in water.' },
+                    { name: { vi: 'Nano vàng 20 nm', en: 'Gold nanoparticles 20 nm' }, img: './assets/images/nanovang.jpg', sku: 'DG-CH-AUNP20', desc: { vi: 'Keo nano vàng 20 nm trong nước.', en: 'Gold nanoparticle colloid, 20 nm in water.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Nano vàng',en:'Au nanoparticles'}}, { k:{vi:'Kích thước',en:'Size'},v:'20 nm'}, { k:{vi:'Quy cách',en:'Packaging'},v:'25 mL'} ] },
-                    { name: { vi: 'Bột nano TiO₂ P25', en: 'TiO₂ P25 nanopowder' }, img: './assets/images/TIO2P25.png', sku: 'DG-CH-TIO2P25', desc: { vi: 'Bột nano TiO₂ P25 (anatase/rutile ~80/20), ~21 nm, ≥99.5%.', en: 'TiO₂ P25 nanopowder (anatase/rutile ~80/20), ~21 nm, ≥99.5%.' },
+                    { name: { vi: 'Bột nano TiO₂ P25', en: 'TiO₂ P25 nanopowder' }, img: './assets/images/TIO2P25.jpg', sku: 'DG-CH-TIO2P25', desc: { vi: 'Bột nano TiO₂ P25 (anatase/rutile ~80/20), ~21 nm, ≥99.5%.', en: 'TiO₂ P25 nanopowder (anatase/rutile ~80/20), ~21 nm, ≥99.5%.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'TiO₂ P25 (anatase/rutile)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'≥99.5%'}, { k:{vi:'Kích thước',en:'Size'},v:'~21 nm'} ] },
-                    { name: { vi: 'Bột nano TiO₂', en: 'TiO₂ nanopowder' }, img: './assets/images/botnanotio2.png', sku: 'DG-CH-TIO2NP', desc: { vi: 'Bột nano TiO₂ anatase 20 nm, 99.9%.', en: 'TiO₂ anatase nanopowder 20 nm, 99.9%.' },
+                    { name: { vi: 'Bột nano TiO₂', en: 'TiO₂ nanopowder' }, img: './assets/images/botnanotio2.jpg', sku: 'DG-CH-TIO2NP', desc: { vi: 'Bột nano TiO₂ anatase 20 nm, 99.9%.', en: 'TiO₂ anatase nanopowder 20 nm, 99.9%.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'TiO₂ (anatase)'}, { k:{vi:'Độ tinh khiết',en:'Purity'},v:'99.9%'}, { k:{vi:'Kích thước',en:'Size'},v:'20 nm'} ] }
                 ]
             },
@@ -787,15 +787,15 @@ window.PD_DATA = {
                     ]
                 },
                 variants: [
-                    { name: { vi: 'Photoresist dương', en: 'Positive photoresist' }, img: './assets/images/photorerist.png', sku: 'DG-FB-PRP01', desc: { vi: 'Photoresist dương cho quang khắc UV.', en: 'Positive-tone photoresist for UV lithography.' },
+                    { name: { vi: 'Photoresist dương', en: 'Positive photoresist' }, img: './assets/images/photorerist.jpg', sku: 'DG-FB-PRP01', desc: { vi: 'Photoresist dương cho quang khắc UV.', en: 'Positive-tone photoresist for UV lithography.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:{vi:'Photoresist (dương)',en:'Photoresist (positive)'}}, { k:{vi:'Cấp',en:'Grade'},v:{vi:'Bán dẫn',en:'Semiconductor'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'500 mL'} ] },
-                    { name: { vi: 'Developer (TMAH 2.38%)', en: 'Developer (TMAH 2.38%)' }, img: './assets/images/developertmah.png', sku: 'DG-FB-DEV01', desc: { vi: 'Dung dịch hiện hình TMAH 2.38%.', en: 'TMAH 2.38% developer solution.' },
+                    { name: { vi: 'Developer (TMAH 2.38%)', en: 'Developer (TMAH 2.38%)' }, img: './assets/images/developertmah.jpg', sku: 'DG-FB-DEV01', desc: { vi: 'Dung dịch hiện hình TMAH 2.38%.', en: 'TMAH 2.38% developer solution.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'Developer (TMAH)'}, { k:{vi:'Nồng độ',en:'Concentration'},v:'2.38%'}, { k:{vi:'Cấp',en:'Grade'},v:'EL'} ] },
-                    { name: { vi: 'Etchant oxide đệm (BOE)', en: 'Buffered oxide etch (BOE)' }, img: './assets/images/etchantoxide.png', sku: 'DG-FB-BOE71', desc: { vi: 'BOE 7:1 ăn mòn SiO₂.', en: 'BOE 7:1 for SiO₂ etching.' },
+                    { name: { vi: 'Etchant oxide đệm (BOE)', en: 'Buffered oxide etch (BOE)' }, img: './assets/images/etchantoxide.jpg', sku: 'DG-FB-BOE71', desc: { vi: 'BOE 7:1 ăn mòn SiO₂.', en: 'BOE 7:1 for SiO₂ etching.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'BOE 7:1'}, { k:{vi:'Cấp',en:'Grade'},v:{vi:'Bán dẫn',en:'Semiconductor'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'1 L'} ] },
-                    { name: { vi: 'Dung dịch CMP (silica)', en: 'CMP slurry (silica)' }, img: './assets/images/cmp.png', sku: 'DG-FB-CMP01', desc: { vi: 'Slurry silica cho đánh bóng cơ-hoá (CMP).', en: 'Colloidal silica slurry for CMP.' },
+                    { name: { vi: 'Dung dịch CMP (silica)', en: 'CMP slurry (silica)' }, img: './assets/images/cmp.jpg', sku: 'DG-FB-CMP01', desc: { vi: 'Slurry silica cho đánh bóng cơ-hoá (CMP).', en: 'Colloidal silica slurry for CMP.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'CMP slurry'}, { k:{vi:'Hạt mài',en:'Abrasive'},v:{vi:'Silica keo',en:'Colloidal silica'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'1 L'} ] },
-                    { name: { vi: 'Acetone (cấp bán dẫn)', en: 'Acetone (semiconductor grade)' }, img: './assets/images/acetone.png', sku: 'DG-FB-ACE01', desc: { vi: 'Acetone tinh khiết cao cho làm sạch wafer.', en: 'High-purity acetone for wafer cleaning.' },
+                    { name: { vi: 'Acetone (cấp bán dẫn)', en: 'Acetone (semiconductor grade)' }, img: './assets/images/acetone.jpg', sku: 'DG-FB-ACE01', desc: { vi: 'Acetone tinh khiết cao cho làm sạch wafer.', en: 'High-purity acetone for wafer cleaning.' },
                       specs: [ { k:{vi:'Loại',en:'Type'},v:'Acetone'}, { k:{vi:'Cấp',en:'Grade'},v:{vi:'Bán dẫn (EL)',en:'Semiconductor (EL)'}}, { k:{vi:'Quy cách',en:'Packaging'},v:'1 L'} ] }
                 ]
             }
@@ -835,10 +835,10 @@ window.PD_STR = {
 };
 
 // Gán ảnh theo từng mục Nhóm 1:
-//  - Sapphire: dùng sapphire.png (cả card lẫn popup)
-//  - Wafer Si khác: card = siliconwafer.png, popup = digifundwaferdetail.png
-var WAFER_DETAIL_IMG = './assets/images/digifundwaferdetail.png';
-var SAPPHIRE_IMG = './assets/images/sapphire.png';
+//  - Sapphire: dùng sapphire.jpg (cả card lẫn popup)
+//  - Wafer Si khác: card = siliconwafer.jpg, popup = digifundwaferdetail.jpg
+var WAFER_DETAIL_IMG = './assets/images/digifundwaferdetail.jpg';
+var SAPPHIRE_IMG = './assets/images/sapphire.jpg';
 (window.PD_DATA['1'].items || []).forEach(function (it) {
     var isSapphire = it.name && it.name.en && it.name.en.indexOf('Sapphire') === 0;
     (it.variants || []).forEach(function (v) {

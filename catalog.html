@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<!--
+  DIGIFUND - Catalog in ấn (A4, 5 trang)
+  ==================================================================
+  CÁCH XUẤT PDF
+    1. Mở file này bằng Chrome (hoặc Edge)  ->  Cmd+P / Ctrl+P
+    2. Destination: "Save as PDF"
+    3. Paper size: A4  |  Margins: None  |  Scale: 100 (Default)
+    4. TÍCH "Background graphics"  <- bắt buộc, nếu không sẽ mất màu nền
+    5. Save
+
+  ------------------------------------------------------------------
+  DESIGN NOTES (theo skill .agents/skills/design-taste-frontend)
+
+  Design read : catalog in ấn (editorial kỹ thuật B2B) cho bộ phận mua
+                hàng nhà máy bán dẫn và phòng lab Việt Nam. Ngôn ngữ
+                "precision instrument". Native print CSS + Archivo +
+                brand token Digifund.
+  Dials       : DESIGN_VARIANCE 7 / MOTION_INTENSITY 1 / VISUAL_DENSITY 6
+                MOTION 1 là có chủ ý: đây là bản in, PDF không có motion.
+                Khai báo 1 thay vì claim motion không ship được (Section 5).
+  Mode        : Redesign - Overhaul visual, giữ content + brand token (11.C).
+  Theme lock  : light only. Section 8 cho phép light-only khi brief là
+                print-emulating editorial.
+  Color lock  : MỘT accent duy nhất #0052CC (brand base) + navy #0a1a3c
+                + một họ neutral lạnh. Bỏ hẳn 4 màu nhóm của website
+                (products-data.js accent) vì vi phạm 4.2 Color Consistency
+                Lock. Nhận diện nhóm chuyển sang số thứ tự lớn.
+  Shape lock  : radius 0 toàn bộ (all-sharp).
+  Font        : Archivo. Titillium Web bị loại vì KHÔNG có vietnamese
+                unicode-range, tiêu đề có dấu sẽ fallback font khi in.
+  Spec layout : KHÔNG dùng bảng có hairline mọi dòng (4.9 + 9.F). Mỗi nhóm
+                dùng bento 4 cell: 1 feature (spec dạng label/value trên
+                khối wash, không kẻ dòng) + 3 sản phẩm với spec inline.
+                Bento đảo chiều giữa các nhóm để có rhythm (4.7).
+  Em-dash     : ZERO ký tự "—" và "–" trong nội dung hiển thị (9.G).
+  Middle-dot  : tối đa 1 dấu "·" mỗi dòng metadata (9.F).
+
+  ------------------------------------------------------------------
+  NGUỒN DỮ LIỆU: thông số 16 SKU highlight được trích từ
+  ./assets/js/products-data.js (window.PD_DATA). Sửa thông số ở đó thì
+  phải sửa lại tương ứng trong file này. SKU đã dùng:
+    Nhóm 1: DG-SW-040001*, DG-SW-080001, DG-SiC-060001, DG-SAP-040001
+    Nhóm 2: DG-ST-TI3099*, DG-ST-ITO3099, DG-RX-PH250, DG-RX-EC050
+    Nhóm 3: DG-HT-CVD01*, DG-HT-MF1400, DG-CR-BS001, DG-GL-EF500
+    Nhóm 4: DG-FB-PRP01*, DG-CH-GO001, DG-CH-CNT01, DG-CH-TIO2P25
+  (* = feature product của nhóm)
+
+  Ảnh dùng đường dẫn tương đối ./assets/images/catalog/ nên phải giữ
+  file này trong thư mục digifund/.
+-->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>DIGIFUND - Catalog sản phẩm</title>
+<link rel="stylesheet" href="./assets/fonts/google-archivo.css">
+<style>
+/* ══════════════ TRANG IN ══════════════ */
+@page { size: A4 portrait; margin: 0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+:root {
+  /* Color lock: navy + MỘT accent + một họ neutral lạnh */
+  --navy:   #0a1a3c;
+  --accent: #0052CC;
+  --ink:    #16203a;
+  --muted:  #5c6880;
+  --faint:  #8d97ab;
+  --hair:   #dfe4ec;
+  --wash:   #f2f5fa;
+}
+
+body {
+  font-family: "Archivo", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  font-size: 9.3pt;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: 210mm; height: 297mm;
+  position: relative; overflow: hidden;
+  background: #fff;
+  padding: 17mm 17mm 14mm;
+  page-break-after: always; break-after: page;
+}
+.page:last-of-type { page-break-after: auto; break-after: auto; }
+
+/* Xem trước trên màn hình, không ảnh hưởng bản in */
+@media screen {
+  body { background: #e4e8ef; padding: 20px 0; }
+  .page { margin: 0 auto 20px; box-shadow: 0 3px 24px rgba(10,26,60,.20); }
+  .hint {
+    max-width: 210mm; margin: 0 auto 20px; padding: 13px 17px;
+    background: var(--navy); color: #b9cdf0; font-size: 12px; line-height: 1.65;
+  }
+  .hint b { color: #fff; }
+}
+@media print { .hint { display: none; } }
+
+/* ══════════════ TYPE SCALE ══════════════ */
+.dsp {
+  font-size: 21pt; font-weight: 800; line-height: 1.14;
+  letter-spacing: -.022em; color: var(--navy); margin: 0;
+}
+.lead {
+  font-size: 9.8pt; line-height: 1.62; color: #3c485f;
+  margin: 5mm 0 0; max-width: 152mm;
+}
+.wordmark { font-size: 14pt; font-weight: 800; letter-spacing: -.03em; color: var(--navy); }
+.wordmark i { font-style: normal; color: var(--accent); }
+
+/* Chân trang. Không có version stamp, không có locale strip (9.F). */
+.foot {
+  position: absolute; left: 17mm; right: 17mm; bottom: 9mm;
+  display: flex; justify-content: space-between;
+  font-size: 6.9pt; color: var(--faint);
+  border-top: .6pt solid var(--hair); padding-top: 2.6mm;
+}
+.foot b { color: var(--navy); font-weight: 700; letter-spacing: .07em; }
+
+/* ══════════════ TRANG 1 · BÌA ══════════════
+   Asymmetric split. Ảnh hero bleed hết chiều ngang trang, crop bỏ phần
+   wordmark in sẵn trong ảnh để không lặp logo hai lần. */
+.cover { padding: 0; display: flex; flex-direction: column; }
+.cover__nav {
+  padding: 15mm 17mm 0;
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.cover__nav .site { font-size: 8.4pt; font-weight: 700; color: var(--accent); letter-spacing: .01em; }
+
+.cover__type { padding: 16mm 17mm 0; }
+.cover__type h1 {
+  margin: 0; font-size: 44pt; font-weight: 800;
+  line-height: .97; letter-spacing: -.035em; color: var(--navy);
+}
+.cover__type h1 b { display: block; font-weight: 800; color: var(--accent); }
+.cover__type p {
+  margin: 7mm 0 0; font-size: 10.4pt; line-height: 1.55;
+  color: #3c485f; max-width: 118mm;
+}
+
+.cover__hero { flex: 1; position: relative; overflow: hidden; margin-top: 8mm; }
+.cover__hero img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 76%;
+}
+
+.cover__facts {
+  /* reset margin mặc định của <dl>, nếu không sẽ có khe trắng 3.3mm
+     giữa dải navy và cạnh dưới trang khi in */
+  margin: 0;
+  background: var(--navy); color: #b9cdf0;
+  padding: 8mm 17mm; display: grid;
+  grid-template-columns: 1.05fr 1.45fr 1fr;
+  gap: 9mm; align-items: start;
+}
+.cover__facts dt {
+  font-size: 6.7pt; font-weight: 700; letter-spacing: .15em;
+  text-transform: uppercase; color: #6b8fd0;
+}
+.cover__facts dd { margin: 1.6mm 0 0; font-size: 8.6pt; color: #fff; line-height: 1.45; }
+
+/* ══════════════ TRANG 2 · GIỚI THIỆU ══════════════ */
+/* Dải số liệu: không dùng box, chỉ hairline trên, cột rộng không đều (VARIANCE 7) */
+.facts {
+  display: grid; grid-template-columns: 1fr 1fr 1.15fr 1.3fr;
+  gap: 7mm; margin: 7mm 0 0;
+  border-top: 2.2pt solid var(--navy); padding-top: 4mm;
+}
+.facts__n {
+  font-size: 25pt; font-weight: 800; line-height: 1;
+  letter-spacing: -.035em; color: var(--navy);
+}
+.facts__l { font-size: 7.2pt; color: var(--muted); margin-top: 2.2mm; line-height: 1.4; }
+
+/* Hai cột lệch 7/5 */
+.split { display: grid; grid-template-columns: 1.32fr 1fr; gap: 12mm; margin-top: 8mm; }
+.hd {
+  font-size: 10.6pt; font-weight: 800; color: var(--navy); margin: 0 0 4mm;
+  padding-bottom: 2.2mm; border-bottom: 1.3pt solid var(--navy);
+}
+.hd + .hd, .stack + .hd { margin-top: 8mm; }
+
+/* Danh sách chia bằng hairline, KHÔNG dùng dot trang trí (9.F) */
+.stack { margin: 0; padding: 0; list-style: none; }
+.stack li { padding: 2.7mm 0; border-bottom: .6pt solid var(--hair); }
+.stack li:last-child { border-bottom: 0; padding-bottom: 0; }
+.stack .t { font-size: 8.8pt; font-weight: 800; color: var(--navy); }
+.stack .d { font-size: 8.3pt; color: var(--muted); line-height: 1.5; margin-top: .8mm; }
+
+/* 4 nhóm sản phẩm: hàng ngang, số thứ tự lớn thay cho eyebrow nhỏ */
+.groups { margin-top: 6mm; border-top: 2.2pt solid var(--navy); }
+.grow {
+  display: grid; grid-template-columns: 15mm 71mm 1fr;
+  gap: 6mm; align-items: baseline;
+  padding: 3.4mm 0; border-bottom: .6pt solid var(--hair);
+}
+.grow:last-child { border-bottom: 0; }
+.grow__n {
+  font-size: 17pt; font-weight: 800; line-height: 1;
+  letter-spacing: -.04em; color: var(--accent);
+}
+.grow__t { font-size: 9.2pt; font-weight: 800; color: var(--navy); line-height: 1.3; }
+.grow__d { font-size: 7.9pt; color: var(--muted); line-height: 1.48; }
+
+/* ══════════════ TRANG 3-4 · SẢN PHẨM ══════════════
+   Bento 4 cell mỗi nhóm: 1 feature + 3 sản phẩm.
+   Đảo chiều feature giữa các nhóm để có rhythm (4.7). */
+.gsec { margin-bottom: 7mm; }
+.gsec:last-of-type { margin-bottom: 0; }
+
+.gsec__head {
+  display: grid; grid-template-columns: 15mm 1fr 60mm;
+  gap: 6mm; align-items: baseline;
+  border-bottom: 2.2pt solid var(--navy); padding-bottom: 3mm; margin-bottom: 5mm;
+}
+.gsec__n {
+  font-size: 19pt; font-weight: 800; line-height: 1;
+  letter-spacing: -.04em; color: var(--accent);
+}
+.gsec__t { font-size: 12.4pt; font-weight: 800; color: var(--navy); line-height: 1.22; letter-spacing: -.018em; }
+.gsec__apps { font-size: 7.1pt; color: var(--muted); line-height: 1.45; text-align: right; }
+
+/* Đảo chiều bằng grid-column, KHÔNG dùng order: order chỉ đổi thứ tự nên
+   feature sẽ nhảy sang cột 1fr và bị đổi độ rộng. Cột feature phải luôn 86mm. */
+.bento { display: grid; grid-template-columns: 86mm 1fr; gap: 6mm; align-items: start; }
+.bento--flip { grid-template-columns: 1fr 86mm; }
+.bento--flip .feat { grid-column: 2; grid-row: 1; }
+.bento--flip .rest { grid-column: 1; grid-row: 1; }
+
+/* Cell feature */
+.feat__img {
+  height: 47mm; background: var(--wash);
+  display: flex; align-items: center; justify-content: center; padding: 3mm;
+}
+.feat__img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.feat__img--dark { background: #0d1526; }
+.feat__n {
+  font-size: 10.4pt; font-weight: 800; color: var(--navy);
+  margin: 3.4mm 0 1.2mm; line-height: 1.2; letter-spacing: -.015em;
+}
+.feat__sku {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 7pt; font-weight: 700; color: var(--accent); letter-spacing: .02em;
+}
+/* Thông số phụ của feature, dạng một dòng inline. Chỉ thêm khi
+   products-data.js thực sự có dữ liệu, không bịa spec (9.D). */
+.feat__more { font-size: 7.7pt; color: var(--muted); line-height: 1.45; margin-top: 1.8mm; }
+.feat__more b { color: var(--ink); font-weight: 700; }
+
+/* Spec dạng label/value trên khối wash. Không kẻ dòng (4.9 + 9.F).
+   Chuẩn hoá 4 mục cho cả 4 feature để chiều cao đồng đều. */
+.feat__spec {
+  margin-top: 3.2mm; background: var(--wash); padding: 3.6mm 4.2mm;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.6mm 5mm;
+  align-content: start;
+}
+.feat__spec div { min-width: 0; }
+.feat__spec dt {
+  font-size: 6.6pt; color: var(--faint); letter-spacing: .04em;
+  text-transform: uppercase; font-weight: 600;
+}
+.feat__spec dd { margin: .7mm 0 0; font-size: 8.2pt; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+/* Ba cell nhỏ: ảnh vuông + tên + spec inline một dòng, không bảng */
+.rest { display: grid; grid-template-rows: repeat(3, auto); gap: 6mm; align-content: start; }
+.item { display: grid; grid-template-columns: 24mm 1fr; gap: 4.5mm; align-items: start; }
+.item__img {
+  height: 24mm; background: var(--wash);
+  display: flex; align-items: center; justify-content: center; padding: 2mm;
+}
+.item__img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.item__img--dark { background: #0d1526; }
+.item__n { font-size: 8.9pt; font-weight: 800; color: var(--navy); line-height: 1.22; }
+.item__sku {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 6.7pt; font-weight: 700; color: var(--accent); margin-top: 1mm;
+}
+.item__spec { font-size: 7.6pt; color: var(--muted); line-height: 1.45; margin-top: 1.6mm; }
+.item__spec b { color: var(--ink); font-weight: 700; }
+/* Không cho ngắt dòng giữa con số và đơn vị ("100 mL" -> "100" / "mL") */
+.item__spec b, .feat__more b { white-space: nowrap; }
+
+.note {
+  margin-top: 5mm; padding-top: 3mm; border-top: .6pt solid var(--hair);
+  font-size: 7.2pt; color: var(--muted); line-height: 1.5; max-width: 150mm;
+}
+.note b { color: var(--navy); }
+
+/* ══════════════ TRANG 5 · ĐẶT HÀNG VÀ LIÊN HỆ ══════════════ */
+/* Bốn bước: hairline trên, cột rộng không đều, không box */
+.steps {
+  display: grid; grid-template-columns: 1fr 1.12fr 1fr .92fr;
+  gap: 6mm; margin: 12mm 0 0;
+  border-top: 2.2pt solid var(--navy); padding-top: 4mm;
+}
+.steps__n { font-size: 15pt; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -.04em; }
+.steps__t { font-size: 9pt; font-weight: 800; color: var(--navy); margin: 2.6mm 0 1.4mm; }
+.steps__d { font-size: 7.6pt; color: var(--muted); line-height: 1.5; }
+
+/* Tra mã SKU: 2x2 khối, không bảng kẻ dòng (9.F) */
+.skus { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm 9mm; margin-top: 16mm; }
+.sku {
+  border-top: 1.3pt solid var(--navy); padding-top: 3.2mm;
+  display: grid; grid-template-columns: 1fr auto; gap: 3mm; align-items: baseline;
+}
+.sku__t { font-size: 8.6pt; font-weight: 800; color: var(--navy); }
+.sku__c { font-size: 8.6pt; font-weight: 800; color: var(--accent); }
+.sku__p {
+  grid-column: 1 / -1;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 7.1pt; color: var(--muted); line-height: 1.6; margin-top: 1.4mm;
+}
+
+/* Khối liên hệ. Nền navy cùng họ với dải bìa, không phải theme flip (4.11). */
+.contact {
+  margin-top: 16mm; background: var(--navy); color: #b9cdf0;
+  padding: 13mm; display: grid; grid-template-columns: 1.15fr 1fr; gap: 11mm;
+}
+.contact h3 {
+  margin: 0 0 4mm; font-size: 15pt; font-weight: 800; color: #fff;
+  letter-spacing: -.025em; line-height: 1.18;
+  /* chia đều số từ giữa các dòng, tránh chữ cuối trơ một mình */
+  text-wrap: balance;
+}
+.contact p { margin: 0; font-size: 8.6pt; line-height: 1.62; }
+.contact dl { margin: 0; }
+.contact dt {
+  font-size: 6.7pt; font-weight: 700; letter-spacing: .15em;
+  text-transform: uppercase; color: #6b8fd0; margin-top: 4.6mm;
+}
+.contact dt:first-child { margin-top: 0; }
+.contact dd { margin: 1.2mm 0 0; font-size: 8.8pt; color: #fff; line-height: 1.5; }
+
+/* Khối kết: canh trái, không canh giữa (4.3 anti-center bias) */
+.close {
+  margin-top: 14mm; padding-top: 4mm; border-top: .6pt solid var(--hair);
+  display: grid; grid-template-columns: auto 1fr; gap: 7mm; align-items: center;
+}
+.close__s { font-size: 7.8pt; color: var(--muted); line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<div class="hint">
+  <b>Xuất PDF:</b> Cmd+P (Ctrl+P) &rarr; Destination <b>Save as PDF</b> &rarr; Paper <b>A4</b> &rarr;
+  Margins <b>None</b> &rarr; Scale <b>Default</b> &rarr; bật <b>Background graphics</b> &rarr; Save.
+  Khối hướng dẫn này tự ẩn khi in.
+</div>
+
+
+<!-- ══════════ TRANG 1 · BÌA ══════════ -->
+<section class="page cover">
+  <div class="cover__nav">
+    <!-- Không lồng wafer-digifund.svg ở đây: file svg đã chứa wordmark
+         "digifund" bên trong, đặt cạnh wordmark chữ sẽ thành lặp logo. -->
+    <div class="wordmark">digi<i>fund</i></div>
+    <div class="site">digifund.vn</div>
+  </div>
+
+  <div class="cover__type">
+    <h1>Catalog<b>sản phẩm 2026</b></h1>
+    <p>Silicon wafer và substrate, bia phún xạ, thiết bị phòng sạch, hoá chất công nghệ cao.</p>
+  </div>
+
+  <div class="cover__hero">
+    <img src="./assets/images/catalog/cover.jpg" alt="Silicon wafer Digifund">
+  </div>
+
+  <dl class="cover__facts">
+    <div>
+      <dt>Thành lập</dt>
+      <dd>2023, TP. Hồ Chí Minh</dd>
+    </div>
+    <div>
+      <dt>Đội ngũ</dt>
+      <dd>Chuyên gia bán dẫn Việt Nam và Hoa Kỳ</dd>
+    </div>
+    <div>
+      <dt>Liên hệ</dt>
+      <dd>+84 979 324 567</dd>
+    </div>
+  </dl>
+</section>
+
+
+<!-- ══════════ TRANG 2 · GIỚI THIỆU CÔNG TY ══════════ -->
+<section class="page">
+  <h2 class="dsp">Nguồn cung vật liệu bán dẫn<br>cho công nghiệp và nghiên cứu Việt Nam</h2>
+  <p class="lead">
+    Digifund thành lập năm 2023 tại TP. Hồ Chí Minh, cung cấp silicon wafer, substrate, bia phún xạ,
+    hoá chất và thiết bị phòng sạch cho nhà máy bán dẫn, viện nghiên cứu và trường đại học trên toàn quốc.
+    Đội ngũ gồm chuyên gia bán dẫn từ Việt Nam và Hoa Kỳ, giúp khách hàng chốt đúng thông số vật liệu
+    ngay từ đầu thay vì mua thử rồi phải đổi.
+  </p>
+
+  <div class="facts">
+    <div>
+      <div class="facts__n">2023</div>
+      <div class="facts__l">Năm thành lập</div>
+    </div>
+    <div>
+      <div class="facts__n">71</div>
+      <div class="facts__l">Mã sản phẩm sẵn cung ứng</div>
+    </div>
+    <div>
+      <div class="facts__n">2&#8243;-8&#8243;</div>
+      <div class="facts__l">Dải kích thước wafer</div>
+    </div>
+    <div>
+      <div class="facts__n">VN, US</div>
+      <div class="facts__l">Chuyên gia kỹ thuật hai nước</div>
+    </div>
+  </div>
+
+  <div class="split">
+    <div>
+      <div class="hd">Vì sao chọn Digifund</div>
+      <ul class="stack">
+        <li>
+          <div class="t">Tư vấn theo thông số</div>
+          <div class="d">Chốt đúng định hướng, điện trở suất, độ dày và phân hạng Prime, Test hoặc Dummy cho từng ứng dụng cụ thể.</div>
+        </li>
+        <li>
+          <div class="t">Dải sản phẩm rộng</div>
+          <div class="d">Từ wafer Si 2 inch đến SiC, SOI, Sapphire, AlN, GaAs, InP và ITO/FTO glass. Mua một nơi cho cả dự án.</div>
+        </li>
+        <li>
+          <div class="t">Trọn chuỗi phòng sạch</div>
+          <div class="d">Không chỉ vật liệu, mà cả thiết bị gia nhiệt, hệ CVD, dụng cụ thuỷ tinh và vật tư tiêu hao cấp ISO 4.</div>
+        </li>
+        <li>
+          <div class="t">Hỗ trợ cả R&amp;D và sản xuất</div>
+          <div class="d">Nhận số lượng nhỏ cho đề tài nghiên cứu, số lượng lớn cho dây chuyền sản xuất.</div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="hd">Ban lãnh đạo</div>
+      <ul class="stack">
+        <li>
+          <div class="t">Lâm Kim Thao</div>
+          <div class="d">CEO và đồng sáng lập</div>
+        </li>
+        <li>
+          <div class="t">Trần Mỹ Nghệ</div>
+          <div class="d">Đồng sáng lập, chuyên gia Silicon Wafer. Thạc sĩ, chuyên gia wafer tại châu Âu.</div>
+        </li>
+        <li>
+          <div class="t">Lâm Khả Doãn</div>
+          <div class="d">Đồng sáng lập, Senior Software Engineer</div>
+        </li>
+      </ul>
+      <div class="hd">Giờ làm việc</div>
+      <ul class="stack">
+        <li>
+          <div class="t">Thứ 2 đến thứ 6</div>
+          <div class="d">08:00 đến 17:00</div>
+        </li>
+        <li>
+          <div class="t">Thứ 7</div>
+          <div class="d">09:00 đến 13:00</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="groups">
+    <div class="grow">
+      <div class="grow__n">01</div>
+      <div class="grow__t">Silicon Wafer và Substrate</div>
+      <div class="grow__d">Si dạng CZ và FZ, SiC, SOI, Sapphire, AlN, GaAs, InP, ITO/FTO glass. Cỡ 2 đến 8 inch, phân hạng Prime, Test, Dummy.</div>
+    </div>
+    <div class="grow">
+      <div class="grow__n">02</div>
+      <div class="grow__t">Vật liệu và thiết bị năng lượng tái tạo</div>
+      <div class="grow__d">Bia phún xạ PVD kim loại, oxide, hợp kim. Bình phản ứng xúc tác chuyển hoá năng lượng.</div>
+    </div>
+    <div class="grow">
+      <div class="grow__n">03</div>
+      <div class="grow__t">Thiết bị phòng sạch và phòng thí nghiệm</div>
+      <div class="grow__d">Lò nung, hệ CVD, autoclave, dụng cụ thuỷ tinh Borosilicate 3.3, vật tư phòng sạch cấp ISO 4.</div>
+    </div>
+    <div class="grow">
+      <div class="grow__n">04</div>
+      <div class="grow__t">Hoá chất và vật tư công nghệ cao</div>
+      <div class="grow__d">Graphene oxide, ống nano carbon, nano TiO&#8322; và Au. Hoá chất sản xuất chip: photoresist, developer, etchant, CMP.</div>
+    </div>
+  </div>
+
+  <div class="foot"><span><b>DIGIFUND</b> Catalog sản phẩm 2026</span><span>digifund.vn, trang 2</span></div>
+</section>
+
+
+<!-- ══════════ TRANG 3 · NHÓM 1 VÀ 2 ══════════ -->
+<section class="page">
+
+  <div class="gsec">
+    <div class="gsec__head">
+      <div class="gsec__n">01</div>
+      <div class="gsec__t">Silicon Wafer và Substrate<br>cho ngành công nghiệp bán dẫn</div>
+      <div class="gsec__apps">Vi mạch và IC, MEMS, cảm biến, linh kiện công suất, LED và GaN epi, nghiên cứu R&amp;D</div>
+    </div>
+
+    <div class="bento">
+      <div class="feat">
+        <div class="feat__img"><img src="./assets/images/catalog/digifundwaferdetail.jpg" alt="Prime CZ-Si 4 inch N-type"></div>
+        <div class="feat__n">Prime CZ-Si 4&#8243; N-type</div>
+        <div class="feat__sku">DG-SW-040001</div>
+        <div class="feat__more">Độ dày <b>525 &#177; 25 &#181;m</b>, đánh bóng hai mặt DSP</div>
+        <dl class="feat__spec">
+          <div><dt>Vật liệu</dt><dd>CZ-Si, Prime</dd></div>
+          <div><dt>Kích thước</dt><dd>4&#8243;, hướng (100)</dd></div>
+          <div><dt>Pha tạp</dt><dd>Phosphorus, N-type</dd></div>
+          <div><dt>Điện trở suất</dt><dd>1 đến 10 &#937;&#183;cm</dd></div>
+        </dl>
+      </div>
+
+      <div class="rest">
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/siliconwafer.jpg" alt="Prime CZ-Si 8 inch P-type"></div>
+          <div>
+            <div class="item__n">Prime CZ-Si 8&#8243; P-type</div>
+            <div class="item__sku">DG-SW-080001</div>
+            <div class="item__spec">CZ-Si Prime, <b>8&#8243;</b> (100), Boron P-type, 1 đến 10 &#937;&#183;cm, dày <b>725 &#177; 25 &#181;m</b>, DSP</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/wafercarbide.jpg" alt="SiC substrate 6 inch N-type"></div>
+          <div>
+            <div class="item__n">SiC 6&#8243; N-type</div>
+            <div class="item__sku">DG-SiC-060001</div>
+            <div class="item__spec">Polytype <b>4H-SiC</b>, N-type pha Nitrogen, <b>6&#8243;</b>, dày 500 &#181;m, phân hạng Prime</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img item__img--dark"><img src="./assets/images/catalog/sapphire.jpg" alt="Sapphire wafer 4 inch C-plane"></div>
+          <div>
+            <div class="item__n">Sapphire 4&#8243; C-plane</div>
+            <div class="item__sku">DG-SAP-040001</div>
+            <div class="item__spec">Al&#8322;O&#8323; đơn tinh thể, <b>C-plane (0001)</b>, <b>4&#8243;</b>, dày 0.65 mm, DSP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsec">
+    <div class="gsec__head">
+      <div class="gsec__n">02</div>
+      <div class="gsec__t">Vật liệu và thiết bị<br>cho năng lượng tái tạo</div>
+      <div class="gsec__apps">Lắng đọng màng mỏng PVD, pin mặt trời, lớp dẫn điện trong suốt, xúc tác, khử CO&#8322;, tách nước</div>
+    </div>
+
+    <div class="bento bento--flip">
+      <div class="feat">
+        <div class="feat__img feat__img--dark"><img src="./assets/images/catalog/biaphongxa.jpg" alt="Bia phun xa Titanium"></div>
+        <div class="feat__n">Bia phún xạ Ti &#216;3&#8243;</div>
+        <div class="feat__sku">DG-ST-TI3099</div>
+        <div class="feat__more">Dạng <b>tròn</b>, dùng cho lắng đọng màng mỏng PVD</div>
+        <dl class="feat__spec">
+          <div><dt>Vật liệu</dt><dd>Ti, Titanium</dd></div>
+          <div><dt>Độ tinh khiết</dt><dd>99.99%</dd></div>
+          <div><dt>Kích thước</dt><dd>&#216;3&#8243;</dd></div>
+          <div><dt>Độ dày</dt><dd>5 mm</dd></div>
+        </dl>
+      </div>
+
+      <div class="rest">
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/biaphongxa_sanpham.jpg" alt="Bia phun xa ITO"></div>
+          <div>
+            <div class="item__n">Bia phún xạ ITO &#216;3&#8243;</div>
+            <div class="item__sku">DG-ST-ITO3099</div>
+            <div class="item__spec">In&#8322;O&#8323; và SnO&#8322; tỉ lệ <b>90:10</b>, tinh khiết <b>99.99%</b>, &#216;3&#8243;, dày 5 mm, tròn</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/binhphanungquangxuctac.jpg" alt="Binh phan ung quang xuc tac"></div>
+          <div>
+            <div class="item__n">Bình phản ứng quang xúc tác</div>
+            <div class="item__sku">DG-RX-PH250</div>
+            <div class="item__spec">Thân thạch anh, thể tích <b>250 mL</b>, nguồn sáng <b>UV 365 nm</b></div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/tebaodienhoakhuco2.jpg" alt="Te bao dien hoa khu CO2"></div>
+          <div>
+            <div class="item__n">Tế bào điện hoá khử CO&#8322;</div>
+            <div class="item__sku">DG-RX-EC050</div>
+            <div class="item__spec">H-cell thuỷ tinh <b>ba điện cực</b>, thể tích <b>50 mL</b>, dùng cho khử CO&#8322; và tách nước</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    Đây là sản phẩm đại diện. Nhóm 1 có <b>31 mã</b> và nhóm 2 có <b>14 mã</b>, khác nhau về kích thước,
+    định hướng, điện trở suất và độ tinh khiết. Xem đầy đủ tại <b>digifund.vn</b> hoặc liên hệ để nhận danh mục chi tiết.
+  </div>
+
+  <div class="foot"><span><b>DIGIFUND</b> Sản phẩm đại diện, nhóm 1 và 2</span><span>digifund.vn, trang 3</span></div>
+</section>
+
+
+<!-- ══════════ TRANG 4 · NHÓM 3 VÀ 4 ══════════ -->
+<section class="page">
+
+  <div class="gsec">
+    <div class="gsec__head">
+      <div class="gsec__n">03</div>
+      <div class="gsec__t">Thiết bị phòng sạch<br>và phòng thí nghiệm công nghệ cao</div>
+      <div class="gsec__apps">Nung kết, xử lý nhiệt, tổng hợp graphene và CNT, ủ wafer, kiểm soát nhiễm bẩn phòng sạch</div>
+    </div>
+
+    <div class="bento">
+      <div class="feat">
+        <div class="feat__img"><img src="./assets/images/catalog/hethongCVD.jpg" alt="He thong CVD"></div>
+        <div class="feat__n">Hệ thống CVD</div>
+        <div class="feat__sku">DG-HT-CVD01</div>
+        <div class="feat__more">Thuộc dòng <b>thiết bị gia nhiệt và tổng hợp vật liệu nano</b></div>
+        <dl class="feat__spec">
+          <div><dt>Loại</dt><dd>Lắng đọng hơi hoá học</dd></div>
+          <div><dt>Nhiệt độ</dt><dd>1100 &#176;C</dd></div>
+          <div><dt>Khí công tác</dt><dd>CH&#8324;, H&#8322;, Ar</dd></div>
+          <div><dt>Ứng dụng</dt><dd>Graphene, CNT</dd></div>
+        </dl>
+      </div>
+
+      <div class="rest">
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/lonung1400.jpg" alt="Lo nung 1400 do C"></div>
+          <div>
+            <div class="item__n">Lò nung 1400 &#176;C</div>
+            <div class="item__sku">DG-HT-MF1400</div>
+            <div class="item__spec">Lò nung buồng, nhiệt độ tối đa <b>1400 &#176;C</b>, buồng <b>7.2 L</b>, dùng nung kết và xử lý nhiệt</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/bunnysuit.jpg" alt="Bo ao lien than phong sach"></div>
+          <div>
+            <div class="item__n">Bộ áo liền thân phòng sạch</div>
+            <div class="item__sku">DG-CR-BS001</div>
+            <div class="item__spec">Chuẩn cấp <b>ISO 4</b>, chất liệu chống tĩnh điện, cỡ <b>M, L, XL</b></div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/binhtamgiac500ml.jpg" alt="Binh tam giac 500 mL"></div>
+          <div>
+            <div class="item__n">Bình tam giác 500 mL</div>
+            <div class="item__sku">DG-GL-EF500</div>
+            <div class="item__spec">Erlenmeyer <b>500 mL</b>, <b>Borosilicate 3.3</b>, chịu nhiệt và kháng hoá chất</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gsec">
+    <div class="gsec__head">
+      <div class="gsec__n">04</div>
+      <div class="gsec__t">Hoá chất và vật tư<br>cho ngành công nghệ tiên tiến</div>
+      <div class="gsec__apps">Tổng hợp vật liệu nano, mực in điện tử, pin, cảm biến, quang khắc, ăn mòn, CMP, làm sạch wafer</div>
+    </div>
+
+    <div class="bento bento--flip">
+      <div class="feat">
+        <div class="feat__img"><img src="./assets/images/catalog/photorerist.jpg" alt="Photoresist duong"></div>
+        <div class="feat__n">Photoresist dương</div>
+        <div class="feat__sku">DG-FB-PRP01</div>
+        <div class="feat__more">Cùng dòng: <b>developer, etchant, CMP slurry, dung môi</b></div>
+        <dl class="feat__spec">
+          <div><dt>Loại</dt><dd>Photoresist tông dương</dd></div>
+          <div><dt>Cấp</dt><dd>Bán dẫn</dd></div>
+          <div><dt>Quy cách</dt><dd>500 mL</dd></div>
+          <div><dt>Ứng dụng</dt><dd>Quang khắc UV</dd></div>
+        </dl>
+      </div>
+
+      <div class="rest">
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/grapheneoxide.jpg" alt="Graphene oxide"></div>
+          <div>
+            <div class="item__n">Graphene oxide dạng phân tán</div>
+            <div class="item__sku">DG-CH-GO001</div>
+            <div class="item__spec">Nồng độ <b>4 mg/mL</b> trong nước, quy cách <b>100 mL</b></div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/ongnanocarbon.jpg" alt="Ong nano carbon da lop"></div>
+          <div>
+            <div class="item__n">Ống nano carbon đa lớp</div>
+            <div class="item__sku">DG-CH-CNT01</div>
+            <div class="item__spec"><b>MWCNT</b>, độ tinh khiết trên <b>95%</b>, đường kính 10 đến 20 nm</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item__img"><img src="./assets/images/catalog/TIO2P25.jpg" alt="Bot nano TiO2 P25"></div>
+          <div>
+            <div class="item__n">Bột nano TiO&#8322; P25</div>
+            <div class="item__sku">DG-CH-TIO2P25</div>
+            <div class="item__spec">Pha anatase và rutile tỉ lệ <b>80:20</b>, tinh khiết <b>99.5%</b> trở lên, hạt khoảng 21 nm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    Nhóm 3 có <b>16 mã</b> và nhóm 4 có <b>10 mã</b>, gồm thêm autoclave thuỷ nhiệt, máy khuấy từ gia nhiệt,
+    bộ dụng cụ thuỷ tinh đầy đủ dung tích, găng tay và khẩu trang phòng sạch, developer TMAH, etchant BOE,
+    dung dịch CMP, acetone cấp bán dẫn và nano vàng.
+  </div>
+
+  <div class="foot"><span><b>DIGIFUND</b> Sản phẩm đại diện, nhóm 3 và 4</span><span>digifund.vn, trang 4</span></div>
+</section>
+
+
+<!-- ══════════ TRANG 5 · ĐẶT HÀNG VÀ LIÊN HỆ ══════════ -->
+<section class="page">
+  <h2 class="dsp">Bốn bước từ yêu cầu kỹ thuật<br>đến hàng về phòng lab</h2>
+
+  <div class="steps">
+    <div>
+      <div class="steps__n">01</div>
+      <div class="steps__t">Gửi yêu cầu</div>
+      <div class="steps__d">Cho biết mã SKU, hoặc mô tả ứng dụng nếu bạn chưa chắc thông số nào phù hợp.</div>
+    </div>
+    <div>
+      <div class="steps__n">02</div>
+      <div class="steps__t">Chốt thông số</div>
+      <div class="steps__d">Chuyên gia rà soát định hướng, điện trở suất, độ dày, phân hạng và xác nhận đúng nhu cầu.</div>
+    </div>
+    <div>
+      <div class="steps__n">03</div>
+      <div class="steps__t">Nhận báo giá</div>
+      <div class="steps__d">Giá theo yêu cầu, phụ thuộc thông số và số lượng, kèm thời gian giao dự kiến.</div>
+    </div>
+    <div>
+      <div class="steps__n">04</div>
+      <div class="steps__t">Giao hàng</div>
+      <div class="steps__d">Đóng gói đúng chuẩn phòng sạch, giao toàn quốc.</div>
+    </div>
+  </div>
+
+  <div class="skus">
+    <div class="sku">
+      <div class="sku__t">Silicon wafer và substrate</div>
+      <div class="sku__c">31</div>
+      <div class="sku__p">DG-SW, DG-SiC, DG-SOI, DG-SAP, DG-AlN, DG-GaAs, DG-InP, DG-ITO, DG-FTO</div>
+    </div>
+    <div class="sku">
+      <div class="sku__t">Năng lượng tái tạo</div>
+      <div class="sku__c">14</div>
+      <div class="sku__p">DG-ST bia phún xạ, DG-RX bình phản ứng</div>
+    </div>
+    <div class="sku">
+      <div class="sku__t">Phòng sạch và phòng thí nghiệm</div>
+      <div class="sku__c">16</div>
+      <div class="sku__p">DG-HT gia nhiệt, DG-GL thuỷ tinh, DG-CR phòng sạch</div>
+    </div>
+    <div class="sku">
+      <div class="sku__t">Hoá chất và vật tư</div>
+      <div class="sku__c">10</div>
+      <div class="sku__p">DG-CH vật liệu nano, DG-FB hoá chất chip</div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <div>
+      <h3>Cần tư vấn chọn đúng vật liệu?</h3>
+      <p>
+        Gửi cho chúng tôi ứng dụng của bạn, ví dụ vi mạch, MEMS, cảm biến, pin mặt trời hay đề tài
+        nghiên cứu. Chúng tôi sẽ đề xuất thông số vật liệu phù hợp kèm báo giá. Nhận đơn cả số lượng
+        nhỏ cho R&amp;D và số lượng lớn cho sản xuất.
+      </p>
+    </div>
+    <div>
+      <dl>
+        <dt>Điện thoại và Zalo</dt>
+        <dd>+84 979 324 567</dd>
+        <dt>Email</dt>
+        <dd>sales@digifund.vn<br>digifundvietnam@gmail.com</dd>
+        <dt>Website</dt>
+        <dd>digifund.vn</dd>
+        <dt>Địa chỉ</dt>
+        <dd>Tầng 14, Toà nhà HM Town<br>412 Nguyễn Thị Minh Khai<br>Phường Bàn Cờ, TP. Hồ Chí Minh</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="close">
+    <div class="wordmark">digi<i>fund</i></div>
+    <div class="close__s">
+      Thông số kỹ thuật có thể thay đổi theo lô sản xuất và được xác nhận lại trong báo giá chính thức.
+      Giá theo yêu cầu. Cập nhật tháng 07 năm 2026.
+    </div>
+  </div>
+
+  <div class="foot"><span><b>DIGIFUND</b> Catalog sản phẩm 2026</span><span>digifund.vn, trang 5</span></div>
+</section>
+
+</body>
+</html>
