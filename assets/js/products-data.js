@@ -820,6 +820,8 @@ window.PD_STR = {
     contact:   { vi: 'Liên hệ', en: 'Contact us' },
     reflink:   { vi: 'Link tham khảo', en: 'Reference link' },
     close:     { vi: 'Đóng', en: 'Close' },
+    copylink:  { vi: 'Copy link sản phẩm', en: 'Copy product link' },
+    copied:    { vi: 'Đã copy link!', en: 'Link copied!' },
     all:       { vi: 'Tất cả', en: 'All' },
     product:   { vi: 'Sản phẩm', en: 'Product' },
     results:   { vi: 'sản phẩm', en: 'products' },

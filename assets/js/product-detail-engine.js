@@ -20,6 +20,35 @@
         };
         var _canUrl = window.PD_CANONICAL || STATIC_URLS[groupId] || ('https://digifund.vn/product-detail.html?group=' + groupId);
         var REG = {};     // registry variant để mở modal: key -> variant
+
+        /* ---- Deep-link: mỗi sản phẩm có URL riêng dạng ?sku=DG-XXX ----
+           Dùng SKU (duy nhất, ổn định) chứ không dùng key của REG vì key tính
+           theo vị trí trong dữ liệu — đổi thứ tự sản phẩm là link cũ chết. */
+        var openKey = null;     // key variant đang mở trong modal
+        var pushedUrl = false;  // modal hiện tại có tự pushState hay không
+        var baseTitle = document.title;
+
+        function stripSku(qs) {
+            qs = String(qs || '').replace(/[?&]sku=[^&]*/g, '').replace(/^&/, '?');
+            return (qs === '?' ? '' : qs);
+        }
+        function skuPath(sku) {
+            var qs = stripSku(location.search);
+            return location.pathname + qs + (qs ? '&' : '?') + 'sku=' + encodeURIComponent(sku);
+        }
+        function basePath() { return location.pathname + stripSku(location.search); }
+        function skuShareUrl(sku) {
+            // link chia sẻ luôn trỏ domain thật, không phải 127.0.0.1 khi test local
+            return _canUrl + (_canUrl.indexOf('?') >= 0 ? '&' : '?') + 'sku=' + encodeURIComponent(sku);
+        }
+        function keyBySku(sku) {
+            if (!sku) return null;
+            var want = String(sku).toUpperCase();
+            for (var k in REG) {
+                if (REG[k] && REG[k].sku && String(REG[k].sku).toUpperCase() === want) return k;
+            }
+            return null;
+        }
         var CFG = {};     // (giữ cho engine cũ) trạng thái configurator
         var FSTATE = {};  // trạng thái filter theo item: itemKey -> {dim: value}
         var FILTER_KEYS = ['size', 'type', 'doping', 'orientation', 'polytype', 'resistivity'];
@@ -325,9 +354,10 @@
                    '<table><tbody>' + rows + '</tbody></table></div>';
         }
 
-        function openModal(key) {
+        function openModal(key, fromUrl) {
             var v = REG[key];
             if (!v) return;
+            openKey = key;
             var specsHtml;
             if (v.specs && v.specs.length) {
                 specsHtml = '<div class="pdm-sec">' + esc(T(STR.techprop)) + '</div>' +
@@ -349,15 +379,32 @@
                     specsHtml +
                     '<div class="pdm-actions">' +
                         '<a href="./#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
+                        (v.sku ? '<button type="button" class="pdm-share" id="pdmCopy" data-sku="' + escA(v.sku) + '"><i class="fas fa-link"></i> ' + esc(T(STR.copylink)) + '</button>' : '') +
                     '</div>' +
                 '</div>';
             document.getElementById('pdmGrid').innerHTML = grid;
             document.getElementById('pdmOverlay').classList.add('open');
             document.body.style.overflow = 'hidden';
+
+            // URL + tiêu đề tab đi theo sản phẩm đang mở
+            document.title = (T(v.desc) || T(v.name)) + ' | Digifund';
+            if (!fromUrl && v.sku && window.history && history.pushState) {
+                try { history.pushState({ pdSku: v.sku }, '', skuPath(v.sku)); pushedUrl = true; } catch (e) {}
+            }
         }
-        function closeModal() {
+        function closeModal(fromUrl) {
             document.getElementById('pdmOverlay').classList.remove('open');
             document.body.style.overflow = '';
+            openKey = null;
+            document.title = baseTitle;
+            if (fromUrl || !window.history || !history.pushState) return;
+            if (pushedUrl) {
+                pushedUrl = false;
+                history.back();            // Back đưa URL về trang nhóm
+            } else if (param('sku')) {
+                // vào trực tiếp bằng link ?sku= — không có state để back
+                try { history.replaceState(null, '', basePath()); } catch (e) {}
+            }
         }
 
         function render() {
@@ -561,7 +608,9 @@
         document.getElementById('langToggle').addEventListener('click', function () {
             var l = getLang() === 'vi' ? 'en' : 'vi';
             localStorage.setItem('digifund-lang', l);
+            var wasOpen = openKey;
             render();
+            if (wasOpen && REG[wasOpen]) openModal(wasOpen, true);  // modal đang mở thì dịch luôn
         });
         document.getElementById('themeToggle').addEventListener('click', function () {
             theme = theme === 'dark' ? 'light' : 'dark';
@@ -569,7 +618,8 @@
         });
 
         // Modal close: nút X, click ra nền, phím ESC
-        document.getElementById('pdmClose').addEventListener('click', closeModal);
+        // bọc trong hàm: truyền trực tiếp closeModal sẽ nhận event object vào tham số fromUrl
+        document.getElementById('pdmClose').addEventListener('click', function () { closeModal(); });
         document.getElementById('pdmOverlay').addEventListener('click', function (e) {
             if (e.target === this) closeModal();
         });
@@ -577,6 +627,44 @@
             if (e.key === 'Escape') closeModal();
         });
 
+        // Nút Back/Forward của trình duyệt: URL là nguồn sự thật cho modal
+        window.addEventListener('popstate', function () {
+            var k = keyBySku(param('sku'));
+            pushedUrl = false;
+            if (k) openModal(k, true);
+            else closeModal(true);
+        });
+
+        // Nút "Copy link sản phẩm" trong modal
+        document.getElementById('pdmGrid').addEventListener('click', function (e) {
+            var btn = e.target.closest ? e.target.closest('#pdmCopy') : null;
+            if (!btn) return;
+            var url = skuShareUrl(btn.getAttribute('data-sku'));
+            var done = function () {
+                var html = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> ' + esc(T(STR.copied));
+                btn.classList.add('is-done');
+                setTimeout(function () { btn.innerHTML = html; btn.classList.remove('is-done'); }, 1800);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(done, function () { fallbackCopy(url, done); });
+            } else fallbackCopy(url, done);
+        });
+        function fallbackCopy(text, cb) {
+            var ta = document.createElement('textarea');
+            ta.value = text; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;top:-9999px;opacity:0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); cb(); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
         wireBody();
         render();
+
+        // Vào bằng link ?sku=... thì mở sẵn popup đúng sản phẩm
+        (function () {
+            var k = keyBySku(param('sku'));
+            if (k) openModal(k, true);
+        })();
     })();

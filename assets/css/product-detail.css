@@ -270,6 +270,12 @@
         .pdm-link { font-size: 13px; color: var(--accent); word-break: break-all; }
         .pdm-actions { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
         .pdm-actions .pd-variant__btn { flex: 1; min-width: 150px; }
+        /* Nút copy link riêng của từng sản phẩm */
+        .pdm-share { flex: 1; min-width: 150px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 9px; background: #fff; border: 1px solid #d8e0ee; color: #2b3650; font-size: 13.5px; font-weight: 600; cursor: pointer; transition: .22s; }
+        .pdm-share:hover { border-color: var(--accent); color: var(--accent); }
+        .pdm-share.is-done { border-color: #16a34a; color: #16a34a; }
+        [data-theme="dark"] .pdm-share { background: #0d1117; border-color: #30363d; color: #c9d1d9; }
+        [data-theme="dark"] .pdm-share:hover { border-color: var(--accent); color: #e6edf3; }
         @media (max-width: 680px) { .pdm-grid { grid-template-columns: 1fr; } .pdm-media { border-right: none; border-bottom: 1px solid #eef2f7; } }
 
         /* Footer */
