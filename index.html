@@ -571,6 +571,8 @@
             .why-choose-one__img { width: 100% !important; }
             .why-choose-one__img img { aspect-ratio: 16 / 11; }
             .why-choose-one__img-2, .why-choose-one__shape-1 { display: none !important; }
+            /* tách ảnh ra khỏi hàng link "Xem catalog" phía trên */
+            .why-choose-one__right { margin-top: 26px; }
 
             /* Counter / stats: 2 x 2 */
             #stats .row > li { flex: 0 0 50%; max-width: 50%; }
@@ -584,7 +586,10 @@
             #team .team-one__content { padding: 9px 12px; margin-top: 8px; }
             #team .team-one__title, #team .team-one__title a { font-size: 14px; line-height: 19px; }
             #team .team-one__sub-title { font-size: 11px; }
-            #team .team-one__org { font-size: 10px; margin-top: 4px; letter-spacing: .2px; }
+            #team .team-one__org { font-size: 8.5px; margin-top: 4px; letter-spacing: 0; }
+            #team .team-one__org-row { gap: 4px; margin-top: 5px; }
+            #team .team-one__org-logo { height: 26px; max-width: 28px; padding: 1.5px; }
+            #team .team-one__org-logo--wide { max-width: 52px; padding: 2px 4px; border-radius: 7px; }
             #team.team-one--experts .team-one__content { min-height: 96px; padding: 10px 10px 12px; }
             #team .team-one__share-and-social { display: none; }
 
@@ -795,7 +800,12 @@
         .team-one--experts .team-one__content { flex: 1 1 auto; }
         .team-one--experts .team-one__title { font-size: 20px; line-height: 30px; }
         .team-one--experts .team-one__sub-title { font-size: 15px; }
-        .team-one--experts .team-one__org { margin-top: 7px; font-size: 13px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: var(--fixpro-base); }
+        .team-one--experts .team-one__org { font-size: 13px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: var(--fixpro-base); }
+        /* Logo đơn vị công tác đứng cạnh dòng nơi công tác */
+        .team-one--experts .team-one__org-row { display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 8px; margin-top: 8px; }
+        .team-one--experts .team-one__org-row .team-one__org { min-width: 0; }
+        .team-one--experts .team-one__org-logo { box-sizing: border-box; flex: 0 0 auto; height: 36px; width: auto; max-width: 38px; object-fit: contain; background: #fff; border-radius: 999px; padding: 2px; box-shadow: 0 1px 3px rgba(16, 24, 40, .14); }
+        .team-one--experts .team-one__org-logo--wide { max-width: 74px; padding: 3px 6px; border-radius: 9px; }
         [data-theme="dark"] .team-one--experts .team-one__title { color: #e6edf3; }
         [data-theme="dark"] .team-one--experts .team-one__sub-title { color: #8b949e; }
 
@@ -946,8 +956,8 @@
                     <a href="#" class="mobile-nav__toggler"><i class="fas fa-bars"></i></a>
                     <ul class="main-menu__list">
     <li><a href="#home" data-i18n="nav-home">Trang Chủ</a></li>
-    <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <li><a href="#products" data-i18n="nav-products">Sản Phẩm</a></li>
+    <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác &amp; Nghiên Cứu</a></li> -->
     <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li>
     <li><a href="./kien-thuc.html" data-i18n="nav-knowledge">Blog</a></li>
@@ -994,13 +1004,14 @@
                     <a href="#" class="mobile-nav__toggler"><i class="fas fa-bars"></i></a>
                     <ul class="main-menu__list">
     <li><a href="#home" data-i18n="nav-home">Trang Chủ</a></li>
-    <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <li><a href="#products" data-i18n="nav-products">Sản Phẩm</a></li>
+    <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
     <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác &amp; Nghiên Cứu</a></li> -->
     <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li>
     <li><a href="./kien-thuc.html" data-i18n="nav-knowledge">Blog</a></li>
     <li>
         <a href="#contact" data-i18n="nav-contact">Liên Hệ</a>
+    </li>
 </ul>
                 </div>
                 <div class="main-menu__right">
@@ -1851,7 +1862,10 @@
                             <div class="team-one__title-box">
                                 <h3 class="team-one__title">Prof. Bruno Grandidier</h3>
                                 <div class="team-one__sub-title" data-i18n="exp1-role">Bán dẫn tiên tiến</div>
-                                <div class="team-one__org" data-i18n="exp1-org">CNRS, Pháp</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo" src="./assets/images/logo-cnrs.png" alt="Logo CNRS" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp1-org">CNRS, Pháp</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1872,7 +1886,10 @@
                             <div class="team-one__title-box">
                                 <h3 class="team-one__title">Prof. Adem Sreedhar</h3>
                                 <div class="team-one__sub-title" data-i18n="exp2-role">Lắng đọng màng mỏng bằng phún xạ</div>
-                                <div class="team-one__org" data-i18n="exp2-org">ĐH Gachon, Hàn Quốc</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo" src="./assets/images/logo-gachon.png" alt="Logo Gachon University" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp2-org">Gachon, Hàn Quốc</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1893,7 +1910,10 @@
                             <div class="team-one__title-box">
                                 <h3 class="team-one__title">Dr. My Nghe TRAN</h3>
                                 <div class="team-one__sub-title" data-i18n="exp3-role">Chế tạo chip bán dẫn</div>
-                                <div class="team-one__org" data-i18n="exp3-org">IMEC, Bỉ</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo team-one__org-logo--wide" src="./assets/images/logo-imec.png" alt="Logo imec" width="160" height="49" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp3-org">IMEC, Bỉ</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1914,7 +1934,10 @@
                             <div class="team-one__title-box">
                                 <h3 class="team-one__title">Dr. Oanh LE</h3>
                                 <div class="team-one__sub-title" data-i18n="exp4-role">Chuyển hóa năng lượng tái tạo</div>
-                                <div class="team-one__org" data-i18n="exp4-org">ĐH Griffith, Úc</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo" src="./assets/images/logo-griffith.png" alt="Logo Griffith University" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp4-org">Griffith, Úc</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2267,14 +2290,14 @@
         </div>
         <!-- /.logo-box -->
         <div class="mobile-nav__container"><ul class="main-menu__list">
-    <li><a href="#">Trang Chủ</a></li>
-    <li><a href="#">Giới Thiệu</a></li>
-    <li><a href="#products">Sản Phẩm</a></li>
-    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration">Hợp Tác &amp; Nghiên Cứu</a></li> -->
-    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#">Đội Ngũ</a></li> -->
-    <li><a href="./kien-thuc.html">Blog</a></li>
+    <li><a href="#home" data-i18n="nav-home">Trang Chủ</a></li>
+    <li><a href="#products" data-i18n="nav-products">Sản Phẩm</a></li>
+    <li><a href="#about" data-i18n="nav-about">Giới Thiệu</a></li>
+    <!-- tạm ẩn (chờ dữ liệu): <li><a href="#collaboration" data-i18n="nav-projects">Hợp Tác &amp; Nghiên Cứu</a></li> -->
+    <li><a href="#team" data-i18n="nav-team">Đội Ngũ</a></li>
+    <li><a href="./kien-thuc.html" data-i18n="nav-knowledge">Blog</a></li>
     <li>
-        <a href="#">Liên Hệ</a>
+        <a href="#contact" data-i18n="nav-contact">Liên Hệ</a>
     </li>
 </ul></div>
         <!-- /.mobile-nav__container -->
@@ -2450,8 +2473,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'team-title': 'Chuyên Gia Wafer', 'read-more': 'xem thêm',
             'exp1-role': 'Bán dẫn tiên tiến', 'exp2-role': 'Lắng đọng màng mỏng bằng phún xạ',
             'exp3-role': 'Chế tạo chip bán dẫn', 'exp4-role': 'Chuyển hóa năng lượng tái tạo',
-            'exp1-org': 'CNRS, Pháp', 'exp2-org': 'ĐH Gachon, Hàn Quốc',
-            'exp3-org': 'IMEC, Bỉ', 'exp4-org': 'ĐH Griffith, Úc',
+            'exp1-org': 'CNRS, Pháp', 'exp2-org': 'Gachon, Hàn Quốc',
+            'exp3-org': 'IMEC, Bỉ', 'exp4-org': 'Griffith, Úc',
             'chat-text': 'Vui lòng điền vào mẫu dưới đây, chúng tôi sẽ phản hồi sớm nhất có thể.',
             'product-text': 'Thông số cao cấp cho quy trình sản xuất bán dẫn tiên tiến.',
             'watch-video': 'Xem Quy Trình', 'search-placeholder': 'Tìm Kiếm',
@@ -2574,8 +2597,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'team-title': 'Wafer Specialist', 'read-more': 'read more',
             'exp1-role': 'Advanced Semiconductors', 'exp2-role': 'Sputtering Thin-film Deposition',
             'exp3-role': 'Semiconductor Chip Fabrication', 'exp4-role': 'Renewable Energy Conversion',
-            'exp1-org': 'CNRS, France', 'exp2-org': 'Gachon University, South Korea',
-            'exp3-org': 'IMEC, Belgium', 'exp4-org': 'Griffith University, Australia',
+            'exp1-org': 'CNRS, France', 'exp2-org': 'Gachon, South Korea',
+            'exp3-org': 'IMEC, Belgium', 'exp4-org': 'Griffith, Australia',
             'chat-text': 'Please fill out the form below and we will get back to you as soon as possible.',
             'product-text': 'Premium specifications for advanced semiconductor manufacturing processes.',
             'watch-video': 'Watch Our Process', 'search-placeholder': 'Search Here',
