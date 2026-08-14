@@ -56,6 +56,17 @@ body.blog-page { margin:0; font-family:'Titillium Web',-apple-system,Segoe UI,Ro
 .bl-toc li { margin-bottom:6px; }
 .bl-note { background:#eef4ff; border-left:4px solid var(--accent); padding:16px 20px; border-radius:0 12px 12px 0; margin:24px 0; font-size:16px; }
 
+/* FAQ */
+.bl-faq { margin:24px 0 8px; }
+.bl-faq__item { border:1px solid var(--line); border-radius:12px; margin-bottom:12px; background:#fff; overflow:hidden; }
+.bl-faq__item summary { cursor:pointer; padding:16px 20px; font-weight:700; font-size:17px; color:var(--ink); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:14px; }
+.bl-faq__item summary::-webkit-details-marker { display:none; }
+.bl-faq__item summary::after { content:"+"; font-size:22px; font-weight:400; color:var(--accent); flex-shrink:0; line-height:1; }
+.bl-faq__item[open] summary::after { content:"\2013"; }
+.bl-faq__item summary:hover { color:var(--accent); }
+.bl-faq__ans { padding:0 20px 16px; }
+.bl-faq__ans p { margin:0; font-size:16px; color:var(--muted); }
+
 /* Table */
 .bl-table-wrap { overflow-x:auto; margin:22px 0; }
 .bl-table { width:100%; border-collapse:collapse; min-width:520px; font-size:15.5px; }
@@ -133,6 +144,7 @@ body.blog-page { margin:0; font-family:'Titillium Web',-apple-system,Segoe UI,Ro
 [data-theme="dark"] .bl-table th { background:#161b22; }
 [data-theme="dark"] .bl-table tr:nth-child(even) td { background:#12161c; }
 [data-theme="dark"] .bl-card,
+[data-theme="dark"] .bl-faq__item,
 [data-theme="dark"] .bl-list__item { background:#161b22; }
 [data-theme="dark"] .bl-hero__tag { background:rgba(79,140,255,0.15); }
 [data-theme="dark"] .bl-list__icon { background:rgba(79,140,255,0.12); }

@@ -281,6 +281,9 @@
         /* Footer */
         .pdp-foot { padding: 30px 5%; text-align: center; background: #0d1426; color: #9aa6bd; font-size: 14px; }
         .pdp-foot a { color: #fff; font-weight: 600; }
+        .pdp-foot__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.12); }
+        .pdp-foot__links a { color: #9aa6bd; font-weight: 500; text-decoration: none; }
+        .pdp-foot__links a:hover { color: #fff; text-decoration: underline; }
 
         @media (max-width: 767px) {
             .pdp-hero__title { font-size: 26px; }

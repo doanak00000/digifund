@@ -42,5 +42,9 @@
 - [Phân loại Silicon Wafer](https://digifund.vn/phan-loai-silicon-wafer.html)
 - [Ứng dụng Silicon Wafer](https://digifund.vn/ung-dung-silicon-wafer.html)
 - [Silicon Wafer tại Việt Nam](https://digifund.vn/silicon-wafer-viet-nam.html)
+- [Silicon Wafer Supplier in Vietnam — sourcing guide (English)](https://digifund.vn/silicon-wafer-supplier-vietnam.html)
+- [Giá Silicon Wafer — 8 yếu tố quyết định chi phí](https://digifund.vn/gia-silicon-wafer.html): yếu tố quyết định giá wafer, cách tối ưu ngân sách, checklist thông số để nhận báo giá
+- [CZ vs FZ Silicon Wafer](https://digifund.vn/cz-vs-fz-silicon-wafer.html): so sánh Czochralski và Float Zone, phân hạng Prime/Test/Dummy, đánh bóng SSP/DSP, định hướng tinh thể
+- [Chọn wafer cho nghiên cứu](https://digifund.vn/chon-wafer-cho-nghien-cuu.html): đế phù hợp cho MEMS, quang tử, epitaxy GaN, điện tử công suất, RF/MMIC, quang điện, phòng lab đào tạo
 - [Chi tiết sản phẩm](https://digifund.vn/product-detail.html)
 - [Kiến thức bán dẫn](https://digifund.vn/kien-thuc.html)
