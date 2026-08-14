@@ -180,6 +180,55 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
       
       <div class="bl-note lang-en"><strong>Conclusion:</strong> From the chip in your phone to the solar panel on your roof, the silicon wafer is the base material quietly running the digital world. Investing in a high-quality wafer supply is investing in the foundation of technology.</div>
 
+      
+      <h2 class="lang-en">7. From wafer to chip: what happens in between</h2>
+      
+      <p class="lang-en">A blank wafer does not become a chip by itself. It passes through hundreds of repetitions of four basic operations, each cycle building one more structural layer:</p>
+      
+      <ol class="lang-en">
+        <li><strong>Deposition</strong> — lay down a new layer of material: oxide, nitride, polysilicon or metal, via CVD, sputtering or evaporation.</li>
+        <li><strong>Lithography</strong> — print that layer's pattern into photoresist, defining what stays and what goes. Details in <a href="./photolithography-process.html">the photolithography process</a>.</li>
+        <li><strong>Etching</strong> — remove material where the resist does not protect it, transferring the pattern from resist into the real layer.</li>
+        <li><strong>Ion implantation and annealing</strong> — fire dopant atoms into the silicon to form N- or P-type regions, then anneal to activate them and repair lattice damage.</li>
+      </ol>
+      
+      <p class="lang-en">Once front-end fabrication is complete, each die on the wafer is electrically probed, the wafer is diced, and the good dies are packaged and given a final test. It is precisely this packaging and test stage where Vietnam has held a position in the global semiconductor supply chain for years.</p>
+
+      
+      <h2 class="lang-en">8. Why wafer diameters keep growing</h2>
+      
+      <p class="lang-en">The cost of processing one wafer barely depends on its diameter — one lithography step, one etch, one anneal cost about the same whether the wafer is large or small. But area, and therefore the number of dies, grows with the square of the radius.</p>
+      
+      <p class="lang-en">Moving from 200 mm to 300 mm increases area by about 2.25× while per-step cost stays roughly flat. That economic pull drove the industry from 2 inch in the 1970s to 300 mm today. A further factor is often overlooked: larger wafers waste proportionally less area at the edge exclusion zone, because perimeter grows linearly while area grows quadratically.</p>
+      
+      <div class="bl-note lang-en">This does not mean larger is always better for you. For research and low-volume work, 4-inch or 6-inch wafers are usually the sensible choice: lab equipment already accepts them, per-wafer cost is low, and you are not wasting most of the area on an experiment that needs a few mm².</div>
+
+      
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-en">How many chips come from one wafer?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">It depends on wafer diameter and die area. Small dies such as microcontrollers yield thousands per wafer, while large dies such as high-end GPUs yield only tens. Defect losses and the unusable edge exclusion zone reduce the count further.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Why are large chips so much more expensive?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Defects are distributed randomly across the wafer. The larger the die, the higher the chance it contains at least one defect, so yield falls steeply as area grows. Cost therefore rises much faster than linearly with die size.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Will silicon be replaced?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Not replaced, but supplemented. SiC and GaN are taking share in power electronics, and InP holds its place in high-speed photonics. For digital ICs, however, the silicon manufacturing ecosystem carries decades of accumulated know-how and enormous infrastructure — no material comes close on cost per transistor.</p>
+          </div>
+        </details>
+      </div>
+
       <div class="bl-cta">
         
         <h3 class="lang-en">Find a quality silicon wafer source for your project</h3>

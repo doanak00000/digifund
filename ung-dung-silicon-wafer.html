@@ -37,8 +37,18 @@
       "description": "Silicon wafer được dùng ở đâu: chip bán dẫn, pin mặt trời, cảm biến, MEMS, điện tử công suất và vì sao nó quan trọng.",
       "image": "https://digifund.vn/assets/images/siliconwafer.jpg",
       "inLanguage": "vi-VN",
-      "author": { "@type": "Organization", "name": "Digifund" },
-      "publisher": { "@type": "Organization", "name": "Digifund", "logo": { "@type": "ImageObject", "url": "https://digifund.vn/assets/images/logo-2.png" } },
+      "author": {
+        "@type": "Organization",
+        "name": "Digifund"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Digifund",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://digifund.vn/assets/images/logo-2.png"
+        }
+      },
       "datePublished": "2026-07-10",
       "dateModified": "2026-07-15",
       "mainEntityOfPage": "https://digifund.vn/ung-dung-silicon-wafer.html"
@@ -46,9 +56,53 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://digifund.vn/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://digifund.vn/kien-thuc.html" },
-        { "@type": "ListItem", "position": 3, "name": "Ứng dụng Silicon Wafer", "item": "https://digifund.vn/ung-dung-silicon-wafer.html" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Trang chủ",
+          "item": "https://digifund.vn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://digifund.vn/kien-thuc.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ứng dụng Silicon Wafer",
+          "item": "https://digifund.vn/ung-dung-silicon-wafer.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Một tấm wafer làm ra được bao nhiêu con chip?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Phụ thuộc vào đường kính wafer và diện tích mỗi con chip. Chip nhỏ như vi điều khiển cho ra hàng nghìn con trên một tấm, trong khi chip lớn như GPU cao cấp chỉ được vài chục. Ngoài ra còn phải trừ đi phần hỏng do khuyết tật và vành mép không dùng được."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vì sao chip lớn lại đắt hơn nhiều so với chip nhỏ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Khuyết tật phân bố ngẫu nhiên trên tấm wafer. Chip càng lớn thì xác suất chứa ít nhất một khuyết tật càng cao, nên tỷ lệ chip đạt giảm rất nhanh khi tăng diện tích. Giá không tăng tuyến tính theo diện tích mà tăng nhanh hơn nhiều."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Silic có bị thay thế trong tương lai không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Không thay thế hoàn toàn, mà được bổ sung. SiC và GaN đang giành thị phần trong điện tử công suất, InP giữ vai trò trong quang tử tốc độ cao. Nhưng với vi mạch số, hệ sinh thái sản xuất silic đã tích luỹ hàng chục năm kinh nghiệm và hạ tầng khổng lồ — chưa vật liệu nào tiệm cận được về chi phí trên mỗi transistor."
+          }
+        }
       ]
     }
   ]
@@ -162,6 +216,60 @@
       </ul>
       <div class="bl-note lang-vi"><strong>Kết luận:</strong> Từ con chip trong điện thoại đến tấm pin mặt trời trên mái nhà, silicon wafer là vật liệu nền âm thầm vận hành thế giới số. Đầu tư vào nguồn cung wafer chất lượng cao chính là đầu tư vào nền tảng công nghệ.</div>
       <div class="bl-note lang-en"><strong>Conclusion:</strong> From the chip in your phone to the solar panel on your roof, the silicon wafer is the base material quietly running the digital world. Investing in a high-quality wafer supply is investing in the foundation of technology.</div>
+
+      <h2 id="tu-wafer-den-chip" class="lang-vi">7. Từ tấm wafer đến con chip: chuyện gì xảy ra ở giữa</h2>
+      <h2 class="lang-en">7. From wafer to chip: what happens in between</h2>
+      <p class="lang-vi">Một tấm wafer trơn không tự trở thành chip. Nó đi qua hàng trăm bước lặp lại của bốn nhóm thao tác cơ bản, mỗi vòng lặp đắp thêm một lớp cấu trúc:</p>
+      <p class="lang-en">A blank wafer does not become a chip by itself. It passes through hundreds of repetitions of four basic operations, each cycle building one more structural layer:</p>
+      <ol class="lang-vi">
+        <li><strong>Lắng đọng</strong> — phủ một lớp vật liệu mới lên bề mặt: oxit, nitrua, đa tinh thể silic hoặc kim loại, bằng phương pháp CVD, phún xạ hoặc bay hơi.</li>
+        <li><strong>Quang khắc</strong> — in hoa văn của lớp đó lên màng cản quang, xác định chỗ nào giữ lại và chỗ nào bỏ đi. Chi tiết trong bài <a href="./quy-trinh-quang-khac-photolithography.html">quy trình quang khắc</a>.</li>
+        <li><strong>Ăn mòn</strong> — bóc vật liệu ở những vùng không được cản quang che, chuyển hoa văn từ lớp cản quang xuống lớp vật liệu thật.</li>
+        <li><strong>Cấy ion và ủ nhiệt</strong> — bắn nguyên tử tạp vào silic để tạo vùng dẫn loại N hoặc P, rồi ủ nhiệt để kích hoạt và sửa hư hỏng mạng tinh thể.</li>
+      </ol>
+      <ol class="lang-en">
+        <li><strong>Deposition</strong> — lay down a new layer of material: oxide, nitride, polysilicon or metal, via CVD, sputtering or evaporation.</li>
+        <li><strong>Lithography</strong> — print that layer's pattern into photoresist, defining what stays and what goes. Details in <a href="./quy-trinh-quang-khac-photolithography.html">the photolithography process</a>.</li>
+        <li><strong>Etching</strong> — remove material where the resist does not protect it, transferring the pattern from resist into the real layer.</li>
+        <li><strong>Ion implantation and annealing</strong> — fire dopant atoms into the silicon to form N- or P-type regions, then anneal to activate them and repair lattice damage.</li>
+      </ol>
+      <p class="lang-vi">Sau khi hoàn tất phần chế tạo trên wafer (front-end), mỗi con chip trên tấm được đo kiểm điện, tấm wafer được cắt rời, các chip đạt yêu cầu đem đóng gói và kiểm tra lần cuối. Chính ở khâu đóng gói và kiểm tra này Việt Nam đã có chỗ đứng nhiều năm nay trong chuỗi cung ứng bán dẫn toàn cầu.</p>
+      <p class="lang-en">Once front-end fabrication is complete, each die on the wafer is electrically probed, the wafer is diced, and the good dies are packaged and given a final test. It is precisely this packaging and test stage where Vietnam has held a position in the global semiconductor supply chain for years.</p>
+
+      <h2 id="hieu-suat" class="lang-vi">8. Vì sao đường kính wafer ngày càng lớn</h2>
+      <h2 class="lang-en">8. Why wafer diameters keep growing</h2>
+      <p class="lang-vi">Chi phí xử lý một tấm wafer gần như không phụ thuộc vào đường kính của nó — một lần quang khắc, một lần ăn mòn, một lần ủ nhiệt tốn gần như nhau dù tấm to hay nhỏ. Nhưng diện tích, và do đó số chip thu được, tăng theo bình phương bán kính.</p>
+      <p class="lang-en">The cost of processing one wafer barely depends on its diameter — one lithography step, one etch, one anneal cost about the same whether the wafer is large or small. But area, and therefore the number of dies, grows with the square of the radius.</p>
+      <p class="lang-vi">Chuyển từ 200 mm lên 300 mm làm diện tích tăng khoảng 2,25 lần trong khi chi phí mỗi bước gần như giữ nguyên. Đó là động lực kinh tế đã đẩy ngành từ 2 inch những năm 1970 lên 300 mm hiện nay. Còn một yếu tố nữa thường bị bỏ qua: tấm càng lớn thì tỷ lệ diện tích bị bỏ phí ở vành mép càng nhỏ, vì chu vi tăng tuyến tính còn diện tích tăng bình phương.</p>
+      <p class="lang-en">Moving from 200 mm to 300 mm increases area by about 2.25× while per-step cost stays roughly flat. That economic pull drove the industry from 2 inch in the 1970s to 300 mm today. A further factor is often overlooked: larger wafers waste proportionally less area at the edge exclusion zone, because perimeter grows linearly while area grows quadratically.</p>
+      <div class="bl-note lang-vi">Điều này không có nghĩa đường kính lớn luôn tốt hơn cho bạn. Với nghiên cứu và sản xuất lượng nhỏ, wafer 4 inch hoặc 6 inch thường là lựa chọn hợp lý nhất: thiết bị phòng lab hỗ trợ sẵn, giá mỗi tấm thấp, và bạn không lãng phí phần lớn diện tích cho một thí nghiệm chỉ cần vài mm².</div>
+      <div class="bl-note lang-en">This does not mean larger is always better for you. For research and low-volume work, 4-inch or 6-inch wafers are usually the sensible choice: lab equipment already accepts them, per-wafer cost is low, and you are not wasting most of the area on an experiment that needs a few mm².</div>
+
+      <h2 class="lang-vi">Câu hỏi thường gặp</h2>
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-vi">Một tấm wafer làm ra được bao nhiêu con chip?</span><span class="lang-en">How many chips come from one wafer?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Phụ thuộc vào đường kính wafer và diện tích mỗi con chip. Chip nhỏ như vi điều khiển cho ra hàng nghìn con trên một tấm, trong khi chip lớn như GPU cao cấp chỉ được vài chục. Ngoài ra còn phải trừ đi phần hỏng do khuyết tật và vành mép không dùng được.</p>
+            <p class="lang-en">It depends on wafer diameter and die area. Small dies such as microcontrollers yield thousands per wafer, while large dies such as high-end GPUs yield only tens. Defect losses and the unusable edge exclusion zone reduce the count further.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-vi">Vì sao chip lớn lại đắt hơn nhiều so với chip nhỏ?</span><span class="lang-en">Why are large chips so much more expensive?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Khuyết tật phân bố ngẫu nhiên trên tấm wafer. Chip càng lớn thì xác suất chứa ít nhất một khuyết tật càng cao, nên tỷ lệ chip đạt giảm rất nhanh khi tăng diện tích. Giá không tăng tuyến tính theo diện tích mà tăng nhanh hơn nhiều.</p>
+            <p class="lang-en">Defects are distributed randomly across the wafer. The larger the die, the higher the chance it contains at least one defect, so yield falls steeply as area grows. Cost therefore rises much faster than linearly with die size.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-vi">Silic có bị thay thế trong tương lai không?</span><span class="lang-en">Will silicon be replaced?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Không thay thế hoàn toàn, mà được bổ sung. SiC và GaN đang giành thị phần trong điện tử công suất, InP giữ vai trò trong quang tử tốc độ cao. Nhưng với vi mạch số, hệ sinh thái sản xuất silic đã tích luỹ hàng chục năm kinh nghiệm và hạ tầng khổng lồ — chưa vật liệu nào tiệm cận được về chi phí trên mỗi transistor.</p>
+            <p class="lang-en">Not replaced, but supplemented. SiC and GaN are taking share in power electronics, and InP holds its place in high-speed photonics. For digital ICs, however, the silicon manufacturing ecosystem carries decades of accumulated know-how and enormous infrastructure — no material comes close on cost per transistor.</p>
+          </div>
+        </details>
+      </div>
 
       <div class="bl-cta">
         <h3 class="lang-vi">Tìm nguồn silicon wafer chất lượng cho dự án của bạn</h3>

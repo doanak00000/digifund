@@ -37,8 +37,18 @@
       "description": "Giải thích từng bước của quang khắc: phủ photoresist, phơi sáng, hiện hình, ăn mòn, tách resist.",
       "image": "https://digifund.vn/assets/images/siliconwafer.jpg",
       "inLanguage": "vi-VN",
-      "author": { "@type": "Organization", "name": "Digifund" },
-      "publisher": { "@type": "Organization", "name": "Digifund", "logo": { "@type": "ImageObject", "url": "https://digifund.vn/assets/images/logo-2.png" } },
+      "author": {
+        "@type": "Organization",
+        "name": "Digifund"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Digifund",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://digifund.vn/assets/images/logo-2.png"
+        }
+      },
       "datePublished": "2026-07-15",
       "dateModified": "2026-07-15",
       "mainEntityOfPage": "https://digifund.vn/quy-trinh-quang-khac-photolithography.html"
@@ -46,9 +56,53 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://digifund.vn/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://digifund.vn/kien-thuc.html" },
-        { "@type": "ListItem", "position": 3, "name": "Quy trình quang khắc", "item": "https://digifund.vn/quy-trinh-quang-khac-photolithography.html" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Trang chủ",
+          "item": "https://digifund.vn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://digifund.vn/kien-thuc.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Quy trình quang khắc",
+          "item": "https://digifund.vn/quy-trinh-quang-khac-photolithography.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "HMDS dùng để làm gì?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hexamethyldisilazane phản ứng với nhóm silanol trên bề mặt silic oxit, biến bề mặt từ ưa nước thành kỵ nước. Nhờ đó lớp cản quang bám chắc hơn nhiều và không bị bong khi hiện hình. Đây là bước gần như bắt buộc trước khi quay phủ cản quang."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vì sao cần ủ sau khi phơi (PEB)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PEB có hai vai trò. Với cản quang thường, nhiệt làm khuếch tán sản phẩm quang hoá, xoá đi các vân sóng đứng do phản xạ từ đế. Với cản quang khuếch đại hoá học, PEB là bước dẫn động phản ứng xúc tác bởi axit quang sinh — thiếu bước này thì hoa văn gần như không hình thành."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Nên chọn cản quang dương hay âm?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cản quang dương cho độ phân giải và độ dựng vách tốt hơn, là lựa chọn mặc định cho hầu hết công việc chế tạo linh kiện. Cản quang âm bám tốt hơn, bền hoá chất hơn và thường rẻ hơn, phù hợp cho lớp mặt nạ ăn mòn thô hoặc khi cần lớp dày. Với quy trình lift-off, cản quang âm có vách nghiêng ngược lại là ưu điểm lớn."
+          }
+        }
       ]
     }
   ]
@@ -136,6 +190,70 @@
       <h2 class="lang-en">4. Related chemicals & materials</h2>
       <p class="lang-vi">Một chu trình quang khắc cần nhiều vật tư độ tinh khiết cao: <strong>silicon wafer</strong> làm nền, <strong>photoresist</strong>, <strong>developer TMAH</strong>, <strong>etchant (BOE)</strong>, dung dịch <strong>CMP</strong> để làm phẳng giữa các lớp, và dung môi làm sạch như <strong>acetone</strong>. Digifund cung cấp đầy đủ các vật liệu và hoá chất này.</p>
       <p class="lang-en">A lithography cycle requires many high-purity supplies: the <strong>silicon wafer</strong> substrate, <strong>photoresist</strong>, <strong>TMAH developer</strong>, <strong>etchant (BOE)</strong>, <strong>CMP slurry</strong> to planarize between layers, and cleaning solvents such as <strong>acetone</strong>. Digifund supplies this full range of materials and chemicals.</p>
+
+      <h2 id="do-phan-giai" class="lang-vi">5. Điều gì giới hạn độ phân giải</h2>
+      <h2 class="lang-en">5. What limits resolution</h2>
+      <p class="lang-vi">Kích thước chi tiết nhỏ nhất mà một hệ quang khắc tạo được bị chi phối bởi hiện tượng nhiễu xạ, và được mô tả bằng phương trình Rayleigh:</p>
+      <p class="lang-en">The smallest feature a lithography system can print is governed by diffraction, described by the Rayleigh equation:</p>
+      <div class="bl-note"><strong>CD = k₁ · λ / NA</strong></div>
+      <p class="lang-vi">Trong đó CD là kích thước chi tiết tới hạn, λ là bước sóng nguồn sáng, NA là khẩu độ số của hệ thấu kính, và k₁ là hệ số phụ thuộc quy trình. Phương trình này giải thích toàn bộ lịch sử phát triển của ngành:</p>
+      <p class="lang-en">Here CD is the critical dimension, λ the exposure wavelength, NA the numerical aperture of the lens system, and k₁ a process-dependent factor. This single equation explains the whole trajectory of the industry:</p>
+      <ul class="lang-vi">
+        <li><strong>Giảm λ.</strong> Ngành đã đi từ đèn thuỷ ngân vạch g (436 nm) và vạch i (365 nm), sang laser excimer KrF (248 nm) rồi ArF (193 nm), và gần đây là EUV (13,5 nm).</li>
+        <li><strong>Tăng NA.</strong> Thấu kính lớn hơn thu được nhiều bậc nhiễu xạ hơn. Quang khắc nhúng thay không khí giữa thấu kính và wafer bằng nước, nâng NA vượt quá 1.</li>
+        <li><strong>Giảm k₁.</strong> Đây là phần "thủ thuật quy trình": chiếu sáng lệch trục, mặt nạ dịch pha, hiệu chỉnh hiệu ứng lân cận quang học (OPC), phơi nhiều lần.</li>
+      </ul>
+      <ul class="lang-en">
+        <li><strong>Shrink λ.</strong> The industry moved from mercury g-line (436 nm) and i-line (365 nm) to KrF (248 nm) and ArF (193 nm) excimer lasers, and more recently EUV (13.5 nm).</li>
+        <li><strong>Raise NA.</strong> A larger lens captures more diffraction orders. Immersion lithography replaces the air between lens and wafer with water, pushing NA above 1.</li>
+        <li><strong>Lower k₁.</strong> This is the "process tricks" term: off-axis illumination, phase-shift masks, optical proximity correction (OPC) and multiple patterning.</li>
+      </ul>
+      <p class="lang-vi">Phương trình thứ hai cũng quan trọng không kém là <strong>độ sâu trường DOF = k₂ · λ / NA²</strong>. Tăng NA để có chi tiết nhỏ hơn sẽ làm độ sâu trường giảm theo bình phương — đó là lý do độ phẳng wafer và độ đồng đều chiều dày lớp cản quang trở nên khắt khe đến vậy ở các nút công nghệ tiên tiến.</p>
+      <p class="lang-en">An equally important second equation is <strong>depth of focus, DOF = k₂ · λ / NA²</strong>. Raising NA for smaller features shrinks depth of focus quadratically — which is why wafer flatness and resist thickness uniformity become so demanding at advanced nodes.</p>
+
+      <h2 id="loi-thuong-gap" class="lang-vi">6. Lỗi thường gặp trong phòng lab và cách khắc phục</h2>
+      <h2 class="lang-en">6. Common laboratory failures and how to fix them</h2>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-vi">Hiện tượng</span><span class="lang-en">Symptom</span></th><th><span class="lang-vi">Nguyên nhân thường gặp</span><span class="lang-en">Usual cause</span></th><th><span class="lang-vi">Hướng xử lý</span><span class="lang-en">Fix</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="lang-vi">Cản quang bong khỏi wafer</span><span class="lang-en">Resist lifting off</span></td><td><span class="lang-vi">Bề mặt còn ẩm hoặc bẩn hữu cơ</span><span class="lang-en">Surface moisture or organic residue</span></td><td><span class="lang-vi">Ủ khử nước rồi xử lý HMDS tạo bề mặt kỵ nước</span><span class="lang-en">Dehydration bake then HMDS priming</span></td></tr>
+            <tr><td><span class="lang-vi">Vân sọc khi quay phủ</span><span class="lang-en">Striations after spin coating</span></td><td><span class="lang-vi">Dung môi bay hơi không đều, cản quang quá đặc</span><span class="lang-en">Uneven solvent evaporation, resist too viscous</span></td><td><span class="lang-vi">Nhỏ cản quang khi wafer đứng yên, tăng tốc độ quay, kiểm soát độ ẩm phòng</span><span class="lang-en">Static dispense, higher spin speed, control room humidity</span></td></tr>
+            <tr><td><span class="lang-vi">Gờ dày ở mép wafer</span><span class="lang-en">Edge bead</span></td><td><span class="lang-vi">Sức căng bề mặt dồn cản quang ra rìa</span><span class="lang-en">Surface tension pulls resist to the rim</span></td><td><span class="lang-vi">Rửa mép bằng dung môi (EBR) trước khi phơi</span><span class="lang-en">Edge bead removal with solvent before exposure</span></td></tr>
+            <tr><td><span class="lang-vi">Vách hoa văn nghiêng, không dựng đứng</span><span class="lang-en">Sloped rather than vertical sidewalls</span></td><td><span class="lang-vi">Liều phơi sai hoặc lệch tiêu cự</span><span class="lang-en">Wrong dose or defocus</span></td><td><span class="lang-vi">Chạy ma trận liều–tiêu cự để tìm cửa sổ vận hành</span><span class="lang-en">Run a dose–focus matrix to find the process window</span></td></tr>
+            <tr><td><span class="lang-vi">Sóng đứng trên vách</span><span class="lang-en">Standing waves on sidewalls</span></td><td><span class="lang-vi">Ánh sáng phản xạ từ đế giao thoa trong lớp cản quang</span><span class="lang-en">Light reflected from the substrate interferes within the resist</span></td><td><span class="lang-vi">Ủ sau phơi (PEB) để khuếch tán, hoặc dùng lớp chống phản xạ</span><span class="lang-en">Post-exposure bake to diffuse, or an anti-reflective coating</span></td></tr>
+            <tr><td><span class="lang-vi">Còn màng mỏng ở đáy rãnh</span><span class="lang-en">Residual film at trench bottoms (scumming)</span></td><td><span class="lang-vi">Phơi thiếu hoặc hiện hình chưa đủ</span><span class="lang-en">Underexposure or incomplete development</span></td><td><span class="lang-vi">Tăng liều phơi hoặc kéo dài thời gian hiện hình, kiểm tra tuổi developer</span><span class="lang-en">Increase dose or development time, check developer age</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bl-note lang-vi"><strong>Việc đầu tiên nên làm với một quy trình mới:</strong> chạy ma trận liều–tiêu cự trên wafer Test grade. Bạn sẽ tốn vài tấm nhưng xác định được cửa sổ vận hành thật của hệ thống, thay vì dò mò từng mẻ trên wafer Prime đắt tiền.</div>
+      <div class="bl-note lang-en"><strong>The first thing to do with a new process:</strong> run a dose–focus matrix on Test-grade wafers. It consumes a few wafers but maps the real process window of your system, instead of guessing run by run on expensive Prime material.</div>
+
+      <h2 class="lang-vi">Câu hỏi thường gặp</h2>
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-vi">HMDS dùng để làm gì?</span><span class="lang-en">What is HMDS used for?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Hexamethyldisilazane phản ứng với nhóm silanol trên bề mặt silic oxit, biến bề mặt từ ưa nước thành kỵ nước. Nhờ đó lớp cản quang bám chắc hơn nhiều và không bị bong khi hiện hình. Đây là bước gần như bắt buộc trước khi quay phủ cản quang.</p>
+            <p class="lang-en">Hexamethyldisilazane reacts with silanol groups on silicon oxide surfaces, converting them from hydrophilic to hydrophobic. This greatly improves resist adhesion and prevents lifting during development. It is an all but mandatory step before spin coating resist.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-vi">Vì sao cần ủ sau khi phơi (PEB)?</span><span class="lang-en">Why is a post-exposure bake needed?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">PEB có hai vai trò. Với cản quang thường, nhiệt làm khuếch tán sản phẩm quang hoá, xoá đi các vân sóng đứng do phản xạ từ đế. Với cản quang khuếch đại hoá học, PEB là bước dẫn động phản ứng xúc tác bởi axit quang sinh — thiếu bước này thì hoa văn gần như không hình thành.</p>
+            <p class="lang-en">PEB serves two purposes. In conventional resists, heat diffuses the photoproducts and smooths out standing-wave ripples caused by substrate reflection. In chemically amplified resists, PEB drives the acid-catalysed reaction generated during exposure — without it, almost no pattern forms.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-vi">Nên chọn cản quang dương hay âm?</span><span class="lang-en">Should I use positive or negative resist?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Cản quang dương cho độ phân giải và độ dựng vách tốt hơn, là lựa chọn mặc định cho hầu hết công việc chế tạo linh kiện. Cản quang âm bám tốt hơn, bền hoá chất hơn và thường rẻ hơn, phù hợp cho lớp mặt nạ ăn mòn thô hoặc khi cần lớp dày. Với quy trình lift-off, cản quang âm có vách nghiêng ngược lại là ưu điểm lớn.</p>
+            <p class="lang-en">Positive resist gives better resolution and sidewall profiles and is the default for most device work. Negative resist adheres better, resists chemicals more strongly and is usually cheaper, suiting coarse etch masks or thick layers. For lift-off processes, the undercut sidewall of negative resist is a distinct advantage.</p>
+          </div>
+        </details>
+      </div>
 
       <div class="bl-cta">
         <h3 class="lang-vi">Cần vật liệu & hoá chất cho quang khắc?</h3>

@@ -157,6 +157,70 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
       
       <div class="bl-note lang-en"><strong>Why target quality matters:</strong> the purity, density and grain uniformity of a sputtering target directly affect the uniformity, adhesion and electro-optical properties of the film. A poor target causes flaking, contamination and low yield.</div>
 
+      
+      <h2 class="lang-en">4. Specifications to define when ordering a target</h2>
+      
+      <p class="lang-en">Sputtering targets are not commodity items — the same material with different specifications produces a completely different film. These six fields determine both film quality and cost:</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-en">Parameter</span></th><th><span class="lang-en">Why it matters</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="lang-en">Purity</span></td><td><span class="lang-en">Impurities in the target end up in the film. For electrical contacts, alkali metal contamination causes device drift</span></td></tr>
+            <tr><td><span class="lang-en">Bulk density</span></td><td><span class="lang-en">Porous targets crack under thermal shock and shed particles that ruin the film</span></td></tr>
+            <tr><td><span class="lang-en">Size &amp; shape</span></td><td><span class="lang-en">Must match the system cathode: circular by diameter, or rectangular for in-line coaters</span></td></tr>
+            <tr><td><span class="lang-en">Backing plate</span></td><td><span class="lang-en">Brittle ceramic targets are bonded to a copper plate for heat removal and support; ductile metal targets often run bare</span></td></tr>
+            <tr><td><span class="lang-en">Bonding method</span></td><td><span class="lang-en">Indium bonding conducts heat best but limits power due to its low melting point; elastomer bonding tolerates higher power</span></td></tr>
+            <tr><td><span class="lang-en">Grain structure</span></td><td><span class="lang-en">Fine, uniform grains give steadier deposition rates and better film uniformity</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      
+      <h2 class="lang-en">5. DC or RF sputtering — chosen by target material</h2>
+      
+      <p class="lang-en">This is the point beginners most often miss, and it leads to ordering the wrong target. The power supply must match the electrical conductivity of the target material.</p>
+      
+      <ul class="lang-en">
+        <li><strong>DC sputtering</strong> works only with <em>conductive</em> targets — metals such as Ti, Cu, Al, Cr, Mo and their alloys. Higher deposition rates, simpler hardware, lower cost.</li>
+        <li><strong>RF sputtering</strong> is required for <em>insulating</em> targets such as SiO₂, Al₂O₃ and ceramic ITO. Running DC on an insulating target builds positive charge on its surface and extinguishes the discharge within seconds.</li>
+        <li><strong>Reactive sputtering</strong> uses a metal target with a reactive gas (O₂ or N₂) added to the chamber to form oxide or nitride films. Cheaper than buying ceramic targets but far harder to control, because the operating window is narrow.</li>
+      </ul>
+
+      
+      <h2 class="lang-en">6. Target life and the racetrack erosion problem</h2>
+      
+      <p class="lang-en">In magnetron sputtering the magnetic field confines electrons into a closed loop above the target surface. The plasma is densest along that loop, so the target erodes into a ring-shaped groove — the <strong>racetrack</strong> — rather than wearing down evenly.</p>
+      
+      <p class="lang-en">The practical consequence is that target material utilisation is typically only 20–40%. The target must be replaced when the racetrack is close to punching through, even though most of its area is untouched. Never run to breakthrough — if sputtering reaches the copper backing plate, copper contaminates the film and can require a full chamber clean.</p>
+      
+      <div class="bl-note lang-en">A simple way to track this: log cumulative kWh discharged per target rather than counting runs. Racetrack depth scales fairly linearly with accumulated energy, making it a far more reliable predictor of replacement time than run counts.</div>
+
+      
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-en">How long does a sputtering target last?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">It depends on target thickness, operating power and total discharge time, not on the number of runs. Because of racetrack erosion, only about 20–40% of the target mass is used before replacement. Tracking cumulative kWh discharged is the most accurate predictor.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Why do ceramic targets need a backing plate?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Ceramics are brittle and conduct heat poorly. When plasma heats the target surface faster than heat can escape, the internal temperature gradient creates stress and cracks the target. A copper backing plate conducts heat to the cooling system and mechanically supports the ceramic tile.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Can a metal target deposit an oxide film?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Yes, via reactive sputtering: use a metal target and admit oxygen into the chamber so the oxide forms on the substrate. This is cheaper than buying ceramic targets but the process window is narrow — too little oxygen gives an oxygen-deficient film, too much oxidises the target surface and the deposition rate collapses.</p>
+          </div>
+        </details>
+      </div>
+
       <div class="bl-cta">
         
         <h3 class="lang-en">Need sputtering targets for your thin-film project?</h3>

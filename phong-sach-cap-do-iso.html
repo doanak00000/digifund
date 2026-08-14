@@ -37,8 +37,18 @@
       "description": "Giải thích cấp độ sạch ISO, kiểm soát nhiễm bẩn và vật tư phòng sạch trong sản xuất bán dẫn.",
       "image": "https://digifund.vn/assets/images/siliconwafer.jpg",
       "inLanguage": "vi-VN",
-      "author": { "@type": "Organization", "name": "Digifund" },
-      "publisher": { "@type": "Organization", "name": "Digifund", "logo": { "@type": "ImageObject", "url": "https://digifund.vn/assets/images/logo-2.png" } },
+      "author": {
+        "@type": "Organization",
+        "name": "Digifund"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Digifund",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://digifund.vn/assets/images/logo-2.png"
+        }
+      },
       "datePublished": "2026-07-15",
       "dateModified": "2026-07-15",
       "mainEntityOfPage": "https://digifund.vn/phong-sach-cap-do-iso.html"
@@ -46,9 +56,53 @@
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://digifund.vn/" },
-        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://digifund.vn/kien-thuc.html" },
-        { "@type": "ListItem", "position": 3, "name": "Phòng sạch & cấp độ ISO", "item": "https://digifund.vn/phong-sach-cap-do-iso.html" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Trang chủ",
+          "item": "https://digifund.vn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://digifund.vn/kien-thuc.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Phòng sạch & cấp độ ISO",
+          "item": "https://digifund.vn/phong-sach-cap-do-iso.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Phòng lab nghiên cứu cần cấp ISO mấy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Phần lớn phòng lab nghiên cứu vật liệu và bán dẫn hoạt động tốt ở ISO 7, kết hợp tủ dòng chảy tầng đạt ISO 5 đặt tại các bước nhạy cảm như quang khắc. Xây cả phòng ở ISO 5 chỉ cần thiết khi làm việc thường xuyên với chi tiết dưới một micromet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Chênh áp giữa các phòng để làm gì?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Phòng sạch hơn luôn được giữ áp suất cao hơn phòng kém sạch liền kề, để khi mở cửa thì không khí thổi từ trong ra ngoài chứ không hút bụi vào. Chênh áp thường duy trì trong khoảng vài chục pascal giữa các cấp liền kề."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bao lâu phải kiểm định lại phòng sạch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chu kỳ kiểm định phụ thuộc cấp độ sạch và yêu cầu của ngành, với phòng sạch cấp cao thường được kiểm tra thường xuyên hơn. Ngoài kiểm định định kỳ, nên đếm hạt liên tục hoặc theo lịch ngắn hơn ở các vị trí trọng yếu để phát hiện sớm khi màng lọc suy giảm hoặc quy trình thao tác bị buông lỏng."
+          }
+        }
       ]
     }
   ]
@@ -138,6 +192,87 @@
 
       <div class="bl-note lang-vi"><strong>Ghi nhớ:</strong> mỗi cấp ISO khắt khe hơn đòi hỏi chi phí xây dựng và vận hành cao hơn nhiều. Việc chọn đúng cấp độ sạch cho từng công đoạn giúp cân bằng chất lượng và chi phí.</div>
       <div class="bl-note lang-en"><strong>Key point:</strong> each stricter ISO class demands significantly higher construction and operating costs. Choosing the right class for each process step balances quality and cost.</div>
+
+      <h2 id="chon-cap" class="lang-vi">4. Chọn cấp độ sạch nào cho công việc của bạn</h2>
+      <h2 class="lang-en">4. Choosing the right cleanliness class for your work</h2>
+      <p class="lang-vi">Nguyên tắc chi phối: chi phí xây dựng và vận hành tăng theo cấp số nhân khi siết cấp độ sạch, trong khi lợi ích chỉ tăng khi kích thước chi tiết nhỏ tới mức hạt bụi thực sự gây hỏng. Chọn cao hơn mức cần thiết là lãng phí ngân sách vận hành hàng năm.</p>
+      <p class="lang-en">The governing principle: construction and operating costs rise steeply as the class tightens, while the benefit only materialises once feature sizes are small enough that particles genuinely cause failures. Over-specifying wastes operating budget every year.</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-vi">Cấp ISO</span><span class="lang-en">ISO class</span></th><th><span class="lang-vi">Phù hợp cho</span><span class="lang-en">Suitable for</span></th></tr></thead>
+          <tbody>
+            <tr><td>ISO 3–4</td><td><span class="lang-vi">Quang khắc nút công nghệ tiên tiến, sản xuất chip thương mại</span><span class="lang-en">Advanced-node lithography, commercial chip production</span></td></tr>
+            <tr><td>ISO 5</td><td><span class="lang-vi">Quang khắc nghiên cứu, chế tạo MEMS, đóng gói linh kiện nhạy</span><span class="lang-en">Research lithography, MEMS fabrication, sensitive device packaging</span></td></tr>
+            <tr><td>ISO 6</td><td><span class="lang-vi">Lắng đọng màng mỏng, ăn mòn, khu vực đệm quanh vùng ISO 5</span><span class="lang-en">Thin-film deposition, etching, buffer zones around ISO 5 areas</span></td></tr>
+            <tr><td>ISO 7</td><td><span class="lang-vi">Phòng lab nghiên cứu vật liệu, chuẩn bị mẫu, khu thay đồ</span><span class="lang-en">Materials research labs, sample preparation, gowning areas</span></td></tr>
+            <tr><td>ISO 8</td><td><span class="lang-vi">Khu vực hỗ trợ, kho vật tư sạch, hành lang kỹ thuật</span><span class="lang-en">Support areas, clean supply storage, service corridors</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bl-note lang-vi"><strong>Chiến lược thực dụng cho phòng lab nghiên cứu:</strong> thay vì xây cả phòng ở ISO 5, hãy làm phòng nền ISO 7 rồi đặt tủ dòng chảy tầng hoặc buồng mini-environment đạt ISO 5 ngay tại các bước nhạy cảm. Chi phí đầu tư và điện năng giảm rất nhiều mà vẫn bảo vệ được đúng chỗ cần bảo vệ.</div>
+      <div class="bl-note lang-en"><strong>A pragmatic strategy for research labs:</strong> instead of building the whole room to ISO 5, build an ISO 7 base room and place laminar flow hoods or mini-environments rated ISO 5 exactly at the sensitive steps. Capital and energy costs drop sharply while protection stays where it is actually needed.</div>
+
+      <h2 id="con-nguoi" class="lang-vi">5. Con người là nguồn nhiễm bẩn lớn nhất</h2>
+      <h2 class="lang-en">5. People are the largest contamination source</h2>
+      <p class="lang-vi">Thiết bị lọc khí thường được chú ý nhiều nhất, nhưng trong hầu hết phòng sạch đang vận hành, phần lớn hạt bụi đến từ chính người trong phòng. Cơ thể người liên tục bong tế bào da, và mỗi chuyển động đều phát tán hạt vào không khí.</p>
+      <p class="lang-en">Air filtration gets the most attention, but in most operating cleanrooms the majority of particles come from the people inside. The human body continuously sheds skin cells, and every movement releases particles into the air.</p>
+      <ul class="lang-vi">
+        <li><strong>Di chuyển chậm.</strong> Đi nhanh hoặc động tác đột ngột làm số hạt phát tán tăng vọt. Đây là quy tắc dễ vi phạm nhất và cũng dễ sửa nhất.</li>
+        <li><strong>Trang phục đúng và mặc đúng thứ tự.</strong> Bộ áo liền thân, mũ trùm, khẩu trang, găng nitrile, bao giày. Mặc từ trên xuống dưới để hạt rơi xuống không bám vào phần đã mặc sạch.</li>
+        <li><strong>Không mang giấy, bút chì, bìa carton thường vào phòng.</strong> Giấy thường sinh bụi rất mạnh; dùng giấy chuyên dụng cho phòng sạch và bút bi.</li>
+        <li><strong>Giới hạn số người.</strong> Số hạt trong phòng gần như tỷ lệ thuận với số người đang có mặt.</li>
+        <li><strong>Không dùng mỹ phẩm, nước hoa</strong> và tránh mang quần áo sợi bông vào bên trong bộ đồ sạch.</li>
+      </ul>
+      <ul class="lang-en">
+        <li><strong>Move slowly.</strong> Fast walking or abrupt gestures spike particle counts. This is the most frequently broken rule and the easiest to fix.</li>
+        <li><strong>Correct garments, correct order.</strong> Coverall, hood, face mask, nitrile gloves, overshoes. Gown top-down so falling particles do not land on already-clean layers.</li>
+        <li><strong>No ordinary paper, pencils or cardboard.</strong> Standard paper sheds heavily; use cleanroom paper and ballpoint pens.</li>
+        <li><strong>Limit occupancy.</strong> Particle counts scale almost linearly with the number of people present.</li>
+        <li><strong>No cosmetics or fragrance</strong>, and avoid cotton-fibre clothing under the cleanroom suit.</li>
+      </ul>
+
+      <h2 id="do-luong" class="lang-vi">6. Đo và duy trì cấp độ sạch</h2>
+      <h2 class="lang-en">6. Measuring and maintaining the class</h2>
+      <p class="lang-vi">Một phòng sạch không giữ nguyên cấp độ nếu không được giám sát. ISO 14644 phân biệt ba trạng thái đo, và con số chỉ có ý nghĩa khi nói rõ đo ở trạng thái nào:</p>
+      <p class="lang-en">A cleanroom does not hold its class without monitoring. ISO 14644 distinguishes three occupancy states, and a number only means something when the state is stated:</p>
+      <ul class="lang-vi">
+        <li><strong>As-built</strong> — phòng đã hoàn thiện, chưa lắp thiết bị, không có người.</li>
+        <li><strong>At-rest</strong> — thiết bị đã lắp và đang chạy, nhưng không có người làm việc.</li>
+        <li><strong>Operational</strong> — thiết bị chạy và có người thao tác bình thường. Đây là con số phản ánh thực tế sản xuất, và luôn kém nhất trong ba trạng thái.</li>
+      </ul>
+      <ul class="lang-en">
+        <li><strong>As-built</strong> — the room is complete, equipment not installed, no personnel.</li>
+        <li><strong>At-rest</strong> — equipment installed and running, but no personnel working.</li>
+        <li><strong>Operational</strong> — equipment running with people working normally. This is the number that reflects real production, and it is always the worst of the three.</li>
+      </ul>
+      <p class="lang-vi">Khi một nhà cung cấp hay một báo cáo nói "phòng đạt ISO 5", câu hỏi đầu tiên phải là: đo ở trạng thái nào? Rất nhiều phòng đạt ISO 5 ở at-rest nhưng chỉ còn ISO 6–7 khi có người làm việc. Ngoài đếm hạt, cần định kỳ kiểm tra tính toàn vẹn của màng lọc HEPA/ULPA, chênh áp giữa các phòng, số lần trao đổi khí mỗi giờ, cùng nhiệt độ và độ ẩm.</p>
+      <p class="lang-en">When a supplier or a report claims "the room is ISO 5", the first question must be: measured in which state? Many rooms meet ISO 5 at rest but fall to ISO 6–7 once people are working. Beyond particle counting, periodic checks should cover HEPA/ULPA filter integrity, differential pressure between rooms, air changes per hour, and temperature and humidity.</p>
+
+      <h2 class="lang-vi">Câu hỏi thường gặp</h2>
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-vi">Phòng lab nghiên cứu cần cấp ISO mấy?</span><span class="lang-en">Which ISO class does a research lab need?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Phần lớn phòng lab nghiên cứu vật liệu và bán dẫn hoạt động tốt ở ISO 7, kết hợp tủ dòng chảy tầng đạt ISO 5 đặt tại các bước nhạy cảm như quang khắc. Xây cả phòng ở ISO 5 chỉ cần thiết khi làm việc thường xuyên với chi tiết dưới một micromet.</p>
+            <p class="lang-en">Most materials and semiconductor research labs work well at ISO 7, combined with ISO 5 laminar flow hoods at sensitive steps such as lithography. Building an entire room to ISO 5 is only warranted when routinely working below one micrometre.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-vi">Chênh áp giữa các phòng để làm gì?</span><span class="lang-en">What is differential pressure for?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Phòng sạch hơn luôn được giữ áp suất cao hơn phòng kém sạch liền kề, để khi mở cửa thì không khí thổi từ trong ra ngoài chứ không hút bụi vào. Chênh áp thường duy trì trong khoảng vài chục pascal giữa các cấp liền kề.</p>
+            <p class="lang-en">The cleaner room is always held at higher pressure than the less clean room next to it, so that when a door opens air flows outward rather than drawing dust inward. The differential is typically kept in the range of a few tens of pascals between adjacent classes.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-vi">Bao lâu phải kiểm định lại phòng sạch?</span><span class="lang-en">How often must a cleanroom be recertified?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-vi">Chu kỳ kiểm định phụ thuộc cấp độ sạch và yêu cầu của ngành, với phòng sạch cấp cao thường được kiểm tra thường xuyên hơn. Ngoài kiểm định định kỳ, nên đếm hạt liên tục hoặc theo lịch ngắn hơn ở các vị trí trọng yếu để phát hiện sớm khi màng lọc suy giảm hoặc quy trình thao tác bị buông lỏng.</p>
+            <p class="lang-en">Recertification intervals depend on the class and on industry requirements, with higher classes generally tested more frequently. Beyond scheduled certification, continuous or more frequent particle counting at critical locations gives early warning when filters degrade or gowning discipline slips.</p>
+          </div>
+        </details>
+      </div>
 
       <div class="bl-cta">
         <h3 class="lang-vi">Cần thiết bị & vật tư phòng sạch?</h3>

@@ -164,6 +164,77 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
       
       <div class="bl-note lang-en"><strong>Key point:</strong> each stricter ISO class demands significantly higher construction and operating costs. Choosing the right class for each process step balances quality and cost.</div>
 
+      
+      <h2 class="lang-en">4. Choosing the right cleanliness class for your work</h2>
+      
+      <p class="lang-en">The governing principle: construction and operating costs rise steeply as the class tightens, while the benefit only materialises once feature sizes are small enough that particles genuinely cause failures. Over-specifying wastes operating budget every year.</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-en">ISO class</span></th><th><span class="lang-en">Suitable for</span></th></tr></thead>
+          <tbody>
+            <tr><td>ISO 3–4</td><td><span class="lang-en">Advanced-node lithography, commercial chip production</span></td></tr>
+            <tr><td>ISO 5</td><td><span class="lang-en">Research lithography, MEMS fabrication, sensitive device packaging</span></td></tr>
+            <tr><td>ISO 6</td><td><span class="lang-en">Thin-film deposition, etching, buffer zones around ISO 5 areas</span></td></tr>
+            <tr><td>ISO 7</td><td><span class="lang-en">Materials research labs, sample preparation, gowning areas</span></td></tr>
+            <tr><td>ISO 8</td><td><span class="lang-en">Support areas, clean supply storage, service corridors</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="bl-note lang-en"><strong>A pragmatic strategy for research labs:</strong> instead of building the whole room to ISO 5, build an ISO 7 base room and place laminar flow hoods or mini-environments rated ISO 5 exactly at the sensitive steps. Capital and energy costs drop sharply while protection stays where it is actually needed.</div>
+
+      
+      <h2 class="lang-en">5. People are the largest contamination source</h2>
+      
+      <p class="lang-en">Air filtration gets the most attention, but in most operating cleanrooms the majority of particles come from the people inside. The human body continuously sheds skin cells, and every movement releases particles into the air.</p>
+      
+      <ul class="lang-en">
+        <li><strong>Move slowly.</strong> Fast walking or abrupt gestures spike particle counts. This is the most frequently broken rule and the easiest to fix.</li>
+        <li><strong>Correct garments, correct order.</strong> Coverall, hood, face mask, nitrile gloves, overshoes. Gown top-down so falling particles do not land on already-clean layers.</li>
+        <li><strong>No ordinary paper, pencils or cardboard.</strong> Standard paper sheds heavily; use cleanroom paper and ballpoint pens.</li>
+        <li><strong>Limit occupancy.</strong> Particle counts scale almost linearly with the number of people present.</li>
+        <li><strong>No cosmetics or fragrance</strong>, and avoid cotton-fibre clothing under the cleanroom suit.</li>
+      </ul>
+
+      
+      <h2 class="lang-en">6. Measuring and maintaining the class</h2>
+      
+      <p class="lang-en">A cleanroom does not hold its class without monitoring. ISO 14644 distinguishes three occupancy states, and a number only means something when the state is stated:</p>
+      
+      <ul class="lang-en">
+        <li><strong>As-built</strong> — the room is complete, equipment not installed, no personnel.</li>
+        <li><strong>At-rest</strong> — equipment installed and running, but no personnel working.</li>
+        <li><strong>Operational</strong> — equipment running with people working normally. This is the number that reflects real production, and it is always the worst of the three.</li>
+      </ul>
+      
+      <p class="lang-en">When a supplier or a report claims "the room is ISO 5", the first question must be: measured in which state? Many rooms meet ISO 5 at rest but fall to ISO 6–7 once people are working. Beyond particle counting, periodic checks should cover HEPA/ULPA filter integrity, differential pressure between rooms, air changes per hour, and temperature and humidity.</p>
+
+      
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-en">Which ISO class does a research lab need?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Most materials and semiconductor research labs work well at ISO 7, combined with ISO 5 laminar flow hoods at sensitive steps such as lithography. Building an entire room to ISO 5 is only warranted when routinely working below one micrometre.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">What is differential pressure for?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">The cleaner room is always held at higher pressure than the less clean room next to it, so that when a door opens air flows outward rather than drawing dust inward. The differential is typically kept in the range of a few tens of pascals between adjacent classes.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">How often must a cleanroom be recertified?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Recertification intervals depend on the class and on industry requirements, with higher classes generally tested more frequently. Beyond scheduled certification, continuous or more frequent particle counting at critical locations gives early warning when filters degrade or gowning discipline slips.</p>
+          </div>
+        </details>
+      </div>
+
       <div class="bl-cta">
         
         <h3 class="lang-en">Need cleanroom equipment & consumables?</h3>

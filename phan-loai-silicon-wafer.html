@@ -196,6 +196,43 @@
         </table>
       </div>
 
+      <h2 id="vung-cam" class="lang-vi">7. Vùng cấm — con số giải thích mọi khác biệt</h2>
+      <h2 class="lang-en">7. Bandgap — the number behind every difference</h2>
+      <p class="lang-vi">Nếu chỉ nhớ một thông số để hiểu vì sao các loại wafer khác nhau đến vậy, hãy nhớ <strong>độ rộng vùng cấm</strong>. Đó là năng lượng tối thiểu để đưa một electron từ vùng hoá trị lên vùng dẫn, và nó quyết định gần như mọi tính chất còn lại.</p>
+      <p class="lang-en">If you remember only one parameter to understand why wafer types differ so much, make it the <strong>bandgap</strong>. It is the minimum energy needed to lift an electron from the valence band to the conduction band, and it governs nearly everything else.</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-vi">Vật liệu</span><span class="lang-en">Material</span></th><th><span class="lang-vi">Vùng cấm (eV)</span><span class="lang-en">Bandgap (eV)</span></th><th><span class="lang-vi">Loại</span><span class="lang-en">Type</span></th><th><span class="lang-vi">Hệ quả</span><span class="lang-en">Consequence</span></th></tr></thead>
+          <tbody>
+            <tr><td>Si</td><td>~1,1</td><td><span class="lang-vi">Xiên</span><span class="lang-en">Indirect</span></td><td><span class="lang-vi">Phát xạ kém, không làm laser được</span><span class="lang-en">Poor light emission, cannot lase</span></td></tr>
+            <tr><td>GaAs</td><td>~1,4</td><td><span class="lang-vi">Thẳng</span><span class="lang-en">Direct</span></td><td><span class="lang-vi">Phát xạ tốt, độ linh động electron cao</span><span class="lang-en">Efficient emission, high electron mobility</span></td></tr>
+            <tr><td>InP</td><td>~1,3</td><td><span class="lang-vi">Thẳng</span><span class="lang-en">Direct</span></td><td><span class="lang-vi">Phát xạ đúng dải sợi quang 1310/1550 nm</span><span class="lang-en">Emits in the 1310/1550 nm fibre bands</span></td></tr>
+            <tr><td>4H-SiC</td><td>~3,3</td><td><span class="lang-vi">Xiên</span><span class="lang-en">Indirect</span></td><td><span class="lang-vi">Chịu điện trường cao, hoạt động ở nhiệt độ cao</span><span class="lang-en">Withstands high fields and temperatures</span></td></tr>
+            <tr><td>GaN</td><td>~3,4</td><td><span class="lang-vi">Thẳng</span><span class="lang-en">Direct</span></td><td><span class="lang-vi">LED xanh dương/trắng, RF công suất</span><span class="lang-en">Blue/white LEDs, RF power</span></td></tr>
+            <tr><td>AlN</td><td>~6,2</td><td><span class="lang-vi">Thẳng</span><span class="lang-en">Direct</span></td><td><span class="lang-vi">Trong suốt với UV-C, đế cho LED tử ngoại</span><span class="lang-en">Transparent to UV-C, substrate for UV LEDs</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lang-vi">Hai điều rút ra. Thứ nhất, <strong>vùng cấm thẳng hay xiên</strong> quyết định vật liệu có phát sáng hiệu quả không — đây là lý do gốc rễ khiến không ai làm laser bằng silic và vì sao quang tử silic phải ghép laser InP từ bên ngoài vào. Thứ hai, <strong>vùng cấm rộng</strong> đồng nghĩa với chịu được điện trường lớn hơn trước khi đánh thủng, nên SiC và GaN thống trị điện tử công suất.</p>
+      <p class="lang-en">Two takeaways. First, whether the bandgap is <strong>direct or indirect</strong> decides whether the material emits light efficiently — the root reason nobody builds lasers from silicon, and why silicon photonics must bond in external InP lasers. Second, a <strong>wide bandgap</strong> means the material tolerates a higher electric field before breakdown, which is why SiC and GaN dominate power electronics.</p>
+
+      <h2 id="chon-nhanh" class="lang-vi">8. Quy trình chọn nhanh trong bốn câu hỏi</h2>
+      <h2 class="lang-en">8. A four-question shortcut to the right wafer</h2>
+      <ol class="lang-vi">
+        <li><strong>Linh kiện của bạn có cần phát ra ánh sáng không?</strong> Có → cần vùng cấm thẳng: GaAs, InP, GaN trên sapphire hoặc SiC. Không → sang câu 2.</li>
+        <li><strong>Có phải chịu điện áp cao hoặc nhiệt độ cao không?</strong> Có → SiC, hoặc FZ-Si nếu vẫn dùng silic. Không → sang câu 3.</li>
+        <li><strong>Có làm việc ở tần số rất cao không?</strong> Có → cần đế tổn hao thấp: GaAs bán cách điện, SiC HPSI hoặc RF-SOI. Không → sang câu 4.</li>
+        <li><strong>Có cần cách ly linh kiện khỏi đế không?</strong> Có → SOI. Không → CZ-Si thường là đủ và rẻ nhất.</li>
+      </ol>
+      <ol class="lang-en">
+        <li><strong>Does your device need to emit light?</strong> Yes → you need a direct bandgap: GaAs, InP, or GaN on sapphire or SiC. No → go to 2.</li>
+        <li><strong>Must it withstand high voltage or high temperature?</strong> Yes → SiC, or FZ-Si if staying with silicon. No → go to 3.</li>
+        <li><strong>Does it operate at very high frequency?</strong> Yes → you need a low-loss substrate: semi-insulating GaAs, SiC HPSI or RF-SOI. No → go to 4.</li>
+        <li><strong>Do devices need isolating from the substrate?</strong> Yes → SOI. No → plain CZ-Si is usually sufficient and cheapest.</li>
+      </ol>
+      <p class="lang-vi">Chọn xong vật liệu, bước tiếp theo là chọn phương pháp nuôi, phân hạng và đánh bóng — xem <a href="./cz-vs-fz-silicon-wafer.html">CZ vs FZ silicon wafer</a>. Nếu muốn tra theo ứng dụng cụ thể, xem <a href="./chon-wafer-cho-nghien-cuu.html">chọn wafer cho nghiên cứu</a>.</p>
+      <p class="lang-en">Once the material is settled, the next choices are growth method, grade and polish — see <a href="./cz-vs-fz-silicon-wafer.html">CZ vs FZ silicon wafer</a>. To look things up by specific application, see <a href="./chon-wafer-cho-nghien-cuu.html">choosing wafers for research</a>.</p>
+
       <div class="bl-cta">
         <h3 class="lang-vi">Digifund cung cấp đầy đủ các loại wafer bán dẫn</h3>
         <h3 class="lang-en">Digifund supplies the full range of semiconductor wafers</h3>

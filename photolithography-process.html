@@ -158,6 +158,66 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
       
       <p class="lang-en">A lithography cycle requires many high-purity supplies: the <strong>silicon wafer</strong> substrate, <strong>photoresist</strong>, <strong>TMAH developer</strong>, <strong>etchant (BOE)</strong>, <strong>CMP slurry</strong> to planarize between layers, and cleaning solvents such as <strong>acetone</strong>. Digifund supplies this full range of materials and chemicals.</p>
 
+      
+      <h2 class="lang-en">5. What limits resolution</h2>
+      
+      <p class="lang-en">The smallest feature a lithography system can print is governed by diffraction, described by the Rayleigh equation:</p>
+      <div class="bl-note"><strong>CD = k₁ · λ / NA</strong></div>
+      
+      <p class="lang-en">Here CD is the critical dimension, λ the exposure wavelength, NA the numerical aperture of the lens system, and k₁ a process-dependent factor. This single equation explains the whole trajectory of the industry:</p>
+      
+      <ul class="lang-en">
+        <li><strong>Shrink λ.</strong> The industry moved from mercury g-line (436 nm) and i-line (365 nm) to KrF (248 nm) and ArF (193 nm) excimer lasers, and more recently EUV (13.5 nm).</li>
+        <li><strong>Raise NA.</strong> A larger lens captures more diffraction orders. Immersion lithography replaces the air between lens and wafer with water, pushing NA above 1.</li>
+        <li><strong>Lower k₁.</strong> This is the "process tricks" term: off-axis illumination, phase-shift masks, optical proximity correction (OPC) and multiple patterning.</li>
+      </ul>
+      
+      <p class="lang-en">An equally important second equation is <strong>depth of focus, DOF = k₂ · λ / NA²</strong>. Raising NA for smaller features shrinks depth of focus quadratically — which is why wafer flatness and resist thickness uniformity become so demanding at advanced nodes.</p>
+
+      
+      <h2 class="lang-en">6. Common laboratory failures and how to fix them</h2>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-en">Symptom</span></th><th><span class="lang-en">Usual cause</span></th><th><span class="lang-en">Fix</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="lang-en">Resist lifting off</span></td><td><span class="lang-en">Surface moisture or organic residue</span></td><td><span class="lang-en">Dehydration bake then HMDS priming</span></td></tr>
+            <tr><td><span class="lang-en">Striations after spin coating</span></td><td><span class="lang-en">Uneven solvent evaporation, resist too viscous</span></td><td><span class="lang-en">Static dispense, higher spin speed, control room humidity</span></td></tr>
+            <tr><td><span class="lang-en">Edge bead</span></td><td><span class="lang-en">Surface tension pulls resist to the rim</span></td><td><span class="lang-en">Edge bead removal with solvent before exposure</span></td></tr>
+            <tr><td><span class="lang-en">Sloped rather than vertical sidewalls</span></td><td><span class="lang-en">Wrong dose or defocus</span></td><td><span class="lang-en">Run a dose–focus matrix to find the process window</span></td></tr>
+            <tr><td><span class="lang-en">Standing waves on sidewalls</span></td><td><span class="lang-en">Light reflected from the substrate interferes within the resist</span></td><td><span class="lang-en">Post-exposure bake to diffuse, or an anti-reflective coating</span></td></tr>
+            <tr><td><span class="lang-en">Residual film at trench bottoms (scumming)</span></td><td><span class="lang-en">Underexposure or incomplete development</span></td><td><span class="lang-en">Increase dose or development time, check developer age</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="bl-note lang-en"><strong>The first thing to do with a new process:</strong> run a dose–focus matrix on Test-grade wafers. It consumes a few wafers but maps the real process window of your system, instead of guessing run by run on expensive Prime material.</div>
+
+      
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-en">What is HMDS used for?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Hexamethyldisilazane reacts with silanol groups on silicon oxide surfaces, converting them from hydrophilic to hydrophobic. This greatly improves resist adhesion and prevents lifting during development. It is an all but mandatory step before spin coating resist.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Why is a post-exposure bake needed?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">PEB serves two purposes. In conventional resists, heat diffuses the photoproducts and smooths out standing-wave ripples caused by substrate reflection. In chemically amplified resists, PEB drives the acid-catalysed reaction generated during exposure — without it, almost no pattern forms.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Should I use positive or negative resist?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Positive resist gives better resolution and sidewall profiles and is the default for most device work. Negative resist adheres better, resists chemicals more strongly and is usually cheaper, suiting coarse etch masks or thick layers. For lift-off processes, the undercut sidewall of negative resist is a distinct advantage.</p>
+          </div>
+        </details>
+      </div>
+
       <div class="bl-cta">
         
         <h3 class="lang-en">Need materials & chemicals for lithography?</h3>
