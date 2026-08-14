@@ -333,7 +333,7 @@ window.PD_DATA = {
                     rows: [
                         { k: { vi: 'Vật liệu', en: 'Material' }, v: { vi: 'Đơn tinh thể Al₂O₃, độ tinh khiết 99.999%', en: 'Single-crystal Al₂O₃, purity 99.999%' } },
                         { k: { vi: 'Định hướng (plane)', en: 'Orientation (plane)' }, v: 'C-plane (0001) ; A-plane ; R-plane ; M-plane' },
-                        { k: { vi: 'Kích thước', en: 'Size' }, v: '2" ; 4" ; 6" ; 8" (& tấm 310×310 mm)' },
+                        { k: { vi: 'Kích thước', en: 'Size' }, v: { vi: '2" ; 4" ; 6" ; 8" (& tấm 310×310 mm)', en: '2" ; 4" ; 6" ; 8" (& 310×310 mm plate)' } },
                         { k: { vi: 'Độ dày (mm)', en: 'Thickness (mm)' }, v: '0.43 ; 0.65 ; 0.75 ; 1.0' },
                         { k: { vi: 'Đánh bóng', en: 'Polished' }, v: 'SSP ; DSP (epi-ready)' },
                         { k: { vi: 'Ứng dụng', en: 'Applications' }, v: { vi: 'LED, GaN epitaxy, quang học, tản nhiệt', en: 'LED, GaN epitaxy, optics, heat dissipation' } }
@@ -581,7 +581,7 @@ window.PD_DATA = {
                     rows: [
                         { k: { vi: 'Vật liệu', en: 'Material' }, v: 'Ti, Cu, Al, Au, Ag, Cr, Ni, Mo, W, Zn, ITO, ZnO, TiO₂, SiO₂…' },
                         { k: { vi: 'Độ tinh khiết', en: 'Purity' }, v: '99.5% ; 99.9% ; 99.99% ; 99.999%' },
-                        { k: { vi: 'Đường kính', en: 'Diameter (Size)' }, v: '2" ; 3" ; 4" ; 6" (& bia chữ nhật)' },
+                        { k: { vi: 'Đường kính', en: 'Diameter (Size)' }, v: { vi: '2" ; 3" ; 4" ; 6" (& bia chữ nhật)', en: '2" ; 3" ; 4" ; 6" (& rectangular targets)' } },
                         { k: { vi: 'Độ dày', en: 'Thickness' }, v: '3 mm ; 5 mm ; 6 mm' },
                         { k: { vi: 'Hình dạng', en: 'Shape' }, v: { vi: 'Tròn / Chữ nhật', en: 'Round / Rectangular' } },
                         { k: { vi: 'Đế gắn (Backing)', en: 'Backing plate' }, v: { vi: 'Cu / In (tuỳ chọn)', en: 'Cu / In (optional)' } }
@@ -627,7 +627,7 @@ window.PD_DATA = {
                         { k: { vi: 'Thể tích', en: 'Volume' }, v: '50 – 500 mL' },
                         { k: { vi: 'Nhiệt độ tối đa', en: 'Max temperature' }, v: '≤ 600 °C' },
                         { k: { vi: 'Áp suất tối đa', en: 'Max pressure' }, v: '≤ 50 bar' },
-                        { k: { vi: 'Vật liệu', en: 'Material' }, v: 'SS316 / Thạch anh' }
+                        { k: { vi: 'Vật liệu', en: 'Material' }, v: { vi: 'SS316 / Thạch anh', en: 'SS316 / Quartz' } }
                     ]
                 },
                 variants: [
