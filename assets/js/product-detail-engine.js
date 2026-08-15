@@ -54,6 +54,11 @@
         var FILTER_KEYS = ['size', 'type', 'doping', 'orientation', 'polytype', 'resistivity'];
 
         function escA(s) { return esc(s).replace(/"/g, '&quot;'); }
+        /* Nhãn nào bị CSS text-transform:uppercase sẽ biến ký tự micro µ (U+00B5)
+           thành chữ Mu hoa Hy Lạp Μ (U+039C) — trông hệt chữ M Latin, khiến "µm"
+           bị đọc thành "mm", lệch 1000 lần trên bảng thông số. Bọc µ lại để giữ
+           nguyên dạng ở các nhãn viết hoa. */
+        function escUC(s) { return esc(s).replace(/µ/g, '<span class="pd-keepcase">µ</span>'); }
         function slug(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().split(' ')[0]; }
         function keyId(spec) { var e = (spec.k && typeof spec.k === 'object') ? spec.k.en : spec.k; return slug(e); }
         function specVal(v, id) {
@@ -83,7 +88,7 @@
             if (!sum || !sum.rows || !sum.rows.length) return '';
             var cap = sum.title ? T(sum.title) : T(STR.summaryT);
             var cells = sum.rows.map(function (r) {
-                return '<div class="pd-sum__cell"><span class="pd-sum__k">' + esc(T(r.k)) + '</span><span class="pd-sum__v">' + esc(T(r.v)) + '</span></div>';
+                return '<div class="pd-sum__cell"><span class="pd-sum__k">' + escUC(T(r.k)) + '</span><span class="pd-sum__v">' + esc(T(r.v)) + '</span></div>';
             }).join('');
             return '<div class="pd-sum"><div class="pd-sum__cap">' + esc(cap) + '</div><div class="pd-sum__grid">' + cells + '</div></div>';
         }
@@ -144,7 +149,7 @@
             }
 
             // bảng
-            var head = colIds.map(function (id) { return '<th>' + esc(T(colLabel[id])) + '</th>'; }).join('') + '<th class="pdt-act"></th>';
+            var head = colIds.map(function (id) { return '<th>' + escUC(T(colLabel[id])) + '</th>'; }).join('') + '<th class="pdt-act"></th>';
             var rows = list.map(function (e) {
                 var v = e.v;
                 var dataAttr = showFilter ? dims.map(function (d) { return 'data-f-' + d + '="' + escA(specVal(v, d)) + '"'; }).join(' ') : '';
@@ -305,7 +310,7 @@
                         return '<button type="button" class="cfg-opt' + (active ? ' active' : '') + (ok ? '' : ' is-disabled') + '" ' +
                             'data-item="' + itemKey + '" data-dim="' + d + '" data-val="' + escA(x) + '"' + (ok ? '' : ' disabled') + '>' + esc(x) + '</button>';
                     }).join('');
-                    return '<div class="cfg-row"><span class="cfg-label">' + esc(T(cfg.labels[d])) + '</span><div class="cfg-opts">' + opts + '</div></div>';
+                    return '<div class="cfg-row"><span class="cfg-label">' + escUC(T(cfg.labels[d])) + '</span><div class="cfg-opts">' + opts + '</div></div>';
                 }).join('');
             } else {
                 picked = cfg.list[cfg.picked] || null;
