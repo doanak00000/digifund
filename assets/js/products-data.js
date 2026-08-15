@@ -808,7 +808,7 @@ window.PD_STR = {
     updating:  { vi: 'Thông số kỹ thuật & hình ảnh đang được cập nhật.', en: 'Specifications & images are being updated.' },
     quote:     { vi: 'Yêu cầu báo giá', en: 'Request a quote' },
     home:      { vi: 'Trang chủ', en: 'Home' },
-    back:      { vi: 'Về trang chủ', en: 'Back to home' },
+    back:      { vi: 'Trang chủ', en: 'Home' },
     allprod:   { vi: 'Tất cả sản phẩm', en: 'All products' },
     intro:     { vi: 'Thông số kỹ thuật chi tiết cho từng sản phẩm. Liên hệ để nhận báo giá và tư vấn.', en: 'Detailed specifications for each product. Contact us for a quote and consultation.' },
     notfound:  { vi: 'Không tìm thấy nhóm sản phẩm.', en: 'Product group not found.' },

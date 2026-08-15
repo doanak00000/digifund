@@ -11,7 +11,7 @@
         .pdp-top__name { font-size: 22px; font-weight: 800; letter-spacing: 1px; color: #0b1b3a; line-height: 1; }
         [data-theme="dark"] .pdp-top__name { color: #e6edf3; }
         .pdp-top__right { display: flex; align-items: center; gap: 10px; }
-        .pdp-back { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: #2b3650; padding: 9px 16px; border-radius: 8px; border: 1px solid #e2e8f2; transition: all .25s; }
+        .pdp-back { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; color: #2b3650; padding: 9px 16px; border-radius: 8px; border: 1px solid #e2e8f2; transition: all .25s; white-space: nowrap; flex: none; }
         .pdp-back:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
         .pdp-toggle { width: 40px; height: 40px; border-radius: 8px; border: 1px solid #e2e8f2; background: #fff; color: #2b3650; font-weight: 700; font-size: 13px; cursor: pointer; transition: all .25s; }
         .pdp-toggle:hover { background: #f0f3f8; }
