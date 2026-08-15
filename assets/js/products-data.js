@@ -334,7 +334,7 @@ window.PD_DATA = {
                         { k: { vi: 'Vật liệu', en: 'Material' }, v: { vi: 'Đơn tinh thể Al₂O₃, độ tinh khiết 99.999%', en: 'Single-crystal Al₂O₃, purity 99.999%' } },
                         { k: { vi: 'Định hướng (plane)', en: 'Orientation (plane)' }, v: 'C-plane (0001) ; A-plane ; R-plane ; M-plane' },
                         { k: { vi: 'Kích thước', en: 'Size' }, v: { vi: '2" ; 4" ; 6" ; 8" (& tấm 310×310 mm)', en: '2" ; 4" ; 6" ; 8" (& 310×310 mm plate)' } },
-                        { k: { vi: 'Độ dày (mm)', en: 'Thickness (mm)' }, v: '0.43 ; 0.65 ; 0.75 ; 1.0' },
+                        { k: { vi: 'Độ dày (µm)', en: 'Thickness (µm)' }, v: '430 ; 650 ; 750 ; 1000' },
                         { k: { vi: 'Đánh bóng', en: 'Polished' }, v: 'SSP ; DSP (epi-ready)' },
                         { k: { vi: 'Ứng dụng', en: 'Applications' }, v: { vi: 'LED, GaN epitaxy, quang học, tản nhiệt', en: 'LED, GaN epitaxy, optics, heat dissipation' } }
                     ]
@@ -342,12 +342,12 @@ window.PD_DATA = {
                 variants: [
                     {
                         name: { vi: 'Sapphire wafer Ø200mm', en: 'Sapphire wafer Ø200mm' }, img: WAFER_IMG,
-                        desc: { vi: 'Single crystal Al₂O₃ 99.999%, Dia 200 mm sapphire wafer, 1.0 mm / 0.75 mm thickness', en: 'Single crystal Al₂O₃ 99.999%, Dia 200 mm sapphire wafer, 1.0 mm / 0.75 mm thickness' },
+                        desc: { vi: 'Single crystal Al₂O₃ 99.999%, Dia 200 mm sapphire wafer, 1000 µm / 750 µm thickness', en: 'Single crystal Al₂O₃ 99.999%, Dia 200 mm sapphire wafer, 1000 µm / 750 µm thickness' },
                         sku: 'DG-SAP-200001',
                         specs: [
                             { k: { vi: 'Vật liệu', en: 'Material' }, v: 'Al₂O₃ 99.999%' },
                             { k: { vi: 'Đường kính', en: 'Diameter' }, v: '200 mm' },
-                            { k: { vi: 'Độ dày', en: 'Thickness' }, v: '0.75 / 1.0 mm' }
+                            { k: { vi: 'Độ dày', en: 'Thickness' }, v: '750 / 1000 µm' }
                         ]
                     },
                     {
@@ -362,13 +362,13 @@ window.PD_DATA = {
                     },
                     {
                         name: { vi: 'Sapphire 4" C-plane', en: 'Sapphire 4" C-plane' }, img: WAFER_IMG,
-                        desc: { vi: 'Sapphire Wafer C-plane (0001), Size: 4", DSP, Thickness: 0.65 mm — for LED/GaN epi', en: 'Sapphire Wafer C-plane (0001), Size: 4", DSP, Thickness: 0.65 mm — for LED/GaN epi' },
+                        desc: { vi: 'Sapphire Wafer C-plane (0001), Size: 4", DSP, Thickness: 650 µm — for LED/GaN epi', en: 'Sapphire Wafer C-plane (0001), Size: 4", DSP, Thickness: 650 µm — for LED/GaN epi' },
                         sku: 'DG-SAP-040001',
                         specs: [
                             { k: { vi: 'Định hướng', en: 'Orientation' }, v: 'C-plane (0001)' },
                             { k: { vi: 'Kích thước', en: 'Size' }, v: '4"' },
                             { k: { vi: 'Đánh bóng', en: 'Polished' }, v: 'DSP' },
-                            { k: { vi: 'Độ dày', en: 'Thickness' }, v: '0.65 mm' }
+                            { k: { vi: 'Độ dày', en: 'Thickness' }, v: '650 µm' }
                         ]
                     }
                 ]
