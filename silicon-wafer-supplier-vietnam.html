@@ -86,13 +86,16 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
   <div class="bl-container bl-header__inner">
     <a href="./" class="bl-brand"><img src="./assets/images/logo-2.png" alt="Digifund - Silicon Wafer Supplier Vietnam"><span class="bl-brand__name">DIGIFUND</span></a>
     <nav class="bl-nav">
-      <a href="./#about">About</a>
-      <a href="./#products">Products</a>
-      <a href="./kien-thuc.html">Blog</a>
-      <a href="./#contact">Contact</a>
-      <a href="./san-pham-silicon-wafer-substrate.html" class="bl-nav__cta">View Silicon Wafer</a>
+      <div class="bl-nav__links" id="blNavLinks">
+        <a href="./#about">About</a>
+        <a href="./#products">Products</a>
+        <a href="./kien-thuc.html">Blog</a>
+        <a href="./#contact">Contact</a>
+        <a href="./silicon-wafer-substrate-products.html" class="bl-nav__cta">View Silicon Wafer</a>
+      </div>
       <a href="#" class="bl-theme-btn" role="button" aria-label="Light/Dark" title="Light/Dark"><i class="fas fa-moon"></i></a>
       <a href="./silicon-wafer-viet-nam.html" class="bl-lang-btn" role="button" aria-label="Đọc bản tiếng Việt" title="Đọc bản tiếng Việt" hreflang="vi">VI</a>
+      <button class="bl-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="blNavLinks"><i class="fas fa-bars" aria-hidden="true"></i></button>
     </nav>
   </div>
 </header>
@@ -268,7 +271,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
         <h3>Request a wafer quote from Vietnam</h3>
         <p>Send your specification set and Digifund will confirm availability, advise where a specification can be relaxed to reduce cost, and quote within 24 business hours.</p>
         <a href="./#contact" class="bl-btn">Request a quote <i class="fas fa-arrow-right"></i></a>
-        <a href="./san-pham-silicon-wafer-substrate.html" class="bl-btn bl-btn--ghost">View the specification catalog</a>
+        <a href="./silicon-wafer-substrate-products.html" class="bl-btn bl-btn--ghost">View the specification catalog</a>
       </div>
 
       <p style="margin-top:28px;"><em>Bạn đang tìm nhà cung cấp wafer bằng tiếng Việt? Đọc bản tiếng Việt: <a href="./silicon-wafer-viet-nam.html" hreflang="vi">Silicon Wafer Việt Nam — nhà cung cấp wafer bán dẫn</a>.</em></p>
@@ -307,10 +310,10 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
       <div class="bl-footer__col">
         <h4>Products</h4>
         <ul>
-          <li><a href="./san-pham-silicon-wafer-substrate.html">Silicon Wafer &amp; Substrate</a></li>
-          <li><a href="./san-pham-nang-luong-tai-tao.html">Renewable Energy Materials</a></li>
-          <li><a href="./san-pham-thiet-bi-phong-sach.html">Cleanroom &amp; Lab Equipment</a></li>
-          <li><a href="./san-pham-hoa-chat-vat-tu.html">Chemicals &amp; Supplies</a></li>
+          <li><a href="./silicon-wafer-substrate-products.html">Silicon Wafer &amp; Substrate</a></li>
+          <li><a href="./renewable-energy-materials.html">Renewable Energy Materials</a></li>
+          <li><a href="./cleanroom-lab-equipment.html">Cleanroom &amp; Lab Equipment</a></li>
+          <li><a href="./chemicals-and-supplies.html">Chemicals &amp; Supplies</a></li>
         </ul>
       </div>
       <div class="bl-footer__col">
@@ -333,5 +336,6 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
   </div>
 </footer>
 
+<script src="./assets/js/blog-nav.js"></script>
 </body>
 </html>

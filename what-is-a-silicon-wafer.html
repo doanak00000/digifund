@@ -98,13 +98,16 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
   <div class="bl-container bl-header__inner">
     <a href="./" class="bl-brand"><img src="./assets/images/logo-2.png" alt="Digifund - Silicon Wafer Supplier Vietnam"><span class="bl-brand__name">DIGIFUND</span></a>
     <nav class="bl-nav">
-      <a href="./#about"><span class="lang-en">About</span></a>
-      <a href="./#products"><span class="lang-en">Products</span></a>
-      <a href="./semiconductor-knowledge.html">Blog</a>
-      <a href="./#contact"><span class="lang-en">Contact</span></a>
-      <a href="./san-pham-silicon-wafer-substrate.html" class="bl-nav__cta"><span class="lang-en">View Silicon Wafer</span></a>
+      <div class="bl-nav__links" id="blNavLinks">
+        <a href="./#about"><span class="lang-en">About</span></a>
+        <a href="./#products"><span class="lang-en">Products</span></a>
+        <a href="./semiconductor-knowledge.html">Blog</a>
+        <a href="./#contact"><span class="lang-en">Contact</span></a>
+        <a href="./silicon-wafer-substrate-products.html" class="bl-nav__cta"><span class="lang-en">View Silicon Wafer</span></a>
+      </div>
       <a href="#" class="bl-theme-btn" role="button" aria-label="Light/Dark" title="Light/Dark"><i class="fas fa-moon"></i></a>
       <a href="./silicon-wafer-la-gi.html" class="bl-lang-btn" role="button" hreflang="vi" aria-label="Doc ban tieng Viet" title="Tiếng Việt">VI</a>
+      <button class="bl-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="blNavLinks"><i class="fas fa-bars" aria-hidden="true"></i></button>
     </nav>
   </div>
 </header>
@@ -289,7 +292,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
         <h3 class="lang-en">Need help choosing the right silicon wafer?</h3>
         
         <p class="lang-en">Digifund's engineers help you pick the right wafer type, size and specifications for your semiconductor project.</p>
-        <a href="./san-pham-silicon-wafer-substrate.html" class="bl-btn"><span class="lang-en">View Silicon Wafer catalog</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="./silicon-wafer-substrate-products.html" class="bl-btn"><span class="lang-en">View Silicon Wafer catalog</span> <i class="fas fa-arrow-right"></i></a>
         <a href="./#contact" class="bl-btn bl-btn--ghost"><span class="lang-en">Request a quote</span></a>
       </div>
 
@@ -309,7 +312,7 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
         <div class="bl-card__media"><i class="fas fa-vector-square"></i></div>
         <div class="bl-card__body"><span class="bl-card__tag lang-en">Technical</span><h3 class="bl-card__title"><span class="lang-en">The Photolithography Process</span></h3><span class="bl-card__more"><span class="lang-en">Read more →</span></span></div>
       </a>
-      <a class="bl-card" href="./san-pham-silicon-wafer-substrate.html">
+      <a class="bl-card" href="./silicon-wafer-substrate-products.html">
         <div class="bl-card__media"><i class="fas fa-compact-disc"></i></div>
         <div class="bl-card__body"><span class="bl-card__tag lang-en">Products</span><h3 class="bl-card__title"><span class="lang-en">Silicon Wafer &amp; Substrate Catalog</span></h3><span class="bl-card__more"><span class="lang-en">View products →</span></span></div>
       </a>
@@ -328,10 +331,10 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
       <div class="bl-footer__col">
         <h4 class="lang-en">Products</h4>
         <ul>
-          <li><a href="./san-pham-silicon-wafer-substrate.html">Silicon Wafer &amp; Substrate</a></li>
-          <li><a href="./san-pham-nang-luong-tai-tao.html"><span class="lang-en">Renewable Energy Materials</span></a></li>
-          <li><a href="./san-pham-thiet-bi-phong-sach.html"><span class="lang-en">Cleanroom &amp; Lab Equipment</span></a></li>
-          <li><a href="./san-pham-hoa-chat-vat-tu.html"><span class="lang-en">Chemicals &amp; Supplies</span></a></li>
+          <li><a href="./silicon-wafer-substrate-products.html">Silicon Wafer &amp; Substrate</a></li>
+          <li><a href="./renewable-energy-materials.html"><span class="lang-en">Renewable Energy Materials</span></a></li>
+          <li><a href="./cleanroom-lab-equipment.html"><span class="lang-en">Cleanroom &amp; Lab Equipment</span></a></li>
+          <li><a href="./chemicals-and-supplies.html"><span class="lang-en">Chemicals &amp; Supplies</span></a></li>
         </ul>
       </div>
       <div class="bl-footer__col">
@@ -355,5 +358,6 @@ if(document.readyState!=='loading')init();else document.addEventListener('DOMCon
   </div>
 </footer>
 
+<script src="./assets/js/blog-nav.js"></script>
 </body>
 </html>
