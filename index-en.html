@@ -864,6 +864,12 @@
         .product-groups .pgc-btn--ghost:hover { background: rgba(255,255,255,0.14); color: #fff; }
         .product-group-card { cursor: pointer; }
         /* Chuyên gia cố vấn: ảnh chân dung đồng nhất tỷ lệ + nội dung căn giữa */
+        /* .feature-one mặc định 120px 0 90px -> khe trên 180px (cộng padding-bottom
+           60px của #projects) và khe dưới 134px. Siết còn 112px / 88px.
+           Bọc trong min-width:992px để các override mobile sẵn có không bị ID
+           selector này (specificity cao hơn) đè mất. */
+        @media (min-width: 992px) { #features.feature-one { padding: 52px 0 44px; } }
+
         /* #team nằm giữa #features (padding-bottom 90px) và #about (padding-top 0).
            Mặc định .team-one là 120px 0 90px -> khe trên 210px, khe dưới 90px.
            Siết lại: khe trên 134px, khe dưới 70px. */
