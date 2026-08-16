@@ -802,6 +802,10 @@
            selector này (specificity cao hơn) đè mất. */
         @media (min-width: 992px) {
             #features.feature-one { padding: 40px 0 32px; }
+            /* .about-one có padding-bottom 120px, .why-choose-one có padding-top 120px
+               -> khe 240px giữa hai khối. Siết còn 112px. */
+            #about.about-one { padding-bottom: 56px; }
+            #why-choose.why-choose-one { padding-top: 56px; }
             /* .feature-one__single có margin-bottom:30px để chừa chỗ khi card xuống
                nhiều hàng. Desktop 3 card nằm chung 1 hàng nên nó chỉ là khoảng chết. */
             #features .feature-one__single { margin-bottom: 0; }
