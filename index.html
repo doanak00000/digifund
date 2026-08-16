@@ -800,7 +800,12 @@
            60px của #projects) và khe dưới 134px. Siết còn 112px / 88px.
            Bọc trong min-width:992px để các override mobile sẵn có không bị ID
            selector này (specificity cao hơn) đè mất. */
-        @media (min-width: 992px) { #features.feature-one { padding: 52px 0 44px; } }
+        @media (min-width: 992px) {
+            #features.feature-one { padding: 40px 0 32px; }
+            /* .feature-one__single có margin-bottom:30px để chừa chỗ khi card xuống
+               nhiều hàng. Desktop 3 card nằm chung 1 hàng nên nó chỉ là khoảng chết. */
+            #features .feature-one__single { margin-bottom: 0; }
+        }
 
         /* #team nằm giữa #features (padding-bottom 90px) và #about (padding-top 0).
            Mặc định .team-one là 120px 0 90px -> khe trên 210px, khe dưới 90px.
