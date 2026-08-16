@@ -864,12 +864,12 @@
         .product-groups .pgc-btn--ghost:hover { background: rgba(255,255,255,0.14); color: #fff; }
         .product-group-card { cursor: pointer; }
         /* Chuyên gia cố vấn: ảnh chân dung đồng nhất tỷ lệ + nội dung căn giữa */
-        /* #team đứng ngay sau #projects (padding-bottom 60px). Mặc định .team-one
-           có padding-top 120px -> cộng lại 180px trắng giữa hai khối, quá thưa.
-           Siết lại cho nhịp bằng các section khác. */
-        #team.team-one--experts { padding: 66px 0 78px; }
-        @media (max-width: 991px) { #team.team-one--experts { padding: 52px 0 56px; } }
-        @media (max-width: 575px) { #team.team-one--experts { padding: 40px 0 44px; } }
+        /* #team nằm giữa #features (padding-bottom 90px) và #about (padding-top 0).
+           Mặc định .team-one là 120px 0 90px -> khe trên 210px, khe dưới 90px.
+           Siết lại: khe trên 134px, khe dưới 70px. */
+        #team.team-one--experts { padding: 44px 0 70px; }
+        @media (max-width: 991px) { #team.team-one--experts { padding: 32px 0 48px; } }
+        @media (max-width: 575px) { #team.team-one--experts { padding: 26px 0 38px; } }
         .team-one--experts .team-one__img { overflow: hidden; }
         .team-one--experts .team-one__img img { aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
         /* Xếp dọc: khối tên/chức danh 1 dòng, nút Google Scholar xuống dòng riêng bên dưới */
@@ -1499,7 +1499,71 @@
         </div>
     </section>
 
-<section id="team" class="team-one team-one--experts">
+<section id="features" class="feature-one">
+        <div class="container">
+            <div class="row">
+                <!--Feature One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInLeft;">
+                    <div class="feature-one__single">
+                        <div class="feature-one__single-inner">
+                            <div class="feature-one__shape-1">
+                                <img src="./assets/images/feature-one-shape-1.png" alt="">
+                            </div>
+                            <div class="feature-one__icon-and-title">
+                                <div class="feature-one__icon">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                                <h3 class="feature-one__title"><a href="#" data-i18n="feature1">Premium<br>Quality Wafers</a>
+                                </h3>
+                            </div>
+                            <p class="feature-one__text" data-i18n="feat1-sub">High purity, inspected per batch.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--Feature One Single End-->
+                <!--Feature One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="200ms" style="visibility: visible; animation-delay: 200ms; animation-name: fadeInUp;">
+                    <div class="feature-one__single">
+                        <div class="feature-one__single-inner">
+                            <div class="feature-one__shape-1">
+                                <img src="./assets/images/feature-one-shape-1.png" alt="">
+                            </div>
+                            <div class="feature-one__icon-and-title">
+                                <div class="feature-one__icon">
+                                    <i class="fas fa-truck-fast"></i>
+                                </div>
+                                <h3 class="feature-one__title"><a href="#" data-i18n="feature2">Global<br>Shipping</a>
+                                </h3>
+                            </div>
+                            <p class="feature-one__text" data-i18n="feat2-sub">Fast delivery, secure packaging.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--Feature One Single End-->
+                <!--Feature One Single Start-->
+                <div class="col-xl-4 col-lg-4 wow fadeInRight animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                    <div class="feature-one__single">
+                        <div class="feature-one__single-inner">
+                            <div class="feature-one__shape-1">
+                                <img src="./assets/images/feature-one-shape-1.png" alt="">
+                            </div>
+                            <div class="feature-one__icon-and-title">
+                                <div class="feature-one__icon">
+                                    <i class="fas fa-gear"></i>
+                                </div>
+                                <h3 class="feature-one__title"><a href="#" data-i18n="feature3">Certified<br>Standards</a>
+                                </h3>
+                            </div>
+                            <p class="feature-one__text" data-i18n="feat3-sub">Specs meeting semiconductor standards.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--Feature One Single End-->
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team-one team-one--experts">
         <div class="container">
             <div class="section-title text-center sec-title-animation animation-style1">
                 <h6 class="section-title__tagline" data-i18n="tag-team"><span class="section-title__tagline-border"></span>ADVISORY EXPERTS</h6>
@@ -1630,69 +1694,7 @@
 
 
     <!--Feature One Start -->
-    <section id="features" class="feature-one">
-        <div class="container">
-            <div class="row">
-                <!--Feature One Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInLeft;">
-                    <div class="feature-one__single">
-                        <div class="feature-one__single-inner">
-                            <div class="feature-one__shape-1">
-                                <img src="./assets/images/feature-one-shape-1.png" alt="">
-                            </div>
-                            <div class="feature-one__icon-and-title">
-                                <div class="feature-one__icon">
-                                    <i class="fas fa-microchip"></i>
-                                </div>
-                                <h3 class="feature-one__title"><a href="#" data-i18n="feature1">Premium<br>Quality Wafers</a>
-                                </h3>
-                            </div>
-                            <p class="feature-one__text" data-i18n="feat1-sub">High purity, inspected per batch.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--Feature One Single End-->
-                <!--Feature One Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="200ms" style="visibility: visible; animation-delay: 200ms; animation-name: fadeInUp;">
-                    <div class="feature-one__single">
-                        <div class="feature-one__single-inner">
-                            <div class="feature-one__shape-1">
-                                <img src="./assets/images/feature-one-shape-1.png" alt="">
-                            </div>
-                            <div class="feature-one__icon-and-title">
-                                <div class="feature-one__icon">
-                                    <i class="fas fa-truck-fast"></i>
-                                </div>
-                                <h3 class="feature-one__title"><a href="#" data-i18n="feature2">Global<br>Shipping</a>
-                                </h3>
-                            </div>
-                            <p class="feature-one__text" data-i18n="feat2-sub">Fast delivery, secure packaging.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--Feature One Single End-->
-                <!--Feature One Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInRight animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                    <div class="feature-one__single">
-                        <div class="feature-one__single-inner">
-                            <div class="feature-one__shape-1">
-                                <img src="./assets/images/feature-one-shape-1.png" alt="">
-                            </div>
-                            <div class="feature-one__icon-and-title">
-                                <div class="feature-one__icon">
-                                    <i class="fas fa-gear"></i>
-                                </div>
-                                <h3 class="feature-one__title"><a href="#" data-i18n="feature3">Certified<br>Standards</a>
-                                </h3>
-                            </div>
-                            <p class="feature-one__text" data-i18n="feat3-sub">Specs meeting semiconductor standards.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--Feature One Single End-->
-            </div>
-        </div>
-    </section>
+    
     <!--Feature One Start -->
 
     <!--About One Start -->
