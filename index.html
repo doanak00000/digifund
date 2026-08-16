@@ -796,6 +796,12 @@
         .product-groups .pgc-btn--ghost:hover { background: rgba(255,255,255,0.14); color: #fff; }
         .product-group-card { cursor: pointer; }
         /* Chuyên gia cố vấn: ảnh chân dung đồng nhất tỷ lệ + nội dung căn giữa */
+        /* #team đứng ngay sau #projects (padding-bottom 60px). Mặc định .team-one
+           có padding-top 120px -> cộng lại 180px trắng giữa hai khối, quá thưa.
+           Siết lại cho nhịp bằng các section khác. */
+        #team.team-one--experts { padding: 66px 0 78px; }
+        @media (max-width: 991px) { #team.team-one--experts { padding: 52px 0 56px; } }
+        @media (max-width: 575px) { #team.team-one--experts { padding: 40px 0 44px; } }
         .team-one--experts .team-one__img { overflow: hidden; }
         .team-one--experts .team-one__img img { aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; }
         /* Xếp dọc: khối tên/chức danh 1 dòng, nút Google Scholar xuống dòng riêng bên dưới */
@@ -1297,132 +1303,7 @@
 
     </section>
 
-<section id="team" class="team-one team-one--experts">
-        <div class="container">
-            <div class="section-title text-center sec-title-animation animation-style1">
-                <h6 class="section-title__tagline" data-i18n="tag-team"><span class="section-title__tagline-border"></span>CHUYÊN GIA CỐ VẤN</h6>
-                <h3 class="section-title__title title-animation" style="perspective: 400px;" data-i18n="h3-team">Đội Ngũ Chuyên Gia</h3>
-            </div>
-            <div class="row">
 
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInLeft;">
-                    <div class="team-one__single">
-                        <div class="team-one__img-box">
-                            <div class="team-one__img">
-                                <picture>
-                                    <source srcset="./assets/images/bruno.webp" type="image/webp">
-                                    <img src="./assets/images/bruno.jpg" alt="Prof. Bruno Grandidier - chuyên gia bán dẫn tiên tiến, CNRS Pháp" loading="lazy">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="team-one__content">
-                            <div class="team-one__title-box">
-                                <h3 class="team-one__title">Prof. Bruno Grandidier</h3>
-                                <div class="team-one__sub-title" data-i18n="exp1-role">Bán dẫn tiên tiến</div>
-                                <div class="team-one__org-row">
-                                    <img class="team-one__org-logo" src="./assets/images/logo-cnrs.png" alt="Logo CNRS" width="96" height="96" loading="lazy">
-                                    <span class="team-one__org" data-i18n="exp1-org">CNRS, Pháp</span>
-                                </div>
-                            </div>
-                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=MgCfKBkAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Prof. Bruno Grandidier">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                                <span data-i18n="scholar-link">Google Scholar</span>
-                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInLeft;">
-                    <div class="team-one__single">
-                        <div class="team-one__img-box">
-                            <div class="team-one__img">
-                                <picture>
-                                    <source srcset="./assets/images/Adem.webp" type="image/webp">
-                                    <img src="./assets/images/Adem.jpg" alt="Prof. Adem Sreedhar - chuyên gia lắng đọng màng mỏng phún xạ, Gachon University Hàn Quốc" loading="lazy">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="team-one__content">
-                            <div class="team-one__title-box">
-                                <h3 class="team-one__title">Prof. Adem Sreedhar</h3>
-                                <div class="team-one__sub-title" data-i18n="exp2-role">Lắng đọng màng mỏng bằng phún xạ</div>
-                                <div class="team-one__org-row">
-                                    <img class="team-one__org-logo" src="./assets/images/logo-gachon.png" alt="Logo Gachon University" width="96" height="96" loading="lazy">
-                                    <span class="team-one__org" data-i18n="exp2-org">Gachon, Hàn Quốc</span>
-                                </div>
-                            </div>
-                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=K_cN45wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Prof. Adem Sreedhar">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                                <span data-i18n="scholar-link">Google Scholar</span>
-                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight animated" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
-                    <div class="team-one__single">
-                        <div class="team-one__img-box">
-                            <div class="team-one__img">
-                                <picture>
-                                    <source srcset="./assets/images/mynghetran.webp" type="image/webp">
-                                    <img src="./assets/images/mynghetran.jpg" alt="Dr. My Nghe TRAN - chuyên gia chế tạo chip bán dẫn, IMEC Bỉ" loading="lazy">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="team-one__content">
-                            <div class="team-one__title-box">
-                                <h3 class="team-one__title">Dr. My Nghe TRAN</h3>
-                                <div class="team-one__sub-title" data-i18n="exp3-role">Chế tạo chip bán dẫn</div>
-                                <div class="team-one__org-row">
-                                    <img class="team-one__org-logo team-one__org-logo--wide" src="./assets/images/logo-imec.png" alt="Logo imec" width="160" height="49" loading="lazy">
-                                    <span class="team-one__org" data-i18n="exp3-org">IMEC, Bỉ</span>
-                                </div>
-                            </div>
-                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=SMAi60IAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Dr. My Nghe TRAN">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                                <span data-i18n="scholar-link">Google Scholar</span>
-                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight animated" data-wow-delay="700ms" style="visibility: visible; animation-delay: 700ms; animation-name: fadeInRight;">
-                    <div class="team-one__single">
-                        <div class="team-one__img-box">
-                            <div class="team-one__img">
-                                <picture>
-                                    <source srcset="./assets/images/oanhle.webp" type="image/webp">
-                                    <img src="./assets/images/oanhle.jpg" alt="Dr. Oanh LE - chuyên gia chuyển hóa năng lượng tái tạo, Griffith University Úc" loading="lazy">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="team-one__content">
-                            <div class="team-one__title-box">
-                                <h3 class="team-one__title">Dr. Oanh LE</h3>
-                                <div class="team-one__sub-title" data-i18n="exp4-role">Chuyển hóa năng lượng tái tạo</div>
-                                <div class="team-one__org-row">
-                                    <img class="team-one__org-logo" src="./assets/images/logo-griffith.png" alt="Logo Griffith University" width="96" height="96" loading="lazy">
-                                    <span class="team-one__org" data-i18n="exp4-org">Griffith, Úc</span>
-                                </div>
-                            </div>
-                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=QtRl5g8AAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Dr. Oanh LE">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                                <span data-i18n="scholar-link">Google Scholar</span>
-                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
     <!--Product Groups End -->
 
     <!--Project One Start -->
@@ -1546,6 +1427,133 @@
                     </div>
                 </div>
                 <!--Project One Single End-->
+            </div>
+        </div>
+    </section>
+
+<section id="team" class="team-one team-one--experts">
+        <div class="container">
+            <div class="section-title text-center sec-title-animation animation-style1">
+                <h6 class="section-title__tagline" data-i18n="tag-team"><span class="section-title__tagline-border"></span>CHUYÊN GIA CỐ VẤN</h6>
+                <h3 class="section-title__title title-animation" style="perspective: 400px;" data-i18n="h3-team">Đội Ngũ Chuyên Gia</h3>
+            </div>
+            <div class="row">
+
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInLeft;">
+                    <div class="team-one__single">
+                        <div class="team-one__img-box">
+                            <div class="team-one__img">
+                                <picture>
+                                    <source srcset="./assets/images/bruno.webp" type="image/webp">
+                                    <img src="./assets/images/bruno.jpg" alt="Prof. Bruno Grandidier - chuyên gia bán dẫn tiên tiến, CNRS Pháp" loading="lazy">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="team-one__content">
+                            <div class="team-one__title-box">
+                                <h3 class="team-one__title">Prof. Bruno Grandidier</h3>
+                                <div class="team-one__sub-title" data-i18n="exp1-role">Bán dẫn tiên tiến</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo" src="./assets/images/logo-cnrs.png" alt="Logo CNRS" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp1-org">CNRS, Pháp</span>
+                                </div>
+                            </div>
+                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=MgCfKBkAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Prof. Bruno Grandidier">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span data-i18n="scholar-link">Google Scholar</span>
+                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInLeft;">
+                    <div class="team-one__single">
+                        <div class="team-one__img-box">
+                            <div class="team-one__img">
+                                <picture>
+                                    <source srcset="./assets/images/Adem.webp" type="image/webp">
+                                    <img src="./assets/images/Adem.jpg" alt="Prof. Adem Sreedhar - chuyên gia lắng đọng màng mỏng phún xạ, Gachon University Hàn Quốc" loading="lazy">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="team-one__content">
+                            <div class="team-one__title-box">
+                                <h3 class="team-one__title">Prof. Adem Sreedhar</h3>
+                                <div class="team-one__sub-title" data-i18n="exp2-role">Lắng đọng màng mỏng bằng phún xạ</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo" src="./assets/images/logo-gachon.png" alt="Logo Gachon University" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp2-org">Gachon, Hàn Quốc</span>
+                                </div>
+                            </div>
+                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=K_cN45wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Prof. Adem Sreedhar">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span data-i18n="scholar-link">Google Scholar</span>
+                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight animated" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
+                    <div class="team-one__single">
+                        <div class="team-one__img-box">
+                            <div class="team-one__img">
+                                <picture>
+                                    <source srcset="./assets/images/mynghetran.webp" type="image/webp">
+                                    <img src="./assets/images/mynghetran.jpg" alt="Dr. My Nghe TRAN - chuyên gia chế tạo chip bán dẫn, IMEC Bỉ" loading="lazy">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="team-one__content">
+                            <div class="team-one__title-box">
+                                <h3 class="team-one__title">Dr. My Nghe TRAN</h3>
+                                <div class="team-one__sub-title" data-i18n="exp3-role">Chế tạo chip bán dẫn</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo team-one__org-logo--wide" src="./assets/images/logo-imec.png" alt="Logo imec" width="160" height="49" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp3-org">IMEC, Bỉ</span>
+                                </div>
+                            </div>
+                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=SMAi60IAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Dr. My Nghe TRAN">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span data-i18n="scholar-link">Google Scholar</span>
+                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight animated" data-wow-delay="700ms" style="visibility: visible; animation-delay: 700ms; animation-name: fadeInRight;">
+                    <div class="team-one__single">
+                        <div class="team-one__img-box">
+                            <div class="team-one__img">
+                                <picture>
+                                    <source srcset="./assets/images/oanhle.webp" type="image/webp">
+                                    <img src="./assets/images/oanhle.jpg" alt="Dr. Oanh LE - chuyên gia chuyển hóa năng lượng tái tạo, Griffith University Úc" loading="lazy">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="team-one__content">
+                            <div class="team-one__title-box">
+                                <h3 class="team-one__title">Dr. Oanh LE</h3>
+                                <div class="team-one__sub-title" data-i18n="exp4-role">Chuyển hóa năng lượng tái tạo</div>
+                                <div class="team-one__org-row">
+                                    <img class="team-one__org-logo" src="./assets/images/logo-griffith.png" alt="Logo Griffith University" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp4-org">Griffith, Úc</span>
+                                </div>
+                            </div>
+                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=QtRl5g8AAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Dr. Oanh LE">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <span data-i18n="scholar-link">Google Scholar</span>
+                                <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
