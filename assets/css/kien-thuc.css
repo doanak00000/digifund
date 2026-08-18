@@ -106,7 +106,15 @@ body.blog-page { margin:0; font-family:'Titillium Web',-apple-system,Segoe UI,Ro
 .bl-cta .bl-btn { background:#fff; color:#0b1730 !important; }
 .bl-btn { display:inline-flex; align-items:center; gap:9px; background:var(--accent); color:#fff !important; font-weight:700; padding:12px 26px; border-radius:30px; font-size:15px; transition:transform .25s; }
 .bl-btn:hover { transform:translateY(-2px); }
-.bl-btn--ghost { background:transparent; border:1px solid rgba(255,255,255,0.5); color:#fff !important; margin-left:10px; }
+.bl-btn--ghost { background:transparent; border:1px solid rgba(255,255,255,0.5); color:#fff !important; }
+/* Trước đây khe giữa 2 nút chỉ là margin-left của .bl-btn--ghost, nên khi xuống
+   dòng trên mobile hai nút dính sát nhau. Dùng margin-right + margin-bottom để
+   có khe cả khi nằm ngang lẫn khi xuống dòng. */
+.bl-cta .bl-btn { margin:0 10px 12px 0; }
+.bl-cta .bl-btn:last-child { margin-right:0; }
+@media (max-width:520px){
+  .bl-cta .bl-btn { display:flex; width:100%; justify-content:center; margin-right:0; }
+}
 
 /* Related / grid */
 .bl-related { padding:30px 0 60px; border-top:1px solid var(--line); margin-top:40px; }
