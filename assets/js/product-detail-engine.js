@@ -380,7 +380,7 @@
                 '<div class="pdm-content">' +
                     '<h2 class="pdm-title">' + esc(T(v.desc) || T(v.name)) + '</h2>' +
                     (v.sku ? '<p class="pdm-meta"><b>' + esc(T(STR.sku)) + ':</b> ' + esc(v.sku) + '</p>' : '') +
-                    '<p class="pdm-meta"><b>' + esc(T(STR.contact)) + ':</b> sales@digifund.vn</p>' +
+                    '<p class="pdm-meta"><b>' + esc(T(STR.contact)) + ':</b> semiconductor@digifund.vn</p>' +
                     specsHtml +
                     '<div class="pdm-actions">' +
                         '<a href="./#contact" class="pd-variant__btn"><i class="fas fa-paper-plane"></i> ' + esc(T(STR.quote)) + '</a>' +
@@ -483,7 +483,7 @@
                         {
                             "@type": "FAQPage",
                             "mainEntity": [
-                                { "@type": "Question", "name": "Làm sao để đặt mua " + T(g.title).toLowerCase() + " tại Digifund?", "acceptedAnswer": { "@type": "Answer", "text": "Bạn có thể liên hệ Digifund qua hotline +84 979 324 567 hoặc email digifundvietnam@gmail.com để được tư vấn thông số và nhận báo giá theo yêu cầu." } },
+                                { "@type": "Question", "name": "Làm sao để đặt mua " + T(g.title).toLowerCase() + " tại Digifund?", "acceptedAnswer": { "@type": "Answer", "text": "Bạn có thể liên hệ Digifund qua hotline +84 979 324 567 hoặc email semiconductor@digifund.vn để được tư vấn thông số và nhận báo giá theo yêu cầu." } },
                                 { "@type": "Question", "name": "Digifund có cung cấp silicon wafer và vật liệu bán dẫn theo thông số riêng không?", "acceptedAnswer": { "@type": "Answer", "text": "Có. Digifund cung cấp silicon wafer, substrate và vật liệu bán dẫn với nhiều kích thước, độ tinh khiết và thông số kỹ thuật khác nhau, đáp ứng yêu cầu riêng của từng dự án nghiên cứu và sản xuất." } },
                                 { "@type": "Question", "name": "Digifund giao hàng ở đâu?", "acceptedAnswer": { "@type": "Answer", "text": "Digifund có trụ sở tại TP. Hồ Chí Minh và cung cấp sản phẩm trên toàn quốc." } }
                             ]

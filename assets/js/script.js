@@ -651,7 +651,7 @@
                 var cfg = window.DIGIFUND_EMAILJS;
 
                 if (!window.emailjs || !cfg || cfg.templateID.indexOf("YOUR_") === 0 || cfg.publicKey.indexOf("YOUR_") === 0) {
-                    $result.html('<span style="color:#e11d48">Biểu mẫu chưa được cấu hình EmailJS. Vui lòng email trực tiếp: digifundvietnam@gmail.com</span>');
+                    $result.html('<span style="color:#e11d48">Biểu mẫu chưa được cấu hình EmailJS. Vui lòng email trực tiếp: semiconductor@digifund.vn</span>');
                     return false;
                 }
 
@@ -666,7 +666,7 @@
                     title: cProduct || "Liên hệ từ website Digifund",
                     message: cMessage,
                     // biến dự phòng cho template kiểu thông báo nội bộ
-                    to_email: "digifundvietnam@gmail.com",
+                    to_email: "semiconductor@digifund.vn",
                     from_name: cName,
                     from_email: cEmail,
                     product_type: cProduct,
@@ -681,7 +681,7 @@
                     $form.find('input[type="text"], input[type="email"], textarea').val("");
                     $btn.prop("disabled", false).html(btnHtml);
                 }, function (err) {
-                    $result.html('<span style="color:#e11d48">Gửi thất bại. Vui lòng thử lại hoặc email: digifundvietnam@gmail.com</span>');
+                    $result.html('<span style="color:#e11d48">Gửi thất bại. Vui lòng thử lại hoặc email: semiconductor@digifund.vn</span>');
                     $btn.prop("disabled", false).html(btnHtml);
                     if (window.console) console.error("EmailJS error:", err);
                 });
