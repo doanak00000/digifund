@@ -592,6 +592,16 @@
         [data-theme="dark"] #collaboration .rc-app h5 { color: #e6edf3; }
         [data-theme="dark"] #collaboration .rc-app__img { background: #161b22; border-color: #30363d; }
         [data-theme="dark"] #collaboration .rc-app__img img { background: #fff; border-radius: 6px; }
+        /* Chuỗi ảnh có mũi tên nối tiếp (quy trình / sơ đồ ứng dụng theo bước) */
+        #collaboration .rc-app__sub + .rc-app__sub { margin-top: 22px; }
+        #collaboration .rc-app__sub h6 { font-size: 13.5px; font-weight: 700; color: #4a5566; margin: 0 0 10px 16px; padding-left: 14px; position: relative; }
+        #collaboration .rc-app__sub h6::before { content: ""; position: absolute; left: 0; top: 50%; width: 5px; height: 5px; border-radius: 50%; background: #8a94a6; transform: translateY(-50%); }
+        #collaboration .rc-app__imgs--flow { display: flex; align-items: center; flex-wrap: wrap; }
+        #collaboration .rc-app__imgs--flow .rc-app__img { flex: 1 1 150px; min-width: 130px; }
+        #collaboration .rc-app__imgs--flow .rc-app__img--wide { flex: 2.2 1 280px; }
+        #collaboration .rc-app__arrow { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; width: 32px; color: var(--fixpro-base); font-size: 20px; }
+        [data-theme="dark"] #collaboration .rc-app__sub h6 { color: #c9d1d9; }
+        [data-theme="dark"] #collaboration .rc-app__sub h6::before { background: #8b949e; }
         /* Hợp tác quốc tế: dải logo viện nghiên cứu / trường đại học */
         #collaboration .rc-collab { margin-top: 16px; padding-top: 44px; border-top: 1px solid rgba(var(--fixpro-black-rgb), .08); }
         [data-theme="dark"] #collaboration .rc-collab { border-top-color: #30363d; }
@@ -610,6 +620,11 @@
         @media (max-width: 767px) {
             #collaboration .rc-pub__cover img { height: 170px; }
             #collaboration .rc-app__imgs--3, #collaboration .rc-app__imgs--2 { grid-template-columns: 1fr; }
+            #collaboration .rc-app__imgs--flow { flex-direction: column; }
+            #collaboration .rc-app__imgs--flow .rc-app__img,
+            #collaboration .rc-app__imgs--flow .rc-app__img--wide { width: 100%; max-width: 100%; flex: 1 1 auto; box-sizing: border-box; }
+            #collaboration .rc-app__arrow { width: auto; height: 26px; }
+            #collaboration .rc-app__arrow i { transform: rotate(90deg); }
             #collaboration .rc-logos { gap: 16px; }
             #collaboration .rc-logo { width: 132px; height: 90px; padding: 12px 16px; border-radius: 14px; }
             #collaboration .rc-logo img { max-height: 54px; max-width: 100px; }
@@ -1988,6 +2003,52 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="rc-app">
+                            <h5 data-i18n="rc-app3-title">Ứng dụng wafer Silicon loại p trong chế tạo vi/nano cấu trúc — hợp tác cùng viện nghiên cứu Châu Âu</h5>
+                            <div class="rc-app__sub">
+                                <h6 data-i18n="rc-app3a-title">Ứng dụng wafer p-Si làm đế chế tạo tiếp giáp p-n (IEMN, Pháp)</h6>
+                                <div class="rc-app__imgs rc-app__imgs--flow">
+                                    <div class="rc-app__img">
+                                        <img src="./assets/images/wafer-p-si.png" alt="Wafer Si loại p (p-Si)" loading="lazy">
+                                        <span data-i18n="rc-cap-psi">Wafer Si loại p (p-Si) — vật liệu nền ban đầu</span>
+                                    </div>
+                                    <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
+                                    <div class="rc-app__img rc-app__img--wide">
+                                        <img src="./assets/images/process-sinw-fabrication.png" alt="Quy trình chế tạo dây nano Si (SiNW)" loading="lazy">
+                                        <span data-i18n="rc-cap-sinw-process">Quy trình chế tạo SiNW: lắng Ag⁺, ăn mòn tạo SiNW, loại bỏ Ag⁺ bằng HNO₃, phủ TiO₂ bằng ALD</span>
+                                    </div>
+                                    <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
+                                    <div class="rc-app__img">
+                                        <img src="./assets/images/sem-sinw-crosssection.png" alt="Ảnh SEM mặt cắt dây nano Si" loading="lazy">
+                                        <span data-i18n="rc-cap-sem-sinw">Ảnh SEM mặt cắt dây nano Si sau chế tạo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rc-app__sub">
+                                <h6 data-i18n="rc-app3b-title">Ứng dụng wafer n-Si làm đế cho ứng dụng vi điện tử (IEMN, Pháp)</h6>
+                                <div class="rc-app__imgs rc-app__imgs--flow">
+                                    <div class="rc-app__img">
+                                        <img src="./assets/images/wafer-n-si.png" alt="Wafer Si loại n (n-Si)" loading="lazy">
+                                        <span data-i18n="rc-cap-nsi">Wafer Si loại n (n-Si) — vật liệu nền ban đầu</span>
+                                    </div>
+                                    <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
+                                    <div class="rc-app__img">
+                                        <img src="./assets/images/probe-station-testing.png" alt="Trạm đo probe station" loading="lazy">
+                                        <span data-i18n="rc-cap-probe">Trạm đo probe station kiểm tra linh kiện trên wafer</span>
+                                    </div>
+                                    <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
+                                    <div class="rc-app__img">
+                                        <img src="./assets/images/device-au-electrodes-1.png" alt="Wafer sau khi tạo điện cực Au" loading="lazy">
+                                        <span data-i18n="rc-cap-device1">Wafer với điện cực Au, sẵn sàng đo kiểm vi điện tử</span>
+                                    </div>
+                                    <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
+                                    <div class="rc-app__img">
+                                        <img src="./assets/images/device-probe-chuck-view.png" alt="Cận cảnh linh kiện dưới kính hiển vi của trạm đo prober" loading="lazy">
+                                        <span data-i18n="rc-cap-device2">Cận cảnh linh kiện dưới kính hiển vi của trạm đo prober</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2602,6 +2663,16 @@ document.addEventListener('DOMContentLoaded', function() {
             'rc-cap-tio2': 'Hiệu ứng điện trường yếu trong quang xúc tác TiO₂',
             'rc-cap-reactor': 'Hệ phản ứng thực tế: nguồn sáng, lò phản ứng và hệ làm mát',
             'rc-cap-solar': 'Quang xúc tác tích hợp trên pin mặt trời màng mỏng',
+            'rc-app3-title': 'Ứng dụng wafer Silicon loại p trong chế tạo vi/nano cấu trúc — hợp tác cùng viện nghiên cứu Châu Âu',
+            'rc-app3a-title': 'Ứng dụng wafer p-Si làm đế chế tạo tiếp giáp p-n (IEMN, Pháp)',
+            'rc-app3b-title': 'Ứng dụng wafer n-Si làm đế cho ứng dụng vi điện tử (IEMN, Pháp)',
+            'rc-cap-psi': 'Wafer Si loại p (p-Si) — vật liệu nền ban đầu',
+            'rc-cap-sinw-process': 'Quy trình chế tạo SiNW: lắng Ag⁺, ăn mòn tạo SiNW, loại bỏ Ag⁺ bằng HNO₃, phủ TiO₂ bằng ALD',
+            'rc-cap-sem-sinw': 'Ảnh SEM mặt cắt dây nano Si sau chế tạo',
+            'rc-cap-nsi': 'Wafer Si loại n (n-Si) — vật liệu nền ban đầu',
+            'rc-cap-probe': 'Trạm đo probe station kiểm tra linh kiện trên wafer',
+            'rc-cap-device1': 'Wafer với điện cực Au, sẵn sàng đo kiểm vi điện tử',
+            'rc-cap-device2': 'Cận cảnh linh kiện dưới kính hiển vi của trạm đo prober',
             'rc-collab-title': 'Hợp tác quốc tế',
             'rc-collab-lead': 'Các viện nghiên cứu và trường đại học hàng đầu thế giới đang đồng hành cùng Digifund.',
             'slide1-sub': 'Sản xuất trong nhà máy đạt chuẩn, kiểm soát chất lượng từng tấm wafer.',
@@ -2740,6 +2811,16 @@ document.addEventListener('DOMContentLoaded', function() {
             'rc-cap-tio2': 'Weak electric-field effect on TiO₂ photocatalysis',
             'rc-cap-reactor': 'Actual reactor system: light source, batch reactor and cooling system',
             'rc-cap-solar': 'Photocatalysis integrated on a thin-film solar panel',
+            'rc-app3-title': 'Applications of p-type silicon wafer in nanofabrication — with an EU research institution',
+            'rc-app3a-title': 'Utilization of p-Si wafer as a substrate for p–n junction fabrication (IEMN, France)',
+            'rc-app3b-title': 'Utilization of n-Si wafer as a substrate for microelectronic applications (IEMN, France)',
+            'rc-cap-psi': 'p-type Si wafer (p-Si) — starting substrate',
+            'rc-cap-sinw-process': 'SiNW fabrication flow: Ag⁺ deposition, SiNW etching, Ag⁺ removal by HNO₃, TiO₂ ALD coating',
+            'rc-cap-sem-sinw': 'SEM cross-section of the fabricated Si nanowires',
+            'rc-cap-nsi': 'n-type Si wafer (n-Si) — starting substrate',
+            'rc-cap-probe': 'Probe station testing on the wafer',
+            'rc-cap-device1': 'Wafer with patterned Au electrodes, ready for microelectronic testing',
+            'rc-cap-device2': "Close-up view of the device under the probe station's microscope",
             'rc-collab-title': 'International Collaboration',
             'rc-collab-lead': 'Leading research institutes and universities worldwide are partnering with Digifund.',
             'slide1-sub': 'Fab-grade manufacturing with quality control on every wafer.',
