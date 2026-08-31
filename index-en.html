@@ -614,11 +614,13 @@
         #collaboration { background-color: #f3f7fc; border-top: 1px solid #e5ebf1; }
         [data-theme="dark"] #collaboration { background-color: #0d1117; border-top-color: #30363d; }
         /* Collaboration: tighter vertical spacing + compact on mobile */
-        #collaboration { padding-top: 80px; padding-bottom: 55px; }
+        #collaboration { padding-top: 80px; padding-bottom: 130px; }
+        #collaboration + #about.about-one { padding-top: 70px; }
         #collaboration .section-title { margin-bottom: 34px; }
         @media (max-width: 767px) {
             .scroll-to-top { display: none !important; }
-            #collaboration { padding-top: 34px; padding-bottom: 16px; }
+            #collaboration { padding-top: 34px; padding-bottom: 56px; }
+            #collaboration + #about.about-one { padding-top: 30px; }
             #collaboration .section-title { margin-bottom: 20px; }
             #collaboration .row > [class*="col-"] { flex: 0 0 50%; max-width: 50%; padding-left: 8px; padding-right: 8px; }
             #collaboration .team-one__single { margin-bottom: 14px; }
