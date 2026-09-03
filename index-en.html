@@ -614,12 +614,12 @@
         #collaboration { background-color: #f3f7fc; border-top: 1px solid #e5ebf1; }
         [data-theme="dark"] #collaboration { background-color: #0d1117; border-top-color: #30363d; }
         /* Collaboration: tighter vertical spacing + compact on mobile */
-        #collaboration { padding-top: 80px; padding-bottom: 130px; }
+        #collaboration { padding-top: 80px; padding-bottom: 60px; }
         #collaboration + #about.about-one { padding-top: 70px; }
         #collaboration .section-title { margin-bottom: 34px; }
         @media (max-width: 767px) {
             .scroll-to-top { display: none !important; }
-            #collaboration { padding-top: 34px; padding-bottom: 56px; }
+            #collaboration { padding-top: 34px; padding-bottom: 34px; }
             #collaboration + #about.about-one { padding-top: 30px; }
             #collaboration .section-title { margin-bottom: 20px; }
             #collaboration .row > [class*="col-"] { flex: 0 0 50%; max-width: 50%; padding-left: 8px; padding-right: 8px; }
@@ -675,16 +675,17 @@
         /* International collaboration: research institute / university logo strip */
         #collaboration .rc-collab { margin-top: 16px; padding-top: 44px; border-top: 1px solid rgba(var(--fixpro-black-rgb), .08); }
         [data-theme="dark"] #collaboration .rc-collab { border-top-color: #30363d; }
-        #collaboration .rc-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px 46px; margin-top: 8px; }
-        #collaboration .rc-logo { display: flex; align-items: center; justify-content: center; width: 190px; height: 120px; background: #fff; border: 1px solid rgba(var(--fixpro-black-rgb), .07); border-radius: 20px; padding: 18px 24px; box-shadow: 0 10px 26px rgba(16, 24, 40, .07); opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease; }
+        #collaboration .rc-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; margin-top: 8px; }
+        #collaboration .rc-logo { display: flex; align-items: center; justify-content: center; width: 166px; height: 104px; background: #fff; border: 1px solid rgba(var(--fixpro-black-rgb), .07); border-radius: 18px; padding: 10px 12px; box-shadow: 0 10px 26px rgba(16, 24, 40, .07); opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease; }
         #collaboration .rc-logos.is-visible .rc-logo { opacity: 1; transform: translateY(0); }
         #collaboration .rc-logos.is-visible .rc-logo:nth-child(1) { transition-delay: .05s; }
         #collaboration .rc-logos.is-visible .rc-logo:nth-child(2) { transition-delay: .15s; }
         #collaboration .rc-logos.is-visible .rc-logo:nth-child(3) { transition-delay: .25s; }
         #collaboration .rc-logos.is-visible .rc-logo:nth-child(4) { transition-delay: .35s; }
         #collaboration .rc-logos.is-visible .rc-logo:nth-child(5) { transition-delay: .45s; }
+        #collaboration .rc-logos.is-visible .rc-logo:nth-child(6) { transition-delay: .55s; }
         #collaboration .rc-logo:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 82, 204, .2); border-color: rgba(0, 82, 204, .3); }
-        #collaboration .rc-logo img { max-height: 78px; max-width: 154px; width: auto; height: auto; object-fit: contain; }
+        #collaboration .rc-logo img { max-height: 76px; max-width: 138px; width: auto; height: auto; object-fit: contain; }
         [data-theme="dark"] #collaboration .rc-logo { background: #161b22; border-color: #30363d; }
         [data-theme="dark"] #collaboration .rc-logo:hover { border-color: rgba(59, 130, 246, .45); box-shadow: 0 20px 40px rgba(59, 130, 246, .18); }
         @media (max-width: 767px) {
@@ -1706,21 +1707,21 @@
                         <div class="team-one__img-box">
                             <div class="team-one__img">
                                 <picture>
-                                    <source srcset="./assets/images/Adem.webp" type="image/webp">
-                                    <img src="./assets/images/Adem.jpg" alt="Prof. Adem Sreedhar - chuyên gia lắng đọng màng mỏng phún xạ, Gachon University Hàn Quốc" loading="lazy">
+                                    <source srcset="./assets/images/vitaly.webp" type="image/webp">
+                                    <img src="./assets/images/vitaly.jpg" alt="Prof. Vitaly Ordomsky - heterogeneous catalysis expert, CNRS France" loading="lazy">
                                 </picture>
                             </div>
                         </div>
                         <div class="team-one__content">
                             <div class="team-one__title-box">
-                                <h3 class="team-one__title">Prof. Adem Sreedhar</h3>
-                                <div class="team-one__sub-title" data-i18n="exp2-role">Sputtering Thin-film Deposition</div>
+                                <h3 class="team-one__title">Prof. Vitaly Ordomsky</h3>
+                                <div class="team-one__sub-title" data-i18n="exp2-role">Heterogeneous Catalysis</div>
                                 <div class="team-one__org-row">
-                                    <img class="team-one__org-logo" src="./assets/images/logo-gachon.png" alt="Logo Gachon University" width="96" height="96" loading="lazy">
-                                    <span class="team-one__org" data-i18n="exp2-org">Gachon, South Korea</span>
+                                    <img class="team-one__org-logo" src="./assets/images/logo-cnrs.png" alt="Logo CNRS" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp2-org">CNRS, France</span>
                                 </div>
                             </div>
-                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=K_cN45wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Prof. Adem Sreedhar">
+                            <a class="team-one__scholar" href="https://scholar.google.com/citations?user=jwt5d-QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Prof. Vitaly Ordomsky">
                                 <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                                 <span data-i18n="scholar-link">Google Scholar</span>
                                 <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
@@ -1735,21 +1736,21 @@
                         <div class="team-one__img-box">
                             <div class="team-one__img">
                                 <picture>
-                                    <source srcset="./assets/images/mynghetran.webp" type="image/webp">
-                                    <img src="./assets/images/mynghetran.jpg" alt="Dr. My Nghe TRAN - chuyên gia chế tạo chip bán dẫn, IMEC Bỉ" loading="lazy">
+                                    <source srcset="./assets/images/Adem.webp" type="image/webp">
+                                    <img src="./assets/images/Adem.jpg" alt="Prof. Adem Sreedhar - chuyên gia lắng đọng màng mỏng phún xạ, Gachon University Hàn Quốc" loading="lazy">
                                 </picture>
                             </div>
                         </div>
                         <div class="team-one__content">
                             <div class="team-one__title-box">
-                                <h3 class="team-one__title">Dr. My Nghe TRAN</h3>
-                                <div class="team-one__sub-title" data-i18n="exp3-role">Semiconductor Chip Fabrication</div>
+                                <h3 class="team-one__title">Prof. Adem Sreedhar</h3>
+                                <div class="team-one__sub-title" data-i18n="exp3-role">Sputtering Thin-film Deposition</div>
                                 <div class="team-one__org-row">
-                                    <img class="team-one__org-logo team-one__org-logo--wide" src="./assets/images/logo-imec.png" alt="Logo imec" width="160" height="49" loading="lazy">
-                                    <span class="team-one__org" data-i18n="exp3-org">IMEC, Belgium</span>
+                                    <img class="team-one__org-logo" src="./assets/images/logo-gachon.png" alt="Logo Gachon University" width="96" height="96" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp3-org">Gachon, South Korea</span>
                                 </div>
                             </div>
-                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=SMAi60IAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Dr. My Nghe TRAN">
+                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=K_cN45wAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Prof. Adem Sreedhar">
                                 <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                                 <span data-i18n="scholar-link">Google Scholar</span>
                                 <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
@@ -1764,21 +1765,21 @@
                         <div class="team-one__img-box">
                             <div class="team-one__img">
                                 <picture>
-                                    <source srcset="./assets/images/oanhle.webp" type="image/webp">
-                                    <img src="./assets/images/oanhle.jpg" alt="Dr. Oanh LE - chuyên gia chuyển hóa năng lượng tái tạo, Griffith University Úc" loading="lazy">
+                                    <source srcset="./assets/images/mynghetran.webp" type="image/webp">
+                                    <img src="./assets/images/mynghetran.jpg" alt="Dr. My Nghe TRAN - chuyên gia chế tạo chip bán dẫn, IMEC Bỉ" loading="lazy">
                                 </picture>
                             </div>
                         </div>
                         <div class="team-one__content">
                             <div class="team-one__title-box">
-                                <h3 class="team-one__title">Dr. Oanh LE</h3>
-                                <div class="team-one__sub-title" data-i18n="exp4-role">Renewable Energy Conversion</div>
+                                <h3 class="team-one__title">Dr. My Nghe TRAN</h3>
+                                <div class="team-one__sub-title" data-i18n="exp4-role">Semiconductor Chip Fabrication</div>
                                 <div class="team-one__org-row">
-                                    <img class="team-one__org-logo" src="./assets/images/logo-griffith.png" alt="Logo Griffith University" width="96" height="96" loading="lazy">
-                                    <span class="team-one__org" data-i18n="exp4-org">Griffith, Australia</span>
+                                    <img class="team-one__org-logo team-one__org-logo--wide" src="./assets/images/logo-imec.png" alt="Logo imec" width="160" height="49" loading="lazy">
+                                    <span class="team-one__org" data-i18n="exp4-org">IMEC, Belgium</span>
                                 </div>
                             </div>
-                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=QtRl5g8AAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Dr. Oanh LE">
+                            <a class="team-one__scholar" href="https://scholar.google.com/citations?hl=en&amp;user=SMAi60IAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Trang Google Scholar của Dr. My Nghe TRAN">
                                 <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                                 <span data-i18n="scholar-link">Google Scholar</span>
                                 <i class="fas fa-arrow-right team-one__scholar-arrow" aria-hidden="true"></i>
@@ -1807,7 +1808,7 @@
             <!-- 1. Scientific research outcomes -->
             <div class="rc-pubs">
                 <h4 class="rc-heading text-center" data-i18n="rc-pub-title">Scientific Research Outcomes</h4>
-                <p class="rc-lead text-center" data-i18n="rc-pub-lead">Digifund materials and equipment have been used in photocatalysis research published in leading international scientific journals.</p>
+                <p class="rc-lead text-center" data-i18n="rc-pub-lead">Digifund materials and equipment have been used in photocatalysis research and semiconductor fabrication published in leading international scientific journals.</p>
 
                 <div class="row">
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
@@ -1892,12 +1893,12 @@
                                     <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="rc-app__img rc-app__img--wide">
                                         <img src="./assets/images/process-sinw-fabrication.png" alt="Si nanowire (SiNW) fabrication process" loading="lazy">
-                                        <span data-i18n="rc-cap-sinw-process">SiNW fabrication flow: Ag⁺ deposition, SiNW etching, Ag⁺ removal by HNO₃, TiO₂ ALD coating</span>
+                                        <span data-i18n="rc-cap-sinw-process">SiNW etching by Ag⁺ ions, Ag⁺ removal by HNO₃, and TiO₂ ALD coating</span>
                                     </div>
                                     <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="rc-app__img">
                                         <img src="./assets/images/sem-sinw-crosssection.png" alt="SEM cross-section of Si nanowires" loading="lazy">
-                                        <span data-i18n="rc-cap-sem-sinw">SEM cross-section of the fabricated Si nanowires</span>
+                                        <span data-i18n="rc-cap-sem-sinw">SEM cross-section of fabricated SiNW/TiO₂ p-n junction</span>
                                     </div>
                                 </div>
                             </div>
@@ -1910,17 +1911,17 @@
                                     </div>
                                     <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="rc-app__img">
-                                        <img src="./assets/images/probe-station-testing.png" alt="Probe station testing" loading="lazy">
-                                        <span data-i18n="rc-cap-probe">Probe station testing on the wafer</span>
+                                        <img src="./assets/images/probe-station-testing.png" alt="Laser-writing lithography printed on the Si wafer" loading="lazy">
+                                        <span data-i18n="rc-cap-probe">Laser-writing lithography printed on the Si wafer</span>
                                     </div>
                                     <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="rc-app__img">
-                                        <img src="./assets/images/device-au-electrodes-1.png" alt="Wafer with patterned Au electrodes" loading="lazy">
-                                        <span data-i18n="rc-cap-device1">Wafer with patterned Au electrodes, ready for microelectronic testing</span>
+                                        <img src="./assets/images/device-au-electrodes-1.png" alt="The printed Si wafer after the development process" loading="lazy">
+                                        <span data-i18n="rc-cap-device1">The printed Si wafer after the development process</span>
                                     </div>
                                     <div class="rc-app__arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></div>
                                     <div class="rc-app__img">
-                                        <img src="./assets/images/device-probe-chuck-view.png" alt="Close-up view of the device under the probe station's microscope" loading="lazy">
+                                        <img src="./assets/images/device-probe-chuck-view.png" alt="The patterned Si wafer inside the vacuum chamber for Si dry etching" loading="lazy">
                                         <span data-i18n="rc-cap-device2">Close-up view of the device under the probe station's microscope</span>
                                     </div>
                                 </div>
@@ -1939,6 +1940,7 @@
                     <div class="rc-logo"><img src="./assets/images/logo-lille.png" alt="Université de Lille" loading="lazy"></div>
                     <div class="rc-logo"><img src="./assets/images/logo-imec.png" alt="imec" loading="lazy"></div>
                     <div class="rc-logo"><img src="./assets/images/logo-gachon.png" alt="Gachon University" loading="lazy"></div>
+                    <div class="rc-logo"><img src="./assets/images/logo-uccs.png" alt="UCCS — Unité de Catalyse et de Chimie du Solide" loading="lazy"></div>
                     <div class="rc-logo"><img src="./assets/images/logo-griffith.png" alt="Griffith University" loading="lazy"></div>
                 </div>
             </div>
@@ -2723,7 +2725,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'h3-why': 'Tại Sao Chọn Chúng Tôi', 'h3-projects': 'Sản Phẩm Nổi Bật',
             'h3-contact': 'Liên Hệ Với Chúng Tôi', 'h3-team': 'Đội Ngũ Chuyên Gia', 'h3-collab': 'Hợp Tác & Nghiên Cứu', 'h3-blog': 'Tin Tức & Sự Kiện',
             'rc-pub-title': 'Kết quả nghiên cứu khoa học',
-            'rc-pub-lead': 'Vật liệu và thiết bị Digifund được ứng dụng trong các nghiên cứu quang xúc tác, công bố trên các tạp chí khoa học quốc tế uy tín.',
+            'rc-pub-lead': 'Vật liệu và thiết bị Digifund được ứng dụng trong các nghiên cứu quang xúc tác và chế tạo bán dẫn, công bố trên các tạp chí khoa học quốc tế uy tín.',
             'rc-apps-toggle': 'Tìm hiểu thêm các sản phẩm Digifund được ứng dụng trong nghiên cứu tại đây',
             'rc-app1-title': 'Hệ thống phản ứng quang xúc tác cho năng lượng tái tạo',
             'rc-app2-title': 'Hệ thống quang xúc tác cho ứng dụng pin mặt trời',
@@ -2736,12 +2738,12 @@ document.addEventListener('DOMContentLoaded', function() {
             'rc-app3a-title': 'Ứng dụng wafer p-Si làm đế chế tạo tiếp giáp p-n (IEMN, Pháp)',
             'rc-app3b-title': 'Ứng dụng wafer n-Si làm đế cho ứng dụng vi điện tử (IEMN, Pháp)',
             'rc-cap-psi': 'Wafer Si loại p (p-Si) — vật liệu nền ban đầu',
-            'rc-cap-sinw-process': 'Quy trình chế tạo SiNW: lắng Ag⁺, ăn mòn tạo SiNW, loại bỏ Ag⁺ bằng HNO₃, phủ TiO₂ bằng ALD',
-            'rc-cap-sem-sinw': 'Ảnh SEM mặt cắt dây nano Si sau chế tạo',
+            'rc-cap-sinw-process': 'Ăn mòn tạo SiNW bằng ion Ag⁺, loại bỏ Ag⁺ bằng HNO₃, phủ TiO₂ bằng ALD',
+            'rc-cap-sem-sinw': 'Ảnh SEM mặt cắt tiếp giáp p-n SiNW/TiO₂ sau chế tạo',
             'rc-cap-nsi': 'Wafer Si loại n (n-Si) — vật liệu nền ban đầu',
-            'rc-cap-probe': 'Trạm đo probe station kiểm tra linh kiện trên wafer',
-            'rc-cap-device1': 'Wafer với điện cực Au, sẵn sàng đo kiểm vi điện tử',
-            'rc-cap-device2': 'Cận cảnh linh kiện dưới kính hiển vi của trạm đo prober',
+            'rc-cap-probe': 'In quang khắc bằng laser trực tiếp lên wafer Si',
+            'rc-cap-device1': 'Wafer Si sau khi in, đã qua bước hiện hình (development)',
+            'rc-cap-device2': 'Wafer Si đã tạo hình được đặt trong buồng chân không để khắc khô (dry etch)',
             'rc-collab-title': 'Hợp tác quốc tế',
             'rc-collab-lead': 'Các viện nghiên cứu và trường đại học hàng đầu thế giới đang đồng hành cùng Digifund.',
             'slide1-sub': 'Sản xuất trong nhà máy đạt chuẩn, kiểm soát chất lượng từng tấm wafer.',
@@ -2782,10 +2784,10 @@ document.addEventListener('DOMContentLoaded', function() {
             'wafer-caocap': 'Wafer Cao Cấp', 'wafer-tieuchuan': 'Wafer Tiêu Chuẩn',
             'wafer-danhbong': 'Wafer Đánh Bóng', 'wafer-epi': 'Wafer Epitaxial', 'wafer-soi': 'Wafer SOI',
             'team-title': 'Chuyên Gia Wafer', 'read-more': 'xem thêm',
-            'exp1-role': 'Bán dẫn tiên tiến', 'exp2-role': 'Lắng đọng màng mỏng bằng phún xạ',
-            'exp3-role': 'Chế tạo chip bán dẫn', 'exp4-role': 'Chuyển hóa năng lượng tái tạo',
-            'exp1-org': 'CNRS, Pháp', 'exp2-org': 'Gachon, Hàn Quốc',
-            'exp3-org': 'IMEC, Bỉ', 'exp4-org': 'Griffith, Úc',
+            'exp1-role': 'Bán dẫn tiên tiến', 'exp2-role': 'Xúc tác dị thể',
+            'exp3-role': 'Lắng đọng màng mỏng bằng phún xạ', 'exp4-role': 'Chế tạo chip bán dẫn',
+            'exp1-org': 'CNRS, Pháp', 'exp2-org': 'CNRS, Pháp',
+            'exp3-org': 'Gachon, Hàn Quốc', 'exp4-org': 'IMEC, Bỉ',
             'scholar-link': 'Google Scholar',
             'chat-text': 'Vui lòng điền vào mẫu dưới đây, chúng tôi sẽ phản hồi sớm nhất có thể.',
             'product-text': 'Thông số cao cấp cho quy trình sản xuất bán dẫn tiên tiến.',
@@ -2871,7 +2873,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'h3-why': 'Why Choose Digifund', 'h3-projects': 'Featured Products',
             'h3-contact': 'Get In Touch', 'h3-team': 'Our Expert Team', 'h3-collab': 'Collaboration & Research', 'h3-blog': 'News & Events',
             'rc-pub-title': 'Scientific Research Outcomes',
-            'rc-pub-lead': 'Digifund materials and equipment have been used in photocatalysis research published in leading international scientific journals.',
+            'rc-pub-lead': 'Digifund materials and equipment have been used in photocatalysis research and semiconductor fabrication published in leading international scientific journals.',
             'rc-apps-toggle': 'Learn more about the Digifund products used in this research here',
             'rc-app1-title': 'Photocatalytic reaction setup for renewable energy',
             'rc-app2-title': 'Photocatalytic setup for solar cell applications',
@@ -2884,12 +2886,12 @@ document.addEventListener('DOMContentLoaded', function() {
             'rc-app3a-title': 'Utilization of p-Si wafer as a substrate for p–n junction fabrication (IEMN, France)',
             'rc-app3b-title': 'Utilization of n-Si wafer as a substrate for microelectronic applications (IEMN, France)',
             'rc-cap-psi': 'p-type Si wafer (p-Si) — starting substrate',
-            'rc-cap-sinw-process': 'SiNW fabrication flow: Ag⁺ deposition, SiNW etching, Ag⁺ removal by HNO₃, TiO₂ ALD coating',
-            'rc-cap-sem-sinw': 'SEM cross-section of the fabricated Si nanowires',
+            'rc-cap-sinw-process': 'SiNW etching by Ag⁺ ions, Ag⁺ removal by HNO₃, and TiO₂ ALD coating',
+            'rc-cap-sem-sinw': 'SEM cross-section of fabricated SiNW/TiO₂ p-n junction',
             'rc-cap-nsi': 'n-type Si wafer (n-Si) — starting substrate',
-            'rc-cap-probe': 'Probe station testing on the wafer',
-            'rc-cap-device1': 'Wafer with patterned Au electrodes, ready for microelectronic testing',
-            'rc-cap-device2': "Close-up view of the device under the probe station's microscope",
+            'rc-cap-probe': 'Laser-writing lithography printed on the Si wafer',
+            'rc-cap-device1': 'The printed Si wafer after the development process',
+            'rc-cap-device2': 'The patterned Si wafer inside the vacuum chamber for Si dry etching',
             'rc-collab-title': 'International Collaboration',
             'rc-collab-lead': 'Leading research institutes and universities worldwide are partnering with Digifund.',
             'slide1-sub': 'Fab-grade manufacturing with quality control on every wafer.',
@@ -2929,10 +2931,10 @@ document.addEventListener('DOMContentLoaded', function() {
             'wafer-caocap': 'Premium Wafer', 'wafer-tieuchuan': 'Standard Wafer',
             'wafer-danhbong': 'Polished Wafer', 'wafer-epi': 'Epitaxial Wafer', 'wafer-soi': 'SOI Wafer',
             'team-title': 'Wafer Specialist', 'read-more': 'read more',
-            'exp1-role': 'Advanced Semiconductors', 'exp2-role': 'Sputtering Thin-film Deposition',
-            'exp3-role': 'Semiconductor Chip Fabrication', 'exp4-role': 'Renewable Energy Conversion',
-            'exp1-org': 'CNRS, France', 'exp2-org': 'Gachon, South Korea',
-            'exp3-org': 'IMEC, Belgium', 'exp4-org': 'Griffith, Australia',
+            'exp1-role': 'Advanced Semiconductors', 'exp2-role': 'Heterogeneous Catalysis',
+            'exp3-role': 'Sputtering Thin-film Deposition', 'exp4-role': 'Semiconductor Chip Fabrication',
+            'exp1-org': 'CNRS, France', 'exp2-org': 'CNRS, France',
+            'exp3-org': 'Gachon, South Korea', 'exp4-org': 'IMEC, Belgium',
             'scholar-link': 'Google Scholar',
             'chat-text': 'Please fill out the form below and we will get back to you as soon as possible.',
             'product-text': 'Premium specifications for advanced semiconductor manufacturing processes.',
