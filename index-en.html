@@ -2224,7 +2224,7 @@
                     <h6 class="section-title__tagline"><span class="section-title__tagline-border"></span data-i18n="tag-contact">CONTACT</h6>
                 <h3 class="section-title__title title-animation" style="perspective: 400px;" data-i18n="h3-contact">Get In Touch</h3>
                 </div>
-                <p class="video-one__text">Have questions about our silicon wafer products? <br>Contact our team for technical specifications, pricing<br>and custom order inquiries. We respond within 24 hours.</p>
+                <p class="video-one__text">Have questions about our silicon wafer products? <br>Contact our team for technical specifications, pricing <br>and custom order inquiries. We respond within 24 hours.</p>
                 <div class="video-one__video-link has-social">
                     <a href="https://zalo.me/711262444130502316" target="_blank" rel="noopener" title="Nhắn tin qua Zalo" aria-label="Nhắn tin qua Zalo">
                         <div class="video-one__video-icon">
@@ -2468,7 +2468,7 @@
                         <div class="footer-widget__column footer-widget__newsletter">
                             <div class="footer-widget__newsletter-bg" style="background-image: url(https://laravel-fixpro.mnsithub.com/assets/images/backgrounds/footer-widget-newsletter-bg.jpg);">
                             </div>
-                            <h3 class="footer-widget__newsletter-title" data-i18n="nl-title">Subscribe To Our Newsletter<br>Latest Product Updates</h3>
+                            <h3 class="footer-widget__newsletter-title" data-i18n="nl-title">Subscribe To Our Newsletter <br>Latest Product Updates</h3>
                             <form class="footer-widget__newsletter-form mc-form" data-url="MC_FORM_URL" novalidate="novalidate">
                                 <div class="footer-widget__newsletter-form-input-box">
                                     <input type="email" placeholder="Enter email" name="EMAIL">
@@ -2797,7 +2797,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'nhap-email': 'Nhập email', 'tin-nhan': 'Tin nhắn', 'ho-ten': 'Họ và tên',
             'email-ban': 'Email của bạn', 'noi-dung': 'Nội dung', 'dia-chi-email': 'Địa chỉ Email',
             'ho-tro': 'Hỗ Trợ', 'dieu-khoan': 'Điều Khoản', 'chinh-sach': 'Chính Sách',
-            'nl-title': 'Đăng Ký Nhận Bản Tin<br>Cập Nhật Sản Phẩm Mới Nhất', 'ftr-btn-subscribe': 'Đăng Ký', 'ctc-submit': 'Gửi Yêu Cầu',
+            'nl-title': 'Đăng Ký Nhận Bản Tin <br>Cập Nhật Sản Phẩm Mới Nhất', 'ftr-btn-subscribe': 'Đăng Ký', 'ctc-submit': 'Gửi Yêu Cầu',
             'footer-about': 'Digifund là đối tác tin cậy của bạn về silicon wafer độ tinh khiết cao. Chúng tôi phục vụ các nhà sản xuất bán dẫn toàn cầu với giải pháp substrate wafer cao cấp.',
             'fnav-energy': 'Vật Liệu Năng Lượng Tái Tạo', 'fnav-clean': 'Thiết Bị Phòng Sạch & Lab', 'fnav-chem': 'Hóa Chất & Vật Tư',
             'danh-muc': 'Danh Mục', 'cam-ket-gia': 'Cam kết giá tốt nhất cho mọi đơn hàng',
@@ -2944,7 +2944,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'nhap-email': 'Enter email', 'tin-nhan': 'Message', 'ho-ten': 'Your Name',
             'email-ban': 'Your Email', 'noi-dung': 'Your Text', 'dia-chi-email': 'Email Address',
             'ho-tro': 'Support', 'dieu-khoan': 'Terms and Condition', 'chinh-sach': 'Privacy and Policy',
-            'nl-title': 'Subscribe To Our Newsletter<br>Latest Product Updates', 'ftr-btn-subscribe': 'Subscribe', 'ctc-submit': 'Send Inquiry',
+            'nl-title': 'Subscribe To Our Newsletter <br>Latest Product Updates', 'ftr-btn-subscribe': 'Subscribe', 'ctc-submit': 'Send Inquiry',
             'footer-about': 'Digifund is your trusted partner for high-purity silicon wafers. We serve semiconductor manufacturers worldwide with premium substrate wafer solutions.',
             'fnav-energy': 'Renewable Energy Materials', 'fnav-clean': 'Cleanroom & Lab Equipment', 'fnav-chem': 'Chemicals & Supplies',
             'danh-muc': 'Portfolio', 'tro-giup-faq': 'Help &amp; FAQs',
@@ -3232,16 +3232,34 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 
-<!-- Mobile: ẩn nút liên hệ góc trái khi đang xem banner -->
+<!-- Mobile: ẩn nút liên hệ góc trái khi đang xem banner, khi đang ở khu vực đã có sẵn nút Zalo/LinkedIn riêng (mục Liên Hệ, tránh chồng icon lên nhau), và tạm ẩn trong lúc đang cuộn (tránh đè lên chữ/nút bấm khi lướt) -->
 <script>
 (function () {
     var banner = document.getElementById('home');
+    var contactSection = document.getElementById('contact');
     if (!banner) return;
+    var isScrolling = false;
+    var scrollStopTimer = null;
+    function inView(el) {
+        if (!el) return false;
+        var r = el.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+    }
     function update() {
         var pastBanner = banner.getBoundingClientRect().bottom <= 100;
-        document.body.classList.toggle('contact-hidden', !pastBanner);
+        var overContact = inView(contactSection);
+        document.body.classList.toggle('contact-hidden', !pastBanner || overContact || isScrolling);
     }
-    window.addEventListener('scroll', update, { passive: true });
+    function onScroll() {
+        isScrolling = true;
+        update();
+        clearTimeout(scrollStopTimer);
+        scrollStopTimer = setTimeout(function () {
+            isScrolling = false;
+            update();
+        }, 450);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', update);
     update();
 })();
