@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tạo Báo Giá — DIGIFUND</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../assets/fonts/google-archivo.css">
+<link rel="stylesheet" href="../assets/fonts/google-titillium.css">
+<style>
+  :root{
+    --brand:#0052CC;
+    --brand-rgb:0,82,204;
+    --ink:#191a1c;
+    --gray:#5b6472;
+    --line:#d7dbe3;
+    --bg:#f3f5f9;
+    --panel:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Archivo","Titillium Web",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand);}
+
+  /* ---------- Topbar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;gap:14px;
+    padding:10px 20px;
+    background:#ffffffee;backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar__brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);text-decoration:none;}
+  .topbar__brand img{height:30px;width:auto;display:block;}
+  .topbar__title{font-size:14px;color:var(--gray);font-weight:600;border-left:1px solid var(--line);padding-left:14px;margin-left:2px;}
+  .topbar__spacer{flex:1;}
+  .btn{
+    appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);
+    padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer;
+    display:inline-flex;align-items:center;gap:8px;transition:.15s;
+  }
+  .btn:hover{border-color:var(--brand);color:var(--brand);}
+  .btn--primary{background:var(--brand);border-color:var(--brand);color:#fff;}
+  .btn--primary:hover{background:#0044ad;color:#fff;}
+  .btn--ghost{background:transparent;border-color:transparent;color:var(--gray);}
+  .btn--ghost:hover{color:#c0392b;border-color:transparent;background:#fdeceb;}
+  .btn--sm{padding:5px 10px;font-size:12px;border-radius:6px;}
+  .btn:disabled{opacity:.55;cursor:progress;}
+
+  /* ---------- Layout ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns:min(430px,38vw) 1fr;
+    align-items:start;
+    gap:0;
+    min-height:calc(100vh - 53px);
+  }
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Editor panel ---------- */
+  .editor{
+    background:var(--panel);
+    border-right:1px solid var(--line);
+    height:calc(100vh - 53px);
+    overflow-y:auto;
+    padding:18px 18px 90px;
+  }
+  @media (max-width:980px){ .editor{height:auto;border-right:none;border-bottom:1px solid var(--line);} }
+
+  .sec{border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden;}
+  .sec__head{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:12px 14px;background:#f8f9fc;cursor:pointer;user-select:none;
+  }
+  .sec__head h3{margin:0;font-size:13.5px;font-weight:700;letter-spacing:.2px;}
+  .sec__head .chev{transition:.15s;color:var(--gray);font-size:12px;}
+  .sec.collapsed .chev{transform:rotate(-90deg);}
+  .sec__body{padding:14px;display:flex;flex-direction:column;gap:10px;}
+  .sec.collapsed .sec__body{display:none;}
+
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field label{font-size:11.5px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.3px;}
+  .field input,.field textarea{
+    font:inherit;font-size:13.5px;padding:8px 10px;border:1px solid var(--line);border-radius:7px;
+    background:#fff;color:var(--ink);width:100%;resize:vertical;
+  }
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(var(--brand-rgb),.12);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+
+  /* product row card */
+  .prow{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfcfe;display:flex;flex-direction:column;gap:8px;position:relative;}
+  .prow__top{display:flex;align-items:center;justify-content:space-between;}
+  .prow__num{font-size:11px;font-weight:800;color:#fff;background:var(--brand);width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;}
+  .prow__actions{display:flex;gap:6px;}
+  .icon-btn{
+    border:1px solid var(--line);background:#fff;border-radius:6px;width:26px;height:26px;
+    display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;color:var(--gray);line-height:1;
+  }
+  .icon-btn:hover{border-color:var(--brand);color:var(--brand);}
+  .icon-btn.danger:hover{border-color:#c0392b;color:#c0392b;}
+  .prow .row3{grid-template-columns:1fr 1fr 1fr;}
+  .prow .row2b{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  .img-pick{display:flex;align-items:center;gap:8px;}
+  .img-pick__thumb{width:38px;height:38px;border-radius:6px;border:1px solid var(--line);object-fit:cover;background:#fff;display:none;}
+  .img-pick__thumb.show{display:block;}
+  .img-pick input[type=file]{font-size:11.5px;}
+  .radio-row{display:flex;flex-direction:column;gap:6px;}
+  .radio-opt{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:normal;}
+  .radio-opt input{margin:0;accent-color:var(--brand);}
+
+  .add-row-btn{
+    width:100%;border:1.5px dashed var(--line);background:#fff;color:var(--brand);
+    padding:10px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;
+  }
+  .add-row-btn:hover{border-color:var(--brand);background:#f2f6ff;}
+
+  .note-item{display:flex;gap:8px;align-items:flex-start;}
+  .note-item textarea{min-height:38px;}
+
+  .hint{font-size:11.5px;color:var(--gray);line-height:1.5;margin:2px 0 0;}
+
+  /* ---------- Preview panel ---------- */
+  .preview-wrap{
+    padding:28px 24px 80px;
+    display:flex;justify-content:center;
+    background:
+      radial-gradient(circle at 1px 1px, #e3e7ee 1px, transparent 0) 0 0/16px 16px,
+      var(--bg);
+    overflow:auto;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    box-shadow:0 4px 24px rgba(20,30,60,.12), 0 1px 3px rgba(20,30,60,.08);
+    padding:16mm 15mm 18mm;
+    font-family:"Times New Roman",Times,Georgia,serif;
+    color:#1a1a1a;
+    line-height:1.5;
+  }
+
+  .doc-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:2px;}
+  .doc-header__logo{width:82px;flex:0 0 82px;}
+  .doc-header__logo img{width:100%;height:auto;display:block;}
+  .doc-header__text{flex:1;text-align:center;margin-right:82px;}
+  .doc-header__name{font-size:19px;font-weight:700;text-transform:uppercase;margin:2px 0 2px;letter-spacing:.2px;}
+  .doc-header__tagline{font-size:11px;letter-spacing:1.5px;color:var(--brand);font-weight:700;margin:0 0 4px;}
+  .doc-header__meta{font-style:italic;font-size:12.5px;margin:1px 0;}
+  .doc-header__meta a{color:#1a1a1a;text-decoration:underline;}
+
+  .doc-divider{text-align:center;margin:10px 0;font-size:14px;letter-spacing:2px;color:#555;}
+
+  .doc-title{text-align:center;font-size:22px;font-weight:700;letter-spacing:.5px;margin:6px 0 2px;text-transform:uppercase;}
+  .doc-quoteno{text-align:center;font-size:12px;color:#555;margin:0 0 4px;font-style:italic;}
+  .doc-date{text-align:right;font-style:italic;font-size:13px;margin:6px 0 10px;}
+
+  .doc-intro{font-weight:700;font-style:italic;text-align:justify;font-size:13.5px;margin:0 0 14px;}
+
+  .doc-customer{font-size:13.5px;margin-bottom:14px;}
+  .doc-customer div{display:flex;gap:6px;margin:2px 0;}
+  .doc-customer .k{flex:0 0 220px;}
+  .doc-customer .v{font-weight:700;flex:1;}
+
+  table.doc-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:2px;}
+  table.doc-table th,table.doc-table td{border:1px solid #333;padding:6px 7px;vertical-align:middle;}
+  table.doc-table thead th{
+    background:rgba(var(--brand-rgb),.14);
+    font-weight:700;text-align:center;font-size:11.5px;
+  }
+  table.doc-table td.c-center{text-align:center;}
+  table.doc-table td.c-num{text-align:right;white-space:nowrap;}
+  table.doc-table td.c-name{text-align:left;}
+  table.doc-table td.c-spec{text-align:left;}
+  table.doc-table td.c-spec img{display:block;margin-top:5px;max-width:100%;max-height:70px;object-fit:contain;}
+  table.doc-table tfoot td{font-weight:700;}
+  table.doc-table tfoot .lbl{text-align:right;background:#f4f4f4;}
+  table.doc-table tfoot .amt{text-align:right;background:#f4f4f4;}
+
+  .doc-words{font-style:italic;font-size:12.5px;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 6px;}
+  .doc-vatnote{font-weight:700;color:var(--brand);font-size:12.5px;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 18px;}
+
+  .doc-notes{font-size:12.5px;margin-bottom:16px;}
+  .doc-notes__title{font-weight:700;margin-bottom:4px;}
+  .doc-notes ol{margin:0;padding-left:20px;}
+  .doc-notes li{font-style:italic;margin:2px 0;text-align:justify;}
+
+  .doc-closing{font-size:13px;margin-bottom:10px;}
+  .doc-closing p{margin:4px 0;}
+  .doc-closing .bold{font-weight:700;}
+
+  .doc-sign{display:flex;justify-content:flex-end;margin-top:6px;}
+  .doc-sign__box{text-align:center;width:230px;font-size:13px;}
+  .doc-sign__place{font-style:italic;margin-bottom:2px;}
+  .doc-sign__role{font-weight:700;margin-bottom:2px;}
+  .doc-sign__signature{display:block;max-height:60px;width:auto;margin:4px auto 0;}
+  .doc-sign__name{font-weight:700;margin-top:4px;}
+
+  .empty-hint{color:#b6b6b6;font-style:italic;}
+
+  /* ---------- Print ---------- */
+  @media print{
+    .topbar,.editor{display:none !important;}
+    .layout{display:block;}
+    .preview-wrap{padding:0;background:#fff;display:block;}
+    .page{box-shadow:none;width:auto;min-height:0;margin:0;padding:12mm 14mm;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar__brand" href="../index.html">
+    <img src="../assets/images/logo-2.png" alt="DIGIFUND">
+  </a>
+  <span class="topbar__title">Tạo Báo Giá</span>
+  <div class="topbar__spacer"></div>
+  <button class="btn btn--ghost" id="btnReset" title="Xóa toàn bộ dữ liệu đã nhập và về mặc định">Làm mới</button>
+  <button class="btn" id="btnPrint">In</button>
+  <button class="btn btn--primary" id="btnExport">⭳ Tải PDF</button>
+</div>
+
+<div class="layout">
+  <!-- ============ EDITOR ============ -->
+  <aside class="editor" id="editor">
+
+    <div class="sec" data-sec>
+      <div class="sec__head"><h3>Thông tin công ty</h3><span class="chev">▾</span></div>
+      <div class="sec__body">
+        <div class="field"><label>Tên công ty</label><input data-bind="company.name"></div>
+        <div class="field"><label>Slogan / lĩnh vực</label><input data-bind="company.tagline"></div>
+        <div class="field"><label>Địa chỉ</label><input data-bind="company.address"></div>
+        <div class="row2">
+          <div class="field"><label>Hotline</label><input data-bind="company.phone"></div>
+          <div class="field"><label>Email</label><input data-bind="company.email"></div>
+        </div>
+        <div class="field"><label>Website</label><input data-bind="company.website"></div>
+      </div>
+    </div>
+
+    <div class="sec" data-sec>
+      <div class="sec__head"><h3>Tiêu đề &amp; ngày báo giá</h3><span class="chev">▾</span></div>
+      <div class="sec__body">
+        <div class="field"><label>Tiêu đề báo giá</label><input data-bind="meta.title"></div>
+        <div class="field"><label>Số báo giá (tùy chọn)</label><input data-bind="meta.quoteNo" placeholder="VD: DGF-2026-001"></div>
+        <div class="row2">
+          <div class="field"><label>Địa điểm</label><input data-bind="meta.place"></div>
+          <div class="field"><label>Ngày</label><input type="date" data-bind="meta.date"></div>
+        </div>
+        <div class="field"><label>Đoạn mở đầu</label><textarea rows="3" data-bind="intro"></textarea></div>
+      </div>
+    </div>
+
+    <div class="sec" data-sec>
+      <div class="sec__head"><h3>Thông tin khách hàng</h3><span class="chev">▾</span></div>
+      <div class="sec__body">
+        <div class="field"><label>Tên khách hàng</label><input data-bind="customer.name" placeholder="VD: Ông/Bà Nguyễn Văn A"></div>
+        <div class="field"><label>Đơn vị</label><input data-bind="customer.unit" placeholder="VD: Trường Đại Học ..."></div>
+        <div class="field"><label>Địa chỉ</label><input data-bind="customer.address"></div>
+        <div class="row2">
+          <div class="field"><label>Số điện thoại</label><input data-bind="customer.phone"></div>
+          <div class="field"><label>Email</label><input data-bind="customer.email"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec" data-sec>
+      <div class="sec__head"><h3>Bảng sản phẩm</h3><span class="chev">▾</span></div>
+      <div class="sec__body" id="productEditor">
+        <!-- product rows injected here -->
+      </div>
+    </div>
+
+    <div class="sec" data-sec>
+      <div class="sec__head"><h3>Ghi chú &amp; điều khoản</h3><span class="chev">▾</span></div>
+      <div class="sec__body">
+        <div class="field"><label>Dòng lưu ý (VAT / phí ...)</label><input data-bind="vatNote"></div>
+        <div id="notesEditor" style="display:flex;flex-direction:column;gap:8px;"></div>
+        <button type="button" class="add-row-btn" id="btnAddNote">+ Thêm ghi chú</button>
+      </div>
+    </div>
+
+    <div class="sec" data-sec>
+      <div class="sec__head"><h3>Lời kết &amp; chữ ký</h3><span class="chev">▾</span></div>
+      <div class="sec__body">
+        <div class="field"><label>Lời kết</label><textarea rows="2" data-bind="closing"></textarea></div>
+        <div class="row2">
+          <div class="field"><label>Chức danh người ký</label><input data-bind="signer.title"></div>
+          <div class="field"><label>Tên người ký</label><input data-bind="signer.name"></div>
+        </div>
+        <div class="field">
+          <label>Chữ ký / con dấu</label>
+          <div class="radio-row">
+            <label class="radio-opt"><input type="radio" name="sigMode" value="default" id="sigModeDefault"> Dùng chữ ký mặc định DIGIFUND</label>
+            <label class="radio-opt"><input type="radio" name="sigMode" value="custom" id="sigModeCustom"> Tải ảnh chữ ký / con dấu riêng</label>
+          </div>
+          <div class="img-pick" id="sigUploadWrap" style="display:none;">
+            <input type="file" accept="image/*" id="sigInput">
+            <img id="sigThumb" class="img-pick__thumb">
+            <button type="button" class="icon-btn danger" id="sigClear" title="Xóa ảnh">✕</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="hint">Dữ liệu được lưu tạm trong trình duyệt của bạn (không gửi lên máy chủ). Bấm "Làm mới" để xóa và nhập lại từ đầu.</p>
+  </aside>
+
+  <!-- ============ PREVIEW ============ -->
+  <div class="preview-wrap">
+    <div class="page" id="page">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var STORAGE_KEY = "digifund_baogia_v1";
+
+  function todayISO(){
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+  }
+
+  function defaultState(){
+    return {
+      company: {
+        name: "DIGIFUND",
+        tagline: "SEMICONDUCTOR & RENEWABLE ENERGY MATERIALS",
+        address: "Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh",
+        phone: "+84 979 324 567",
+        email: "semiconductor@digifund.vn",
+        website: "digifund.vn"
+      },
+      meta: {
+        title: "QUOTATION - BẢNG BÁO GIÁ",
+        quoteNo: "",
+        place: "TP. Hồ Chí Minh",
+        date: todayISO()
+      },
+      intro: "DIGIFUND xin cảm ơn Quý khách hàng đã quan tâm và tin tưởng. Chúng tôi trân trọng gửi đến Quý khách hàng bảng báo giá như sau:",
+      customer: { name:"", unit:"", address:"", phone:"", email:"" },
+      products: [
+        { name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"" }
+      ],
+      vatNote: "GIÁ TRÊN CHƯA BAO GỒM THUẾ VAT VÀ PHÍ VẬN CHUYỂN (NẾU CÓ).",
+      notes: [
+        "Giá trên áp dụng khi mua đồng thời các sản phẩm nêu trên; nếu mua riêng lẻ, đơn giá có thể được điều chỉnh.",
+        "Đặt cọc trước 30%, thanh toán phần còn lại trong vòng 30 ngày kể từ ngày nhận hàng và hóa đơn VAT.",
+        "Báo giá có hiệu lực trong vòng 30 ngày kể từ ngày phát hành.",
+        "Bảo hành theo tiêu chuẩn nhà sản xuất; hỗ trợ kỹ thuật 24/7.",
+        "Thời gian giao hàng dự kiến từ 2-6 tuần tùy sản phẩm."
+      ],
+      closing: "Rất mong nhận được sự hợp tác từ Quý khách hàng trong thời gian tới.\nTrân trọng cảm ơn và kính báo!",
+      signer: { title:"Tổng Giám Đốc (CEO)", name:"LÂM KIM THAO" },
+      signature: { mode:"default", custom:"" }
+    };
+  }
+
+  var state = loadState();
+
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return defaultState();
+      var parsed = JSON.parse(raw);
+      var d = defaultState();
+      return Object.assign({}, d, parsed, {
+        company: Object.assign({}, d.company, parsed.company),
+        meta: Object.assign({}, d.meta, parsed.meta),
+        customer: Object.assign({}, d.customer, parsed.customer),
+        signer: Object.assign({}, d.signer, parsed.signer),
+        signature: Object.assign({}, d.signature, parsed.signature),
+        products: (parsed.products && parsed.products.length) ? parsed.products : d.products,
+        notes: (parsed.notes && parsed.notes.length) ? parsed.notes : d.notes
+      });
+    }catch(e){ return defaultState(); }
+  }
+
+  var saveTimer = null;
+  function persist(){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+    }, 200);
+  }
+
+  function getPath(obj, path){
+    return path.split(".").reduce(function(o,k){ return (o==null)?o:o[k]; }, obj);
+  }
+  function setPath(obj, path, value){
+    var parts = path.split(".");
+    var last = parts.pop();
+    var target = parts.reduce(function(o,k){ return o[k]; }, obj);
+    target[last] = value;
+  }
+
+  /* ---------------- Vietnamese number to words ---------------- */
+  var CHU_SO = ["không","một","hai","ba","bốn","năm","sáu","bảy","tám","chín"];
+  function docBaChuSo(so, dayDu){
+    var tram = Math.floor(so/100), chuc = Math.floor((so%100)/10), donvi = so%10, kq = "";
+    if(tram===0 && dayDu){ kq += "không trăm "; }
+    else if(tram!==0){ kq += CHU_SO[tram] + " trăm "; }
+    if(chuc===0){
+      if(donvi!==0 && (tram!==0 || dayDu)) kq += "linh ";
+    } else if(chuc===1){ kq += "mười "; }
+    else if(chuc>1){ kq += CHU_SO[chuc] + " mươi "; }
+    if(donvi===1 && chuc>1) kq += "mốt";
+    else if(donvi===5 && chuc>=1) kq += "lăm";
+    else if(donvi!==0) kq += CHU_SO[donvi];
+    return kq.trim();
+  }
+  function soThanhChu(soTien){
+    soTien = Math.round(soTien);
+    if(soTien===0) return "Không đồng";
+    var isNeg = soTien<0;
+    soTien = Math.abs(soTien);
+    var donVi = ["","nghìn","triệu","tỷ"];
+    var groups = [], so = soTien;
+    while(so>0){ groups.push(so%1000); so = Math.floor(so/1000); }
+    var parts = [];
+    for(var i=groups.length-1;i>=0;i--){
+      var g = groups[i];
+      if(g===0) continue;
+      var dayDu = i < groups.length-1;
+      var chu = docBaChuSo(g, dayDu);
+      parts.push(chu + (donVi[i] ? " "+donVi[i] : ""));
+    }
+    var result = parts.join(" ").replace(/\s+/g," ").trim();
+    result = result.charAt(0).toUpperCase() + result.slice(1);
+    return (isNeg?"Âm ":"") + result + " đồng";
+  }
+
+  function fmtMoney(n){
+    n = Number(n)||0;
+    return n.toLocaleString("en-US");
+  }
+
+  function fmtDateVN(iso){
+    if(!iso) return "";
+    var p = iso.split("-");
+    if(p.length!==3) return iso;
+    return "ngày " + parseInt(p[2],10) + " tháng " + parseInt(p[1],10) + " năm " + p[0];
+  }
+
+  function esc(s){
+    return String(s==null?"":s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function nl2br(s){ return esc(s).replace(/\n/g,"<br>"); }
+
+  /* ---------------- Editor: static field binding ---------------- */
+  document.querySelectorAll("[data-bind]").forEach(function(el){
+    var path = el.getAttribute("data-bind");
+    el.value = getPath(state, path);
+    el.addEventListener("input", function(){
+      setPath(state, path, el.value);
+      renderPreview();
+      persist();
+    });
+  });
+
+  /* collapsible sections */
+  document.querySelectorAll(".sec__head").forEach(function(h){
+    h.addEventListener("click", function(){
+      h.closest(".sec").classList.toggle("collapsed");
+    });
+  });
+
+  /* ---------------- Products editor ---------------- */
+  var productEditor = document.getElementById("productEditor");
+
+  function addProduct(){
+    state.products.push({ name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"" });
+    renderProductEditor(); renderPreview(); persist();
+  }
+  function removeProduct(idx){
+    state.products.splice(idx,1);
+    if(state.products.length===0){
+      state.products.push({ name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"" });
+    }
+    renderProductEditor(); renderPreview(); persist();
+  }
+  function moveProduct(idx, dir){
+    var j = idx+dir;
+    if(j<0 || j>=state.products.length) return;
+    var tmp = state.products[idx];
+    state.products[idx] = state.products[j];
+    state.products[j] = tmp;
+    renderProductEditor(); renderPreview(); persist();
+  }
+
+  function renderProductEditor(){
+    productEditor.innerHTML = "";
+    state.products.forEach(function(p, idx){
+      var card = document.createElement("div");
+      card.className = "prow";
+      card.innerHTML =
+        '<div class="prow__top">' +
+          '<span class="prow__num">'+(idx+1)+'</span>' +
+          '<div class="prow__actions">' +
+            '<button type="button" class="icon-btn" data-act="up" title="Lên">↑</button>' +
+            '<button type="button" class="icon-btn" data-act="down" title="Xuống">↓</button>' +
+            '<button type="button" class="icon-btn danger" data-act="del" title="Xóa sản phẩm">🗑</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="field"><label>Tên sản phẩm</label><input data-f="name" placeholder="VD: Silicon Wafer 4 inch, Prime Grade" value="'+esc(p.name)+'"></div>' +
+        '<div class="field"><label>Quy cách kỹ thuật</label><textarea data-f="spec" rows="2" placeholder="VD: Purity 99.999%, Thickness 500µm, single-side polishing">'+esc(p.spec)+'</textarea></div>' +
+        '<div class="row2b">' +
+          '<div class="field"><label>Xuất xứ</label><input data-f="origin" placeholder="VD: Đức" value="'+esc(p.origin)+'"></div>' +
+          '<div class="field"><label>ĐVT</label><input data-f="unit" placeholder="Cái" value="'+esc(p.unit)+'"></div>' +
+          '<div class="field"><label>SL</label><input data-f="qty" type="number" min="0" step="1" value="'+esc(p.qty)+'"></div>' +
+        '</div>' +
+        '<div class="field"><label>Đơn giá (VND)</label><input data-f="price" type="number" min="0" step="1000" value="'+esc(p.price)+'"></div>' +
+        '<div class="field"><label>Hình ảnh (tùy chọn)</label>' +
+          '<div class="img-pick">' +
+            '<input type="file" accept="image/*" data-f="imagefile">' +
+            '<img class="img-pick__thumb'+(p.image?' show':'')+'" data-role="thumb" src="'+(p.image||"")+'">' +
+            '<button type="button" class="icon-btn danger" data-act="imgclear" title="Xóa ảnh">✕</button>' +
+          '</div>' +
+        '</div>';
+
+      card.querySelectorAll("[data-f]").forEach(function(el){
+        var f = el.getAttribute("data-f");
+        if(f === "imagefile"){
+          el.addEventListener("change", function(){
+            var file = el.files && el.files[0];
+            if(!file) return;
+            var reader = new FileReader();
+            reader.onload = function(e){
+              p.image = e.target.result;
+              renderProductEditor(); renderPreview(); persist();
+            };
+            reader.readAsDataURL(file);
+          });
+          return;
+        }
+        el.addEventListener("input", function(){
+          var v = el.value;
+          if(f==="qty" || f==="price") v = v===""? 0 : Number(v);
+          p[f] = v;
+          renderPreview(); persist();
+        });
+      });
+
+      card.querySelector('[data-act="del"]').addEventListener("click", function(){ removeProduct(idx); });
+      card.querySelector('[data-act="up"]').addEventListener("click", function(){ moveProduct(idx,-1); });
+      card.querySelector('[data-act="down"]').addEventListener("click", function(){ moveProduct(idx,1); });
+      card.querySelector('[data-act="imgclear"]').addEventListener("click", function(){
+        p.image = "";
+        renderProductEditor(); renderPreview(); persist();
+      });
+
+      productEditor.appendChild(card);
+    });
+
+    var addBtn = document.createElement("button");
+    addBtn.type = "button";
+    addBtn.className = "add-row-btn";
+    addBtn.textContent = "+ Thêm sản phẩm";
+    addBtn.addEventListener("click", addProduct);
+    productEditor.appendChild(addBtn);
+  }
+
+  /* ---------------- Notes editor ---------------- */
+  var notesEditor = document.getElementById("notesEditor");
+  function renderNotesEditor(){
+    notesEditor.innerHTML = "";
+    state.notes.forEach(function(note, idx){
+      var row = document.createElement("div");
+      row.className = "note-item";
+      row.innerHTML =
+        '<textarea rows="2" style="flex:1;">'+esc(note)+'</textarea>' +
+        '<button type="button" class="icon-btn danger" title="Xóa ghi chú">✕</button>';
+      row.querySelector("textarea").addEventListener("input", function(e){
+        state.notes[idx] = e.target.value;
+        renderPreview(); persist();
+      });
+      row.querySelector("button").addEventListener("click", function(){
+        state.notes.splice(idx,1);
+        renderNotesEditor(); renderPreview(); persist();
+      });
+      notesEditor.appendChild(row);
+    });
+  }
+  document.getElementById("btnAddNote").addEventListener("click", function(){
+    state.notes.push("");
+    renderNotesEditor(); renderPreview(); persist();
+  });
+
+  /* ---------------- Signature source (default DIGIFUND signature vs. upload riêng) ---------------- */
+  var SIGNATURE_IMG = "../assets/images/baogia-signature.png";
+  var sigModeDefault = document.getElementById("sigModeDefault");
+  var sigModeCustom = document.getElementById("sigModeCustom");
+  var sigUploadWrap = document.getElementById("sigUploadWrap");
+  var sigInput = document.getElementById("sigInput");
+  var sigThumb = document.getElementById("sigThumb");
+
+  function syncSignatureUI(){
+    sigModeDefault.checked = state.signature.mode !== "custom";
+    sigModeCustom.checked = state.signature.mode === "custom";
+    sigUploadWrap.style.display = state.signature.mode === "custom" ? "flex" : "none";
+    if(state.signature.custom){ sigThumb.src = state.signature.custom; sigThumb.classList.add("show"); }
+    else { sigThumb.classList.remove("show"); sigThumb.src = ""; }
+  }
+  [sigModeDefault, sigModeCustom].forEach(function(radio){
+    radio.addEventListener("change", function(){
+      state.signature.mode = sigModeCustom.checked ? "custom" : "default";
+      syncSignatureUI(); renderPreview(); persist();
+    });
+  });
+  sigInput.addEventListener("change", function(){
+    var file = sigInput.files && sigInput.files[0];
+    if(!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e){
+      state.signature.custom = e.target.result;
+      syncSignatureUI(); renderPreview(); persist();
+    };
+    reader.readAsDataURL(file);
+  });
+  document.getElementById("sigClear").addEventListener("click", function(){
+    state.signature.custom = ""; sigInput.value = "";
+    syncSignatureUI(); renderPreview(); persist();
+  });
+
+  /* ---------------- Preview render ---------------- */
+  var page = document.getElementById("page");
+
+  function renderPreview(){
+    var c = state.company, m = state.meta;
+    var sigSrc = (state.signature.mode === "custom" && state.signature.custom) ? state.signature.custom : SIGNATURE_IMG;
+
+    var rowsHtml = state.products.map(function(p, i){
+      var qty = Number(p.qty)||0, price = Number(p.price)||0, total = qty*price;
+      return '<tr>' +
+        '<td class="c-center">'+(i+1)+'</td>' +
+        '<td class="c-name">'+ (nl2br(p.name) || '<span class="empty-hint">(chưa nhập tên)</span>') +'</td>' +
+        '<td class="c-spec">'+ nl2br(p.spec) + (p.image ? '<img src="'+p.image+'" alt="">' : '') +'</td>' +
+        '<td class="c-center">'+ esc(p.origin) +'</td>' +
+        '<td class="c-center">'+ esc(p.unit) +'</td>' +
+        '<td class="c-center">'+ qty +'</td>' +
+        '<td class="c-num">'+ fmtMoney(price) +'</td>' +
+        '<td class="c-num">'+ fmtMoney(total) +'</td>' +
+      '</tr>';
+    }).join("");
+
+    var grandTotal = state.products.reduce(function(sum,p){
+      return sum + (Number(p.qty)||0) * (Number(p.price)||0);
+    }, 0);
+
+    var notesHtml = state.notes.filter(function(n){ return n && n.trim(); })
+      .map(function(n){ return '<li>'+esc(n)+'</li>'; }).join("");
+
+    page.innerHTML =
+      '<div class="doc-header">' +
+        '<div class="doc-header__logo"><img src="../assets/images/logo-2.png" alt="'+esc(c.name)+'"></div>' +
+        '<div class="doc-header__text">' +
+          '<div class="doc-header__name">'+esc(c.name)+'</div>' +
+          (c.tagline ? '<div class="doc-header__tagline">'+esc(c.tagline)+'</div>' : '') +
+          (c.address ? '<div class="doc-header__meta">'+esc(c.address)+'</div>' : '') +
+          '<div class="doc-header__meta">' +
+            (c.phone ? 'Hotline: '+esc(c.phone) : '') +
+            (c.phone && c.email ? ' &ndash; ' : '') +
+            (c.email ? 'Email: '+esc(c.email) : '') +
+          '</div>' +
+          (c.website ? '<div class="doc-header__meta">'+esc(c.website)+'</div>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="doc-divider">— o0o —</div>' +
+      '<div class="doc-title">'+esc(m.title)+'</div>' +
+      (m.quoteNo ? '<div class="doc-quoteno">Số: '+esc(m.quoteNo)+'</div>' : '') +
+      '<div class="doc-date">'+esc(m.place)+', '+fmtDateVN(m.date)+'</div>' +
+      (state.intro ? '<div class="doc-intro">'+nl2br(state.intro)+'</div>' : '') +
+      '<div class="doc-customer">' +
+        '<div><span class="k">Khách hàng / Customer Name:</span><span class="v">'+esc(state.customer.name)+'</span></div>' +
+        '<div><span class="k">Đơn vị / Unit:</span><span class="v">'+esc(state.customer.unit)+'</span></div>' +
+        '<div><span class="k">Địa chỉ / Address:</span><span class="v">'+esc(state.customer.address)+'</span></div>' +
+        '<div><span class="k">Số điện thoại / Tel:</span><span class="v">'+esc(state.customer.phone)+'</span></div>' +
+        '<div><span class="k">Email:</span><span class="v">'+esc(state.customer.email)+'</span></div>' +
+      '</div>' +
+      '<table class="doc-table">' +
+        '<thead><tr>' +
+          '<th style="width:26px;">STT</th>' +
+          '<th>Tên Sản phẩm</th>' +
+          '<th>Quy cách kỹ thuật / Hình ảnh</th>' +
+          '<th style="width:60px;">Xuất Xứ</th>' +
+          '<th style="width:50px;">ĐVT</th>' +
+          '<th style="width:34px;">SL</th>' +
+          '<th style="width:90px;">Đơn giá (VND)</th>' +
+          '<th style="width:100px;">Thành tiền (VND)</th>' +
+        '</tr></thead>' +
+        '<tbody>'+rowsHtml+'</tbody>' +
+        '<tfoot><tr>' +
+          '<td colspan="6" class="lbl">TỔNG TIỀN</td>' +
+          '<td colspan="2" class="amt">'+fmtMoney(grandTotal)+'</td>' +
+        '</tr></tfoot>' +
+      '</table>' +
+      '<div class="doc-words">('+soThanhChu(grandTotal)+')</div>' +
+      (state.vatNote ? '<div class="doc-vatnote">'+esc(state.vatNote)+'</div>' : '') +
+      (notesHtml ? '<div class="doc-notes"><div class="doc-notes__title">* Ghi chú:</div><ol>'+notesHtml+'</ol></div>' : '') +
+      '<div class="doc-closing">'+nl2br(state.closing)+'</div>' +
+      '<div class="doc-sign"><div class="doc-sign__box">' +
+        '<div class="doc-sign__place">'+esc(m.place)+', '+fmtDateVN(m.date)+'</div>' +
+        '<div class="doc-sign__role">'+esc(state.signer.title)+'</div>' +
+        '<img class="doc-sign__signature" src="'+sigSrc+'" alt="Chữ ký">' +
+        '<div class="doc-sign__name">'+esc(state.signer.name)+'</div>' +
+      '</div></div>';
+  }
+
+  /* ---------------- Export / Print ---------------- */
+  document.getElementById("btnPrint").addEventListener("click", function(){ window.print(); });
+
+  document.getElementById("btnExport").addEventListener("click", function(){
+    var btn = document.getElementById("btnExport");
+    var original = btn.textContent;
+    btn.disabled = true; btn.textContent = "Đang tạo PDF…";
+    var filenameSafe = (state.customer.unit || state.customer.name || "DIGIFUND")
+      .normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-zA-Z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+    var filename = "BaoGia-DIGIFUND" + (filenameSafe ? "-"+filenameSafe : "") + ".pdf";
+    html2pdf().set({
+      margin: 0,
+      filename: filename,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      pagebreak: { mode: ["css","legacy"] }
+    }).from(page).save().then(function(){
+      btn.disabled = false; btn.textContent = original;
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = original;
+      alert("Không thể tạo PDF. Vui lòng thử lại hoặc dùng nút In để lưu PDF qua hộp thoại in của trình duyệt.");
+    });
+  });
+
+  document.getElementById("btnReset").addEventListener("click", function(){
+    if(!confirm("Xóa toàn bộ dữ liệu đã nhập và tạo báo giá mới?")) return;
+    localStorage.removeItem(STORAGE_KEY);
+    state = defaultState();
+    document.querySelectorAll("[data-bind]").forEach(function(el){
+      el.value = getPath(state, el.getAttribute("data-bind"));
+    });
+    renderProductEditor();
+    renderNotesEditor();
+    syncSignatureUI();
+    renderPreview();
+  });
+
+  /* ---------------- Init ---------------- */
+  renderProductEditor();
+  renderNotesEditor();
+  syncSignatureUI();
+  renderPreview();
+
+})();
+</script>
+</body>
+</html>
