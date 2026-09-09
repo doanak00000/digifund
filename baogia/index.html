@@ -185,7 +185,7 @@
   table.doc-table tfoot .lbl{text-align:right;background:#f4f4f4;}
   table.doc-table tfoot .amt{text-align:right;background:#f4f4f4;}
 
-  .doc-words{font-style:italic;font-size:12.5px;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 6px;}
+  .doc-words{font-style:italic;font-size:12.5px;text-align:right;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 6px;}
   .doc-vatnote{font-weight:700;color:var(--brand);font-size:12.5px;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 18px;}
 
   .doc-notes{font-size:12.5px;margin-bottom:16px;}
@@ -709,7 +709,7 @@
           '<td colspan="2" class="amt">'+fmtMoney(grandTotal)+'</td>' +
         '</tr></tfoot>' +
       '</table>' +
-      '<div class="doc-words">('+soThanhChu(grandTotal)+')</div>' +
+      '<div class="doc-words">Bằng chữ: '+soThanhChu(grandTotal)+' chẵn.</div>' +
       (state.vatNote ? '<div class="doc-vatnote">'+esc(state.vatNote)+'</div>' : '') +
       (notesHtml ? '<div class="doc-notes"><div class="doc-notes__title">* Ghi chú:</div><ol>'+notesHtml+'</ol></div>' : '') +
       '<div class="doc-closing">'+nl2br(state.closing)+'</div>' +
