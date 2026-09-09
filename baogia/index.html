@@ -113,6 +113,14 @@
   .img-pick__thumb{width:38px;height:38px;border-radius:6px;border:1px solid var(--line);object-fit:cover;background:#fff;display:none;}
   .img-pick__thumb.show{display:block;}
   .img-pick input[type=file]{font-size:11.5px;}
+  .img-search{position:relative;margin-top:6px;}
+  .img-search__input{width:100%;font:inherit;font-size:12.5px;padding:7px 9px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);}
+  .img-search__input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(var(--brand-rgb),.12);}
+  .img-search__results{position:absolute;left:0;right:0;top:100%;margin-top:4px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 6px 20px rgba(20,30,60,.16);max-height:260px;overflow-y:auto;z-index:20;padding:4px;}
+  .img-search__item{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:6px;border:none;background:transparent;border-radius:6px;cursor:pointer;font-size:12.5px;color:var(--ink);}
+  .img-search__item:hover{background:#f2f6ff;}
+  .img-search__item img{width:32px;height:32px;object-fit:cover;border-radius:5px;border:1px solid var(--line);flex:0 0 32px;background:#fff;}
+  .img-search__empty{padding:8px;font-size:12px;color:var(--gray);text-align:center;}
   .radio-row{display:flex;flex-direction:column;gap:6px;}
   .radio-opt{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:normal;}
   .radio-opt input{margin:0;accent-color:var(--brand);}
@@ -201,7 +209,7 @@
   .doc-sign__box{text-align:center;width:230px;font-size:13px;}
   .doc-sign__place{font-style:italic;margin-bottom:2px;}
   .doc-sign__role{font-weight:700;margin-bottom:2px;}
-  .doc-sign__signature{display:block;max-height:60px;width:auto;margin:4px auto 0;}
+  .doc-sign__signature{display:block;max-height:95px;max-width:100%;width:auto;margin:4px auto 0;}
   .doc-sign__name{font-weight:700;margin-top:4px;}
 
   .empty-hint{color:#b6b6b6;font-style:italic;}
@@ -300,7 +308,7 @@
         <div class="field">
           <label>Chữ ký / con dấu</label>
           <div class="radio-row">
-            <label class="radio-opt"><input type="radio" name="sigMode" value="default" id="sigModeDefault"> Dùng chữ ký mặc định DIGIFUND</label>
+            <label class="radio-opt"><input type="radio" name="sigMode" value="default" id="sigModeDefault"> Dùng chữ ký &amp; con dấu mặc định DIGIFUND</label>
             <label class="radio-opt"><input type="radio" name="sigMode" value="custom" id="sigModeCustom"> Tải ảnh chữ ký / con dấu riêng</label>
           </div>
           <div class="img-pick" id="sigUploadWrap" style="display:none;">
@@ -324,6 +332,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="../assets/js/products-data.js"></script>
 <script>
 (function(){
   "use strict";
@@ -462,6 +471,45 @@
   }
   function nl2br(s){ return esc(s).replace(/\n/g,"<br>"); }
 
+  /* ---------------- Product image catalog (từ dữ liệu sản phẩm có sẵn của site) ---------------- */
+  function normVN(s){
+    return String(s==null?"":s)
+      .normalize("NFD").replace(/[̀-ͯ]/g,"")
+      .replace(/đ/g,"d").replace(/Đ/g,"D")
+      .toLowerCase();
+  }
+  function pickVI(v){
+    if(v==null) return "";
+    if(typeof v === "object") return v.vi || v.en || "";
+    return String(v);
+  }
+  function buildProductCatalog(){
+    var list = [];
+    var data = window.PD_DATA;
+    if(!data) return list;
+    Object.keys(data).forEach(function(gid){
+      (data[gid].items || []).forEach(function(item){
+        var itemName = pickVI(item.name);
+        (item.variants || []).forEach(function(variant){
+          if(!variant.img) return;
+          var vname = pickVI(variant.name);
+          var label = vname || itemName;
+          if(vname && itemName && vname.indexOf(itemName) === -1){
+            label = itemName + " — " + vname;
+          }
+          if(!label) return;
+          list.push({
+            label: label,
+            img: String(variant.img).replace(/^\.\//, "../"),
+            search: normVN(label)
+          });
+        });
+      });
+    });
+    return list;
+  }
+  var PRODUCT_CATALOG = buildProductCatalog();
+
   /* ---------------- Editor: static field binding ---------------- */
   document.querySelectorAll("[data-bind]").forEach(function(el){
     var path = el.getAttribute("data-bind");
@@ -527,9 +575,13 @@
         '<div class="field"><label>Đơn giá (VND)</label><input data-f="price" type="number" min="0" step="1000" value="'+esc(p.price)+'"></div>' +
         '<div class="field"><label>Hình ảnh (tùy chọn)</label>' +
           '<div class="img-pick">' +
-            '<input type="file" accept="image/*" data-f="imagefile">' +
+            '<input type="file" accept="image/*" data-f="imagefile" title="Tải ảnh lên từ máy">' +
             '<img class="img-pick__thumb'+(p.image?' show':'')+'" data-role="thumb" src="'+(p.image||"")+'">' +
             '<button type="button" class="icon-btn danger" data-act="imgclear" title="Xóa ảnh">✕</button>' +
+          '</div>' +
+          '<div class="img-search">' +
+            '<input type="text" class="img-search__input" data-role="imgsearch" placeholder="🔍 hoặc tìm ảnh sản phẩm có sẵn trong catalog..." autocomplete="off">' +
+            '<div class="img-search__results" data-role="imgresults" hidden></div>' +
           '</div>' +
         '</div>';
 
@@ -563,6 +615,44 @@
         p.image = "";
         renderProductEditor(); renderPreview(); persist();
       });
+
+      var imgSearchInput = card.querySelector('[data-role="imgsearch"]');
+      var imgResultsBox = card.querySelector('[data-role="imgresults"]');
+      function renderImgResults(query){
+        var q = normVN(query.trim());
+        if(!q){ imgResultsBox.hidden = true; imgResultsBox.innerHTML = ""; return; }
+        if(!PRODUCT_CATALOG.length){
+          imgResultsBox.innerHTML = '<div class="img-search__empty">Không tải được danh mục ảnh sản phẩm</div>';
+          imgResultsBox.hidden = false;
+          return;
+        }
+        var matches = PRODUCT_CATALOG.filter(function(item){ return item.search.indexOf(q) !== -1; }).slice(0,8);
+        if(!matches.length){
+          imgResultsBox.innerHTML = '<div class="img-search__empty">Không tìm thấy ảnh phù hợp</div>';
+          imgResultsBox.hidden = false;
+          return;
+        }
+        imgResultsBox.innerHTML = matches.map(function(m, mi){
+          return '<button type="button" class="img-search__item" data-mi="'+mi+'">' +
+            '<img src="'+m.img+'" alt="" loading="lazy">' +
+            '<span>'+esc(m.label)+'</span>' +
+          '</button>';
+        }).join("");
+        imgResultsBox.hidden = false;
+        imgResultsBox.querySelectorAll('.img-search__item').forEach(function(btn){
+          btn.addEventListener("mousedown", function(ev){ ev.preventDefault(); });
+          btn.addEventListener("click", function(){
+            var mi = Number(btn.getAttribute("data-mi"));
+            p.image = matches[mi].img;
+            imgSearchInput.value = "";
+            imgResultsBox.hidden = true; imgResultsBox.innerHTML = "";
+            renderProductEditor(); renderPreview(); persist();
+          });
+        });
+      }
+      imgSearchInput.addEventListener("input", function(){ renderImgResults(imgSearchInput.value); });
+      imgSearchInput.addEventListener("focus", function(){ if(imgSearchInput.value.trim()) renderImgResults(imgSearchInput.value); });
+      imgSearchInput.addEventListener("blur", function(){ imgResultsBox.hidden = true; });
 
       productEditor.appendChild(card);
     });
@@ -716,7 +806,7 @@
       '<div class="doc-sign"><div class="doc-sign__box">' +
         '<div class="doc-sign__place">'+esc(m.place)+', '+fmtDateVN(m.date)+'</div>' +
         '<div class="doc-sign__role">'+esc(state.signer.title)+'</div>' +
-        '<img class="doc-sign__signature" src="'+sigSrc+'" alt="Chữ ký">' +
+        '<img class="doc-sign__signature" src="'+sigSrc+'" alt="Chữ ký và con dấu">' +
         '<div class="doc-sign__name">'+esc(state.signer.name)+'</div>' +
       '</div></div>';
   }
