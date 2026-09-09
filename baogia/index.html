@@ -93,6 +93,7 @@
     background:#fff;color:var(--ink);width:100%;resize:vertical;
   }
   .field input:focus,.field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(var(--brand-rgb),.12);}
+  input[data-bind="company.tagline"]{font-family:Arial,Helvetica,sans-serif;}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
 
@@ -161,7 +162,7 @@
   .doc-header__logo img{width:100%;height:auto;display:block;}
   .doc-header__text{flex:1;text-align:center;margin-right:82px;}
   .doc-header__name{font-size:19px;font-weight:700;text-transform:uppercase;margin:2px 0 2px;letter-spacing:.2px;}
-  .doc-header__tagline{font-size:11px;letter-spacing:1.5px;color:var(--brand);font-weight:700;margin:0 0 4px;}
+  .doc-header__tagline{font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1.5px;color:var(--brand);font-weight:700;margin:0 0 4px;}
   .doc-header__meta{font-style:italic;font-size:12.5px;margin:1px 0;}
   .doc-header__meta a{color:#1a1a1a;text-decoration:underline;}
 
@@ -348,7 +349,7 @@
     return {
       company: {
         name: "DIGIFUND",
-        tagline: "SEMICONDUCTOR & RENEWABLE ENERGY MATERIALS",
+        tagline: "SEMICONDUCTOR MATERIALS & RENEWABLE ENERGY",
         address: "Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh",
         phone: "+84 979 324 567",
         email: "semiconductor@digifund.vn",
