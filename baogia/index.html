@@ -151,7 +151,7 @@
   }
   .page{
     width:210mm;
-    min-height:297mm;
+    min-height:275mm; /* < (297mm - 8mm lề trên/dưới khi xuất PDF) để 1 trang ngắn không bị tràn thêm trang trắng, có chừa đệm cho sai số làm tròn px<->mm */
     background:#fff;
     box-shadow:0 4px 24px rgba(20,30,60,.12), 0 1px 3px rgba(20,30,60,.08);
     padding:16mm 15mm 18mm;
@@ -160,7 +160,7 @@
     line-height:1.5;
   }
 
-  .doc-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:2px;}
+  .doc-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:2px;page-break-inside:avoid;break-inside:avoid;}
   .doc-header__logo{width:82px;flex:0 0 82px;}
   .doc-header__logo img{width:100%;height:auto;display:block;}
   .doc-header__text{flex:1;text-align:center;margin-right:82px;}
@@ -184,6 +184,7 @@
 
   table.doc-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:2px;}
   table.doc-table th,table.doc-table td{border:1px solid #333;padding:6px 7px;vertical-align:middle;}
+  table.doc-table tr{page-break-inside:avoid;break-inside:avoid;}
   table.doc-table thead th{
     background:rgba(var(--brand-rgb),.14);
     font-weight:700;text-align:center;font-size:11.5px;
@@ -203,13 +204,13 @@
   .doc-notes{font-size:12.5px;margin-bottom:16px;}
   .doc-notes__title{font-weight:700;margin-bottom:4px;}
   .doc-notes ol{margin:0;padding-left:20px;}
-  .doc-notes li{font-style:italic;margin:2px 0;text-align:justify;}
+  .doc-notes li{font-style:italic;margin:2px 0;text-align:justify;page-break-inside:avoid;break-inside:avoid;}
 
   .doc-closing{font-size:13px;font-weight:700;margin-bottom:10px;}
   .doc-closing p{margin:4px 0;}
   .doc-closing .bold{font-weight:700;}
 
-  .doc-sign{display:flex;justify-content:flex-end;margin-top:6px;}
+  .doc-sign{display:flex;justify-content:flex-end;margin-top:6px;page-break-inside:avoid;break-inside:avoid;}
   .doc-sign__box{text-align:center;min-width:230px;font-size:13px;}
   .doc-sign__place{font-style:italic;margin-bottom:2px;white-space:nowrap;}
   .doc-sign__role{font-weight:700;margin-bottom:2px;}
@@ -223,8 +224,8 @@
     .topbar,.editor{display:none !important;}
     .layout{display:block;}
     .preview-wrap{padding:0;background:#fff;display:block;}
-    .page{box-shadow:none;width:auto;min-height:0;margin:0;padding:12mm 14mm;}
-    @page{size:A4;margin:0;}
+    .page{box-shadow:none;width:auto;min-height:0;margin:0;padding:4mm 14mm;}
+    @page{size:A4;margin:8mm 0;} /* lề trên/dưới cố định ở mỗi trang, kể cả chỗ ngắt trang giữa nội dung dài */
   }
 </style>
 </head>
@@ -840,17 +841,34 @@
     var filenameSafe = (state.customer.unit || state.customer.name || "DIGIFUND")
       .normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-zA-Z0-9]+/g,"-").replace(/^-+|-+$/g,"");
     var filename = "BaoGia-DIGIFUND" + (filenameSafe ? "-"+filenameSafe : "") + ".pdf";
+
+    // html2canvas mis-captures (blank space at the top of page 1) when the page
+    // itself or the scrollable preview pane is scrolled down at capture time —
+    // reset both to the top first, then restore the preview scroll afterwards.
+    var previewWrap = document.querySelector(".preview-wrap");
+    var prevWindowScroll = window.scrollY;
+    var prevPaneScroll = previewWrap ? previewWrap.scrollTop : 0;
+    window.scrollTo(0, 0);
+    if(previewWrap) previewWrap.scrollTop = 0;
+
+    function restoreScroll(){
+      window.scrollTo(0, prevWindowScroll);
+      if(previewWrap) previewWrap.scrollTop = prevPaneScroll;
+    }
+
     html2pdf().set({
-      margin: 0,
+      margin: [8, 0, 8, 0], // top/bottom breathing room on every page (incl. at page breaks); trái/phải đã có sẵn trong padding của .page
       filename: filename,
       image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
+      html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
       pagebreak: { mode: ["css","legacy"] }
     }).from(page).save().then(function(){
       btn.disabled = false; btn.textContent = original;
+      restoreScroll();
     }).catch(function(){
       btn.disabled = false; btn.textContent = original;
+      restoreScroll();
       alert("Không thể tạo PDF. Vui lòng thử lại hoặc dùng nút In để lưu PDF qua hộp thoại in của trình duyệt.");
     });
   });
