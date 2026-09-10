@@ -122,6 +122,9 @@
   .img-search__item:hover{background:#f2f6ff;}
   .img-search__item img{width:32px;height:32px;object-fit:cover;border-radius:5px;border:1px solid var(--line);flex:0 0 32px;background:#fff;}
   .img-search__empty{padding:8px;font-size:12px;color:var(--gray);text-align:center;}
+  .img-size{margin-top:8px;}
+  .img-size label{display:block;font-size:11.5px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.3px;margin-bottom:5px;}
+  .img-size input[type=range]{width:100%;accent-color:var(--brand);}
   .radio-row{display:flex;flex-direction:column;gap:6px;}
   .radio-opt{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;text-transform:none;letter-spacing:normal;}
   .radio-opt input{margin:0;accent-color:var(--brand);}
@@ -364,7 +367,7 @@
       intro: "DIGIFUND xin cảm ơn Quý khách hàng đã quan tâm và tin tưởng. Chúng tôi trân trọng gửi đến Quý khách hàng bảng báo giá như sau:",
       customer: { name:"", unit:"", address:"", phone:"", email:"" },
       products: [
-        { name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"" }
+        { name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"", imageSize:70 }
       ],
       vatNote: "GIÁ TRÊN CHƯA BAO GỒM THUẾ VAT VÀ PHÍ VẬN CHUYỂN (NẾU CÓ).",
       notes: [
@@ -533,13 +536,13 @@
   var productEditor = document.getElementById("productEditor");
 
   function addProduct(){
-    state.products.push({ name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"" });
+    state.products.push({ name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"", imageSize:70 });
     renderProductEditor(); renderPreview(); persist();
   }
   function removeProduct(idx){
     state.products.splice(idx,1);
     if(state.products.length===0){
-      state.products.push({ name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"" });
+      state.products.push({ name:"", spec:"", origin:"", unit:"Cái", qty:1, price:0, image:"", imageSize:70 });
     }
     renderProductEditor(); renderPreview(); persist();
   }
@@ -584,6 +587,12 @@
             '<input type="text" class="img-search__input" data-role="imgsearch" placeholder="🔍 hoặc tìm ảnh sản phẩm có sẵn trong catalog..." autocomplete="off">' +
             '<div class="img-search__results" data-role="imgresults" hidden></div>' +
           '</div>' +
+          (p.image ?
+            '<div class="img-size">' +
+              '<label>Kích thước ảnh: <span data-role="sizeval">'+(p.imageSize||70)+'px</span></label>' +
+              '<input type="range" min="24" max="200" step="2" value="'+(p.imageSize||70)+'" data-f="imageSize">' +
+            '</div>'
+          : '') +
         '</div>';
 
       card.querySelectorAll("[data-f]").forEach(function(el){
@@ -598,6 +607,15 @@
               renderProductEditor(); renderPreview(); persist();
             };
             reader.readAsDataURL(file);
+          });
+          return;
+        }
+        if(f === "imageSize"){
+          el.addEventListener("input", function(){
+            p.imageSize = Number(el.value);
+            var lbl = card.querySelector('[data-role="sizeval"]');
+            if(lbl) lbl.textContent = p.imageSize + "px";
+            renderPreview(); persist();
           });
           return;
         }
@@ -740,7 +758,7 @@
       return '<tr>' +
         '<td class="c-center">'+(i+1)+'</td>' +
         '<td class="c-name">'+ (nl2br(p.name) || '<span class="empty-hint">(chưa nhập tên)</span>') +'</td>' +
-        '<td class="c-spec">'+ nl2br(p.spec) + (p.image ? '<img src="'+p.image+'" alt="">' : '') +'</td>' +
+        '<td class="c-spec">'+ nl2br(p.spec) + (p.image ? '<img src="'+p.image+'" alt="" style="max-height:'+(p.imageSize||70)+'px;">' : '') +'</td>' +
         '<td class="c-center">'+ esc(p.origin) +'</td>' +
         '<td class="c-center">'+ esc(p.unit) +'</td>' +
         '<td class="c-center">'+ qty +'</td>' +
