@@ -497,6 +497,25 @@
         [data-theme="dark"] .xs-sidebar-widget textarea { background: #0d1117; color: #e6edf3; border-color: #30363d; }
         [data-theme="dark"] .search-popup .color-layer { background: rgba(13,17,23,0.95); }
         [data-theme="dark"] .search-popup input { background: #0d1117; color: #e6edf3; }
+        /* Live product search results */
+        .dg-search-results { position: absolute; top: 105px; left: 20px; right: 20px; max-width: 700px; margin: 0 auto; background: #fff; border-radius: 10px; box-shadow: 0 18px 40px rgba(16,24,40,0.18); max-height: 65vh; overflow-y: auto; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity 0.3s, transform 0.3s, visibility 0.3s; z-index: 998; }
+        .dg-search-results.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dg-search-results__item { display: flex; align-items: center; gap: 12px; padding: 10px 16px; text-decoration: none; color: #1f2937; border-bottom: 1px solid #eef2f7; }
+        .dg-search-results__item:last-child { border-bottom: none; }
+        .dg-search-results__item:hover, .dg-search-results__item:focus { background: #f4f7fc; }
+        .dg-search-results__thumb { width: 42px; height: 42px; border-radius: 8px; object-fit: cover; flex: 0 0 auto; background: #eef2f7; }
+        .dg-search-results__text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+        .dg-search-results__name { display: block; font-size: 14px; font-weight: 600; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .dg-search-results__meta { display: block; font-size: 12px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .dg-search-results__empty, .dg-search-results__more { padding: 14px 16px; font-size: 13.5px; color: #64748b; text-align: center; }
+        .dg-search-results mark { background: #fde68a; color: inherit; border-radius: 2px; padding: 0 1px; }
+        [data-theme="dark"] .dg-search-results { background: #161b22; box-shadow: 0 18px 40px rgba(0,0,0,0.5); }
+        [data-theme="dark"] .dg-search-results__item { color: #e6edf3; border-bottom-color: #30363d; }
+        [data-theme="dark"] .dg-search-results__item:hover, [data-theme="dark"] .dg-search-results__item:focus { background: #0d1117; }
+        [data-theme="dark"] .dg-search-results__meta { color: #8b949e; }
+        [data-theme="dark"] .dg-search-results__empty, [data-theme="dark"] .dg-search-results__more { color: #8b949e; }
+        [data-theme="dark"] .dg-search-results mark { background: #b45309; color: #fff; }
+        @media (max-width: 480px) { .dg-search-results { top: 95px; } }
         [data-theme="dark"] .mobile-nav__wrapper { background: #161b22; }
         [data-theme="dark"] .mobile-nav__container a { color: #c9d1d9; }
         [data-theme="dark"] .thm-btn { box-shadow: none; }
@@ -1078,6 +1097,8 @@
                     </div>
                 </div>
                 <div class="mobile-tools-center">
+                    <a href="#" class="toggle-btn toggle-btn--inline searcher-toggler-box" title="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm"><i class="fas fa-search"></i></a>
+                    <span class="header-tools__sep"></span>
                     <a href="#" class="toggle-btn toggle-btn--inline" title="Sáng/Tối" aria-label="Sáng/Tối"><i class="fas fa-moon"></i></a>
                     <span class="header-tools__sep"></span>
                     <a href="#" class="toggle-btn toggle-btn--inline" title="EN/VI">VI</a>
@@ -1099,6 +1120,8 @@
                 </div>
                 <div class="main-menu__right">
                     <div class="header-tools">
+                        <a href="#" class="toggle-btn toggle-btn--inline searcher-toggler-box" title="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm"><i class="fas fa-search"></i></a>
+                        <span class="header-tools__sep"></span>
                         <a href="#" class="toggle-btn toggle-btn--inline" title="Sáng/Tối"><i class="fas fa-moon"></i></a>
                         <span class="header-tools__sep"></span>
                         <a href="#" class="toggle-btn toggle-btn--inline" title="EN/VI">VI</a>
@@ -1126,6 +1149,8 @@
                     </div>
                 </div>
                 <div class="mobile-tools-center">
+                    <a href="#" class="toggle-btn toggle-btn--inline searcher-toggler-box" title="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm"><i class="fas fa-search"></i></a>
+                    <span class="header-tools__sep"></span>
                     <a href="#" class="toggle-btn toggle-btn--inline" title="Sáng/Tối" aria-label="Sáng/Tối"><i class="fas fa-moon"></i></a>
                     <span class="header-tools__sep"></span>
                     <a href="#" class="toggle-btn toggle-btn--inline" title="EN/VI">VI</a>
@@ -1147,6 +1172,8 @@
                 </div>
                 <div class="main-menu__right">
                     <div class="header-tools">
+                        <a href="#" class="toggle-btn toggle-btn--inline searcher-toggler-box" title="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm"><i class="fas fa-search"></i></a>
+                        <span class="header-tools__sep"></span>
                         <a href="#" class="toggle-btn toggle-btn--inline" title="Sáng/Tối"><i class="fas fa-moon"></i></a>
                         <span class="header-tools__sep"></span>
                         <a href="#" class="toggle-btn toggle-btn--inline" title="EN/VI">VI</a>
@@ -2555,12 +2582,13 @@
     <div class="search-popup">
         <div class="color-layer"></div>
         <button class="close-search"><span class="far fa-times fa-fw"></span></button>
-        <form method="post" action="https://laravel-fixpro.mnsithub.com/blog">
+        <form id="dgSearchForm" autocomplete="off" onsubmit="return false;">
             <div class="form-group">
-                <input type="search" name="search-field" value="" placeholder="Tìm Kiếm" required="">
+                <input type="search" id="dgSearchInput" name="search-field" value="" placeholder="Tìm Kiếm" required="">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </div>
         </form>
+        <div id="dgSearchResults" class="dg-search-results"></div>
     </div>
     <!-- End Search Popup -->
         <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
@@ -2593,6 +2621,156 @@
 <script src="./assets/js/ScrollTrigger.js"></script>
 <script src="./assets/js/SplitText.js"></script>
 <script src="./assets/js/script.js"></script>
+<script src="./assets/js/products-data.js"></script>
+
+<script>
+// Header product search (searches PD_DATA by SKU/name in current language)
+(function () {
+    function norm(s) {
+        return (s == null ? '' : String(s))
+            .normalize('NFD').replace(/[̀-ͯ]/g, '')
+            .replace(/đ/g, 'd').replace(/Đ/g, 'D')
+            .toLowerCase();
+    }
+    function localized(val, lang) {
+        if (val == null) return '';
+        if (typeof val === 'string') return val;
+        return val[lang] || val.vi || val.en || '';
+    }
+    function getLang() { return localStorage.getItem('digifund-lang') || 'vi'; }
+    function escHtml(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+    }
+    function highlight(text, q) {
+        var safe = escHtml(text);
+        if (!q) return safe;
+        var i = norm(text).indexOf(q);
+        if (i < 0) return safe;
+        return escHtml(text.slice(0, i)) + '<mark>' + escHtml(text.slice(i, i + q.length)) + '</mark>' + escHtml(text.slice(i + q.length));
+    }
+
+    var searchIndex = null;
+    function buildIndex() {
+        var idx = [];
+        var data = window.PD_DATA || {};
+        Object.keys(data).forEach(function (groupKey) {
+            var group = data[groupKey];
+            (group.items || []).forEach(function (item) {
+                (item.variants || []).forEach(function (variant) {
+                    if (!variant || !variant.sku) return;
+                    var itemNameVi = localized(item.name, 'vi');
+                    var itemNameEn = localized(item.name, 'en');
+                    var nameVi = localized(variant.name, 'vi') || itemNameVi;
+                    var nameEn = localized(variant.name, 'en') || itemNameEn;
+                    // Broad text to match against (name + category + subtitle + description), so
+                    // queries like "silicon" or "bia đồng" find variants whose own short name
+                    // ("Prime CZ-Si 2" P-type", "Cu target Ø2" 99.99%") doesn't spell that out.
+                    var haystack = [
+                        nameVi, nameEn, itemNameVi, itemNameEn,
+                        localized(item.subtitle, 'vi'), localized(item.subtitle, 'en'),
+                        localized(variant.desc, 'vi'), localized(variant.desc, 'en'),
+                        variant.sku
+                    ].join(' ');
+                    idx.push({
+                        sku: variant.sku,
+                        group: groupKey,
+                        img: variant.img || item.img || '',
+                        nameVi: nameVi,
+                        nameEn: nameEn,
+                        itemNameVi: itemNameVi,
+                        itemNameEn: itemNameEn,
+                        haystackNorm: norm(haystack)
+                    });
+                });
+            });
+        });
+        return idx;
+    }
+
+    var $input = document.getElementById('dgSearchInput');
+    var $results = document.getElementById('dgSearchResults');
+    var $form = document.getElementById('dgSearchForm');
+    if (!$input || !$results) return;
+
+    var MAX_RESULTS = 8;
+    var lastMatches = [];
+
+    function render(query) {
+        var q = norm(query.trim());
+        if (!searchIndex) searchIndex = buildIndex();
+        if (!q) {
+            $results.innerHTML = '';
+            $results.classList.remove('is-open');
+            lastMatches = [];
+            return;
+        }
+        var lang = getLang();
+        var tokens = q.split(/\s+/).filter(Boolean);
+        var matches = searchIndex.filter(function (p) {
+            return tokens.every(function (t) { return p.haystackNorm.indexOf(t) >= 0; });
+        });
+        lastMatches = matches;
+        if (!matches.length) {
+            $results.innerHTML = '<div class="dg-search-results__empty">' +
+                (lang === 'en' ? 'No matching products found.' : 'Không tìm thấy sản phẩm phù hợp.') + '</div>';
+            $results.classList.add('is-open');
+            return;
+        }
+        var shown = matches.slice(0, MAX_RESULTS);
+        var html = shown.map(function (p) {
+            var name = lang === 'en' ? (p.nameEn || p.nameVi) : (p.nameVi || p.nameEn);
+            var meta = lang === 'en' ? (p.itemNameEn || p.itemNameVi) : (p.itemNameVi || p.itemNameEn);
+            return '<a class="dg-search-results__item" href="product-detail.html?group=' + encodeURIComponent(p.group) + '&sku=' + encodeURIComponent(p.sku) + '">' +
+                '<img class="dg-search-results__thumb" src="' + escHtml(p.img) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+                '<span class="dg-search-results__text">' +
+                '<span class="dg-search-results__name">' + highlight(name, q) + '</span>' +
+                '<span class="dg-search-results__meta">' + escHtml(meta) + ' · ' + escHtml(p.sku) + '</span>' +
+                '</span></a>';
+        }).join('');
+        if (matches.length > MAX_RESULTS) {
+            var more = matches.length - MAX_RESULTS;
+            html += '<div class="dg-search-results__more">' +
+                (lang === 'en' ? ('+' + more + ' more matches — refine your search') : ('+' + more + ' kết quả khác — thu hẹp từ khoá tìm kiếm')) +
+                '</div>';
+        }
+        $results.innerHTML = html;
+        $results.classList.add('is-open');
+    }
+
+    $input.addEventListener('input', function () { render($input.value); });
+
+    if ($form) {
+        $form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (lastMatches.length) {
+                window.location.href = 'product-detail.html?group=' + encodeURIComponent(lastMatches[0].group) + '&sku=' + encodeURIComponent(lastMatches[0].sku);
+            }
+        });
+    }
+
+    function closeDgSearch() {
+        $input.value = '';
+        $results.innerHTML = '';
+        $results.classList.remove('is-open');
+    }
+    document.querySelectorAll('.close-search, .search-popup .color-layer').forEach(function (el) {
+        el.addEventListener('click', closeDgSearch);
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && document.body.classList.contains('search-active')) {
+            document.body.classList.remove('search-active');
+            closeDgSearch();
+        }
+    });
+    document.querySelectorAll('.searcher-toggler-box').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            setTimeout(function () { $input.focus(); }, 300);
+        });
+    });
+})();
+</script>
 
 <script>
 // Navbar active state on scroll
