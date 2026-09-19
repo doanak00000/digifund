@@ -169,16 +169,16 @@
   .doc-header__meta{font-style:italic;font-size:12.5px;margin:1px 0;}
   .doc-header__meta a{color:#1a1a1a;text-decoration:underline;}
 
-  .doc-divider{text-align:center;margin:10px 0;font-size:14px;letter-spacing:2px;color:#555;}
+  .doc-divider{text-align:center;margin:10px 0;font-size:14px;letter-spacing:2px;color:#555;page-break-inside:avoid;break-inside:avoid;}
 
-  .doc-title{text-align:center;font-size:22px;font-weight:700;letter-spacing:.5px;margin:6px 0 2px;text-transform:uppercase;}
-  .doc-quoteno{text-align:center;font-size:12px;color:#555;margin:0 0 4px;font-style:italic;}
-  .doc-date{text-align:right;font-style:italic;font-size:13px;margin:6px 0 10px;}
+  .doc-title{text-align:center;font-size:22px;font-weight:700;letter-spacing:.5px;margin:6px 0 2px;text-transform:uppercase;page-break-inside:avoid;break-inside:avoid;}
+  .doc-quoteno{text-align:center;font-size:12px;color:#555;margin:0 0 4px;font-style:italic;page-break-inside:avoid;break-inside:avoid;}
+  .doc-date{text-align:right;font-style:italic;font-size:13px;margin:6px 0 10px;page-break-inside:avoid;break-inside:avoid;}
 
-  .doc-intro{font-weight:700;font-style:italic;text-align:justify;font-size:13.5px;margin:0 0 14px;}
+  .doc-intro{font-weight:700;font-style:italic;text-align:justify;font-size:13.5px;margin:0 0 14px;page-break-inside:avoid;break-inside:avoid;}
 
-  .doc-customer{font-size:13.5px;margin-bottom:14px;}
-  .doc-customer div{display:flex;gap:6px;margin:2px 0;}
+  .doc-customer{font-size:13.5px;margin-bottom:14px;page-break-inside:avoid;break-inside:avoid;}
+  .doc-customer div{display:flex;gap:6px;margin:2px 0;page-break-inside:avoid;break-inside:avoid;}
   .doc-customer .k{flex:0 0 220px;}
   .doc-customer .v{font-weight:700;flex:1;}
 
@@ -209,16 +209,16 @@
   table.doc-table tfoot .lbl{text-align:right;background:#f4f4f4;}
   table.doc-table tfoot .amt{text-align:right;background:#f4f4f4;}
 
-  .doc-words{font-style:italic;font-size:12.5px;text-align:right;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 6px;}
-  .doc-vatnote{font-weight:700;color:var(--brand);font-size:12.5px;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 18px;}
+  .doc-words{font-style:italic;font-size:12.5px;text-align:right;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 6px;page-break-inside:avoid;break-inside:avoid;}
+  .doc-vatnote{font-weight:700;color:var(--brand);font-size:12.5px;border:1px solid #333;border-top:none;padding:6px 7px;margin:0 0 18px;page-break-inside:avoid;break-inside:avoid;}
 
   .doc-notes{font-size:12.5px;margin-bottom:16px;}
-  .doc-notes__title{font-weight:700;margin-bottom:4px;}
+  .doc-notes__title{font-weight:700;margin-bottom:4px;page-break-inside:avoid;break-inside:avoid;page-break-after:avoid;break-after:avoid;}
   .doc-notes ol{margin:0;padding-left:20px;}
   .doc-notes li{font-style:italic;margin:2px 0;text-align:justify;page-break-inside:avoid;break-inside:avoid;}
 
-  .doc-closing{font-size:13px;font-weight:700;margin-bottom:10px;}
-  .doc-closing p{margin:4px 0;}
+  .doc-closing{font-size:13px;font-weight:700;margin-bottom:10px;page-break-inside:avoid;break-inside:avoid;}
+  .doc-closing p{margin:4px 0;page-break-inside:avoid;break-inside:avoid;}
   .doc-closing .bold{font-weight:700;}
 
   .doc-sign{display:flex;justify-content:flex-end;margin-top:6px;page-break-inside:avoid;break-inside:avoid;}
@@ -878,7 +878,14 @@
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2, useCORS: true, scrollX: 0, scrollY: 0 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-      pagebreak: { mode: ["css","legacy"] }
+      pagebreak: {
+        mode: ["css","legacy"],
+        // Belt-and-suspenders alongside the CSS break-inside:avoid rules above:
+        // without this, html2pdf can still slice a canvas page mid-line through
+        // any of these text blocks instead of pushing the whole block to the
+        // next page.
+        avoid: ["tr","li","p",".doc-header",".doc-intro",".doc-customer",".doc-customer div",".doc-words",".doc-vatnote",".doc-closing",".doc-sign",".doc-title",".doc-quoteno",".doc-date",".doc-divider"]
+      }
     }).from(page).save().then(function(){
       btn.disabled = false; btn.textContent = original;
       restoreScroll();
