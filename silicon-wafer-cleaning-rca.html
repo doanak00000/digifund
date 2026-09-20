@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silicon Wafer Cleaning: RCA, Piranha, HF Dip and Correct Handling | Digifund</title>
+<meta name="description" content="A practical guide to cleaning silicon wafers: contaminant types, the RCA process (SC-1, SC-2), HF dip, piranha, solvent cleaning, chemical safety, and how to handle and store wafers. Includes a cleaning-step summary table.">
+<meta name="author" content="Digifund">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#2563eb">
+<link rel="canonical" href="https://digifund.vn/silicon-wafer-cleaning-rca.html">
+<link rel="alternate" hreflang="en" href="https://digifund.vn/silicon-wafer-cleaning-rca.html">
+<link rel="alternate" hreflang="vi" href="https://digifund.vn/lam-sach-wafer-quy-trinh-rca.html">
+<link rel="alternate" hreflang="x-default" href="https://digifund.vn/lam-sach-wafer-quy-trinh-rca.html">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="./favicon.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="vi_VN">
+<meta property="og:site_name" content="Digifund">
+<meta property="og:url" content="https://digifund.vn/silicon-wafer-cleaning-rca.html">
+<meta property="og:title" content="Silicon Wafer Cleaning: RCA, Piranha, HF Dip and Correct Handling">
+<meta property="og:image" content="https://digifund.vn/assets/images/siliconwafer.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./assets/fonts/google-titillium.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./assets/css/kien-thuc.css">
+<script>(function(){var K='digifund-theme';function get(){try{return localStorage.getItem(K)==='dark'?'dark':'light';}catch(e){return 'light';}}
+try{document.documentElement.setAttribute('data-theme',get());}catch(e){}
+function paint(t){document.documentElement.setAttribute('data-theme',t);var b=document.querySelectorAll('.bl-theme-btn');for(var i=0;i<b.length;i++)b[i].innerHTML=(t==='dark'?'<i class="fas fa-moon"></i>':'<i class="fas fa-sun"></i>');}
+function init(){paint(get());var b=document.querySelectorAll('.bl-theme-btn');for(var i=0;i<b.length;i++){b[i].addEventListener('click',function(e){e.preventDefault();var n=get()==='dark'?'light':'dark';try{localStorage.setItem(K,n);}catch(err){}paint(n);});}}
+if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Silicon Wafer Cleaning: RCA, Piranha, HF Dip and Correct Handling",
+      "description": "A practical guide to cleaning silicon wafers: contaminant types, the RCA process (SC-1, SC-2), HF dip, piranha, solvent cleaning, chemical safety, and how to handle and store wafers. Includes a cleaning-step summary table.",
+      "image": "https://digifund.vn/assets/images/siliconwafer.jpg",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "name": "Digifund"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Digifund",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://digifund.vn/assets/images/logo-2.png"
+        }
+      },
+      "datePublished": "2026-09-20",
+      "dateModified": "2026-09-20",
+      "mainEntityOfPage": "https://digifund.vn/silicon-wafer-cleaning-rca.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://digifund.vn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://digifund.vn/semiconductor-knowledge.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Wafer cleaning",
+          "item": "https://digifund.vn/silicon-wafer-cleaning-rca.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an RCA clean and when do I need it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RCA is a silicon wafer cleaning process built from SC-1 (NH₄OH : H₂O₂ : H₂O), which removes particles and light organics, and SC-2 (HCl : H₂O₂ : H₂O), which removes metal ions, usually with an HF dip to strip native oxide. Use it before contamination-sensitive steps such as thermal oxidation, diffusion, epitaxy or thin-film deposition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a newly purchased wafer need cleaning before use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Epi-ready wafers are normally used straight from the pack and should not be re-cleaned. For ordinary wafers the cleaning level depends on the process: handling practice needs none, while device fabrication typically needs at least RCA or solvent cleaning. If in doubt, ask the supplier about the surface condition on delivery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an HF dip for, and why does the wafer become hydrophobic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dilute HF strips the native SiO₂ layer, roughly 1–2 nm thick. Once the oxide is gone the silicon surface is covered by non-polar Si–H bonds, so water does not wet it and beads up instead. This surface is not stable and re-oxidises in air, so move on to the next step as soon as possible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use only acetone and IPA instead of RCA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, for removing light organic residue, photoresist or coarse dust — for example Test or Dummy wafers, or a surface before resist coating. Solvents do not remove metal ions or native oxide, so they are not enough for sensitive steps such as thermal oxidation or epitaxy."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="blog-page">
+    <!--Start Preloader-->
+    <div id="site-preloader" class="js-preloader" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#ffffff;">
+        <img src="./assets/images/logo-2.png" alt="Digifund" style="width:170px;height:auto;animation:sitePreloaderPulse 1.4s ease-in-out infinite;">
+    </div>
+    <style>@keyframes sitePreloaderPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.94)}}</style>
+    <script>(function(){function hide(){var p=document.getElementById('site-preloader');if(!p)return;p.style.transition='opacity .45s ease';p.style.opacity='0';setTimeout(function(){p.style.display='none';},450);}if(document.readyState==='complete'){setTimeout(hide,300);}else{window.addEventListener('load',function(){setTimeout(hide,300);});}setTimeout(hide,6000);})();</script>
+    <!--End Preloader-->
+
+
+<header class="bl-header">
+  <div class="bl-container bl-header__inner">
+    <a href="./" class="bl-brand"><img src="./assets/images/logo-2.png" alt="Digifund - Silicon Wafer Supplier Vietnam"><span class="bl-brand__name">DIGIFUND</span></a>
+    <nav class="bl-nav">
+      <div class="bl-nav__links" id="blNavLinks">
+        <a href="./#about"><span class="lang-en">About</span></a>
+        <a href="./#products"><span class="lang-en">Products</span></a>
+        <a href="./semiconductor-knowledge.html">Blog</a>
+        <a href="./#contact"><span class="lang-en">Contact</span></a>
+        <a href="./silicon-wafer-substrate-products.html" class="bl-nav__cta"><span class="lang-en">View Silicon Wafer</span></a>
+      </div>
+      <a href="#" class="bl-theme-btn" role="button" aria-label="Light/Dark" title="Light/Dark"><i class="fas fa-moon"></i></a>
+      <a href="./lam-sach-wafer-quy-trinh-rca.html" class="bl-lang-btn" role="button" hreflang="vi" aria-label="Doc ban tieng Viet" title="Tiếng Việt">VI</a>
+      <button class="bl-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="blNavLinks"><i class="fas fa-bars" aria-hidden="true"></i></button>
+    </nav>
+  </div>
+</header>
+
+<div class="bl-container">
+  <nav class="bl-crumb"><a href="./"><span class="lang-en">Home</span></a> › <a href="./semiconductor-knowledge.html">Blog</a> › <span class="lang-en">Wafer cleaning</span></nav>
+</div>
+
+<section class="bl-hero">
+  <div class="bl-container">
+    <span class="bl-hero__tag lang-en">Technical</span>
+    <h1 class="lang-en">Silicon Wafer Cleaning: RCA, Piranha, HF Dip and Correct Handling</h1>
+    <p class="bl-hero__lead lang-en">A particle a micrometre across, or an organic film a few nanometres thick, is enough to ruin a whole fabrication run. This article explains the contaminants found on wafers, the industry-standard RCA process, when to use piranha or HF, and how to handle and store wafers so they are not recontaminated.</p>
+  </div>
+</section>
+
+<main class="bl-article">
+  <div class="bl-container">
+    <div class="bl-article__wrap">
+
+      <div class="bl-toc">
+        <h4 class="lang-en">Contents</h4>
+        <ol class="lang-en">
+          <li><a href="#nhiem-ban">Four kinds of contamination on a wafer surface</a></li>
+          <li><a href="#rca">The RCA process: the foundation of wafer cleaning</a></li>
+          <li><a href="#hf">HF dip: stripping the native oxide</a></li>
+          <li><a href="#piranha">Piranha and solvent cleaning</a></li>
+          <li><a href="#bang">Cleaning steps at a glance</a></li>
+          <li><a href="#an-toan">Chemical safety: no exceptions</a></li>
+          <li><a href="#khong-phai-si">What about non-silicon substrates?</a></li>
+          <li><a href="#bao-quan">Handling and storage to avoid recontamination</a></li>
+        </ol>
+      </div>
+
+      <h2 id="nhiem-ban" class="lang-en">1. Four kinds of contamination on a wafer surface</h2>
+      <p class="lang-en">No single solution removes everything. Each kind of contamination has its own removal mechanism, which is why cleaning processes always chain several steps:</p>
+      <ul class="lang-en">
+  <li><strong>Particles</strong> — dust, silicon fragments, fibres. They cause pinholes in films, break metal lines and shadow the exposure during lithography.</li>
+  <li><strong>Organics</strong> — fingerprints, oils, photoresist residue, adhesives. They weaken film adhesion and make oxide grow unevenly.</li>
+  <li><strong>Metal ions</strong> — Na, K, Fe, Cu, Au… Na and K shift the threshold voltage of MOS devices; Fe and Cu shorten minority-carrier lifetime, directly hurting solar-cell and diode performance.</li>
+  <li><strong>Native oxide</strong> — a SiO₂ layer roughly 1–2 nm thick that forms as soon as the wafer meets air. It obstructs electrical contact, epitaxy and adhesion of deposited films.</li>
+</ul>
+      <h2 id="rca" class="lang-en">2. The RCA process: the foundation of wafer cleaning</h2>
+      <p class="lang-en">RCA was developed by Werner Kern at RCA from 1965 and published in 1970. More than half a century later it remains the reference standard because its logic is clear: two solutions, each aimed at one group of contaminants.</p>
+      <p class="lang-en"><strong>SC-1 (also called APM)</strong> — NH₄OH : H₂O₂ : H₂O, commonly 1:1:5, at 75–80 °C for about 10 minutes. H₂O₂ oxidises the surface into a thin oxide, NH₄OH slightly dissolves it and lifts attached particles away with it. Particle and wafer surfaces also carry the same negative charge, so they repel and particles struggle to reattach. SC-1 removes <strong>particles and light organics</strong>.</p>
+      <p class="lang-en"><strong>SC-2 (also called HPM)</strong> — HCl : H₂O₂ : H₂O, commonly 1:1:6, at 75–80 °C for about 10 minutes. The acidic environment forms soluble complexes with metal ions and the metal hydroxides left behind by SC-1. SC-2 removes <strong>metal ions</strong>.</p>
+      <p class="lang-en">After every step, rinse thoroughly in deionised (DI) water with resistivity close to 18.2 MΩ·cm. A poor rinse carries chemicals into the next bath and undermines the whole sequence.</p>
+      <h2 id="hf" class="lang-en">3. HF dip: stripping the native oxide</h2>
+      <p class="lang-en">Both SC-1 and SC-2 leave a thin chemical oxide. If the next process needs bare silicon — epitaxy, metal contacts, high-quality oxidation — the final step is a short dip in dilute HF.</p>
+      <p class="lang-en">The usual solution is HF : H₂O of about 1:50 to 1:100, at room temperature, for 15–60 seconds. Once the oxide is gone the silicon surface is terminated by Si–H bonds and is <strong>hydrophobic</strong>: lift the wafer out of water and the water beads up instead of sheeting off. That is also a quick way to confirm the oxide has gone.</p>
+      <div class="bl-note lang-en"><strong>Mind the clock:</strong> the Si–H surface is not stable. Native oxide regrows on exposure to air, so move the wafer to the next step as soon as possible — ideally within about an hour.</div>
+      <h2 id="piranha" class="lang-en">4. Piranha and solvent cleaning</h2>
+      <p class="lang-en"><strong>Piranha (SPM)</strong> is a mixture of concentrated H₂SO₄ and H₂O₂ at 3:1 to 4:1. The reaction is strongly exothermic, self-heating to about 100 °C or more, and rapidly destroys heavy organics such as photoresist and carbon residue. It is typically placed before SC-1 when a wafer carries heavy organic contamination.</p>
+      <ul class="lang-en">
+  <li>Do not use piranha on wafers that already carry metal layers — it attacks metals.</li>
+  <li>Never let organic solvents such as acetone into a piranha bath: the reaction can be violent or explosive.</li>
+  <li>Never seal a piranha container, because evolved gas builds pressure.</li>
+</ul>
+      <p class="lang-en">For Dummy wafers, Test wafers, or surfaces carrying only light photoresist residue, solvent cleaning is enough and much safer: <strong>acetone → IPA → DI rinse → N₂ blow-dry</strong>. Do not let acetone evaporate on the surface, since it leaves streaky residue; move to IPA while the wafer is still wet. Digifund supplies semiconductor-grade acetone for this purpose.</p>
+      <p class="lang-en">For photoresist and why its residue must be removed, see the article on the <a href="./photolithography-process.html">photolithography process</a>.</p>
+      <h2 id="bang" class="lang-en">5. Cleaning steps at a glance</h2>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-en">Step</span></th><th><span class="lang-en">Chemistry</span></th><th><span class="lang-en">Conditions</span></th><th><span class="lang-en">Removes</span></th></tr></thead>
+          <tbody>
+            <tr><td>Piranha (SPM)</td><td>H₂SO₄ : H₂O₂ 3–4 : 1</td><td><span class="lang-en">90–120 °C, ~10 min</span></td><td><span class="lang-en">Heavy organics, photoresist</span></td></tr>
+            <tr><td>SC-1 (APM)</td><td>NH₄OH : H₂O₂ : H₂O 1:1:5</td><td><span class="lang-en">75–80 °C, ~10 min</span></td><td><span class="lang-en">Particles, light organics</span></td></tr>
+            <tr><td>HF dip</td><td>HF : H₂O 1:50–1:100</td><td><span class="lang-en">Room temp., 15–60 s</span></td><td><span class="lang-en">Native / chemical oxide</span></td></tr>
+            <tr><td>SC-2 (HPM)</td><td>HCl : H₂O₂ : H₂O 1:1:6</td><td><span class="lang-en">75–80 °C, ~10 min</span></td><td><span class="lang-en">Metal ions</span></td></tr>
+            <tr><td><span class="lang-en">Solvent</span></td><td>Acetone → IPA → DI</td><td><span class="lang-en">Room temp.</span></td><td><span class="lang-en">Light organics, resist residue</span></td></tr>
+            <tr><td><span class="lang-en">Rinse & dry</span></td><td><span class="lang-en">DI ~18.2 MΩ·cm; N₂</span></td><td><span class="lang-en">After every step</span></td><td><span class="lang-en">Residual chemicals</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 id="an-toan" class="lang-en">6. Chemical safety: no exceptions</h2>
+      <p class="lang-en">The chemicals above are genuinely hazardous. What follows is a baseline reminder and does not replace your laboratory's safety rules and training.</p>
+      <ul class="lang-en">
+  <li><strong>HF penetrates skin</strong> and causes deep burns, with pain that may appear well after exposure. Keep calcium gluconate gel at hand and know the first-aid procedure before opening an HF bottle.</li>
+  <li><strong>HF etches glass.</strong> Use PTFE, PFA or PP vessels and baths only — never glass beakers.</li>
+  <li>Work in a fume hood or wet bench with a face shield, apron and chemical-resistant gloves. Cleanroom nitrile gloves protect the wafer from you; they do not adequately protect your hands from concentrated acid.</li>
+  <li>Segregate and label waste by group (acids, bases, HF, solvents). Never combine them.</li>
+</ul>
+      <h2 id="khong-phai-si" class="lang-en">7. What about non-silicon substrates?</h2>
+      <p class="lang-en">RCA was designed for silicon. Applying it unchanged to other materials can destroy the substrate:</p>
+      <ul class="lang-en">
+  <li><strong>Sapphire, SiC</strong> — chemically robust, tolerant of piranha and most acid and base baths. These are the easiest substrates to clean.</li>
+  <li><strong>GaAs, InP</strong> — attacked by the H₂O₂ in SC-1. Native oxide is usually removed with brief dips in dilute HCl or NH₄OH. Follow the substrate manufacturer's guidance.</li>
+  <li><strong>Epi-ready wafers</strong> — packaged to be used as received. They generally should not be re-cleaned, since every chemical dip is another chance to contaminate. See also <a href="./choosing-wafers-for-research.html">choosing wafers for research</a>.</li>
+</ul>
+      <h2 id="bao-quan" class="lang-en">8. Handling and storage to avoid recontamination</h2>
+      <p class="lang-en">A perfect clean followed by careless handling is wasted effort. These rules preserve cleanliness:</p>
+      <ul class="lang-en">
+  <li>Touch only the wafer edge. Use a vacuum wand or PTFE/PEEK-tipped tweezers; avoid metal tweezers on a polished face.</li>
+  <li>Always wear powder-free nitrile gloves and low-lint cleanroom wipes. Never use ordinary paper, which sheds fibres.</li>
+  <li>Keep wafers in a closed box or cassette when not processing. Open the original sealed pack only in an environment of suitable cleanliness — see <a href="./cleanroom-iso-classes.html">ISO cleanliness classes</a>.</li>
+  <li>Store long term in a dry cabinet or nitrogen cabinet, away from sunlight and chemical vapour.</li>
+  <li>Do not reuse contaminated boxes, and do not stack wafers directly on each other without interleaving sheets.</li>
+</ul>
+
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-en">What is an RCA clean and when do I need it?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-en">RCA is a silicon wafer cleaning process built from SC-1 (NH₄OH : H₂O₂ : H₂O), which removes particles and light organics, and SC-2 (HCl : H₂O₂ : H₂O), which removes metal ions, usually with an HF dip to strip native oxide. Use it before contamination-sensitive steps such as thermal oxidation, diffusion, epitaxy or thin-film deposition.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Does a newly purchased wafer need cleaning before use?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-en">Epi-ready wafers are normally used straight from the pack and should not be re-cleaned. For ordinary wafers the cleaning level depends on the process: handling practice needs none, while device fabrication typically needs at least RCA or solvent cleaning. If in doubt, ask the supplier about the surface condition on delivery.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">What is an HF dip for, and why does the wafer become hydrophobic?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-en">Dilute HF strips the native SiO₂ layer, roughly 1–2 nm thick. Once the oxide is gone the silicon surface is covered by non-polar Si–H bonds, so water does not wet it and beads up instead. This surface is not stable and re-oxidises in air, so move on to the next step as soon as possible.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Can I use only acetone and IPA instead of RCA?</span></summary>
+          <div class="bl-faq__ans">
+            <p class="lang-en">Yes, for removing light organic residue, photoresist or coarse dust — for example Test or Dummy wafers, or a surface before resist coating. Solvents do not remove metal ions or native oxide, so they are not enough for sensitive steps such as thermal oxidation or epitaxy.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="bl-cta">
+        <h3 class="lang-en">Need wafers, chemicals and cleanroom supplies from one source?</h3>
+        <p class="lang-en">Digifund supplies silicon wafers and substrates together with semiconductor-grade solvents, lithography chemicals, cleanroom gloves and wipes. Describe your process and the technical team will propose a matching supply set with a quote within 24 business hours.</p>
+        <a href="./#contact" class="bl-btn"><span class="lang-en">Get technical advice</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="./chemicals-and-supplies.html" class="bl-btn bl-btn--ghost"><span class="lang-en">View chemicals &amp; supplies</span></a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<section class="bl-related">
+  <div class="bl-container">
+    <h2 class="lang-en">Related articles</h2>
+    <div class="bl-grid">
+      <a class="bl-card" href="./cleanroom-iso-classes.html">
+        <div class="bl-card__media"><i class="fas fa-wind"></i></div>
+        <div class="bl-card__body"><span class="bl-card__tag lang-en">Cleanroom &amp; lab</span><h3 class="bl-card__title"><span class="lang-en">Cleanrooms &amp; ISO cleanliness classes</span></h3><span class="bl-card__more"><span class="lang-en">Read more →</span></span></div>
+      </a>
+      <a class="bl-card" href="./photolithography-process.html">
+        <div class="bl-card__media"><i class="fas fa-vector-square"></i></div>
+        <div class="bl-card__body"><span class="bl-card__tag lang-en">Technical</span><h3 class="bl-card__title"><span class="lang-en">The photolithography process</span></h3><span class="bl-card__more"><span class="lang-en">Read more →</span></span></div>
+      </a>
+      <a class="bl-card" href="./choosing-wafers-for-research.html">
+        <div class="bl-card__media"><i class="fas fa-flask"></i></div>
+        <div class="bl-card__body"><span class="bl-card__tag lang-en">Applications</span><h3 class="bl-card__title"><span class="lang-en">Choosing wafers for research</span></h3><span class="bl-card__more"><span class="lang-en">Read more →</span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="bl-footer">
+  <div class="bl-container">
+    <div class="bl-footer__top">
+      <div class="bl-footer__brand">
+        <img src="./assets/images/logo-2.png" alt="Digifund">
+        
+        <p class="lang-en">Digifund — supplier of high-purity silicon wafers, substrates and semiconductor materials in Vietnam.</p>
+      </div>
+      <div class="bl-footer__col">
+        <h4 class="lang-en">Products</h4>
+        <ul>
+          <li><a href="./silicon-wafer-substrate-products.html">Silicon Wafer &amp; Substrate</a></li>
+          <li><a href="./renewable-energy-materials.html"><span class="lang-en">Renewable Energy Materials</span></a></li>
+          <li><a href="./cleanroom-lab-equipment.html"><span class="lang-en">Cleanroom &amp; Lab Equipment</span></a></li>
+          <li><a href="./chemicals-and-supplies.html"><span class="lang-en">Chemicals &amp; Supplies</span></a></li>
+        </ul>
+      </div>
+      <div class="bl-footer__col">
+        <h4>Blog</h4>
+        <ul>
+          <li><a href="./what-is-a-silicon-wafer.html"><span class="lang-en">What is a silicon wafer?</span></a></li>
+          <li><a href="./types-of-silicon-wafer.html"><span class="lang-en">Types of silicon wafer</span></a></li>
+          <li><a href="./cz-vs-fz-wafer-comparison.html"><span class="lang-en">CZ vs FZ silicon wafer</span></a></li>
+        </ul>
+      </div>
+      <div class="bl-footer__col">
+        <h4 class="lang-en">Contact</h4>
+        <ul>
+          <li><a href="tel:+84979324567">+84 979 324 567</a></li>
+          <li><a href="mailto:semiconductor@digifund.vn">semiconductor@digifund.vn</a></li>
+          <li><span class="lang-en">Ho Chi Minh City, Vietnam</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/js/blog-nav.js"></script>
+</body>
+</html>
