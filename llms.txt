@@ -47,5 +47,6 @@
 - [CZ vs FZ Silicon Wafer](https://digifund.vn/cz-vs-fz-silicon-wafer.html): so sánh Czochralski và Float Zone, phân hạng Prime/Test/Dummy, đánh bóng SSP/DSP, định hướng tinh thể
 - [Chọn wafer cho nghiên cứu](https://digifund.vn/chon-wafer-cho-nghien-cuu.html): đế phù hợp cho MEMS, quang tử, epitaxy GaN, điện tử công suất, RF/MMIC, quang điện, phòng lab đào tạo
 - [Làm sạch Silicon Wafer: RCA, Piranha, HF](https://digifund.vn/lam-sach-wafer-quy-trinh-rca.html): các loại nhiễm bẩn, quy trình RCA (SC-1/SC-2), HF dip, piranha, an toàn hoá chất, cầm nắm & bảo quản wafer (English: https://digifund.vn/silicon-wafer-cleaning-rca.html)
+- [Kích thước Silicon Wafer: 2–12 inch, độ dày & cách chọn](https://digifund.vn/kich-thuoc-silicon-wafer.html): quy đổi inch/mm, độ dày tiêu chuẩn, flat và notch, kích thước theo vật liệu, chọn cỡ cho phòng lab (English: https://digifund.vn/silicon-wafer-sizes.html)
 - [Chi tiết sản phẩm](https://digifund.vn/product-detail.html)
 - [Kiến thức bán dẫn](https://digifund.vn/kien-thuc.html)
