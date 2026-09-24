@@ -398,7 +398,7 @@
       <button type="button" class="icon-btn" data-close title="Đóng">✕</button>
     </div>
     <div class="hist__settings" id="histSettings" hidden>
-      <div class="field"><label>Mật khẩu lưu online</label><input id="cloudKey" type="password" autocomplete="off" placeholder="Nhập mật khẩu (chỉ cần nhập 1 lần trên mỗi máy)"></div>
+      <div class="field"><label>Mật khẩu lưu online</label><input id="cloudKey" type="text" autocomplete="off" spellcheck="false" placeholder="Nhập mật khẩu (chỉ cần nhập 1 lần trên mỗi máy)"></div>
       <details class="hint" style="margin:0;"><summary style="cursor:pointer;">Nâng cao</summary>
         <div class="field" style="margin-top:8px;"><label>Địa chỉ Web App (Google Apps Script)</label><input id="cloudUrl" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off"></div>
       </details>
@@ -697,7 +697,11 @@
     return String(s==null?"":s)
       .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   }
-  function nl2br(s){ return esc(s).replace(/\n/g,"<br>"); }
+  // Text in the rendered document. Hyphens inside words/numbers ("525-675", "P-doped") become
+  // non-breaking hyphens (U+2011, looks the same): html2canvas mis-positions the part after
+  // such a hyphen when the word lands at the start of a line, drawing it on top of the part
+  // before it in the exported PDF.
+  function nl2br(s){ return esc(s).replace(/(\w)-(?=\w)/g,"$1‑").replace(/\n/g,"<br>"); }
 
   /* ---------------- Product image catalog (từ dữ liệu sản phẩm có sẵn của site) ---------------- */
   function normVN(s){
@@ -1001,7 +1005,7 @@
     }, 0);
 
     var notesHtml = state.notes.filter(function(n){ return n && n.trim(); })
-      .map(function(n){ return '<li>'+esc(n)+'</li>'; }).join("");
+      .map(function(n){ return '<li>'+nl2br(n)+'</li>'; }).join("");
 
     page.innerHTML =
       '<div class="doc-header">' +
@@ -1048,7 +1052,7 @@
         '</tr></tfoot>' +
       '</table>' +
       '<div class="doc-words">Bằng chữ: '+soThanhChu(grandTotal)+' chẵn.</div>' +
-      (state.vatNote ? '<div class="doc-vatnote">'+esc(state.vatNote)+'</div>' : '') +
+      (state.vatNote ? '<div class="doc-vatnote">'+nl2br(state.vatNote)+'</div>' : '') +
       (notesHtml ? '<div class="doc-notes"><div class="doc-notes__title">* Ghi chú:</div><ol>'+notesHtml+'</ol></div>' : '') +
       '<div class="doc-closing">'+nl2br(state.closing)+'</div>' +
       '<div class="doc-sign"><div class="doc-sign__box">' +
@@ -1079,9 +1083,37 @@
     window.scrollTo(0, 0);
     if(previewWrap) previewWrap.scrollTop = 0;
 
+    // html2pdf sizes its capture before the pagebreak "avoid" rules push blocks down, so
+    // whatever gets pushed past that height (e.g. the signer's name when the signature
+    // moves to a new page) is cut off. Capture with extra blank space at the end, then
+    // trim the trailing white rows so the spacer never produces an empty last page.
+    var exportSpacer = document.createElement("div");
+    exportSpacer.style.height = Math.min(page.offsetHeight, 1500) + "px";
+    page.appendChild(exportSpacer);
+
     function restoreScroll(){
+      if(exportSpacer.parentNode) exportSpacer.parentNode.removeChild(exportSpacer);
       window.scrollTo(0, prevWindowScroll);
       if(previewWrap) previewWrap.scrollTop = prevPaneScroll;
+    }
+
+    function trimCanvasBottom(canvas){
+      var ctx = canvas.getContext("2d");
+      var w = canvas.width, h = canvas.height, step = 64;
+      var last = -1;
+      for(var y0 = h; y0 > 0 && last < 0; y0 -= step){
+        var top = Math.max(0, y0 - step);
+        var d = ctx.getImageData(0, top, w, y0 - top).data;
+        for(var i = d.length - 4; i >= 0; i -= 4){
+          if(d[i] < 245 || d[i+1] < 245 || d[i+2] < 245){ last = top + Math.floor(i / 4 / w); break; }
+        }
+      }
+      var newH = Math.min(h, last + 40);
+      if(last < 0 || newH >= h) return canvas;
+      var out = document.createElement("canvas");
+      out.width = w; out.height = newH;
+      out.getContext("2d").drawImage(canvas, 0, 0);
+      return out;
     }
 
     html2pdf().set({
@@ -1098,7 +1130,9 @@
         // next page.
         avoid: ["tr","li","p",".doc-header",".doc-intro",".doc-customer",".doc-customer div",".doc-words",".doc-vatnote",".doc-closing",".doc-sign",".doc-title",".doc-quoteno",".doc-date",".doc-divider"]
       }
-    }).from(page).save().then(function(){
+    }).from(page).toCanvas().then(function(){
+      this.prop.canvas = trimCanvasBottom(this.prop.canvas);
+    }).toPdf().save().then(function(){
       btn.disabled = false; btn.textContent = original;
       restoreScroll();
     }).catch(function(){
