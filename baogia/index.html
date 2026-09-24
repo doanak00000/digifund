@@ -43,7 +43,7 @@
   .btn{
     appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);
     padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer;
-    display:inline-flex;align-items:center;gap:8px;transition:.15s;
+    display:inline-flex;align-items:center;gap:8px;transition:.15s;white-space:nowrap;
   }
   .btn:hover{border-color:var(--brand);color:var(--brand);}
   .btn--primary{background:var(--brand);border-color:var(--brand);color:#fff;}
@@ -230,6 +230,44 @@
 
   .empty-hint{color:#b6b6b6;font-style:italic;}
 
+  /* ---------- Save status + recent quotes ---------- */
+  .save-status{font-size:12px;color:var(--gray);white-space:nowrap;border:none;background:none;padding:4px 6px;font:inherit;font-size:12px;cursor:default;}
+  .save-status.is-error{color:#c0392b;cursor:pointer;text-decoration:underline;}
+  @media (max-width:1100px){ .topbar__title{display:none;} }
+  @media (max-width:640px){ .save-status{display:none;} .topbar{flex-wrap:wrap;} }
+
+  .hist[hidden]{display:none;}
+  .hist{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-start;justify-content:center;padding:6vh 16px 16px;}
+  .hist__backdrop{position:absolute;inset:0;background:rgba(20,26,40,.42);}
+  .hist__panel{
+    position:relative;width:min(640px,100%);max-height:86vh;display:flex;flex-direction:column;
+    background:#fff;border-radius:14px;box-shadow:0 20px 60px rgba(20,30,60,.28);overflow:hidden;
+  }
+  .hist__head{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line);}
+  .hist__head h2{margin:0;font-size:16px;font-weight:700;flex:1;}
+  .hist__src{font-size:11.5px;color:var(--gray);font-weight:600;}
+  .hist__tools{padding:12px 16px 4px;}
+  .hist__settings{padding:14px 16px;border-bottom:1px solid var(--line);background:#f8f9fc;display:flex;flex-direction:column;gap:10px;}
+  .hist__settings[hidden]{display:none;}
+  .hist__settings .btns{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .hist__msg{font-size:12px;color:var(--gray);}
+  .hist__msg.is-error{color:#c0392b;}
+  .hist__msg.is-ok{color:#1e7e34;}
+  .hist__list{overflow-y:auto;padding:8px 16px 16px;display:flex;flex-direction:column;gap:8px;}
+  .hist__empty{padding:28px 8px;text-align:center;color:var(--gray);font-size:13px;line-height:1.6;}
+  .hitem{border:1px solid var(--line);border-radius:10px;padding:11px 12px;display:flex;gap:12px;align-items:center;}
+  .hitem.is-current{border-color:var(--brand);background:#f5f8ff;}
+  .hitem__main{flex:1;min-width:0;}
+  .hitem__title{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .hitem__badge{font-size:10.5px;font-weight:700;color:var(--brand);background:#e6eeff;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;}
+  .hitem__sub{font-size:12.5px;color:var(--gray);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .hitem__total{font-size:12.5px;color:var(--ink);font-weight:600;margin-top:2px;}
+  .hitem__actions{display:flex;gap:6px;align-items:center;flex-shrink:0;}
+  @media (max-width:560px){
+    .hitem{flex-direction:column;align-items:stretch;}
+    .hitem__actions{justify-content:flex-end;}
+  }
+
   /* ---------- Print ---------- */
   @media print{
     .topbar,.editor{display:none !important;}
@@ -248,7 +286,9 @@
   </a>
   <span class="topbar__title">Tạo Báo Giá</span>
   <div class="topbar__spacer"></div>
-  <button class="btn btn--ghost" id="btnReset" title="Xóa toàn bộ dữ liệu đã nhập và về mặc định">Làm mới</button>
+  <button type="button" class="save-status" id="saveStatus" aria-live="polite"></button>
+  <button class="btn" id="btnHistory" title="Mở lại hoặc dùng báo giá cũ làm mẫu">Báo giá gần đây</button>
+  <button class="btn btn--ghost" id="btnReset" title="Bắt đầu báo giá mới (báo giá hiện tại vẫn được giữ trong danh sách gần đây)">Báo giá mới</button>
   <button class="btn" id="btnPrint">In</button>
   <button class="btn btn--primary" id="btnExport">⭳ Tải PDF</button>
 </div>
@@ -336,7 +376,7 @@
       </div>
     </div>
 
-    <p class="hint">Dữ liệu được lưu tạm trong trình duyệt của bạn (không gửi lên máy chủ). Bấm "Làm mới" để xóa và nhập lại từ đầu.</p>
+    <p class="hint">Báo giá được tự động lưu vào "Báo giá gần đây" (lưu online nếu đã cài đặt, nếu chưa thì lưu trong trình duyệt này). Bấm "Báo giá mới" để bắt đầu báo giá khác.</p>
   </aside>
 
   <!-- ============ PREVIEW ============ -->
@@ -344,6 +384,35 @@
     <div class="page" id="page">
       <!-- rendered by JS -->
     </div>
+  </div>
+</div>
+
+<!-- ============ RECENT QUOTES ============ -->
+<div class="hist" id="hist" hidden>
+  <div class="hist__backdrop" data-close></div>
+  <div class="hist__panel" role="dialog" aria-modal="true" aria-labelledby="histTitle">
+    <div class="hist__head">
+      <h2 id="histTitle">Báo giá gần đây</h2>
+      <span class="hist__src" id="histSrc"></span>
+      <button type="button" class="icon-btn" id="histSettingsBtn" title="Cài đặt lưu online">⚙</button>
+      <button type="button" class="icon-btn" data-close title="Đóng">✕</button>
+    </div>
+    <div class="hist__settings" id="histSettings" hidden>
+      <div class="field"><label>Mật khẩu lưu online</label><input id="cloudKey" type="password" autocomplete="off" placeholder="Nhập mật khẩu (chỉ cần nhập 1 lần trên mỗi máy)"></div>
+      <details class="hint" style="margin:0;"><summary style="cursor:pointer;">Nâng cao</summary>
+        <div class="field" style="margin-top:8px;"><label>Địa chỉ Web App (Google Apps Script)</label><input id="cloudUrl" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off"></div>
+      </details>
+      <div class="btns">
+        <button type="button" class="btn btn--primary btn--sm" id="cloudSave">Lưu &amp; kiểm tra</button>
+        <button type="button" class="btn btn--sm" id="cloudOff">Tắt lưu online</button>
+        <span class="hist__msg" id="cloudMsg"></span>
+      </div>
+      <p class="hint" style="margin:0;">Mật khẩu được ghi nhớ trên trình duyệt này. Không nên nhập trên máy dùng chung.</p>
+    </div>
+    <div class="hist__tools">
+      <input type="text" class="img-search__input" id="histSearch" placeholder="🔍 Tìm theo khách hàng, số báo giá, sản phẩm..." autocomplete="off">
+    </div>
+    <div class="hist__list" id="histList"></div>
   </div>
 </div>
 
@@ -395,33 +464,176 @@
     };
   }
 
+  function newId(){
+    return "q" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
   var state = loadState();
+
+  function normalizeState(parsed){
+    var d = defaultState();
+    var s = Object.assign({}, d, parsed, {
+      company: Object.assign({}, d.company, parsed.company),
+      meta: Object.assign({}, d.meta, parsed.meta),
+      customer: Object.assign({}, d.customer, parsed.customer),
+      signer: Object.assign({}, d.signer, parsed.signer),
+      signature: Object.assign({}, d.signature, parsed.signature),
+      products: (parsed.products && parsed.products.length) ? parsed.products : d.products,
+      notes: (parsed.notes && parsed.notes.length) ? parsed.notes : d.notes
+    });
+    if(!s.id) s.id = newId();
+    return s;
+  }
 
   function loadState(){
     try{
       var raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw) return defaultState();
-      var parsed = JSON.parse(raw);
-      var d = defaultState();
-      return Object.assign({}, d, parsed, {
-        company: Object.assign({}, d.company, parsed.company),
-        meta: Object.assign({}, d.meta, parsed.meta),
-        customer: Object.assign({}, d.customer, parsed.customer),
-        signer: Object.assign({}, d.signer, parsed.signer),
-        signature: Object.assign({}, d.signature, parsed.signature),
-        products: (parsed.products && parsed.products.length) ? parsed.products : d.products,
-        notes: (parsed.notes && parsed.notes.length) ? parsed.notes : d.notes
-      });
-    }catch(e){ return defaultState(); }
+      if(!raw) return normalizeState({});
+      return normalizeState(JSON.parse(raw));
+    }catch(e){ return normalizeState({}); }
   }
 
   var saveTimer = null;
+  function saveDraft(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
   function persist(){
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(function(){
-      try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
-    }, 200);
+    saveTimer = setTimeout(saveDraft, 200);
+    scheduleAutoSave();
   }
+
+  /* ---------------- Recent quotes: auto-save (online qua Google Apps Script, dự phòng trong trình duyệt) ---------------- */
+  var CLOUD_CFG_KEY = "digifund_baogia_cloud_v1";
+  var HISTORY_KEY = "digifund_baogia_history_v1";
+  var HISTORY_MAX = 30;
+  var AUTOSAVE_DELAY = 2500;
+  // Web App mặc định của DIGIFUND (không phải bí mật – quyền truy cập được bảo vệ bằng mật khẩu nhập trên từng máy).
+  var CLOUD_URL_DEFAULT = "https://script.google.com/macros/s/AKfycbws1czFI_x_8aRySktZOR54GSgvJD2oSOhgMXKK74LhNS3c3VoaxFRW-QHqa1ZPnB-e/exec";
+
+  function cloudCfg(){
+    try{
+      var c = JSON.parse(localStorage.getItem(CLOUD_CFG_KEY) || "null");
+      return (c && c.url && c.key) ? c : null;
+    }catch(e){ return null; }
+  }
+  function checkRes(res){
+    if(!res || !res.ok) throw new Error((res && res.error) || "Máy chủ trả lỗi");
+    return res;
+  }
+  function cloudGet(cfg, params){
+    var q = Object.keys(params).map(function(k){ return k + "=" + encodeURIComponent(params[k]); }).join("&");
+    return fetch(cfg.url + "?" + q + "&key=" + encodeURIComponent(cfg.key))
+      .then(function(r){ return r.json(); }).then(checkRes);
+  }
+  function cloudPost(cfg, body){
+    body.key = cfg.key;
+    // text/plain tránh preflight CORS mà Apps Script không hỗ trợ
+    return fetch(cfg.url, { method:"POST", headers:{ "Content-Type":"text/plain;charset=utf-8" }, body:JSON.stringify(body) })
+      .then(function(r){ return r.json(); }).then(checkRes);
+  }
+
+  function isMeaningful(s){
+    return !!(s.customer.name || s.customer.unit || s.products.some(function(p){ return p.name || Number(p.price); }));
+  }
+  function quoteTotal(s){
+    return s.products.reduce(function(sum,p){ return sum + (Number(p.qty)||0) * (Number(p.price)||0); }, 0);
+  }
+  function quoteMeta(s){
+    var names = s.products.map(function(p){ return p.name; }).filter(Boolean);
+    return {
+      id: s.id,
+      customer: String(s.customer.unit || s.customer.name || "").slice(0,200),
+      customerName: String(s.customer.unit ? s.customer.name : "").slice(0,200),
+      quoteNo: String(s.meta.quoteNo || "").slice(0,100),
+      date: s.meta.date || "",
+      total: quoteTotal(s),
+      products: names.slice(0,5).map(function(n){ return String(n).slice(0,120); }),
+      productCount: names.length,
+      updatedAt: new Date().toISOString()
+    };
+  }
+
+  function readLocalHistory(){
+    try{ return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]") || []; }catch(e){ return []; }
+  }
+  function writeLocalHistory(list){
+    // Ảnh tải lên dạng data URL có thể làm đầy bộ nhớ trình duyệt: bỏ bớt báo giá cũ nhất cho đến khi vừa.
+    list = list.slice(0, HISTORY_MAX);
+    while(list.length){
+      try{ localStorage.setItem(HISTORY_KEY, JSON.stringify(list)); return; }
+      catch(e){ list.pop(); }
+    }
+    try{ localStorage.removeItem(HISTORY_KEY); }catch(e){}
+  }
+  function saveLocalHistory(meta, data){
+    var list = readLocalHistory().filter(function(x){ return x.meta.id !== meta.id; });
+    list.unshift({ meta:meta, data:data });
+    writeLocalHistory(list);
+  }
+  function removeLocalHistory(id){
+    writeLocalHistory(readLocalHistory().filter(function(x){ return x.meta.id !== id; }));
+  }
+
+  var saveStatusEl = document.getElementById("saveStatus");
+  function setSaveStatus(kind, detail){
+    saveStatusEl.classList.toggle("is-error", kind === "error");
+    saveStatusEl.title = detail || "";
+    var t = new Date();
+    var hhmm = String(t.getHours()).padStart(2,"0") + ":" + String(t.getMinutes()).padStart(2,"0");
+    saveStatusEl.textContent =
+      kind === "pending" ? "Chưa lưu…" :
+      kind === "saving"  ? "Đang lưu online…" :
+      kind === "saved"   ? "☁ Đã lưu online " + hhmm :
+      kind === "local"   ? "Đã lưu trên máy " + hhmm :
+      kind === "error"   ? "⚠ Lỗi lưu online – bấm để thử lại" : "";
+  }
+
+  var autoSaveTimer = null, autoSaveDirty = false, saveChain = Promise.resolve();
+  function scheduleAutoSave(){
+    autoSaveDirty = true;
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(flushAutoSave, AUTOSAVE_DELAY);
+    if(isMeaningful(state)) setSaveStatus("pending");
+  }
+  // Lưu ngay nếu có thay đổi đang chờ. Các lần lưu được xếp hàng tuần tự để bản mới không bị bản cũ ghi đè.
+  function flushAutoSave(){
+    clearTimeout(autoSaveTimer);
+    if(!autoSaveDirty) return saveChain;
+    autoSaveDirty = false;
+    if(!isMeaningful(state)){ setSaveStatus(""); return saveChain; }
+    var data = JSON.parse(JSON.stringify(state));
+    var meta = quoteMeta(data);
+    saveLocalHistory(meta, data);
+    var cfg = cloudCfg();
+    if(!cfg){ setSaveStatus("local"); return saveChain; }
+    saveChain = saveChain.then(function(){
+      setSaveStatus("saving");
+      return cloudPost(cfg, { action:"save", id:data.id, meta:meta, data:data })
+        .then(function(){ if(!autoSaveDirty) setSaveStatus("saved"); })
+        .catch(function(err){ autoSaveDirty = true; setSaveStatus("error", err.message); });
+    });
+    return saveChain;
+  }
+  saveStatusEl.addEventListener("click", function(){
+    if(saveStatusEl.classList.contains("is-error")) flushAutoSave();
+  });
+  // Đóng tab / chuyển tab khi còn thay đổi chưa lưu: lưu vào máy ngay và gửi beacon lên online.
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState !== "hidden" || !autoSaveDirty || !isMeaningful(state)) return;
+    clearTimeout(autoSaveTimer);
+    clearTimeout(saveTimer); saveDraft();
+    var data = JSON.parse(JSON.stringify(state));
+    var meta = quoteMeta(data);
+    saveLocalHistory(meta, data);
+    var cfg = cloudCfg();
+    if(cfg && navigator.sendBeacon){
+      var body = JSON.stringify({ action:"save", id:data.id, meta:meta, data:data, key:cfg.key });
+      if(navigator.sendBeacon(cfg.url, new Blob([body], { type:"text/plain;charset=utf-8" }))) autoSaveDirty = false;
+    }else{
+      autoSaveDirty = false;
+    }
+  });
 
   function getPath(obj, path){
     return path.split(".").reduce(function(o,k){ return (o==null)?o:o[k]; }, obj);
@@ -896,10 +1108,9 @@
     });
   });
 
-  document.getElementById("btnReset").addEventListener("click", function(){
-    if(!confirm("Xóa toàn bộ dữ liệu đã nhập và tạo báo giá mới?")) return;
-    localStorage.removeItem(STORAGE_KEY);
-    state = defaultState();
+  function applyState(s){
+    state = s;
+    clearTimeout(saveTimer); saveDraft();
     document.querySelectorAll("[data-bind]").forEach(function(el){
       el.value = getPath(state, el.getAttribute("data-bind"));
     });
@@ -907,6 +1118,212 @@
     renderNotesEditor();
     syncSignatureUI();
     renderPreview();
+    setSaveStatus("");
+  }
+
+  document.getElementById("btnReset").addEventListener("click", function(){
+    var msg = isMeaningful(state)
+      ? "Tạo báo giá mới? Báo giá hiện tại vẫn được giữ trong \"Báo giá gần đây\"."
+      : "Xóa toàn bộ dữ liệu đã nhập và tạo báo giá mới?";
+    if(!confirm(msg)) return;
+    flushAutoSave();
+    applyState(normalizeState({}));
+  });
+
+  /* ---------------- Recent quotes dialog ---------------- */
+  var hist = document.getElementById("hist");
+  var histList = document.getElementById("histList");
+  var histSrc = document.getElementById("histSrc");
+  var histSearch = document.getElementById("histSearch");
+  var histSettings = document.getElementById("histSettings");
+  var cloudUrlInput = document.getElementById("cloudUrl");
+  var cloudKeyInput = document.getElementById("cloudKey");
+  var cloudMsg = document.getElementById("cloudMsg");
+  var histItems = [];      // [{meta, data?}]
+  var histFromCloud = false;
+  var histReq = 0;
+
+  function fmtDateTime(iso){
+    var d = new Date(iso);
+    if(isNaN(d)) return "";
+    return String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0") + " " +
+      String(d.getDate()).padStart(2,"0") + "/" + String(d.getMonth()+1).padStart(2,"0") + "/" + d.getFullYear();
+  }
+  function fmtDateShort(iso){
+    var p = String(iso||"").split("-");
+    return p.length===3 ? parseInt(p[2],10) + "/" + parseInt(p[1],10) + "/" + p[0] : "";
+  }
+
+  function openHist(){
+    hist.hidden = false;
+    histSearch.value = "";
+    var cfg = cloudCfg();
+    histSettings.hidden = !!cfg;
+    if(!cfg) showCloudForm();
+    flushAutoSave().then(loadHistList);
+    setTimeout(function(){ histSearch.focus(); }, 0);
+  }
+  function closeHist(){ hist.hidden = true; }
+  document.getElementById("btnHistory").addEventListener("click", openHist);
+  hist.querySelectorAll("[data-close]").forEach(function(el){ el.addEventListener("click", closeHist); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !hist.hidden) closeHist(); });
+  histSearch.addEventListener("input", renderHistList);
+
+  function loadHistList(){
+    var req = ++histReq;
+    var cfg = cloudCfg();
+    var local = readLocalHistory();
+    if(!cfg){
+      histFromCloud = false;
+      histItems = local;
+      histSrc.textContent = "Lưu trên máy này";
+      renderHistList();
+      return;
+    }
+    histSrc.textContent = "Đang tải…";
+    histItems = []; histList.innerHTML = '<div class="hist__empty">Đang tải danh sách…</div>';
+    cloudGet(cfg, { action:"list" }).then(function(res){
+      if(req !== histReq) return;
+      histFromCloud = true;
+      histItems = (res.items || []).map(function(m){ return { meta:m }; });
+      histSrc.textContent = "☁ Online";
+      renderHistList();
+    }).catch(function(err){
+      if(req !== histReq) return;
+      histFromCloud = false;
+      histItems = local;
+      histSrc.textContent = "⚠ Không kết nối được online (" + err.message + ") – đang hiện bản lưu trên máy";
+      renderHistList();
+    });
+  }
+
+  function renderHistList(){
+    var q = normVN(histSearch.value.trim());
+    var items = histItems.filter(function(it){
+      if(!q) return true;
+      var m = it.meta;
+      return normVN([m.customer, m.customerName, m.quoteNo].concat(m.products || []).join(" ")).indexOf(q) !== -1;
+    });
+    if(!items.length){
+      histList.innerHTML = '<div class="hist__empty">' + (histItems.length
+        ? "Không có báo giá nào khớp với từ khóa."
+        : "Chưa có báo giá nào được lưu.<br>Báo giá sẽ tự động được lưu vào đây khi bạn nhập khách hàng hoặc sản phẩm.") + '</div>';
+      return;
+    }
+    histList.innerHTML = items.map(function(it, i){
+      var m = it.meta, isCur = m.id === state.id;
+      var prods = (m.products || []).slice(0,2).join(", ");
+      var more = (m.productCount || 0) - Math.min(2, (m.products || []).length);
+      var sub = [m.quoteNo ? "Số " + m.quoteNo : "", m.date ? "Ngày " + fmtDateShort(m.date) : "", prods + (more > 0 ? " +" + more + " sp khác" : "")]
+        .filter(Boolean).join(" · ");
+      return '<div class="hitem' + (isCur ? " is-current" : "") + '">' +
+        '<div class="hitem__main">' +
+          '<div class="hitem__title">' + (m.customer ? esc(m.customer) : '<span class="empty-hint">(chưa có khách hàng)</span>') +
+            (isCur ? '<span class="hitem__badge">Đang mở</span>' : '') + '</div>' +
+          (sub ? '<div class="hitem__sub" title="' + esc(sub) + '">' + esc(sub) + '</div>' : '') +
+          '<div class="hitem__total">' + fmtMoney(m.total) + ' VND <span class="hist__msg">· sửa lần cuối ' + fmtDateTime(m.updatedAt) + '</span></div>' +
+        '</div>' +
+        '<div class="hitem__actions">' +
+          '<button type="button" class="btn btn--primary btn--sm" data-i="' + i + '" data-act="copy" title="Tạo báo giá mới từ báo giá này (ngày hôm nay, giữ nguyên bản cũ)">Dùng làm mẫu</button>' +
+          (isCur ? '' : '<button type="button" class="btn btn--sm" data-i="' + i + '" data-act="open" title="Tiếp tục chỉnh sửa chính báo giá này">Mở lại</button>') +
+          '<button type="button" class="icon-btn danger" data-i="' + i + '" data-act="del" title="Xóa khỏi danh sách">🗑</button>' +
+        '</div>' +
+      '</div>';
+    }).join("");
+    histList.querySelectorAll("[data-act]").forEach(function(btn){
+      var it = items[Number(btn.getAttribute("data-i"))];
+      var act = btn.getAttribute("data-act");
+      btn.addEventListener("click", function(){
+        if(act === "del") deleteQuote(it);
+        else useQuote(it, act === "copy", btn);
+      });
+    });
+  }
+
+  function fetchQuoteData(it){
+    if(it.data) return Promise.resolve(it.data);
+    var cfg = cloudCfg();
+    var local = readLocalHistory().filter(function(x){ return x.meta.id === it.meta.id; })[0];
+    if(!cfg) return local ? Promise.resolve(local.data) : Promise.reject(new Error("Không tìm thấy dữ liệu"));
+    return cloudGet(cfg, { action:"get", id:it.meta.id }).then(function(res){ return res.data; })
+      .catch(function(err){ if(local) return local.data; throw err; });
+  }
+
+  function useQuote(it, asTemplate, btn){
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Đang mở…";
+    flushAutoSave().then(function(){ return fetchQuoteData(it); }).then(function(data){
+      var s = normalizeState(JSON.parse(JSON.stringify(data)));
+      if(asTemplate){
+        s.id = newId();
+        s.meta.date = todayISO();
+        s.meta.quoteNo = "";
+      }
+      applyState(s);
+      closeHist();
+    }).catch(function(err){
+      btn.disabled = false; btn.textContent = label;
+      alert("Không mở được báo giá: " + err.message);
+    });
+  }
+
+  function deleteQuote(it){
+    var name = it.meta.customer || "(chưa có khách hàng)";
+    if(!confirm("Xóa báo giá \"" + name + "\" khỏi danh sách gần đây?")) return;
+    var id = it.meta.id;
+    removeLocalHistory(id);
+    // Nếu xóa báo giá đang mở, lần sửa tiếp theo sẽ lưu thành một báo giá mới thay vì tạo lại bản vừa xóa.
+    if(id === state.id){ state.id = newId(); autoSaveDirty = false; clearTimeout(autoSaveTimer); saveDraft(); setSaveStatus(""); }
+    histItems = histItems.filter(function(x){ return x.meta.id !== id; });
+    renderHistList();
+    var cfg = cloudCfg();
+    if(cfg && histFromCloud){
+      cloudPost(cfg, { action:"delete", id:id }).catch(function(err){
+        alert("Không xóa được trên online: " + err.message);
+        loadHistList();
+      });
+    }
+  }
+
+  /* ---- Cloud settings ---- */
+  function showCloudForm(){
+    var cfg = cloudCfg() || {};
+    cloudUrlInput.value = cfg.url || CLOUD_URL_DEFAULT;
+    cloudKeyInput.value = cfg.key || "";
+    cloudMsg.textContent = cfg.url ? "" : "Chưa bật lưu online – nhập mật khẩu để bật. Hiện báo giá chỉ lưu trên trình duyệt này.";
+    cloudMsg.className = "hist__msg";
+  }
+  document.getElementById("histSettingsBtn").addEventListener("click", function(){
+    histSettings.hidden = !histSettings.hidden;
+    if(!histSettings.hidden) showCloudForm();
+  });
+  cloudKeyInput.addEventListener("keydown", function(e){
+    if(e.key === "Enter") document.getElementById("cloudSave").click();
+  });
+  document.getElementById("cloudSave").addEventListener("click", function(){
+    var cfg = { url: cloudUrlInput.value.trim(), key: cloudKeyInput.value.trim() };
+    if(!/^https:\/\/script\.google(usercontent)?\.com\//.test(cfg.url) || !cfg.key){
+      cloudMsg.textContent = "Nhập mật khẩu (và địa chỉ Web App hợp lệ trong mục Nâng cao).";
+      cloudMsg.className = "hist__msg is-error";
+      return;
+    }
+    cloudMsg.textContent = "Đang kiểm tra kết nối…"; cloudMsg.className = "hist__msg";
+    cloudGet(cfg, { action:"ping" }).then(function(){
+      try{ localStorage.setItem(CLOUD_CFG_KEY, JSON.stringify(cfg)); }catch(e){}
+      cloudMsg.textContent = "✓ Đã kết nối. Báo giá sẽ tự động lưu online.";
+      cloudMsg.className = "hist__msg is-ok";
+      if(isMeaningful(state)){ autoSaveDirty = true; flushAutoSave(); }
+      loadHistList();
+    }).catch(function(err){
+      cloudMsg.textContent = "Không kết nối được: " + err.message;
+      cloudMsg.className = "hist__msg is-error";
+    });
+  });
+  document.getElementById("cloudOff").addEventListener("click", function(){
+    try{ localStorage.removeItem(CLOUD_CFG_KEY); }catch(e){}
+    showCloudForm();
+    setSaveStatus("");
+    loadHistList();
   });
 
   /* ---------------- Init ---------------- */
