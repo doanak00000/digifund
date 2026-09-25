@@ -667,9 +667,11 @@ async function startField() {
                 gl_FragColor = vec4(col, a * vAlpha * k * uOpacity * (1.0 + vPulse * 1.8));
             }`,
     });
-    const setTheme = (light) => {
-        mat.uniforms.uLight.value = light ? 1 : 0;
-        mat.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+    // Light mode keeps the particles in navy bands (see home-v2.css), so they render
+    // exactly as in dark mode: light, additive dots on a dark ground.
+    const setTheme = () => {
+        mat.uniforms.uLight.value = 0;
+        mat.blending = THREE.AdditiveBlending;
         mat.needsUpdate = true;
     };
     setTheme(isLight());

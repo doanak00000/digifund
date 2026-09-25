@@ -926,3 +926,45 @@ main > section, .ftr { scroll-margin-top: var(--hdr); }
     .marquee--products { overflow-x: auto; }
     .marquee__track--products { flex-wrap: nowrap; justify-content: flex-start; width: max-content; }
 }
+
+/* ======================================================================
+   Light mode, option A: the page reads light, but the three sections that
+   carry the particle field (hero, product groups, contact) are deep navy
+   "ink" bands. The page ground is navy; every reading section paints its
+   own full-bleed light background, so the particles only show in the bands.
+   ====================================================================== */
+:root[data-theme="light"] { --navy: #0a1430; }
+:root[data-theme="light"], :root[data-theme="light"] body { background: var(--navy); }
+:root[data-theme="light"] main > section:not(.hero):not(.products):not(.contact),
+:root[data-theme="light"] .ftr {
+    background: var(--bg);
+    box-shadow: 0 0 0 100vmax var(--bg);
+    clip-path: inset(0 -100vmax);
+}
+:root[data-theme="light"] :is(.hero, .products, .contact) {
+    --bg: #0a1430;
+    --bg-2: #0f1b3d;
+    --bg-3: #16244d;
+    --text: #f3f6ff;
+    --muted: #aab5cd;
+    --dim: #8a97b3;
+    --accent: #3b82f6;
+    --accent-ink: #8cb6ff;
+    --ink-rgb: 225, 232, 255;
+    --scrim-rgb: 10, 20, 48;
+    --word-dim: #3a4768;
+    --strong: #fff;
+    --btn-bg: #ffffff; --btn-ink: #0a1430; --btn-hover: #e6edff;
+    --card: rgba(15, 27, 61, 0.9);
+    --shadow: rgba(0, 0, 0, 0.6);
+    color: var(--text);
+    color-scheme: dark;
+}
+:root[data-theme="light"] :is(.hero, .products, .contact) .btn--dark {
+    background: var(--bg-3); color: var(--text); border-color: var(--line-2);
+}
+:root[data-theme="light"] :is(.hero, .products, .contact) .btn--dark:hover { background: var(--bg-3); border-color: rgba(var(--ink-rgb), 0.3); }
+:root[data-theme="light"] .hero .sbg--hero img.is-on { opacity: 0.4; }
+:root[data-theme="light"] .contact .sbg--contact img { opacity: 0.16; }
+/* the navy ground shows between the frame rails; keep the rails subtle */
+:root[data-theme="light"] main.frame { border-inline-color: rgba(225, 232, 255, 0.08); }
