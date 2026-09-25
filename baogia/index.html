@@ -40,6 +40,10 @@
   .topbar__brand img{height:30px;width:auto;display:block;}
   .topbar__title{font-size:14px;color:var(--gray);font-weight:600;border-left:1px solid var(--line);padding-left:14px;margin-left:2px;}
   .topbar__spacer{flex:1;}
+  .modeswitch{display:inline-flex;border:1px solid var(--line);border-radius:9px;padding:3px;background:#f3f5f9;gap:2px;margin-left:4px;}
+  .modeswitch a{padding:6px 12px;border-radius:7px;font-size:13px;font-weight:600;color:var(--gray);text-decoration:none;white-space:nowrap;}
+  .modeswitch a:hover{color:var(--brand);}
+  .modeswitch a.is-active{background:#fff;color:var(--brand);box-shadow:0 1px 3px rgba(20,30,60,.12);}
   .btn{
     appearance:none;border:1px solid var(--line);background:#fff;color:var(--ink);
     padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer;
@@ -284,7 +288,10 @@
   <a class="topbar__brand" href="../index.html">
     <img src="../assets/images/logo-2.png" alt="DIGIFUND">
   </a>
-  <span class="topbar__title">Tạo Báo Giá</span>
+  <nav class="modeswitch" aria-label="Loại tài liệu">
+    <a href="index.html" class="is-active" aria-current="page">Báo giá</a>
+    <a href="hopdong.html">Hợp đồng mua bán</a>
+  </nav>
   <div class="topbar__spacer"></div>
   <button type="button" class="save-status" id="saveStatus" aria-live="polite"></button>
   <button class="btn" id="btnHistory" title="Mở lại hoặc dùng báo giá cũ làm mẫu">Báo giá gần đây</button>
@@ -1219,7 +1226,8 @@
     cloudGet(cfg, { action:"list" }).then(function(res){
       if(req !== histReq) return;
       histFromCloud = true;
-      histItems = (res.items || []).map(function(m){ return { meta:m }; });
+      // Hợp đồng (trang hopdong.html) lưu chung thư mục online, phân biệt bằng meta.kind.
+      histItems = (res.items || []).filter(function(m){ return m.kind !== "contract"; }).map(function(m){ return { meta:m }; });
       histSrc.textContent = "☁ Online";
       renderHistList();
     }).catch(function(err){
