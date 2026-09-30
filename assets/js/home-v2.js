@@ -4,7 +4,8 @@
    One particle field tells the process story as you scroll:
      0 sand → 1 polished wafer (hero) → 2 patterned dies (statement / product 1)
      → 3 sputtering target → 4 tube furnace with a wafer boat → 5 silicon
-     diamond-cubic lattice (products 2–4) → 6 radial burst (contact)
+     diamond-cubic lattice → 6 packaged chip. The hero and the product tabs
+     pick one shape per product group (GROUP_MORPH); the contact ends on 6.
    Everything else is progressive: content is visible without JS, the pinned
    product stage is only enabled on wide screens with motion allowed, and the
    particles load after the page is idle and never block reading.
@@ -180,6 +181,20 @@ const panels = products ? [...products.querySelectorAll(".pp")] : [];
 const tabs = products ? [...products.querySelectorAll(".tab")] : [];
 let activePanel = 0;
 let productsInView = false;
+// particle shape per product group: dies, target, chip, furnace, lattice
+const GROUP_MORPH = [2, 3, 6, 4, 5];
+let selectTab = null;
+// Pause toggle for an autoplay: aria-pressed="true" means paused. Hidden when there is no autoplay.
+const pauseToggle = (btn, onChange) => {
+    if (!btn) return;
+    if (reduceMotion) { btn.hidden = true; return; }
+    btn.onclick = () => {   // onclick, not addEventListener: the products stage re-binds on each breakpoint entry
+        const paused = btn.getAttribute("aria-pressed") !== "true";
+        btn.setAttribute("aria-pressed", String(paused));
+        onChange(paused);
+    };
+    onChange(btn.getAttribute("aria-pressed") === "true");   // carry the state across re-binds
+};
 const morphTo = (m) => { if (gsap) gsap.to(fx, { morph: m, duration: reduceMotion ? 0 : 1.6, ease: "power2.inOut", overwrite: "auto" }); else fx.morph = m; };
 
 function showPanel(i) {
@@ -188,7 +203,7 @@ function showPanel(i) {
     activePanel = i;
     panels.forEach((p, k) => p.classList.toggle("is-active", k === i));
     tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === i)); t.tabIndex = k === i ? 0 : -1; });
-    if (productsInView) morphTo(2 + i);
+    if (productsInView) morphTo(GROUP_MORPH[i]);
     if (!gsap || reduceMotion) return;
     const parts = (p) => [p.querySelector(".pp__copy"), p.querySelector(".pp__side")];
     gsap.killTweensOf([...parts(prev), ...parts(next)]);
@@ -205,7 +220,7 @@ if (gsap && products && panels.length && tabs.length) {
 
         // Autoplay: the active tab's bar fills over DWELL seconds, then the next tab takes over.
         const DWELL = 6;
-        let timer = null, hover = false;
+        let timer = null, hover = false, paused = false;
         const bar = (i) => tabs[i].querySelector(".tab__bar");
         const run = () => {
             if (timer) timer.kill();
@@ -217,8 +232,9 @@ if (gsap && products && panels.length && tabs.length) {
             });
             sync();
         };
-        const sync = () => { if (timer) (productsInView && !hover && !document.hidden) ? timer.resume() : timer.pause(); };
+        const sync = () => { if (timer) (productsInView && !hover && !paused && !document.hidden) ? timer.resume() : timer.pause(); };
         const select = (i, focus) => { showPanel(i); run(); if (focus) tabs[i].focus(); };
+        selectTab = (i) => select(i);
 
         tabs.forEach((t, i) => {
             t.addEventListener("click", () => select(i));
@@ -234,15 +250,17 @@ if (gsap && products && panels.length && tabs.length) {
         stage.addEventListener("pointerenter", enter); stage.addEventListener("pointerleave", leave);
         stage.addEventListener("focusin", enter); stage.addEventListener("focusout", leave);
         document.addEventListener("visibilitychange", sync);
+        pauseToggle(products.querySelector(".products__head .ap"), (v) => { paused = v; sync(); });
         const st = ST && ST.create({
             trigger: products, start: "top 60%", end: "bottom 40%",
-            onToggle: (self) => { productsInView = self.isActive; if (self.isActive) morphTo(2 + activePanel); sync(); },
+            onToggle: (self) => { productsInView = self.isActive; if (self.isActive) morphTo(GROUP_MORPH[activePanel]); sync(); },
         });
         run();
 
         return () => {
             if (timer) timer.kill();
             if (st) st.kill();
+            selectTab = null;
             products.classList.remove("is-tabbed");
             panels.forEach((p) => gsap.set([p.querySelector(".pp__copy"), p.querySelector(".pp__side")], { clearProps: "all" }));
         };
@@ -306,8 +324,9 @@ if (gsap && ST) {
 /* Forms → EmailJS (same service/template as the live site): the quote      */
 /* form and the floating quick-chat share one handler                       */
 /* ------------------------------------------------------------------------ */
-document.querySelectorAll("form[data-emailjs]").forEach((form) => {
+document.querySelectorAll("form[data-emailjs]").forEach((form, n) => {
     const status = form.querySelector(".form__status");
+    status.id = status.id || "form-status-" + n;
     const btn = form.querySelector('button[type="submit"]');
     const label = btn.textContent;
     const say = (msg, kind) => { status.textContent = msg; status.className = "form__status" + (kind ? " is-" + kind : ""); };
@@ -317,6 +336,7 @@ document.querySelectorAll("form[data-emailjs]").forEach((form) => {
         const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         form.name.setAttribute("aria-invalid", String(!name));
         form.email.setAttribute("aria-invalid", String(!emailOk));
+        [form.name, form.email].forEach((f) => f.getAttribute("aria-invalid") === "true" ? f.setAttribute("aria-describedby", status.id) : f.removeAttribute("aria-describedby"));
         if (!name || !emailOk) {
             say(!name ? "Vui lòng nhập họ và tên." : "Email chưa đúng định dạng, ví dụ ten@congty.vn.", "error");
             (!name ? form.name : form.email).focus();
@@ -341,18 +361,73 @@ document.querySelectorAll("form[data-emailjs]").forEach((form) => {
 });
 
 /* ------------------------------------------------------------------------ */
-/* Hero background: the live site's five banners, cross-fading             */
+/* Hero: five product groups, one after another. Each slide swaps the       */
+/* headline, the background photo and the particle shape.                   */
 /* ------------------------------------------------------------------------ */
 {
-    const slides = [...document.querySelectorAll(".sbg--hero img")];
-    if (slides.length > 1 && !reduceMotion) {
-        let i = 0;
-        setInterval(() => {
-            if (document.hidden || window.scrollY > window.innerHeight) return;   // no work while unseen
-            slides[i].classList.remove("is-on");
-            i = (i + 1) % slides.length;
-            slides[i].classList.add("is-on");
-        }, 6000);
+    const hero = document.querySelector(".hero");
+    const slides = hero ? [...hero.querySelectorAll(".hs__slide")] : [];
+    const photos = hero ? [...hero.querySelectorAll(".sbg--hero img")] : [];
+    const dots = hero ? [...hero.querySelectorAll(".hs__nav button:not(.ap)")] : [];
+    if (slides.length > 1) {
+        const DWELL = 6;
+        let cur = 0, timer = null, inView = true, hover = false, paused = false;
+        const words = slides.map((sl) => {
+            const t = sl.querySelector(".hero__title");
+            const w = gsap && !reduceMotion ? splitWords(t, "rw") : [];
+            w.forEach((x) => (x.style.display = "inline-block"));
+            return w;
+        });
+        const enter = (i, first) => {
+            if (!gsap || reduceMotion) return;
+            const sl = slides[i];
+            gsap.fromTo(words[i], { opacity: 0, y: 28, filter: "blur(12px)" },
+                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "expo.out", stagger: 0.045, delay: first ? 0.15 : 0.1, clearProps: "filter,transform" });
+            gsap.fromTo([sl.querySelector(".hs__kicker"), sl.querySelector(".hero__lead")], { opacity: 0, y: 14, filter: "blur(8px)" },
+                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "expo.out", stagger: 0.08, delay: first ? 0.45 : 0.3, clearProps: "filter,transform" });
+        };
+        const bar = (i) => dots[i] && dots[i].querySelector("i");
+        const run = () => {
+            if (timer) timer.kill();
+            dots.forEach((d, k) => gsap && gsap.set(bar(k), { scaleX: k === cur ? 1 : 0 }));
+            if (!gsap || reduceMotion) return;
+            timer = gsap.fromTo(bar(cur), { scaleX: 0 }, { scaleX: 1, duration: DWELL, ease: "none", onComplete: () => show((cur + 1) % slides.length) });
+            sync();
+        };
+        const sync = () => { if (timer) (inView && !hover && !paused && !document.hidden) ? timer.resume() : timer.pause(); };
+        function show(i) {
+            if (i !== cur) {
+                slides[cur].classList.remove("is-on");
+                if (photos[cur]) photos[cur].classList.remove("is-on");
+                cur = i;
+                slides[cur].classList.add("is-on");
+                if (photos[cur]) photos[cur].classList.add("is-on");
+                dots.forEach((d, k) => d.setAttribute("aria-current", String(k === cur)));
+                enter(cur);
+                if (inView) morphTo(Number(slides[cur].dataset.morph) || 1);
+            }
+            run();
+        }
+        dots.forEach((d, i) => d.addEventListener("click", () => show(i)));
+        const nav = hero.querySelector(".hs__nav");
+        if (nav) {
+            nav.addEventListener("pointerenter", () => { hover = true; sync(); });
+            nav.addEventListener("pointerleave", () => { hover = false; sync(); });
+        }
+        document.addEventListener("visibilitychange", sync);
+        pauseToggle(hero.querySelector(".hs__nav .ap"), (v) => { paused = v; sync(); });
+        // Out of the hero: pause, and hand the particles back to the scroll story (wafer → dies).
+        if (ST) ST.create({
+            trigger: hero, start: "top top", end: "bottom 55%",
+            onToggle: (self) => {
+                inView = self.isActive;
+                if (inView) morphTo(Number(slides[cur].dataset.morph) || 1);
+                else if (!productsInView) { if (gsap) gsap.killTweensOf(fx, "morph"); fx.morph = 1; }
+                sync();
+            },
+        });
+        enter(0, true);
+        run();
     }
 }
 
@@ -643,7 +718,8 @@ async function startField() {
                 // chip stage: pulses run from the pins out to the vias
                 float fin = clamp(uMorph - 5.0, 0.0, 1.0);
                 float ph = fract(aFlow * 1.1 - uTime * 0.42 + aSeed * 5.0);
-                vPulse = aFlow < 0.0 ? 0.0 : fin * exp(-pow((ph - 0.12) * 11.0, 2.0));
+                float pe = (ph - 0.12) * 11.0;
+                vPulse = aFlow < 0.0 ? 0.0 : fin * exp(-pe * pe);
                 vAlpha *= mix(1.0, aFlow < 0.0 ? 1.25 : 0.7, fin);
                 gl_PointSize *= 1.0 + vPulse * 1.3;
             }`,
@@ -870,7 +946,7 @@ else window.addEventListener("load", () => idle(() => startField().catch((e) => 
 /* scroll-driven effects re-measure; the IEMN notes open it directly.       */
 /* ------------------------------------------------------------------------ */
 {
-    const apps = document.getElementById("applications");
+    const apps = document.getElementById("research-cases");
     if (apps) {
         apps.addEventListener("toggle", () => { if (window.ScrollTrigger) window.ScrollTrigger.refresh(); });
         document.querySelectorAll("[data-open-apps]").forEach((a) => a.addEventListener("click", () => { apps.open = true; }));
@@ -891,4 +967,71 @@ else window.addEventListener("load", () => idle(() => startField().catch((e) => 
         lb.querySelector(".lb__close").addEventListener("click", () => lb.close());
         lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
     }
+}
+
+/* ------------------------------------------------------------------------ */
+/* Value chain: the pads light up in order when the floor scrolls in; the   */
+/* floor tilts a little with the pointer. Signs open their product tab.     */
+/* ------------------------------------------------------------------------ */
+{
+    const vc = document.querySelector(".vc");
+    // Wide screens with WebGL get the real 3D fab line (value-chain-3d.js), loaded
+    // when the section comes near; everything below stays as the CSS fallback.
+    if (vc && webgl() && "IntersectionObserver" in window) {
+        let chain3d = null, loading = false;
+        const mm = window.matchMedia("(min-width: 901px)");
+        const load = () => {
+            if (loading || chain3d || !mm.matches) return;
+            loading = true;
+            import("./value-chain-3d.js?v=20260930j")   // bump with each change: it is loaded after the page, so a reload alone may keep a cached copy
+                .then((m) => { chain3d = m.mountValueChain(vc, { reduceMotion }); })
+                .catch((e) => console.warn("[vc]", e))
+                .finally(() => { loading = false; });
+        };
+        const near = new IntersectionObserver(([en]) => { if (en.isIntersecting) { load(); near.disconnect(); } }, { rootMargin: "600px 0px" });
+        near.observe(vc);
+        mm.addEventListener("change", () => {
+            if (!mm.matches && chain3d) { chain3d.destroy(); chain3d = null; }
+            else if (mm.matches) load();
+        });
+        // the stage is light in light mode and navy in dark mode: rebuild it with the new palette
+        window.addEventListener("themechange", () => { if (chain3d) { chain3d.destroy(); chain3d = null; load(); } });
+    }
+    if (vc) {
+        if (!reduceMotion && "IntersectionObserver" in window) {
+            vc.classList.add("is-armed");
+            const io = new IntersectionObserver(([en]) => {
+                if (en.isIntersecting) { vc.classList.add("is-live"); io.disconnect(); }
+            }, { threshold: 0.35 });
+            io.observe(vc);
+        } else vc.classList.add("is-live");
+
+        if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+            const base = { rx: 56, rz: -5 }, cur = { rx: 56, rz: -5 }, to = { rx: 56, rz: -5 };
+            let raf = 0;
+            const step = () => {
+                cur.rx += (to.rx - cur.rx) * 0.08; cur.rz += (to.rz - cur.rz) * 0.08;
+                vc.style.setProperty("--rx", cur.rx.toFixed(2) + "deg");
+                vc.style.setProperty("--rz", cur.rz.toFixed(2) + "deg");
+                raf = Math.abs(to.rx - cur.rx) + Math.abs(to.rz - cur.rz) > 0.02 ? requestAnimationFrame(step) : 0;
+            };
+            const kick = () => { if (!raf) raf = requestAnimationFrame(step); };
+            vc.addEventListener("pointermove", (e) => {
+                if (!wide() || vc.classList.contains("vc--gl")) return;
+                const r = vc.getBoundingClientRect();
+                to.rz = base.rz + ((e.clientX - r.left) / r.width - 0.5) * 8;
+                to.rx = base.rx - ((e.clientY - r.top) / r.height - 0.5) * 6;
+                kick();
+            });
+            vc.addEventListener("pointerleave", () => { if (vc.classList.contains("vc--gl")) return; to.rx = base.rx; to.rz = base.rz; kick(); });
+        }
+    }
+    document.querySelectorAll("[data-go-tab]").forEach((a) => a.addEventListener("click", () => {
+        const i = Number(a.dataset.goTab);
+        if (selectTab) selectTab(i);
+        else {
+            const t = document.getElementById("tab-" + (i + 1));
+            if (t) t.click();
+        }
+    }));
 }
