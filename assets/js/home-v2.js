@@ -199,6 +199,9 @@ const pauseToggle = (btn, onChange) => {
 };
 const morphTo = (m) => { if (gsap) gsap.to(fx, { morph: m, duration: reduceMotion ? 0 : 1.6, ease: "power2.inOut", overwrite: "auto" }); else fx.morph = m; };
 
+// the panel's pieces (its two wrappers are display:contents on wide screens, so tween the children)
+const PP_PARTS = ".pp__img, .pp__title, .pp__text, .facts, .more--card, .spec";
+
 function showPanel(i) {
     if (i === activePanel) return;
     const prev = panels[activePanel], next = panels[i];
@@ -207,7 +210,7 @@ function showPanel(i) {
     tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === i)); t.tabIndex = k === i ? 0 : -1; });
     if (productsInView) morphTo(GROUP_MORPH[i]);
     if (!gsap || reduceMotion) return;
-    const parts = (p) => [p.querySelector(".pp__copy"), p.querySelector(".pp__side")];
+    const parts = (p) => [...p.querySelectorAll(PP_PARTS)];
     gsap.killTweensOf([...parts(prev), ...parts(next)]);
     gsap.to(parts(prev), { opacity: 0, y: -12, filter: "blur(8px)", duration: 0.35, ease: "power2.in" });
     gsap.fromTo(parts(next), { opacity: 0, y: 18, filter: "blur(10px)" },
@@ -218,7 +221,7 @@ if (gsap && products && panels.length && tabs.length) {
     const mm = gsap.matchMedia();
     mm.add("(min-width: 901px)", () => {
         products.classList.add("is-tabbed");
-        panels.forEach((p, k) => gsap.set([p.querySelector(".pp__copy"), p.querySelector(".pp__side")], { opacity: k === activePanel ? 1 : 0 }));
+        panels.forEach((p, k) => gsap.set(p.querySelectorAll(PP_PARTS), { opacity: k === activePanel ? 1 : 0 }));
 
         // Autoplay: the active tab's bar fills over DWELL seconds, then the next tab takes over.
         const DWELL = 6;
@@ -264,7 +267,7 @@ if (gsap && products && panels.length && tabs.length) {
             if (st) st.kill();
             selectTab = null;
             products.classList.remove("is-tabbed");
-            panels.forEach((p) => gsap.set([p.querySelector(".pp__copy"), p.querySelector(".pp__side")], { clearProps: "all" }));
+            panels.forEach((p) => gsap.set(p.querySelectorAll(PP_PARTS), { clearProps: "all" }));
         };
     });
 }

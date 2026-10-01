@@ -619,3 +619,87 @@ export function mountValueChain(root, { reduceMotion = false } = {}) {
         },
     };
 }
+
+/* ------------------------------------------------- single model (product pages)
+   One station model on a hex pedestal, slowly turning, on a transparent canvas:
+   used by the hero of preview-details-*.html. kind: wafer | litho | etch | depo | cmp | pack | device | solar */
+function mSolar(M) {
+    const group = new THREE.Group();
+    const tex = canvasTex(512, 320, (g, w, h) => {
+        g.fillStyle = "#0b1f4d"; g.fillRect(0, 0, w, h);
+        const cw = w / 6, ch = h / 4;
+        for (let y = 0; y < 4; y++) for (let x = 0; x < 6; x++) {
+            const gr = g.createLinearGradient(x * cw, y * ch, (x + 1) * cw, (y + 1) * ch);
+            gr.addColorStop(0, "#1e40af"); gr.addColorStop(1, "#0e2a6b");
+            g.fillStyle = gr; g.fillRect(x * cw + 3, y * ch + 3, cw - 6, ch - 6);
+            g.strokeStyle = "rgba(191,219,254,0.35)"; g.lineWidth = 1;
+            for (let k = 1; k < 4; k++) { g.beginPath(); g.moveTo(x * cw + (cw * k) / 4, y * ch + 3); g.lineTo(x * cw + (cw * k) / 4, (y + 1) * ch - 3); g.stroke(); }
+        }
+    });
+    const top = new THREE.MeshStandardMaterial({ map: tex, emissiveMap: tex, emissive: 0xffffff, emissiveIntensity: 0.35, metalness: 0.6, roughness: 0.25 });
+    const panel = edges(new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.05, 1.0), [M.steel, M.steel, top, M.dark, M.steel, M.steel]), M.edge);
+    const tilt = new THREE.Group(); tilt.position.y = 0.95; tilt.rotation.x = -0.5; tilt.add(panel); group.add(tilt);
+    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.7, 16), M.steel); post.position.y = 0.6; group.add(post);
+    const sun = new THREE.Mesh(new THREE.SphereGeometry(0.16, 32, 16), glow(AMBER, 0.85)); sun.position.set(0.7, 2.0, -0.4); group.add(sun);
+    const halo = new THREE.Mesh(new THREE.SphereGeometry(0.32, 32, 16), glow(0xfbbf24, 0.2)); halo.position.copy(sun.position); group.add(halo);
+    return { group, update(t) {
+        top.emissiveIntensity = 0.3 + 0.2 * (0.5 + 0.5 * Math.sin(t * 1.6));
+        halo.scale.setScalar(1 + Math.sin(t * 2) * 0.12);
+        tilt.position.y = 0.95 + Math.sin(t * 1.2) * 0.03;
+    } };
+}
+
+export function mountModel(el, kind = "wafer", { reduceMotion = false } = {}) {
+    const build = { wafer: mWafer, litho: mLitho, etch: mEtch, depo: mDepo, cmp: mCmp, pack: mPack, device: mDevice, solar: mSolar }[kind] || mWafer;
+    const canvas = document.createElement("canvas");
+    canvas.setAttribute("aria-hidden", "true");
+    canvas.style.cssText = "display:block;width:100%;height:100%";
+    el.appendChild(canvas);
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
+    scene.add(new THREE.HemisphereLight(0xb7d0ff, 0x0b1430, 1.2));
+    const sun = new THREE.DirectionalLight(0xffffff, 1.7); sun.position.set(4, 9, 7); scene.add(sun);
+    const rim = new THREE.DirectionalLight(0x7c3aed, 0.8); rim.position.set(-6, 3, -6); scene.add(rim);
+    const spot = new THREE.PointLight(0x7fb0ff, 10, 6, 1.6); spot.position.set(0, 2.6, 1.2); scene.add(spot);
+
+    const T = { wafer: waferTex(), circuit: circuitTex(), mask: maskTex(), pad: padTex(), screen: screenTex(), dot: dotTex() };
+    const M = makeMaterials();
+    const stage = new THREE.Group(); scene.add(stage);
+    const base = edges(new THREE.Mesh(new THREE.CylinderGeometry(0.98, 1.08, 0.22, 6), M.metal), M.edge);
+    base.rotation.y = Math.PI / 6; base.position.y = 0.11; stage.add(base);
+    const ring = new THREE.Mesh(new THREE.RingGeometry(0.8, 0.88, 6, 1), glow(ICE, 0.55));
+    ring.rotation.set(-Math.PI / 2, 0, Math.PI / 6); ring.position.y = 0.225; stage.add(ring);
+    const model = build(M, T); stage.add(model.group);
+
+    const box = new THREE.Box3().setFromObject(stage);
+    const c = box.getCenter(new THREE.Vector3()), size = box.getSize(new THREE.Vector3());
+    const dist = Math.max(size.y, size.x * 0.9) * 1.55 + 0.9;
+    camera.position.set(0, c.y + dist * 0.42, dist);
+    camera.lookAt(c.x, c.y, c.z);
+
+    const resize = () => {
+        const w = el.clientWidth, h = el.clientHeight;
+        if (!w || !h) return;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h; camera.updateProjectionMatrix();
+    };
+    resize();
+    const ro = new ResizeObserver(resize); ro.observe(el);
+
+    let visible = true, raf = 0, last = performance.now(), t = 0;
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible && !raf) raf = requestAnimationFrame(tick); });
+    io.observe(el);
+    function tick(now) {
+        raf = 0;
+        const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        if (!reduceMotion) { t += dt; stage.rotation.y = t * 0.25; }
+        model.update(t, dt, 1);
+        renderer.render(scene, camera);
+        if (visible && !reduceMotion) raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); renderer.dispose(); canvas.remove(); };
+}

@@ -1418,3 +1418,34 @@ main > section, .ftr { scroll-margin-top: var(--hdr); }
         background: var(--btn-bg); color: var(--btn-ink);
     }
 }
+
+/* ---------- product groups (wide screens): photo on the left at full height; title, copy,
+   the "see all products" link and the catalogue card stacked on the right ---------- */
+.products.is-tabbed .pp {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(32px, 4vw, 64px); row-gap: 0;
+    grid-template-areas: "img title" "img text" "img facts" "img more" "img spec";
+    grid-template-rows: auto auto auto auto 1fr; align-items: start;
+}
+.products.is-tabbed .pp__copy, .products.is-tabbed .pp__side { display: contents; }
+.products.is-tabbed .pp__img {
+    grid-area: img; align-self: stretch; width: 100%; max-width: none; height: auto; min-height: 300px; margin: 0;
+    contain: size;   /* the photo takes the right column's height instead of driving it */
+}
+.products.is-tabbed .pp__title { grid-area: title; }
+.products.is-tabbed .pp__text { grid-area: text; margin-top: 10px; }
+.products.is-tabbed .facts { grid-area: facts; display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; }
+.products.is-tabbed .more--card {
+    grid-area: more; justify-self: start; margin-top: 18px; padding: 10px 16px 10px 18px; border-radius: 999px;
+    background: var(--btn-bg); color: var(--btn-ink); font-weight: 600; position: relative; z-index: 2;
+}
+.products.is-tabbed .more--card:hover { background: var(--btn-hover); color: var(--btn-ink); }
+.products.is-tabbed .more--card svg { border-color: currentColor; }
+.products.is-tabbed .spec { grid-area: spec; margin-top: 18px; }
+/* the catalogue card reads as one row per category so the tallest group still fits one screen */
+.products.is-tabbed .spec__rows li { grid-template-columns: minmax(120px, 34%) minmax(0, 1fr); align-items: center; column-gap: 14px; padding: 8px 16px; }
+.products.is-tabbed .spec__cat { font-size: 13px; }
+.products.is-tabbed .spec__items em { padding: 3px 9px; font-size: 12px; }
+.products.is-tabbed .spec__foot { display: none; }
+/* show the whole photo (several carry the digifund logo in a corner): no crop, padded with the photo's own ground */
+.products.is-tabbed .pp__img { object-fit: contain; object-position: 50% 50%; background: #fff; }
+.products.is-tabbed .pp__img[src*="app-packaging"] { background: #020409; }

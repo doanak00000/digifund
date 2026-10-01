@@ -1,0 +1,71 @@
+/* New-style site header for the classic product pages (preview-details-*.html).
+   Self-contained: own class prefix (nh-) and own colours, so product-detail.css / bootstrap stay untouched.
+   Follows the classic pages' theme switch (html[data-theme], key "digifund-theme"). */
+.nh {
+    --nh-bg: rgba(247, 250, 255, 0.86); --nh-text: #0b1b3a; --nh-muted: #44536b; --nh-line: rgba(29, 78, 216, 0.12);
+    --nh-hover: rgba(29, 78, 216, 0.07); --nh-cta: #2563eb; --nh-cta-ink: #fff; --nh-cta-hover: #1d4ed8; --nh-panel: #ffffff;
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--nh-bg); border-bottom: 1px solid var(--nh-line);
+    backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+[data-theme="dark"] .nh {
+    --nh-bg: rgba(13, 17, 23, 0.86); --nh-text: #e6edf3; --nh-muted: #9aa6bd; --nh-line: rgba(230, 237, 243, 0.1);
+    --nh-hover: rgba(230, 237, 243, 0.06); --nh-cta: #ffffff; --nh-cta-ink: #0b1b3a; --nh-cta-hover: #e6edff; --nh-panel: #161b22;
+}
+.nh *, .nh *::before, .nh *::after { box-sizing: border-box; }
+.nh a { text-decoration: none; }
+.nh__in { height: 64px; max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 56px); display: flex; align-items: center; gap: 28px; }
+.nh__brand { display: inline-flex; align-items: center; gap: 10px; color: var(--nh-text); flex: none; }
+.nh__brand img { width: 28px; height: 28px; object-fit: contain; display: block; }
+.nh__brand span { font: 700 17px/1 "Be Vietnam Pro", system-ui, sans-serif; letter-spacing: 0.02em; }
+.nh__nav { display: flex; align-items: center; gap: 4px; flex: 1; }
+.nh__nav > a, .nh__drop > button {
+    display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border-radius: 8px;
+    font-family: inherit; font-weight: 500; font-size: 14.5px; line-height: 1; color: var(--nh-muted); background: none; border: 0; cursor: pointer;
+}
+.nh__nav > a:hover, .nh__drop > button:hover, .nh__drop:focus-within > button { color: var(--nh-text); background: var(--nh-hover); }
+.nh__drop { position: relative; }
+.nh__drop > button svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform 200ms; }
+.nh__drop:hover > button svg, .nh__drop:focus-within > button svg { transform: rotate(180deg); }
+.nh__panel {
+    position: absolute; top: 100%; left: 0; min-width: 320px; padding: 8px; margin-top: 8px; border-radius: 12px;
+    background: var(--nh-panel); border: 1px solid var(--nh-line); box-shadow: 0 24px 48px -20px rgba(11, 27, 58, 0.35);
+    opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity 160ms, transform 160ms, visibility 160ms;
+}
+.nh__panel::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }
+.nh__drop:hover .nh__panel, .nh__drop:focus-within .nh__panel { opacity: 1; visibility: visible; transform: none; }
+.nh__panel a { display: grid; grid-template-columns: 30px 1fr; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 8px; color: var(--nh-text); font-family: inherit; font-weight: 500; font-size: 14.5px; line-height: 1.3; }
+.nh__panel a span { font: 600 12px/1 ui-monospace, "Geist Mono", monospace; color: var(--nh-cta); }
+[data-theme="dark"] .nh__panel a span { color: #8cb6ff; }
+.nh__panel a:hover, .nh__panel a[aria-current="page"] { background: var(--nh-hover); }
+.nh__panel a[aria-current="page"] { font-weight: 600; }
+.nh__right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.nh__icon {
+    width: 36px; height: 36px; display: inline-grid; place-items: center; border-radius: 50%; cursor: pointer;
+    border: 1px solid var(--nh-line); background: transparent; color: var(--nh-text); font-family: inherit; font-weight: 600; font-size: 12px; line-height: 1;
+}
+.nh__icon:hover { background: var(--nh-hover); }
+.nh__cta { display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 8px; background: var(--nh-cta); color: var(--nh-cta-ink) !important; font-family: inherit; font-weight: 600; font-size: 14px; line-height: 1; }
+.nh__cta:hover { background: var(--nh-cta-hover); }
+.nh__menu { display: none; width: 40px; height: 36px; border-radius: 8px; border: 1px solid var(--nh-line); background: transparent; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.nh__menu span { display: block; width: 16px; height: 1.5px; background: var(--nh-text); transition: transform 250ms; }
+.nh__menu[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
+.nh__menu[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+.nh__mnav { display: none; }
+.nh :focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+
+@media (max-width: 980px) {
+    .nh__nav, .nh__cta { display: none; }
+    .nh__menu { display: inline-flex; }
+    .nh__mnav:not([hidden]) {
+        display: grid; align-content: start; height: calc(100dvh - 64px); overflow-y: auto; padding: 8px clamp(16px, 4vw, 56px) 24px;
+        border-top: 1px solid var(--nh-line); background: var(--nh-panel);
+    }
+    .nh__mnav p { margin: 16px 0 4px; font: 600 12px/1 ui-monospace, "Geist Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nh-muted); }
+    .nh__mnav a { padding: 12px 0; font-family: inherit; font-weight: 500; font-size: 17px; line-height: 1.3; color: var(--nh-text); border-bottom: 1px solid var(--nh-line); }
+    .nh__mnav a[aria-current="page"] { color: var(--nh-cta); font-weight: 600; }
+    [data-theme="dark"] .nh__mnav a[aria-current="page"] { color: #8cb6ff; }
+    .nh__mnav .nh__cta { display: flex; justify-content: center; height: 48px; margin-top: 20px; border: 0; color: var(--nh-cta-ink); }
+    html.nh-open, html.nh-open body { overflow: hidden; }
+}

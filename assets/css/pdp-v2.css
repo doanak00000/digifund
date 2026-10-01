@@ -1,0 +1,57 @@
+/* Preview product pages: compact navy hero in the home-page style, with a 3D model on the right.
+   Loads after product-detail.css; the engine still writes #heroBadge / #heroTitle / #heroIntro / #heroCrumb. */
+.ph2.pdp-hero { padding: 0; }   /* drop the classic hero padding; .ph2__in sets its own */
+.ph2 {
+    position: relative; overflow: hidden; color: #f3f6ff;
+    background:
+        radial-gradient(60% 120% at 85% 50%, rgba(59, 130, 246, 0.28), transparent 60%),
+        radial-gradient(40% 80% at 10% 0%, rgba(124, 58, 237, 0.16), transparent 70%),
+        linear-gradient(180deg, #0b1b3a, #142a5e);
+    border-bottom: 1px solid rgba(225, 232, 255, 0.1);
+    font-family: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.ph2::before {   /* faint blueprint grid, like the home value-chain floor */
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.35;
+    background-image: linear-gradient(rgba(140, 182, 255, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(140, 182, 255, 0.12) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%, #000);
+    mask-image: linear-gradient(90deg, transparent, #000 45%, #000);
+}
+.ph2__in {
+    position: relative; max-width: 1400px; margin: 0 auto; padding: 16px 5% 18px;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 32px; align-items: center;
+}
+.ph2 .pdp-hero__crumb { font: 500 12.5px/1.4 "Geist Mono", ui-monospace, monospace; color: rgba(225, 232, 255, 0.6); margin: 0 0 10px; opacity: 1; }
+.ph2 .pdp-hero__crumb a { color: rgba(225, 232, 255, 0.75); text-decoration: none; opacity: 1; }
+.ph2 .pdp-hero__crumb a:hover { color: #fff; text-decoration: none; }
+.ph2__badge {
+    display: inline-block; margin: 0 0 10px; padding: 0; background: none; border-radius: 0;
+    font: 600 12px/1 "Geist Mono", ui-monospace, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #8cb6ff;
+}
+.ph2__title { font: 800 clamp(26px, 2.6vw, 36px)/1.12 "Be Vietnam Pro", system-ui, sans-serif; letter-spacing: -0.02em; margin: 0; color: #fff; max-width: none; }
+.ph2__vi { margin: 6px 0 0; font: 600 17px/1.35 "Geist", system-ui, sans-serif; color: #8cb6ff; }
+.ph2__intro { margin: 8px 0 0; max-width: 56ch; font-size: 15px; line-height: 1.6; color: rgba(225, 232, 255, 0.72); opacity: 1; }
+.ph2__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; padding: 0; list-style: none; }
+.ph2__chips li { font: 500 12.5px/1 "Geist", system-ui, sans-serif; color: #dbe6ff; padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(140, 182, 255, 0.28); background: rgba(20, 42, 94, 0.55); }
+.ph2__model { position: relative; height: 196px; }
+.ph2__model::after {   /* soft floor glow under the pedestal */
+    content: ""; position: absolute; left: 15%; right: 15%; bottom: 6%; height: 30px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(96, 165, 250, 0.45), transparent); filter: blur(6px); pointer-events: none; z-index: -1;
+}
+.ph2__model canvas { position: relative; }
+.pdp-main { padding-top: 34px; }
+
+@media (max-width: 860px) {
+    .ph2__in { grid-template-columns: minmax(0, 1fr) 150px; gap: 12px; padding: 22px 5% 20px; min-height: 0; align-items: start; }
+    .ph2__model { height: 170px; margin-top: 18px; }
+    .ph2__title { font-size: 26px; }
+    .ph2__chips { display: none; }
+}
+@media (max-width: 480px) {
+    .ph2__in { grid-template-columns: 1fr; }
+    .ph2__model { position: absolute; right: -6px; top: 8px; width: 120px; height: 130px; margin: 0; opacity: 0.9; }
+    .ph2 .pdp-hero__crumb, .ph2__badge { padding-right: 110px; }
+}
+
+/* catalogue accent follows the navy hero; brighter in dark mode so codes and links stay readable */
+[data-theme="dark"] .pdp-main { --accent: #3b82f6; }
