@@ -28,6 +28,8 @@ if (gsap && ST) gsap.registerPlugin(ST);
             btn.setAttribute("aria-expanded", String(open));
             btn.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
             nav.hidden = !open;
+            document.documentElement.classList.toggle("menu-open", open);   // full-screen sheet: no page scroll behind it
+            if (lenis) open ? lenis.stop() : lenis.start();
         };
         btn.addEventListener("click", () => set(nav.hidden));
         nav.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });

@@ -1361,3 +1361,60 @@ main > section, .ftr { scroll-margin-top: var(--hdr); }
 
 /* forms: required marker */
 .req { color: #e5484d; }
+
+/* ======================================================================
+   Phones (≤560px): the floating dock becomes a bottom action bar —
+   Gọi ngay · Nhắn Zalo · Gửi yêu cầu — with visible labels.
+   ====================================================================== */
+.fab__call { display: none; }
+@media (max-width: 560px) {
+    body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+    .fab { left: 0; right: 0; bottom: 0; }
+    .fab__dock {
+        grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 8px;
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+        border-radius: 0; border-width: 1px 0 0;
+    }
+    .fab__btn {
+        width: auto; height: 46px; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 7px;
+        text-decoration: none; color: var(--text);
+    }
+    .fab__btn:hover { transform: none; }
+    .fab__btn::after {
+        display: block; position: static; content: attr(data-tip); opacity: 1; transform: none;
+        padding: 0; border: 0; background: none; box-shadow: none; color: inherit;
+        font: 600 13.5px/1 var(--sans); white-space: nowrap;
+    }
+    .fab__chat[aria-expanded="true"]::after { display: block; content: "Đóng"; }
+    .fab__call { display: flex; background: rgba(var(--ink-rgb), 0.05); border: 1px solid var(--line-2); }
+    .fab__call svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; }
+    .fab__zalo img { width: 22px; height: 22px; border-radius: 6px; }
+    .fab__chat { color: #fff; }
+    .fab__chat svg { width: 18px; height: 18px; }
+    .fab .chat { left: 12px; right: 12px; width: auto; bottom: calc(100% + 10px); }
+    /* the bar slides away instead of fading while the hero is on screen */
+    .fab.is-hidden { transform: translateY(100%); }
+}
+@media (max-width: 360px) {
+    .fab__dock { gap: 6px; padding-inline: 8px; }
+    .fab__btn { gap: 5px; }
+    .fab__btn::after { font-size: 12.5px; }
+    .fab__call svg, .fab__chat svg { display: none; }
+}
+@media (max-width: 560px) {
+    .ftr__word { font-size: 18vw; }   /* the 80px floor overflows narrow phones */
+}
+/* phones & tablets: the menu is a full-screen sheet under the header, CTA pinned last */
+@media (max-width: 900px) {
+    .menu-open, .menu-open body { overflow: hidden; }
+    .menu-open .hdr { background: var(--bg); }
+    .menu-open .fab { visibility: hidden; }
+    .mnav:not([hidden]) {
+        height: calc(100dvh - var(--hdr)); overflow-y: auto; overscroll-behavior: contain;
+        align-content: start; background: var(--bg);
+    }
+    .mnav a:last-child {
+        margin-top: 20px; border: 0; border-radius: 10px; text-align: center; font-weight: 600;
+        background: var(--btn-bg); color: var(--btn-ink);
+    }
+}
