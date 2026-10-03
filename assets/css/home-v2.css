@@ -1449,3 +1449,27 @@ main > section, .ftr { scroll-margin-top: var(--hdr); }
 /* show the whole photo (several carry the digifund logo in a corner): no crop, padded with the photo's own ground */
 .products.is-tabbed .pp__img { object-fit: contain; object-position: 50% 50%; background: #fff; }
 .products.is-tabbed .pp__img[src*="app-packaging"] { background: #020409; }
+
+/* founding year stands out */
+.about__since .about__year { color: var(--accent-ink); font-weight: 700; font-size: 1.15em; }
+/* VI / EN switch, same chip as the theme toggle */
+.lang-switch {
+    width: 34px; height: 34px; display: grid; place-items: center; flex: none; border-radius: 50%;
+    border: 1px solid var(--line-2); color: var(--muted); text-decoration: none;
+    font: 600 11.5px/1 var(--mono); letter-spacing: 0.04em; transition: color 200ms, border-color 200ms;
+}
+.lang-switch:hover { color: var(--text); border-color: rgba(var(--ink-rgb), 0.3); }
+/* the header got one more chip (VI/EN): keep nav labels on one line and give them a little less air */
+.hdr__nav a { white-space: nowrap; }
+@media (max-width: 1480px) { .hdr__nav { gap: 22px; } .search { width: 240px; } }
+@media (max-width: 1280px) { .hdr__nav { gap: 16px; } .search { width: 200px; } }
+/* small laptops / tablets landscape: the search field folds into its icon button, as on phones */
+@media (min-width: 901px) and (max-width: 1120px) {
+    .hdr__search-btn { display: grid; }
+    .search {
+        display: none; position: absolute; left: var(--gutter); right: var(--gutter); top: calc(var(--hdr) + 8px);
+        width: auto; height: 44px;
+    }
+    .hdr.is-searching .search { display: flex; background: var(--bg-2); }
+    .search__results { left: 0; right: 0; width: auto; }
+}

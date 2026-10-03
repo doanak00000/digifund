@@ -12,6 +12,10 @@
    ========================================================================== */
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// the same script runs the Vietnamese page and its English copy (preview-index-en.html, <html lang="en">)
+const EN = (document.documentElement.lang || "").toLowerCase().startsWith("en");
+const L = (vi, en) => (EN ? en : vi);
+try { localStorage.setItem("digifund-lang", EN ? "en" : "vi"); } catch (e) {}   // product pages follow the same language
 const wide = () => window.matchMedia("(min-width: 901px)").matches;
 const gsap = window.gsap;
 const ST = window.ScrollTrigger;
@@ -26,7 +30,7 @@ if (gsap && ST) gsap.registerPlugin(ST);
     if (btn && nav) {
         const set = (open) => {
             btn.setAttribute("aria-expanded", String(open));
-            btn.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+            btn.setAttribute("aria-label", open ? L("Đóng menu", "Close menu") : L("Mở menu", "Open menu"));
             nav.hidden = !open;
             document.documentElement.classList.toggle("menu-open", open);   // full-screen sheet: no page scroll behind it
             if (lenis) open ? lenis.stop() : lenis.start();
@@ -47,13 +51,13 @@ const isLight = () => document.documentElement.getAttribute("data-theme") === "l
     const apply = (light) => {
         document.documentElement.setAttribute("data-theme", light ? "light" : "dark");
         if (meta) meta.setAttribute("content", light ? "#f7faff" : "#0e0d0c");
-        if (btn) btn.setAttribute("aria-label", light ? "Chuyển sang giao diện tối" : "Chuyển sang giao diện sáng");
+        if (btn) btn.setAttribute("aria-label", light ? L("Chuyển sang giao diện tối", "Switch to dark mode") : L("Chuyển sang giao diện sáng", "Switch to light mode"));
         try { localStorage.setItem("digifund-v2-theme", light ? "light" : "dark"); } catch (e) {}
         window.dispatchEvent(new CustomEvent("themechange", { detail: { light } }));
     };
     if (meta) meta.setAttribute("content", isLight() ? "#f7faff" : "#0e0d0c");
     if (btn) {
-        btn.setAttribute("aria-label", isLight() ? "Chuyển sang giao diện tối" : "Chuyển sang giao diện sáng");
+        btn.setAttribute("aria-label", isLight() ? L("Chuyển sang giao diện tối", "Switch to dark mode") : L("Chuyển sang giao diện sáng", "Switch to light mode"));
         btn.addEventListener("click", () => apply(!isLight()));
     }
 }
@@ -343,13 +347,13 @@ document.querySelectorAll("form[data-emailjs]").forEach((form, n) => {
         form.email.setAttribute("aria-invalid", String(!emailOk));
         [form.name, form.email].forEach((f) => f.getAttribute("aria-invalid") === "true" ? f.setAttribute("aria-describedby", status.id) : f.removeAttribute("aria-describedby"));
         if (!name || !emailOk) {
-            say(!name ? "Vui lòng nhập họ và tên." : "Email chưa đúng định dạng, ví dụ ten@congty.vn.", "error");
+            say(!name ? L("Vui lòng nhập họ và tên.", "Please enter your name.") : L("Email chưa đúng định dạng, ví dụ ten@congty.vn.", "Please enter a valid email, e.g. name@company.com."), "error");
             (!name ? form.name : form.email).focus();
             return;
         }
         const cfg = window.DIGIFUND_EMAILJS;
-        if (!window.emailjs || !cfg) { say("Chưa gửi được. Vui lòng email semiconductor@digifund.vn hoặc gọi +84 979 324 567.", "error"); return; }
-        btn.disabled = true; btn.textContent = "Đang gửi…"; say("");
+        if (!window.emailjs || !cfg) { say(L("Chưa gửi được. Vui lòng email semiconductor@digifund.vn hoặc gọi +84 979 324 567.", "Could not send. Please email semiconductor@digifund.vn or call +84 979 324 567."), "error"); return; }
+        btn.disabled = true; btn.textContent = L("Đang gửi…", "Sending…"); say("");
         window.emailjs.init({ publicKey: cfg.publicKey });
         window.emailjs.send(cfg.serviceID, cfg.templateID, {
             from_name: name, email, from_email: email, to_email: "semiconductor@digifund.vn",
@@ -357,10 +361,10 @@ document.querySelectorAll("form[data-emailjs]").forEach((form, n) => {
             product_type: form.product_type ? form.product_type.value : form.dataset.type || "Liên hệ website",
             page_url: location.href,
         }).then(() => {
-            say("Đã gửi. Chúng tôi sẽ phản hồi trong 24 giờ.", "ok");
+            say(L("Đã gửi. Chúng tôi sẽ phản hồi trong 24 giờ.", "Sent. We will reply within 24 hours."), "ok");
             form.reset();
         }, () => {
-            say("Gửi thất bại. Vui lòng thử lại, hoặc email semiconductor@digifund.vn.", "error");
+            say(L("Gửi thất bại. Vui lòng thử lại, hoặc email semiconductor@digifund.vn.", "Sending failed. Please try again, or email semiconductor@digifund.vn."), "error");
         }).finally(() => { btn.disabled = false; btn.textContent = label; });
     });
 });
@@ -447,7 +451,7 @@ document.querySelectorAll("form[data-emailjs]").forEach((form, n) => {
         const set = (open) => {
             panel.hidden = !open;
             toggle.setAttribute("aria-expanded", String(open));
-            toggle.setAttribute("aria-label", open ? "Đóng khung nhắn tin" : "Mở khung nhắn tin");
+            toggle.setAttribute("aria-label", open ? L("Đóng khung nhắn tin", "Close chat") : L("Mở khung nhắn tin", "Open chat"));
             if (open) panel.querySelector("input").focus();
         };
         toggle.addEventListener("click", () => set(panel.hidden));
@@ -839,7 +843,7 @@ else window.addEventListener("load", () => idle(() => startField().catch((e) => 
             const i = norm(text).indexOf(q);
             return i < 0 || !q ? esc(text) : esc(text.slice(0, i)) + "<mark>" + esc(text.slice(i, i + q.length)) + "</mark>" + esc(text.slice(i + q.length));
         };
-        const ARTICLES = [
+        const ARTICLES_VI = [
             ["san-pham-silicon-wafer-substrate", "Silicon Wafer & Substrate", "Sản phẩm"],
             ["san-pham-nang-luong-tai-tao", "Vật liệu & thiết bị năng lượng tái tạo", "Sản phẩm"],
             ["san-pham-thiet-bi-phong-sach", "Thiết bị phòng sạch & phòng thí nghiệm", "Sản phẩm"],
@@ -858,7 +862,28 @@ else window.addEventListener("load", () => idle(() => startField().catch((e) => 
             ["quy-trinh-quang-khac-photolithography", "Quy trình quang khắc (photolithography) trong sản xuất chip", "Bài viết"],
             ["bia-phun-xa-sputtering-target", "Bia phún xạ (sputtering target) & màng mỏng", "Bài viết"],
             ["vat-lieu-nano-graphene-cnt", "Vật liệu nano: graphene, CNT & nano kim loại", "Bài viết"],
-        ].map(([slug, title, kind]) => ({ href: "./" + slug + ".html", title, kind, hay: norm(title + " " + slug.replace(/-/g, " ")) }));
+        ];
+        const ARTICLES_EN = [
+            ["silicon-wafer-substrate-products", "Silicon Wafer & Substrate", "Products"],
+            ["renewable-energy-materials", "Renewable energy materials & equipment", "Products"],
+            ["cleanroom-lab-equipment", "Cleanroom & lab equipment", "Products"],
+            ["chemicals-and-supplies", "High-tech chemicals & supplies", "Products"],
+            ["catalog", "Product catalog", "Products"],
+            ["what-is-a-silicon-wafer", "What is a silicon wafer? Structure, manufacturing & uses", "Article"],
+            ["types-of-silicon-wafer", "Types of silicon wafer: Si, SiC, GaAs, Sapphire, SOI", "Article"],
+            ["silicon-wafer-applications", "Silicon wafer applications in semiconductors, energy & sensors", "Article"],
+            ["silicon-wafer-sizes", "Silicon wafer sizes: from 2 inch to 12 inch", "Article"],
+            ["silicon-wafer-pricing", "Silicon wafer pricing: 8 factors behind the cost", "Article"],
+            ["silicon-wafer-supplier-vietnam", "Silicon wafer supplier in Vietnam", "Article"],
+            ["choosing-wafers-for-research", "Choosing wafers for research: MEMS, photonics, GaN epitaxy", "Article"],
+            ["cz-vs-fz-wafer-comparison", "CZ vs FZ silicon wafer: a detailed comparison", "Article"],
+            ["silicon-wafer-cleaning-rca", "Silicon wafer cleaning: RCA, piranha, HF dip", "Article"],
+            ["cleanroom-iso-classes", "What is a cleanroom? ISO classes in semiconductor manufacturing", "Article"],
+            ["photolithography-process", "The photolithography process in chip manufacturing", "Article"],
+            ["sputtering-target-thin-film", "Sputtering targets & thin films", "Article"],
+            ["nanomaterials-graphene-cnt", "Nanomaterials: graphene, CNT & metal nanoparticles", "Article"],
+        ];
+        const ARTICLES = (EN ? ARTICLES_EN : ARTICLES_VI).map(([slug, title, kind]) => ({ href: "./" + slug + ".html", title, kind, hay: norm(title + " " + slug.replace(/-/g, " ")) }));
 
         let products = null, loading = null;
         const loadProducts = () => loading || (loading = new Promise((res) => {
@@ -902,11 +927,12 @@ else window.addEventListener("load", () => idle(() => startField().catch((e) => 
             let html = "", n = 0;
             const row = (x, thumb) => '<a class="sr__item" role="option" id="sr-' + (n++) + '" href="' + esc(x.href) + '" aria-selected="false">' + thumb +
                 '<span><span class="sr__name">' + mark(x.title, tokens[0]) + '</span><span class="sr__meta">' + esc(x.meta || x.kind) + "</span></span></a>";
-            if (prods.length) html += '<p class="sr__group">Sản phẩm</p>' + prods.map((x) => row(x, '<img class="sr__thumb" src="' + esc(x.img) + '" alt="" loading="lazy">')).join("");
-            if (docs.length) html += '<p class="sr__group">Trang &amp; bài viết</p>' + docs.map((x) => row(x, '<span class="sr__doc">' + DOC + "</span>")).join("");
+            if (prods.length) html += '<p class="sr__group">' + L("Sản phẩm", "Products") + '</p>' + prods.map((x) => row(x, '<img class="sr__thumb" src="' + esc(x.img) + '" alt="" loading="lazy">')).join("");
+            if (docs.length) html += '<p class="sr__group">' + L("Trang &amp; bài viết", "Pages &amp; articles") + '</p>' + docs.map((x) => row(x, '<span class="sr__doc">' + DOC + "</span>")).join("");
             if (!n) html = '<p class="sr__empty">' + (products
-                ? "Không tìm thấy kết quả cho “" + esc(raw) + "”. Thử từ khóa khác, ví dụ “SiC” hoặc “sputtering”, hoặc <a href=\"./catalog.html\">xem toàn bộ catalog</a>."
-                : "Đang tải danh mục sản phẩm…") + "</p>";
+                ? L("Không tìm thấy kết quả cho “" + esc(raw) + "”. Thử từ khóa khác, ví dụ “SiC” hoặc “sputtering”, hoặc <a href=\"./catalog.html\">xem toàn bộ catalog</a>.",
+                    "No results for “" + esc(raw) + "”. Try another keyword, e.g. “SiC” or “sputtering”, or <a href=\"./catalog.html\">browse the full catalog</a>.")
+                : L("Đang tải danh mục sản phẩm…", "Loading the product catalog…")) + "</p>";
             box.innerHTML = html;
             items = [...box.querySelectorAll(".sr__item")];
             open(true);

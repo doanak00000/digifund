@@ -20,8 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/product-detail.css">
-    <link rel="stylesheet" href="./assets/css/hdr-v2.css?v=20261001j">
-    <link rel="stylesheet" href="./assets/css/pdp-v2.css?v=20261001j">
+    <link rel="stylesheet" href="./assets/css/hdr-v2.css?v=20261003a">
+    <link rel="stylesheet" href="./assets/css/pdp-v2.css?v=20261003a">
     <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js"}}</script>
     <style>:root{--accent:#2563eb;}</style>
 </head>
@@ -53,7 +53,7 @@
             <a class="nh__cta" href="./preview-index.html#contact">Nhận báo giá</a>
         </nav>
     </header>
-    <script>(function(){var b=document.querySelector('.nh__menu'),m=document.getElementById('nhMenu');if(!b||!m)return;function s(o){b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Đóng menu':'Mở menu');m.hidden=!o;document.documentElement.classList.toggle('nh-open',o);}b.addEventListener('click',function(){s(m.hidden);});m.addEventListener('click',function(e){if(e.target.closest('a'))s(false);});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){s(false);b.focus();}});})();</script>
+    <script>(function(){var b=document.querySelector('.nh__menu'),m=document.getElementById('nhMenu');if(!b||!m)return;function s(o){b.setAttribute('aria-expanded',String(o));b.setAttribute('aria-label',o?'Đóng menu':'Mở menu');m.hidden=!o;document.documentElement.classList.toggle('nh-open',o);}b.addEventListener('click',function(){s(m.hidden);});m.addEventListener('click',function(e){if(e.target.closest('a'))s(false);});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){s(false);b.focus();}});})();document.addEventListener('click',function(e){var a=e.target.closest('a[href^="./preview-index.html"]');try{if(a&&localStorage.getItem('digifund-lang')==='en')a.setAttribute('href',a.getAttribute('href').replace('preview-index.html','preview-index-en.html'));}catch(x){}},true);</script>
 
     <section class="pdp-hero ph2" aria-labelledby="heroTitle">
         <div class="ph2__in">
@@ -98,11 +98,11 @@
 
     <script>window.PD_GROUP='2';</script>
     <script src="./assets/js/products-data.js"></script>
-    <script src="./assets/js/products-data-v2.js?v=20261001j"></script>
+    <script src="./assets/js/products-data-v2.js?v=20261003a"></script>
     <script>window.PD_DATA = window.PD_DATA_V2;</script>
     <script src="./assets/js/product-detail-engine.js"></script>
 <script type="module">
-        import { mountModel } from './assets/js/value-chain-3d.js?v=20261001j';
+        import { mountModel } from './assets/js/value-chain-3d.js?v=20261003a';
         const el = document.querySelector('.ph2__model');
         const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
         if (el && gl) mountModel(el, el.dataset.model, { reduceMotion: matchMedia('(prefers-reduced-motion: reduce)').matches });
