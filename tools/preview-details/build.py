@@ -1,9 +1,10 @@
 # Run from the repo root: python tools/preview-details/build.py  (regenerates the 5 group pages in VI and EN)
 # Builds the group pages from template.html / template-en.html (the classic product page: hero, sidebar, specs,
 # modal, engine) with the top header and hero swapped for the new-style ones. Data: products-data-v2.js (5 groups).
-import re
+import html, json, re, subprocess
 
 V = "20261021b"
+DATA = json.loads(subprocess.run(["node", "tools/preview-details/dump-data.js"], capture_output=True, check=True, encoding="utf-8").stdout)
 TPL = {"vi": open("tools/preview-details/template.html", encoding="utf-8").read(),
        "en": open("tools/preview-details/template-en.html", encoding="utf-8").read()}
 OUT = {
@@ -67,6 +68,49 @@ UI = {
 
 def esc(s):
     return s.replace("&", "&amp;")
+
+
+def tr(x, lang):
+    return (x.get(lang) or x.get("vi") or "") if isinstance(x, dict) else (x or "")
+
+
+def catalogue(gid, lang):
+    # static copy of what the engine renders into #pdpContent, so crawlers without JS still see every product
+    out, sec = [], None
+    for it in DATA[gid]["items"]:
+        if tr(it["section"], lang) != sec:
+            sec = tr(it["section"], lang)
+            out.append(f"<h2>{html.escape(sec)}</h2>")
+        name = html.escape(tr(it["name"], lang))
+        sub = f"<p>{html.escape(tr(it['subtitle'], lang))}</p>" if it.get("subtitle") else ""
+        vs = "".join(f"<li>{html.escape(tr(v['name'], lang))}</li>" for v in it.get("variants", []))
+        out.append(f"<section><h3>{name}</h3>{sub}<ul>{vs}</ul></section>")
+    return "".join(out)
+
+
+def seo_head(gid, title, desc, lang, url):
+    u = UI[lang]
+    items = DATA[gid]["items"]
+    img = next((it.get("img") or (it.get("variants") or [{}])[0].get("img") for it in items
+                if "logo-2" not in (it.get("img") or (it.get("variants") or [{}])[0].get("img") or "logo-2")), "./assets/images/logo-2.png")
+    img = "https://digifund.vn/" + img.lstrip("./")
+    home = "https://digifund.vn/" + ("index-en.html" if lang == "en" else "")
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": u["homeLbl"], "item": home},
+            {"@type": "ListItem", "position": 2, "name": u["products"], "item": home + "#products"},
+            {"@type": "ListItem", "position": 3, "name": title, "item": url}]},
+        {"@type": "CollectionPage", "name": title, "description": desc, "url": url, "inLanguage": lang,
+         "isPartOf": {"@type": "WebSite", "name": "Digifund", "url": "https://digifund.vn/"},
+         "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": [
+             {"@type": "ListItem", "position": i + 1, "name": tr(it["name"], lang)} for i, it in enumerate(items)]}}]}
+    a = lambda s: html.escape(s, quote=True)
+    return ('\n    <meta property="og:type" content="website">\n    <meta property="og:site_name" content="Digifund">\n'
+            f'    <meta property="og:locale" content="{"en_US" if lang == "en" else "vi_VN"}">\n'
+            f'    <meta property="og:title" content="{a(title)} | Digifund">\n    <meta property="og:description" content="{a(desc)}">\n'
+            f'    <meta property="og:image" content="{img}">\n    <meta property="og:url" content="{url}">\n'
+            '    <meta name="twitter:card" content="summary_large_image">\n'
+            f'    <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>')
 
 
 def hero(gid, title, lang):
@@ -158,6 +202,8 @@ for lang in ("vi", "en"):
             s = s.replace("<head>\n", "<head>\n    <script>try{localStorage.setItem('digifund-lang','vi');}catch(e){}</script>\n", 1)
         s = re.sub(r'\s*<meta property="og:[^>]*>', "", s)
         s = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', "", s, count=1, flags=re.S)
+        s = s.replace(f'<link rel="alternate" hreflang="x-default" href="{vi_url}">',
+                      f'<link rel="alternate" hreflang="x-default" href="{vi_url}">' + seo_head(gid, title, desc, lang, f"https://digifund.vn/{fn}"), 1)
         s = s.replace('<link rel="stylesheet" href="./assets/css/product-detail.css">',
                       '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
                       '    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -177,7 +223,7 @@ for lang in ("vi", "en"):
         s = s.replace("</body>", model_js, 1)
         # empty the pre-rendered catalogue: the engine fills #pdpNav / #pdpContent
         s = re.sub(r'<aside class="pdp-nav" id="pdpNav">.*?</aside>', '<aside class="pdp-nav" id="pdpNav"></aside>', s, count=1, flags=re.S)
-        s = re.sub(r'<div class="pdp-content" id="pdpContent">.*?</section></div>', '<div class="pdp-content" id="pdpContent"></div>', s, count=1, flags=re.S)
+        s = re.sub(r'<div class="pdp-content" id="pdpContent">.*?</section></div>', lambda m: f'<div class="pdp-content" id="pdpContent">{catalogue(gid, lang)}</div>', s, count=1, flags=re.S)
         links = "\n".join(f'            <a href="{h}">{esc(t)}</a>' for h, t in (x.split("|") for x in FOOT[lang][gid]))
         s = re.sub(r'(<nav class="pdp-foot__links"[^>]*>).*?(</nav>)', lambda m: m.group(1) + "\n" + links + "\n        " + m.group(2), s, count=1, flags=re.S)
         s = s.replace('<a href="./" id="tFootBack">', f'<a href="{u["home"]}" id="tFootBack">')
@@ -186,6 +232,6 @@ for lang in ("vi", "en"):
                              f"    <script src=\"./assets/js/products-data-v2.js?v={V}\"></script>\n    <script>window.PD_DATA = window.PD_DATA_V2;</script>",
                    s, count=1)
         s = s.replace('<script src="./assets/js/product-detail-engine.js"></script>', f'<script src="./assets/js/product-detail-engine.js?v={V}"></script>', 1)
-        assert "PD_DATA_V2" in s and 'class="nh"' in s and 'id="pdpContent"></div>' in s and "engine.js?v=" in s, fn
+        assert "PD_DATA_V2" in s and 'class="nh"' in s and 'og:image' in s and 'id="pdpContent"><h2>' in s and "engine.js?v=" in s, fn
         open(fn, "w", encoding="utf-8", newline="").write(s)
         print(fn, len(s))

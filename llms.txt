@@ -21,13 +21,19 @@
 - **Lâm Khả Doãn** — Đồng sáng lập (Co-founder), Senior Software Engineer
 - **Trần Mỹ Nghệ** — Đồng sáng lập (Co-founder), Chuyên gia Silicon Wafer; Thạc sĩ, chuyên gia wafer tại châu Âu
 
-## Sản phẩm chính (Main products)
+## Sản phẩm chính (Main products) — 5 nhóm
 
-- **Silicon Wafer & Substrate** — Si, SiC, GaAs, Sapphire, SOI: https://digifund.vn/san-pham-silicon-wafer-substrate.html
-- **Vật liệu & thiết bị năng lượng tái tạo** (renewable energy materials & equipment): https://digifund.vn/san-pham-nang-luong-tai-tao.html
-- **Thiết bị phòng sạch & phòng thí nghiệm** (cleanroom & lab equipment): https://digifund.vn/san-pham-thiet-bi-phong-sach.html
-- **Hoá chất & vật tư công nghệ cao** (high-tech chemicals & consumables): https://digifund.vn/san-pham-hoa-chat-vat-tu.html
-- **Bia phún xạ / Sputtering target**
+1. **Silicon Wafers & Substrates** — Si (CZ/FZ), SiC, SOI, SiN, Sapphire, AlN, GaAs, GaN, InP, ITO/Glass, carrier wafer: https://digifund.vn/san-pham-silicon-wafer-substrate.html (EN: https://digifund.vn/silicon-wafer-substrate-products.html)
+2. **Semiconductor Fabrication Materials** (vật liệu chế tạo bán dẫn) — photoresist, developer, HMDS, stripper, ARC, CMP slurry & pad, bia phún xạ (sputtering target), vật liệu bốc bay, hoá chất quy trình ướt: https://digifund.vn/san-pham-hoa-chat-vat-tu.html (EN: https://digifund.vn/chemicals-and-supplies.html)
+3. **Advanced Packaging Materials** (vật liệu đóng gói tiên tiến) — temporary bonding adhesive, debonding chemicals, carrier wafer, UV dicing / back grinding tape, dicing blade, hoá chất mạ Cu/Ni/Au, underfill, silver epoxy, die attach film, keo dẫn điện, mold compound: https://digifund.vn/san-pham-vat-lieu-dong-goi.html (EN: https://digifund.vn/advanced-packaging-materials.html)
+4. **Cleanroom & Hi-Tech Equipment** (phòng sạch & thiết bị công nghệ cao) — tủ hút, wet bench, dụng cụ thuỷ tinh, đồ phòng sạch, spin coater, mask aligner, direct laser writer, CVD, RIE, phún xạ, kính hiển vi, profilometer, hệ chân không, cấp khí: https://digifund.vn/san-pham-thiet-bi-phong-sach.html (EN: https://digifund.vn/cleanroom-lab-equipment.html)
+5. **Renewable Energy Materials & Equipment** (năng lượng tái tạo) — bình phản ứng quang–nhiệt–điện xúc tác, trạm thử pin nhiên liệu, thiết bị nghiên cứu pin, vật liệu nano: https://digifund.vn/san-pham-nang-luong-tai-tao.html (EN: https://digifund.vn/renewable-energy-materials.html)
+
+## Dịch vụ (Services)
+
+- **Cung cấp vật liệu, thiết bị bán dẫn** — vật tư cho toàn bộ quy trình sản xuất chip, nguồn cung dồi dào.
+- **Tư vấn kỹ thuật và công nghệ** — đội ngũ chuyên gia, tư vấn kỹ thuật 24/7.
+- **Gia công chế tạo theo yêu cầu** — phòng Lab đạt chuẩn EU về chế tạo chip, kỹ sư chuyên sâu.
 
 ## Câu hỏi thường gặp (FAQ)
 

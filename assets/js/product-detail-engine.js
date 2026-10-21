@@ -107,7 +107,7 @@
             var famImg = it.img || (variants[0] && variants[0].img) || '';
             var summaryHtml = renderSummary2(it.summary);
             var split = '<div class="pd-spec">' +
-                (famImg ? '<div class="pd-spec__media"><img src="' + famImg + '" alt=""></div>' : '') +
+                (famImg ? '<div class="pd-spec__media"><img src="' + famImg + '" alt="' + escA(T(it.name)) + '" loading="lazy" width="800" height="1000"></div>' : '') +
                 '<div class="pd-spec__info">' + (summaryHtml || '<div class="pd-empty-note">' + esc(T(STR.updating)) + '</div>') + renderFlow(it.flow) + '</div>' +
             '</div>';
 
