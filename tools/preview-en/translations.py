@@ -159,7 +159,7 @@ T = {
     "Ngoài silicon wafer, Digifund còn cung cấp những sản phẩm nào?": "Besides silicon wafers, what else does Digifund supply?",
     "Digifund cung cấp 5 nhóm sản phẩm: (1) silicon wafer và substrate; (2) vật liệu chế tạo bán dẫn: photoresist, vật liệu CMP, bia phún xạ và hoá chất quy trình ướt; (3) vật liệu đóng gói tiên tiến: bonding tạm thời, carrier wafer, vật tư cắt wafer, hoá chất mạ, underfill, die attach film; (4) thiết bị phòng sạch và thiết bị công nghệ cao: tủ hút, wet bench, spin coater, mask aligner, hệ CVD, RIE, phún xạ và thiết bị đo lường; (5) vật liệu và thiết bị năng lượng tái tạo.": "Digifund supplies five product groups: (1) silicon wafers and substrates; (2) semiconductor fabrication materials: photoresists, CMP materials, sputtering targets and wet-process chemicals; (3) advanced packaging materials: temporary bonding, carrier wafers, dicing consumables, plating chemistry, underfill, die attach film; (4) cleanroom and hi-tech equipment: fume hoods, wet benches, spin coaters, mask aligners, CVD, RIE and sputtering systems, and metrology; (5) renewable energy materials and equipment.",
     "Digifund ở đâu và liên hệ như thế nào?": "Where is Digifund and how do I get in touch?",
-    "Digifund đặt tại Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại:": "Digifund is at 14th floor, HM Town building, 412 Nguyen Thi Minh Khai, Ban Co Ward, Ho Chi Minh City. Phone:",
+    "Digifund đặt tại Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại:": "Digifund is at 14th Floor, HM Town Building, 412 Nguyen Thi Minh Khai, Ban Co Ward, Ho Chi Minh City. Phone:",
     "Cần vật liệu hay thiết bị cho dự án tiếp theo?": "Need materials or equipment for your next project?",
     "Liên hệ đội ngũ của chúng tôi để biết thông số kỹ thuật, báo giá và đặt hàng theo yêu cầu. Chúng tôi phản hồi trong 24 giờ.": "Contact our team for specifications, quotes and custom orders. We reply within 24 hours.",
     "Nhắn Zalo": "Message on Zalo",
@@ -168,7 +168,7 @@ T = {
     "Yêu cầu": "Request",
     "Gửi yêu cầu": "Send request",
     "Địa chỉ": "Address",
-    "Tầng 14, toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh": "14th floor, HM Town building, 412 Nguyen Thi Minh Khai, Ban Co Ward, Ho Chi Minh City",
+    "Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh": "14th Floor, HM Town Building, 412 Nguyen Thi Minh Khai, Ban Co Ward, Ho Chi Minh City",
     "Điện thoại": "Phone",
     "Mạng xã hội": "Social",
     "Nhắn cho Digifund": "Message Digifund",
@@ -262,7 +262,7 @@ T = {
     "Silicon Wafer & Substrate Bán Dẫn | Wafer Việt Nam - Digifund": "Semiconductor Silicon Wafers & Substrates | Vietnam - Digifund",
     "Nhà cung cấp silicon wafer & wafer bán dẫn tại Việt Nam (Vietnam wafer) — Si, SiC, GaAs, Sapphire, SOI, bia phún xạ, hoá chất & thiết bị phòng sạch.": "Silicon and semiconductor wafer supplier in Vietnam: Si, SiC, GaAs, Sapphire, SOI, sputtering targets, chemicals & cleanroom equipment.",
     "Nhà cung cấp silicon wafer & wafer bán dẫn tại Việt Nam (Vietnam wafer). Si, SiC, GaAs, Sapphire, SOI.": "Silicon and semiconductor wafer supplier in Vietnam. Si, SiC, GaAs, Sapphire, SOI.",
-    "Silicon Wafer &amp; Substrate Bán Dẫn | Wafer Việt Nam - Digifund": "Semiconductor Silicon Wafers &amp; Substrates | Vietnam - Digifund",
+    "Silicon Wafer Việt Nam - Nhà Cung Cấp Bán Dẫn | Digifund": "Silicon Wafer Supplier in Vietnam | Digifund Semiconductor",
     # hero / product-tab fragments that only appear inside larger titles (replaced as whole titles in build.py)
     "Vật liệu chế tạo": "Fabrication materials",
     "Vật liệu đóng gói": "Packaging materials",
@@ -301,6 +301,15 @@ LINKS = {
 
 # structured data (JSON-LD) in <head>; people's names stay as they are
 T.update({
+    "vi-VN": "en",
+    "Công ty Cổ phần Digifund": "Digifund Joint Stock Company",
+    "Báo giá theo yêu cầu": "Quote on request",
+    "Silicon wafer, substrate, photoresist, vật liệu CMP, bia phún xạ, hoá chất quy trình ướt, vật liệu đóng gói tiên tiến và thiết bị phòng sạch cho toàn bộ quy trình sản xuất chip.":
+        "Silicon wafers, substrates, photoresists, CMP materials, sputtering targets, wet-process chemicals, advanced packaging materials and cleanroom equipment for the whole chipmaking process.",
+    "Đội ngũ chuyên gia tư vấn kỹ thuật 24/7 về lựa chọn wafer, vật liệu và quy trình chế tạo bán dẫn.":
+        "Expert team offering 24/7 technical advice on choosing wafers, materials and semiconductor fabrication processes.",
+    "Gia công chế tạo theo yêu cầu tại phòng Lab đạt chuẩn EU về chế tạo chip, do kỹ sư chuyên sâu thực hiện.":
+        "Custom fabrication in an EU-standard chip fabrication lab, carried out by specialist engineers.",
     "Bia phún xạ": "Sputtering targets",
     "Bạn có thể mua silicon wafer tại Việt Nam thông qua Digifund. Digifund cung cấp Si, SiC, GaAs, Sapphire, SOI wafer và substrate với báo giá theo yêu cầu. Liên hệ +84 979 324 567 hoặc semiconductor@digifund.vn để được tư vấn.":
         "You can buy silicon wafers in Vietnam through Digifund. Digifund supplies Si, SiC, GaAs, Sapphire and SOI wafers and substrates with quotes on request. Contact +84 979 324 567 or semiconductor@digifund.vn for advice.",
@@ -311,8 +320,8 @@ T.update({
         "Digifund supplies Si (silicon), SiC (silicon carbide), GaAs (gallium arsenide), Sapphire and SOI wafers, plus many other semiconductor substrates.",
     "Digifund là một nhà cung cấp silicon wafer và wafer bán dẫn tại Việt Nam, phục vụ khách hàng trên toàn quốc. Liên hệ Digifund qua website digifund.vn, điện thoại +84 979 324 567 hoặc email semiconductor@digifund.vn.":
         "Digifund is a silicon and semiconductor wafer supplier in Vietnam, serving customers nationwide. Contact Digifund at digifund.vn, by phone +84 979 324 567 or by email semiconductor@digifund.vn.",
-    "Digifund đặt tại Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại: +84 979 324 567. Email: semiconductor@digifund.vn. Website: https://digifund.vn.":
-        "Digifund is at 14th floor, HM Town building, 412 Nguyen Thi Minh Khai, Ban Co Ward, Ho Chi Minh City. Phone: +84 979 324 567. Email: semiconductor@digifund.vn. Website: https://digifund.vn.",
+    "Digifund đặt tại Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại: +84 979 324 567. Email: semiconductor@digifund.vn. Website: https://digifund.vn.":
+        "Digifund is at 14th Floor, HM Town Building, 412 Nguyen Thi Minh Khai, Ban Co Ward, Ho Chi Minh City. Phone: +84 979 324 567. Email: semiconductor@digifund.vn. Website: https://digifund.vn.",
     "Hoá chất công nghệ cao": "High-tech chemicals",
     "Ngành công nghiệp bán dẫn": "Semiconductor industry",
     "Nhà cung cấp silicon wafer, substrate và wafer bán dẫn (Vietnam wafer) chất lượng cao tại Việt Nam. Đội ngũ Digifund quy tụ các chuyên gia bán dẫn từ Việt Nam và Mỹ.":
@@ -323,7 +332,7 @@ T.update({
     "Sản xuất vi mạch": "IC manufacturing",
     "Thành phố Hồ Chí Minh": "Ho Chi Minh City",
     "Tiến sĩ, chuyên gia chế tạo chip bán dẫn tại IMEC, Bỉ": "PhD, semiconductor chip fabrication expert at IMEC, Belgium",
-    "Tầng 14, toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ": "14th floor, HM Town building, 412 Nguyen Thi Minh Khai, Ban Co Ward",
+    "Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ": "14th Floor, HM Town Building, 412 Nguyen Thi Minh Khai, Ban Co Ward",
     "Việt Nam": "Vietnam",
     "Vật liệu bán dẫn": "Semiconductor materials",
     "Wafer Việt Nam": "Vietnam wafers",

@@ -117,7 +117,8 @@
     window.PD_DATA_V2 = {
         '1': {
             accent: '#1e3a8a', badge: S('Nhóm 1', 'Group 1'),
-            title: S('Silicon Wafers & Substrates', 'Silicon Wafers & Substrates'),
+            title: S('Silicon Wafer & Đế Substrate Bán Dẫn', 'Silicon Wafers & Substrates'),
+            seo: { title: S('Silicon Wafer & Substrate: Si, SiC, SOI, Sapphire | Digifund', 'Silicon Wafers & Substrates: Si, SiC, SOI | Digifund'), desc: S('Mua silicon wafer, SiC, SOI, sapphire, GaAs, GaN, InP 2-12 inch tại Việt Nam. Prime/test/dummy grade, đặt theo thông số, báo giá theo yêu cầu.', 'Buy silicon, SiC, SOI, sapphire, GaAs, GaN and InP wafers 2-12 inch in Vietnam. Prime, test and dummy grades to your spec, quoted on request.') },
             items: [
                 from(S('1. Silicon wafer'), 'A', '1', 0),
                 from(S('1. Silicon wafer'), 'B', '1', 1),
@@ -132,34 +133,36 @@
                     ['GaN-on-Si', 'GaN-on-Sapphire', 'GaN-on-SiC', 'Free-standing GaN'], S('Linh kiện công suất, RF/5G, LED & laser', 'Power devices, RF/5G, LED & lasers')),
                 from(S('2. Sapphire, AlN, GaAs, GaN, InP & đế khác', '2. Sapphire, AlN, GaAs, GaN, InP & other substrates'), 'E', '1', 6),
                 from(S('2. Sapphire, AlN, GaAs, GaN, InP & đế khác', '2. Sapphire, AlN, GaAs, GaN, InP & other substrates'), 'F', '1', 7),
-                fresh(S('3. Carrier wafers'), 'A', S('Silicon carrier wafer'), S('Wafer mang cho mỏng hoá, bonding tạm thời', 'Carrier for thinning and temporary bonding'), ['4" / 6" / 8" / 12"', 'SSP / DSP']),
-                fresh(S('3. Carrier wafers'), 'B', S('Glass carrier wafer'), S('Borosilicate / Quartz cho debond bằng laser, UV', 'Borosilicate / quartz for laser and UV debond'), ['Borosilicate', 'Fused silica / Quartz'])
+                fresh(S('3. Wafer mang (Carrier wafers)', '3. Carrier wafers'), 'A', S('Silicon carrier wafer'), S('Wafer mang cho mỏng hoá, bonding tạm thời', 'Carrier for thinning and temporary bonding'), ['4" / 6" / 8" / 12"', 'SSP / DSP']),
+                fresh(S('3. Wafer mang (Carrier wafers)', '3. Carrier wafers'), 'B', S('Glass carrier wafer'), S('Borosilicate / Quartz cho debond bằng laser, UV', 'Borosilicate / quartz for laser and UV debond'), ['Borosilicate', 'Fused silica / Quartz'])
             ]
         },
         '2': {
             accent: '#1e3a8a', badge: S('Nhóm 2', 'Group 2'),
-            title: S('Semiconductor Fabrication Materials', 'Semiconductor Fabrication Materials'),
+            title: S('Hoá Chất & Vật Liệu Chế Tạo Bán Dẫn', 'Semiconductor Fabrication Materials'),
+            seo: { title: S('Hoá Chất Bán Dẫn: Photoresist, Sputtering Target | Digifund', 'Photoresist, Sputtering Targets & CMP Slurry | Digifund'), desc: S('Photoresist, developer, HMDS, CMP slurry & pad, bia phún xạ (sputtering target), vật liệu bốc bay, hoá chất ướt cho fab và lab tại Việt Nam.', 'Photoresists, developers, HMDS, CMP slurries & pads, sputtering targets, evaporation materials and wet-process chemicals for fabs and labs in Vietnam.') },
             items: [
-                from(S('1. Lithography materials'), 'A', '4', 1, { keep: [0], name: S('Photoresists'), subtitle: S('Positive PR (AZ1512, 1518, 1502), Negative PR (N1400), SU-8 PR, Thick PR'),
+                from(S('1. Vật liệu quang khắc (Lithography)', '1. Lithography materials'), 'A', '4', 1, { keep: [0], name: S('Photoresists'), subtitle: S('Positive PR (AZ1512, 1518, 1502), Negative PR (N1400), SU-8 PR, Thick PR'),
                     list: ['AZ1512', 'AZ1518', 'AZ1502', 'N1400', 'SU-8', 'Thick PR'] }),
-                from(S('1. Lithography materials'), 'B', '4', 1, { keep: [1], name: S('Developer'), subtitle: S('AZ300-MIF, TMAH, MF-319'), list: ['AZ300-MIF', 'TMAH 2.38%', 'MF-319'] }),
-                fresh(S('1. Lithography materials'), 'C', S('Adhesion promoters'), S('Tăng bám dính cho photoresist', 'Photoresist adhesion promoter'), ['HMDS']),
-                fresh(S('1. Lithography materials'), 'D', S('Strippers'), S('Tẩy photoresist sau quang khắc', 'Photoresist removal'), ['SVC series', 'PGMEA']),
-                fresh(S('1. Lithography materials'), 'E', S('Anti-reflective coatings'), S('Lớp chống phản xạ cho quang khắc', 'Anti-reflective layers for lithography'), ['DUV ARC', 'BARC']),
-                from(S('2. CMP materials'), 'A', '4', 1, { keep: [3], name: S('CMP slurries'), subtitle: S('Oxide, Copper, Tungsten CMP slurries'), list: ['Oxide', 'Copper', 'Tungsten'] }),
-                fresh(S('2. CMP materials'), 'B', S('CMP pads'), S('Pad đánh bóng cứng / mềm', 'Hard / soft polishing pads'), ['Hard polishing pad', 'Soft polishing pad']),
-                fresh(S('2. CMP materials'), 'C', S('CMP accessories'), S('Phụ kiện cho hệ CMP', 'CMP accessories'), ['Conditioner disc', 'CMP filters']),
-                from(S('3. Thin film materials'), 'A', '2', 0),
-                fresh(S('3. Thin film materials'), 'B', S('Evaporation materials'), S('Vật liệu bốc bay nhiệt / e-beam', 'Thermal / e-beam evaporation'), ['Metal pellets', 'Metal wire']),
-                from(S('4. Wet process materials'), 'A', '4', 1, { keep: [4], name: S('Cleaning chemicals'), subtitle: S('Dung môi cấp bán dẫn', 'Semiconductor-grade solvents'), list: ['IPA', 'Acetone', 'NMP'] }),
-                from(S('4. Wet process materials'), 'B', '4', 1, { keep: [2], name: S('Wet etchants'), subtitle: S('Hoá chất ăn mòn ướt', 'Wet etchants'), list: ['HF', 'BOE', 'KOH', 'H₃PO₄'] })
+                from(S('1. Vật liệu quang khắc (Lithography)', '1. Lithography materials'), 'B', '4', 1, { keep: [1], name: S('Developer'), subtitle: S('AZ300-MIF, TMAH, MF-319'), list: ['AZ300-MIF', 'TMAH 2.38%', 'MF-319'] }),
+                fresh(S('1. Vật liệu quang khắc (Lithography)', '1. Lithography materials'), 'C', S('Adhesion promoters'), S('Tăng bám dính cho photoresist', 'Photoresist adhesion promoter'), ['HMDS']),
+                fresh(S('1. Vật liệu quang khắc (Lithography)', '1. Lithography materials'), 'D', S('Strippers'), S('Tẩy photoresist sau quang khắc', 'Photoresist removal'), ['SVC series', 'PGMEA']),
+                fresh(S('1. Vật liệu quang khắc (Lithography)', '1. Lithography materials'), 'E', S('Anti-reflective coatings'), S('Lớp chống phản xạ cho quang khắc', 'Anti-reflective layers for lithography'), ['DUV ARC', 'BARC']),
+                from(S('2. Vật liệu đánh bóng CMP', '2. CMP materials'), 'A', '4', 1, { keep: [3], name: S('CMP slurries'), subtitle: S('Oxide, Copper, Tungsten CMP slurries'), list: ['Oxide', 'Copper', 'Tungsten'] }),
+                fresh(S('2. Vật liệu đánh bóng CMP', '2. CMP materials'), 'B', S('CMP pads'), S('Pad đánh bóng cứng / mềm', 'Hard / soft polishing pads'), ['Hard polishing pad', 'Soft polishing pad']),
+                fresh(S('2. Vật liệu đánh bóng CMP', '2. CMP materials'), 'C', S('CMP accessories'), S('Phụ kiện cho hệ CMP', 'CMP accessories'), ['Conditioner disc', 'CMP filters']),
+                from(S('3. Vật liệu màng mỏng (Thin film)', '3. Thin film materials'), 'A', '2', 0),
+                fresh(S('3. Vật liệu màng mỏng (Thin film)', '3. Thin film materials'), 'B', S('Evaporation materials'), S('Vật liệu bốc bay nhiệt / e-beam', 'Thermal / e-beam evaporation'), ['Metal pellets', 'Metal wire']),
+                from(S('4. Hoá chất quy trình ướt (Wet process)', '4. Wet process materials'), 'A', '4', 1, { keep: [4], name: S('Cleaning chemicals'), subtitle: S('Dung môi cấp bán dẫn', 'Semiconductor-grade solvents'), list: ['IPA', 'Acetone', 'NMP'] }),
+                from(S('4. Hoá chất quy trình ướt (Wet process)', '4. Wet process materials'), 'B', '4', 1, { keep: [2], name: S('Wet etchants'), subtitle: S('Hoá chất ăn mòn ướt', 'Wet etchants'), list: ['HF', 'BOE', 'KOH', 'H₃PO₄'] })
             ]
         },
         '3': {
             accent: '#1e3a8a', badge: S('Nhóm 3', 'Group 3'),
-            title: S('Advanced Packaging Materials', 'Advanced Packaging Materials'),
+            title: S('Vật Liệu Đóng Gói Bán Dẫn Tiên Tiến', 'Advanced Packaging Materials'),
+            seo: { title: S('Vật Liệu Đóng Gói Bán Dẫn: Dicing Tape, Underfill | Digifund', 'Semiconductor Packaging: Dicing Tape, Underfill | Digifund'), desc: S('Dicing tape, dicing blade, temporary bonding, carrier wafer, underfill, die attach film, keo dẫn điện, mold compound cho đóng gói chip tại Việt Nam.', 'Dicing tape & blades, temporary bonding, carrier wafers, underfill, die attach film, conductive adhesives, mold compound for chip packaging in Vietnam.') },
             items: [
-                Object.assign(img(fresh(S('1. Temporary bonding solutions'), 'A', S('Temporary bonding adhesive'), S('Keo dán tạm wafer lên carrier', 'Temporary wafer-to-carrier adhesive'), ['Highly adhesive bonding glue']),
+                Object.assign(img(fresh(S('1. Bonding tạm thời (Temporary bonding)', '1. Temporary bonding solutions'), 'A', S('Temporary bonding adhesive'), S('Keo dán tạm wafer lên carrier', 'Temporary wafer-to-carrier adhesive'), ['Highly adhesive bonding glue']),
                     './assets/images/pack-bonding-adhesive.jpg'), {
                     summary: { title: S('Danh mục sản phẩm', 'Product range'), rows: [
                         { k: S('Sản phẩm', 'Product'), v: 'Highly adhesive bonding glues' },
@@ -171,52 +174,54 @@
                     ] },
                     flow: FLOW_BOND
                 }),
-                Object.assign(img(fresh(S('1. Temporary bonding solutions'), 'B', S('Debonding chemicals'), S('Hoá chất tách và làm sạch sau debond', 'Debond and residue removal'),
+                Object.assign(img(fresh(S('1. Bonding tạm thời (Temporary bonding)', '1. Temporary bonding solutions'), 'B', S('Debonding chemicals'), S('Hoá chất tách và làm sạch sau debond', 'Debond and residue removal'),
                     ['Debond solvent', 'Residue cleaner', 'Thermal-slide', 'Laser debond', 'UV debond']), './assets/images/pack-debond-chemicals.jpg'), { flow: FLOW_DEBOND }),
-                fresh(S('2. Carrier solutions'), 'A', S('Silicon / Glass carrier wafer'), null, ['Si carrier', 'Glass carrier']),
-                fresh(S('2. Carrier solutions'), 'B', S('Temporary carrier wafer'), null, ['4" – 12"']),
-                Object.assign(img(fresh(S('3. Dicing consumables'), 'A', S('UV dicing / back grinding tape'), null, ['UV dicing tape', 'Back grinding tape']),
+                fresh(S('2. Giải pháp carrier', '2. Carrier solutions'), 'A', S('Silicon / Glass carrier wafer'), null, ['Si carrier', 'Glass carrier']),
+                fresh(S('2. Giải pháp carrier', '2. Carrier solutions'), 'B', S('Temporary carrier wafer'), null, ['4" – 12"']),
+                Object.assign(img(fresh(S('3. Vật tư cắt wafer (Dicing)', '3. Dicing consumables'), 'A', S('UV dicing / back grinding tape'), null, ['UV dicing tape', 'Back grinding tape']),
                     './assets/images/pack-dicing-tape.jpg'), { flow: FLOW_DICING }),
-                img(fresh(S('3. Dicing consumables'), 'B', S('Dicing blade'), null, ['Hub blade', 'Hubless blade']), './assets/images/pack-dicing-blade.jpg'),
-                fresh(S('4. Plating & metallization'), 'A', S('Cu, Ni, Au plating chemistry'), S('Hoá chất mạ cho bump, RDL, TSV', 'Plating for bumps, RDL, TSV'), ['Cu', 'Ni', 'Au']),
-                fresh(S('5. Assembly materials'), 'A', S('Underfill'), null, ['Capillary underfill']),
-                fresh(S('5. Assembly materials'), 'B', S('Silver epoxy'), null, ['Silver epoxy']),
-                fresh(S('5. Assembly materials'), 'C', S('Die attach film'), null, ['DAF']),
-                fresh(S('5. Assembly materials'), 'D', S('Conductive adhesive'), null, ['ICA', 'ACA / ACF']),
-                fresh(S('6. Encapsulation materials'), 'A', S('Mold compound'), null, ['Epoxy mold compound'])
+                img(fresh(S('3. Vật tư cắt wafer (Dicing)', '3. Dicing consumables'), 'B', S('Dicing blade'), null, ['Hub blade', 'Hubless blade']), './assets/images/pack-dicing-blade.jpg'),
+                fresh(S('4. Mạ & kim loại hoá (Plating)', '4. Plating & metallization'), 'A', S('Cu, Ni, Au plating chemistry'), S('Hoá chất mạ cho bump, RDL, TSV', 'Plating for bumps, RDL, TSV'), ['Cu', 'Ni', 'Au']),
+                fresh(S('5. Vật liệu lắp ráp (Assembly)', '5. Assembly materials'), 'A', S('Underfill'), null, ['Capillary underfill']),
+                fresh(S('5. Vật liệu lắp ráp (Assembly)', '5. Assembly materials'), 'B', S('Silver epoxy'), null, ['Silver epoxy']),
+                fresh(S('5. Vật liệu lắp ráp (Assembly)', '5. Assembly materials'), 'C', S('Die attach film'), null, ['DAF']),
+                fresh(S('5. Vật liệu lắp ráp (Assembly)', '5. Assembly materials'), 'D', S('Conductive adhesive'), null, ['ICA', 'ACA / ACF']),
+                fresh(S('6. Vật liệu bao gói (Encapsulation)', '6. Encapsulation materials'), 'A', S('Mold compound'), null, ['Epoxy mold compound'])
             ]
         },
         '4': {
             accent: '#1e3a8a', badge: S('Nhóm 4', 'Group 4'),
-            title: S('Cleanroom & Hi-Tech Equipment', 'Cleanroom & Hi-Tech Equipment'),
+            title: S('Thiết Bị Phòng Sạch & Công Nghệ Cao', 'Cleanroom & Hi-Tech Equipment'),
+            seo: { title: S('Thiết Bị Phòng Sạch & Bán Dẫn: Spin Coater, CVD | Digifund', 'Cleanroom & Semiconductor Lab Equipment Vietnam | Digifund'), desc: S('Thiết bị phòng sạch, lab bán dẫn: tủ hút, wet bench, đồ phòng sạch, spin coater, mask aligner, CVD, RIE, phún xạ, đo lường. Tư vấn tại Việt Nam.', 'Cleanroom & semiconductor lab equipment in Vietnam: fume hoods, wet benches, garments, spin coaters, mask aligners, CVD, RIE, sputtering, metrology.') },
             items: [
-                fresh(S('1. Cleanroom equipment'), 'A', S('Fume hoods'), S('Tủ hút khí độc', 'Fume hoods'), ['Tủ hút hoá chất', 'Tủ hút axit']),
-                fresh(S('1. Cleanroom equipment'), 'B', S('Wet benches'), S('Bàn quy trình ướt', 'Wet process benches'), ['Wet bench axit', 'Wet bench dung môi']),
-                from(S('1. Cleanroom equipment'), 'C', '3', 1, { name: S('Glassware') }),
-                from(S('1. Cleanroom equipment'), 'D', '3', 2, { name: S('Gloves + Bunny suits') }),
-                fresh(S('2. Semiconductor process equipment'), 'A', S('Spin coater')),
-                fresh(S('2. Semiconductor process equipment'), 'B', S('Mask aligner')),
-                fresh(S('2. Semiconductor process equipment'), 'C', S('Direct laser writer')),
-                from(S('2. Semiconductor process equipment'), 'D', '3', 0, { keep: [2], name: S('CVD systems') }),
-                fresh(S('2. Semiconductor process equipment'), 'E', S('RIE systems')),
-                fresh(S('2. Semiconductor process equipment'), 'F', S('Sputtering systems')),
-                fresh(S('3. Metrology & characterization'), 'A', S('Optical microscope')),
-                fresh(S('3. Metrology & characterization'), 'B', S('Profilometer')),
-                fresh(S('4. Laboratory equipment'), 'A', S('Vacuum systems')),
-                fresh(S('4. Laboratory equipment'), 'B', S('Gas delivery systems')),
-                fresh(S('4. Laboratory equipment'), 'C', S('Process monitoring equipment')),
-                from(S('4. Laboratory equipment'), 'D', '3', 0, { keep: [0, 1, 3], name: S('Thiết bị gia nhiệt & tổng hợp', 'Heating & synthesis equipment') })
+                fresh(S('1. Thiết bị phòng sạch (Cleanroom)', '1. Cleanroom equipment'), 'A', S('Fume hoods'), S('Tủ hút khí độc', 'Fume hoods'), ['Tủ hút hoá chất', 'Tủ hút axit']),
+                fresh(S('1. Thiết bị phòng sạch (Cleanroom)', '1. Cleanroom equipment'), 'B', S('Wet benches'), S('Bàn quy trình ướt', 'Wet process benches'), ['Wet bench axit', 'Wet bench dung môi']),
+                from(S('1. Thiết bị phòng sạch (Cleanroom)', '1. Cleanroom equipment'), 'C', '3', 1, { name: S('Glassware') }),
+                from(S('1. Thiết bị phòng sạch (Cleanroom)', '1. Cleanroom equipment'), 'D', '3', 2, { name: S('Gloves + Bunny suits') }),
+                fresh(S('2. Thiết bị quy trình bán dẫn', '2. Semiconductor process equipment'), 'A', S('Spin coater')),
+                fresh(S('2. Thiết bị quy trình bán dẫn', '2. Semiconductor process equipment'), 'B', S('Mask aligner')),
+                fresh(S('2. Thiết bị quy trình bán dẫn', '2. Semiconductor process equipment'), 'C', S('Direct laser writer')),
+                from(S('2. Thiết bị quy trình bán dẫn', '2. Semiconductor process equipment'), 'D', '3', 0, { keep: [2], name: S('CVD systems') }),
+                fresh(S('2. Thiết bị quy trình bán dẫn', '2. Semiconductor process equipment'), 'E', S('RIE systems')),
+                fresh(S('2. Thiết bị quy trình bán dẫn', '2. Semiconductor process equipment'), 'F', S('Sputtering systems')),
+                fresh(S('3. Đo lường & phân tích', '3. Metrology & characterization'), 'A', S('Optical microscope')),
+                fresh(S('3. Đo lường & phân tích', '3. Metrology & characterization'), 'B', S('Profilometer')),
+                fresh(S('4. Thiết bị phòng thí nghiệm', '4. Laboratory equipment'), 'A', S('Vacuum systems')),
+                fresh(S('4. Thiết bị phòng thí nghiệm', '4. Laboratory equipment'), 'B', S('Gas delivery systems')),
+                fresh(S('4. Thiết bị phòng thí nghiệm', '4. Laboratory equipment'), 'C', S('Process monitoring equipment')),
+                from(S('4. Thiết bị phòng thí nghiệm', '4. Laboratory equipment'), 'D', '3', 0, { keep: [0, 1, 3], name: S('Thiết bị gia nhiệt & tổng hợp', 'Heating & synthesis equipment') })
             ]
         },
         '5': {
             accent: '#1e3a8a', badge: S('Nhóm 5', 'Group 5'),
-            title: S('Renewable Energy Materials & Equipment', 'Renewable Energy Materials & Equipment'),
+            title: S('Vật Liệu & Thiết Bị Năng Lượng Tái Tạo', 'Renewable Energy Materials & Equipment'),
+            seo: { title: S('Vật Liệu Năng Lượng Tái Tạo & Thiết Bị Pin | Digifund', 'Battery & Fuel Cell Research Materials | Digifund'), desc: S('Vật liệu nano, thiết bị nghiên cứu pin, trạm thử pin nhiên liệu, bình phản ứng quang-nhiệt-điện xúc tác cho phòng thí nghiệm năng lượng tại Việt Nam.', 'Battery research equipment, fuel cell test stations, photo-electrocatalytic reactors and nanomaterials (graphene, CNT) for energy labs in Vietnam.') },
             items: [
-                from(S('1. Solar energy & fuel cell'), 'A', '2', 1, { name: S('Photo-thermal-electrocatalytic reactors') }),
-                fresh(S('1. Solar energy & fuel cell'), 'B', S('Fuel cell test station')),
-                fresh(S('2. Energy storage'), 'A', S('Battery research equipment')),
-                fresh(S('2. Energy storage'), 'B', S('Advanced materials')),
-                from(S('3. Nanomaterials'), 'A', '4', 0, { name: S('Nanomaterials') })
+                from(S('1. Năng lượng mặt trời & pin nhiên liệu', '1. Solar energy & fuel cell'), 'A', '2', 1, { name: S('Photo-thermal-electrocatalytic reactors') }),
+                fresh(S('1. Năng lượng mặt trời & pin nhiên liệu', '1. Solar energy & fuel cell'), 'B', S('Fuel cell test station')),
+                fresh(S('2. Lưu trữ năng lượng', '2. Energy storage'), 'A', S('Battery research equipment')),
+                fresh(S('2. Lưu trữ năng lượng', '2. Energy storage'), 'B', S('Advanced materials')),
+                from(S('3. Vật liệu nano', '3. Nanomaterials'), 'A', '4', 0, { name: S('Nanomaterials') })
             ]
         }
     };

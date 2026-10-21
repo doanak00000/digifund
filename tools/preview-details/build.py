@@ -88,7 +88,7 @@ def catalogue(gid, lang):
     return "".join(out)
 
 
-def seo_head(gid, title, desc, lang, url):
+def seo_head(gid, title, stitle, desc, lang, url):
     u = UI[lang]
     items = DATA[gid]["items"]
     img = next((it.get("img") or (it.get("variants") or [{}])[0].get("img") for it in items
@@ -107,7 +107,7 @@ def seo_head(gid, title, desc, lang, url):
     a = lambda s: html.escape(s, quote=True)
     return ('\n    <meta property="og:type" content="website">\n    <meta property="og:site_name" content="Digifund">\n'
             f'    <meta property="og:locale" content="{"en_US" if lang == "en" else "vi_VN"}">\n'
-            f'    <meta property="og:title" content="{a(title)} | Digifund">\n    <meta property="og:description" content="{a(desc)}">\n'
+            f'    <meta property="og:title" content="{a(stitle)}">\n    <meta property="og:description" content="{a(desc)}">\n'
             f'    <meta property="og:image" content="{img}">\n    <meta property="og:url" content="{url}">\n'
             '    <meta name="twitter:card" content="summary_large_image">\n'
             f'    <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>')
@@ -127,7 +127,7 @@ def hero(gid, title, lang):
                     <span id="heroCrumb">{u['group']} {gid}</span>
                 </p>
                 <span class="ph2__badge" id="heroBadge">{u['group']} {gid}</span>
-                <h1 class="ph2__title" id="heroTitle">{esc(title)}</h1>{sub}
+                <h1 class="ph2__title" id="heroTitle">{html.escape(title, quote=False)}</h1>{sub}
                 <p class="ph2__intro" id="heroIntro">{u['intro']}</p>
                 <ul class="ph2__chips" role="list">{li}</ul>
             </div>
@@ -187,9 +187,10 @@ for lang in ("vi", "en"):
     for gid, title, desc_vi, desc_en in PAGES:
         s = TPL[lang]
         fn = OUT[lang][gid]
-        desc = desc_vi if lang == "vi" else desc_en
-        s = re.sub(r"<title>.*?</title>", f"<title>{esc(title)} | Digifund</title>", s, count=1)
-        s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(desc)}">', s, count=1)
+        seo = DATA[gid]["seo"]
+        h1, stitle, desc = tr(DATA[gid]["title"], lang), tr(seo["title"], lang), tr(seo["desc"], lang)
+        s = re.sub(r"<title>.*?</title>", lambda m: f"<title>{html.escape(stitle, quote=False)}</title>", s, count=1)
+        s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{html.escape(desc)}">', s, count=1)
         s = re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>', "", s)
         vi_url, en_url = f"https://digifund.vn/{OUT['vi'][gid]}", f"https://digifund.vn/{OUT['en'][gid]}"
         s = s.replace('<meta name="robots" content="index, follow, max-image-preview:large">',
@@ -203,7 +204,7 @@ for lang in ("vi", "en"):
         s = re.sub(r'\s*<meta property="og:[^>]*>', "", s)
         s = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', "", s, count=1, flags=re.S)
         s = s.replace(f'<link rel="alternate" hreflang="x-default" href="{vi_url}">',
-                      f'<link rel="alternate" hreflang="x-default" href="{vi_url}">' + seo_head(gid, title, desc, lang, f"https://digifund.vn/{fn}"), 1)
+                      f'<link rel="alternate" hreflang="x-default" href="{vi_url}">' + seo_head(gid, h1, stitle, desc, lang, f"https://digifund.vn/{fn}"), 1)
         s = s.replace('<link rel="stylesheet" href="./assets/css/product-detail.css">',
                       '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
                       '    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -213,7 +214,7 @@ for lang in ("vi", "en"):
                       f'    <link rel="stylesheet" href="./assets/css/pdp-v2.css?v={V}">\n'
                       '    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js"}}</script>')
         s = re.sub(r'<header class="pdp-top">.*?</header>', lambda m: header(gid, lang), s, count=1, flags=re.S)
-        s = re.sub(r'<section class="pdp-hero">.*?</section>', lambda m: hero(gid, title, lang), s, count=1, flags=re.S)
+        s = re.sub(r'<section class="pdp-hero">.*?</section>', lambda m: hero(gid, h1, lang), s, count=1, flags=re.S)
         model_js = ("<script type=\"module\">\n"
                     f"        import {{ mountModel }} from './assets/js/value-chain-3d.js?v={V}';\n"
                     "        const el = document.querySelector('.ph2__model');\n"

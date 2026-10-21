@@ -446,19 +446,20 @@
             document.getElementById('heroTitle').textContent = T(g.title);
             document.getElementById('heroIntro').textContent = T(STR.intro);
             document.getElementById('heroCrumb').textContent = T(g.badge);
-            document.title = T(g.title) + ' - Digifund';
+            document.title = g.seo ? T(g.seo.title) : T(g.title) + ' - Digifund';
+            baseTitle = document.title;
             // SEO: cập nhật meta description + canonical theo nhóm
             try {
                 var _desc = document.querySelector('meta[name="description"]');
-                if (_desc) _desc.setAttribute('content', T(g.title) + ' — Digifund: thông số kỹ thuật chi tiết, báo giá theo yêu cầu cho ngành bán dẫn.');
+                if (_desc) _desc.setAttribute('content', g.seo ? T(g.seo.desc) : T(g.title) + ' — Digifund: thông số kỹ thuật chi tiết, báo giá theo yêu cầu cho ngành bán dẫn.');
                 var _can = document.querySelector('link[rel="canonical"]');
                 if (_can) _can.setAttribute('href', _canUrl);
                 var _ogt = document.querySelector('meta[property="og:title"]');
-                if (_ogt) _ogt.setAttribute('content', T(g.title) + ' | Digifund');
+                if (_ogt) _ogt.setAttribute('content', g.seo ? T(g.seo.title) : T(g.title) + ' | Digifund');
             } catch (e) {}
 
-            // SEO: structured data (Breadcrumb + ItemList sản phẩm + FAQ) theo nhóm
-            try {
+            // SEO: structured data (Breadcrumb + ItemList sản phẩm + FAQ) theo nhóm — bỏ qua nếu trang đã có JSON-LD tĩnh
+            if (!document.querySelector('script[type="application/ld+json"]:not(#pd-jsonld)')) try {
                 var _pgUrl = _canUrl;
                 var _items = [];
                 (g.items || []).forEach(function (it) {

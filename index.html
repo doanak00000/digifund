@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Silicon Wafer &amp; Substrate Bán Dẫn | Wafer Việt Nam - Digifund</title>
+    <title>Silicon Wafer Việt Nam - Nhà Cung Cấp Bán Dẫn | Digifund</title>
     <meta name="description" content="Digifund - nhà cung cấp silicon wafer, substrate và vật liệu bán dẫn độ tinh khiết cao tại Việt Nam: Si, SiC, GaAs, Sapphire, InP, SOI từ 2 đến 12 inch, bia phún xạ, hoá chất và thiết bị phòng sạch.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://digifund.vn/">
@@ -40,18 +40,20 @@
           "@type": "Organization",
           "@id": "https://digifund.vn/#organization",
           "name": "Digifund",
-          "alternateName": ["Digifund Việt Nam", "Vietnam Wafer", "Wafer Việt Nam"],
+          "legalName": "Công ty Cổ phần Digifund",
+          "alternateName": ["DIGIFUND JOINT STOCK COMPANY", "DIGIFUND., JSC", "Digifund Việt Nam"],
           "url": "https://digifund.vn/",
-          "logo": "https://digifund.vn/assets/images/logo-2.png",
-          "image": "https://digifund.vn/assets/images/logo-2.png",
+          "logo": { "@type": "ImageObject", "@id": "https://digifund.vn/#logo", "url": "https://digifund.vn/assets/images/logo-2.png", "width": 700, "height": 700 },
+          "image": { "@id": "https://digifund.vn/#logo" },
           "description": "Nhà cung cấp silicon wafer, substrate và wafer bán dẫn (Vietnam wafer) chất lượng cao tại Việt Nam. Đội ngũ Digifund quy tụ các chuyên gia bán dẫn từ Việt Nam và Mỹ.",
           "slogan": "Silicon Wafer & Wafer bán dẫn tại Việt Nam",
           "email": "semiconductor@digifund.vn",
           "telephone": "+84979324567",
-          "foundingDate": "2023",
+          "foundingDate": "2023-08-29",
+          "taxID": "0110464646",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Tầng 14, toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ",
+            "streetAddress": "Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ",
             "addressLocality": "Thành phố Hồ Chí Minh",
             "addressCountry": "VN"
           },
@@ -65,8 +67,7 @@
           },
           "sameAs": [
             "https://www.linkedin.com/company/digifund.vn",
-            "https://zalo.me/711262444130502316",
-            "https://www.wikidata.org/wiki/Q140603303"
+            "https://zalo.me/711262444130502316"
           ],
           "knowsAbout": [
             "Silicon wafer", "Semiconductor wafer", "SiC wafer", "GaAs wafer",
@@ -97,15 +98,15 @@
         {
           "@type": "LocalBusiness",
           "@id": "https://digifund.vn/#localbusiness",
-          "name": "Digifund - Silicon Wafer & Vật liệu bán dẫn",
+          "name": "Digifund",
           "image": "https://digifund.vn/assets/images/siliconwafer.jpg",
           "url": "https://digifund.vn/",
           "telephone": "+84979324567",
           "email": "semiconductor@digifund.vn",
-          "priceRange": "$$",
+          "priceRange": "Báo giá theo yêu cầu",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Tầng 14, toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ",
+            "streetAddress": "Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ",
             "addressLocality": "Thành phố Hồ Chí Minh",
             "addressCountry": "VN"
           },
@@ -125,9 +126,36 @@
           "@type": "WebSite",
           "@id": "https://digifund.vn/#website",
           "url": "https://digifund.vn/",
-          "name": "Digifund - Silicon Wafer & Substrate",
+          "name": "Digifund",
           "inLanguage": "vi-VN",
           "publisher": { "@id": "https://digifund.vn/#organization" }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://digifund.vn/#service-supply",
+          "name": "Cung cấp vật liệu, thiết bị bán dẫn",
+          "description": "Silicon wafer, substrate, photoresist, vật liệu CMP, bia phún xạ, hoá chất quy trình ướt, vật liệu đóng gói tiên tiến và thiết bị phòng sạch cho toàn bộ quy trình sản xuất chip.",
+          "provider": { "@id": "https://digifund.vn/#organization" },
+          "areaServed": { "@type": "Country", "name": "Việt Nam" },
+          "url": "https://digifund.vn/#products"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://digifund.vn/#service-consulting",
+          "name": "Tư vấn kỹ thuật và công nghệ",
+          "description": "Đội ngũ chuyên gia tư vấn kỹ thuật 24/7 về lựa chọn wafer, vật liệu và quy trình chế tạo bán dẫn.",
+          "provider": { "@id": "https://digifund.vn/#organization" },
+          "areaServed": { "@type": "Country", "name": "Việt Nam" },
+          "url": "https://digifund.vn/#team"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://digifund.vn/#service-fabrication",
+          "name": "Gia công chế tạo theo yêu cầu",
+          "description": "Gia công chế tạo theo yêu cầu tại phòng Lab đạt chuẩn EU về chế tạo chip, do kỹ sư chuyên sâu thực hiện.",
+          "provider": { "@id": "https://digifund.vn/#organization" },
+          "areaServed": { "@type": "Country", "name": "Việt Nam" },
+          "url": "https://digifund.vn/#contact"
         },
         {
           "@type": "ItemList",
@@ -194,7 +222,7 @@
           "name": "Digifund ở đâu và liên hệ như thế nào?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Digifund đặt tại Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại: +84 979 324 567. Email: semiconductor@digifund.vn. Website: https://digifund.vn."
+            "text": "Digifund đặt tại Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại: +84 979 324 567. Email: semiconductor@digifund.vn. Website: https://digifund.vn."
           }
         }
       ]
@@ -823,7 +851,7 @@
             </details>
             <details>
                 <summary>Digifund ở đâu và liên hệ như thế nào?</summary>
-                <p>Digifund đặt tại Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại: <a href="tel:+84979324567">+84 979 324 567</a>. Email: <a href="mailto:semiconductor@digifund.vn">semiconductor@digifund.vn</a>.</p>
+                <p>Digifund đặt tại Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh. Điện thoại: <a href="tel:+84979324567">+84 979 324 567</a>. Email: <a href="mailto:semiconductor@digifund.vn">semiconductor@digifund.vn</a>.</p>
             </details>
         </div>
     </section>
@@ -862,7 +890,7 @@
                 </div>
             </form>
             <address class="info">
-                <div><span>Địa chỉ</span><p>Tầng 14, toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh</p></div>
+                <div><span>Địa chỉ</span><p>Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh</p></div>
                 <div><span>Điện thoại</span><p><a href="tel:+84979324567">+84 979 324 567</a></p></div>
                 <div><span>Email</span><p><a href="mailto:semiconductor@digifund.vn">semiconductor@digifund.vn</a></p></div>
                 <div><span>Mạng xã hội</span><p><a href="https://zalo.me/711262444130502316" target="_blank" rel="noopener">Zalo</a> · <a href="https://www.linkedin.com/company/digifund.vn" target="_blank" rel="noopener">LinkedIn</a></p></div>

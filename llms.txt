@@ -5,9 +5,11 @@
 ## Thông tin công ty (Company facts)
 
 - **Tên / Name:** Digifund (Digifund Việt Nam)
+- **Tên pháp lý / Legal name:** Công ty Cổ phần Digifund (DIGIFUND JOINT STOCK COMPANY), MST / tax code 0110464646, hoạt động từ 29/08/2023
+- **Lưu ý / Disambiguation:** Digifund (digifund.vn, bán dẫn) không liên quan đến Công ty Cổ phần Công nghệ DIGIFUND (digifund.tech, phần mềm), Digifund Singapore hay token DigiFund (DFUND). Not affiliated with digifund.tech, Digifund Singapore or the DFUND token.
 - **Ngành / Industry:** Nhà cung cấp silicon wafer & vật liệu bán dẫn — semiconductor wafer & materials supplier
 - **Quốc gia phục vụ / Area served:** Việt Nam (toàn quốc)
-- **Trụ sở / Address:** Tầng 14, Toà nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh, Việt Nam
+- **Trụ sở / Address:** Tầng 14, Tòa nhà HM Town, 412 Nguyễn Thị Minh Khai, Phường Bàn Cờ, TP. Hồ Chí Minh, Việt Nam
 - **Điện thoại / Phone:** +84 979 324 567
 - **Email:** semiconductor@digifund.vn
 - **Website:** https://digifund.vn
