@@ -1,4 +1,4 @@
-/* New-style site header for the classic product pages (preview-details-*.html).
+/* New-style site header for the classic product pages (san-pham-*.html group pages).
    Self-contained: own class prefix (nh-) and own colours, so product-detail.css / bootstrap stay untouched.
    Follows the classic pages' theme switch (html[data-theme], key "digifund-theme"). */
 .nh {

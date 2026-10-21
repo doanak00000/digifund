@@ -1,4 +1,4 @@
-# Vietnamese -> English for preview-index.html (text nodes, alt/aria/placeholder/title, meta).
+# Vietnamese -> English for index.html (text nodes, alt/aria/placeholder/title, meta).
 # Keys are exactly as they appear in the HTML (entities included). Run build.py after editing.
 T = {
     "Bỏ qua đến nội dung": "Skip to content",
@@ -29,6 +29,19 @@ T = {
     "Giao hàng nhanh, đóng gói an toàn.": "Fast delivery, safe packing.",
     "Tiêu chuẩn chứng nhận": "Certified standards",
     "Thông số đạt chuẩn ngành bán dẫn.": "Specifications to semiconductor industry standards.",
+    "3 nhóm dịch vụ chính của DIGIFUND": "DIGIFUND's 3 core services",
+    "Ba mảng bổ trợ lẫn nhau: từ vật tư, đến tư vấn kỹ thuật, đến chế tạo theo yêu cầu.": "Three services that work together: from materials, to technical consulting, to custom fabrication.",
+    "Cung cấp vật liệu, thiết bị bán dẫn": "Semiconductor materials &amp; equipment supply",
+    "Vật tư cho toàn bộ quy trình sản xuất chip.": "Supplies for the entire chipmaking process.",
+    "Nguồn cung dồi dào.": "Plentiful, reliable supply.",
+    "Tư vấn kỹ thuật và công nghệ": "Technical &amp; technology consulting",
+    "Đội ngũ chuyên gia chất lượng.": "A team of seasoned experts.",
+    "Tư vấn kỹ thuật 24/7.": "24/7 technical support.",
+    "Gặp đội ngũ": "Meet the team",
+    "Gia công chế tạo theo yêu cầu": "Custom fabrication services",
+    "Phòng Lab đạt chuẩn EU về chế tạo chip.": "EU-standard lab for chip fabrication.",
+    "Kỹ sư giỏi, chuyên sâu.": "Highly skilled, specialised engineers.",
+    "Gửi yêu cầu": "Send a request",
     "Lĩnh vực ứng dụng": "Key applications",
     "Sản xuất chip bán dẫn": "Semiconductor manufacturing",
     "Vi cơ điện tử &amp; cảm biến": "MEMS &amp; sensors",
@@ -249,7 +262,7 @@ T = {
     "Silicon Wafer & Substrate Bán Dẫn | Wafer Việt Nam - Digifund": "Semiconductor Silicon Wafers & Substrates | Vietnam - Digifund",
     "Nhà cung cấp silicon wafer & wafer bán dẫn tại Việt Nam (Vietnam wafer) — Si, SiC, GaAs, Sapphire, SOI, bia phún xạ, hoá chất & thiết bị phòng sạch.": "Silicon and semiconductor wafer supplier in Vietnam: Si, SiC, GaAs, Sapphire, SOI, sputtering targets, chemicals & cleanroom equipment.",
     "Nhà cung cấp silicon wafer & wafer bán dẫn tại Việt Nam (Vietnam wafer). Si, SiC, GaAs, Sapphire, SOI.": "Silicon and semiconductor wafer supplier in Vietnam. Si, SiC, GaAs, Sapphire, SOI.",
-    "Silicon Wafer &amp; Substrate Bán Dẫn | Wafer Việt Nam - Digifund (Preview)": "Semiconductor Silicon Wafers &amp; Substrates | Vietnam - Digifund (Preview)",
+    "Silicon Wafer &amp; Substrate Bán Dẫn | Wafer Việt Nam - Digifund": "Semiconductor Silicon Wafers &amp; Substrates | Vietnam - Digifund",
     # hero / product-tab fragments that only appear inside larger titles (replaced as whole titles in build.py)
     "Vật liệu chế tạo": "Fabrication materials",
     "Vật liệu đóng gói": "Packaging materials",
@@ -279,6 +292,11 @@ LINKS = {
     "./silicon-wafer-viet-nam.html": "./silicon-wafer-supplier-vietnam.html",
     "./kich-thuoc-silicon-wafer.html": "./silicon-wafer-sizes.html",
     "./kien-thuc.html": "./semiconductor-knowledge.html",
+    "./san-pham-silicon-wafer-substrate.html": "./silicon-wafer-substrate-products.html",
+    "./san-pham-hoa-chat-vat-tu.html": "./chemicals-and-supplies.html",
+    "./san-pham-vat-lieu-dong-goi.html": "./advanced-packaging-materials.html",
+    "./san-pham-thiet-bi-phong-sach.html": "./cleanroom-lab-equipment.html",
+    "./san-pham-nang-luong-tai-tao.html": "./renewable-energy-materials.html",
 }
 
 # structured data (JSON-LD) in <head>; people's names stay as they are

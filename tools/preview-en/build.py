@@ -1,4 +1,4 @@
-"""Build preview-index-en.html from preview-index.html.
+"""Build index-en.html from index.html.
 
     python tools/preview-en/build.py          (run from the repo root)
 
@@ -13,7 +13,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from translations import T, HERO, LINKS  # noqa: E402
 
 VI = re.compile(r"[À-ỹĐđ]")
-src = (ROOT / "preview-index.html").read_text(encoding="utf-8")
+src = (ROOT / "index.html").read_text(encoding="utf-8")
 s = src
 
 for a, b in HERO.items():
@@ -66,12 +66,15 @@ s = head + body
 s = s.replace('<html lang="vi">', '<html lang="en">', 1)
 s = s.replace('<meta property="og:locale" content="vi_VN">', '<meta property="og:locale" content="en_US">')
 s = s.replace('<meta property="og:locale:alternate" content="en_US">', '<meta property="og:locale:alternate" content="vi_VN">')
-s = s.replace('<a class="lang-switch" href="./preview-index-en.html" hreflang="en" lang="en" aria-label="English version" title="English">EN</a>',
-              '<a class="lang-switch" href="./preview-index.html" hreflang="vi" lang="vi" aria-label="Phiên bản tiếng Việt" title="Tiếng Việt">VI</a>')
+s = s.replace('<a class="lang-switch" href="./index-en.html" hreflang="en" lang="en" aria-label="English version" title="English">EN</a>',
+              '<a class="lang-switch" href="./index.html" hreflang="vi" lang="vi" aria-label="Phiên bản tiếng Việt" title="Tiếng Việt">VI</a>')
+s = s.replace('<link rel="canonical" href="https://digifund.vn/">', '<link rel="canonical" href="https://digifund.vn/index-en.html">', 1)
+s = s.replace('<meta property="og:url" content="https://digifund.vn/">', '<meta property="og:url" content="https://digifund.vn/index-en.html">', 1)
 for a, b in LINKS.items():
     s = s.replace(f'href="{a}"', f'href="{b}"')
+    s = s.replace(f'"https://digifund.vn/{a[2:]}"', f'"https://digifund.vn/{b[2:]}"')   # JSON-LD urls
 
-(ROOT / "preview-index-en.html").write_text(s, encoding="utf-8", newline="")
+(ROOT / "index-en.html").write_text(s, encoding="utf-8", newline="")
 
 left = set()
 b2 = re.sub(r"<script\b.*?</script>", "", s[s.index("<body"):], flags=re.S)
@@ -79,5 +82,5 @@ for t in re.findall(r">([^<>]+)<", b2):
     if VI.search(t): left.add(t.strip())
 for t in re.findall(r'(?:alt|aria-label|placeholder|title|data-tip|content)="([^"]*)"', s):
     if VI.search(t) and t != "Phiên bản tiếng Việt" and t != "Tiếng Việt": left.add(t)
-print("wrote preview-index-en.html;", len(left), "Vietnamese strings left")
+print("wrote index-en.html;", len(left), "Vietnamese strings left")
 for t in sorted(left): print("  -", t[:120])

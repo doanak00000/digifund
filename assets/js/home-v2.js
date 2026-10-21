@@ -1,5 +1,5 @@
 /* ==========================================================================
-   DIGIFUND home v2 (preview-index.html)
+   DIGIFUND home v2 (index.html)
    --------------------------------------------------------------------------
    One particle field tells the process story as you scroll:
      0 sand → 1 polished wafer (hero) → 2 patterned dies (statement / product 1)
@@ -12,7 +12,7 @@
    ========================================================================== */
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-// the same script runs the Vietnamese page and its English copy (preview-index-en.html, <html lang="en">)
+// the same script runs the Vietnamese page and its English copy (index-en.html, <html lang="en">)
 const EN = (document.documentElement.lang || "").toLowerCase().startsWith("en");
 const L = (vi, en) => (EN ? en : vi);
 try { localStorage.setItem("digifund-lang", EN ? "en" : "vi"); } catch (e) {}   // product pages follow the same language

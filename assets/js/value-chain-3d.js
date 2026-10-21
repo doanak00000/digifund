@@ -1,5 +1,5 @@
 /* ==========================================================================
-   DIGIFUND home v2 · value chain in 3D (preview-index.html)
+   DIGIFUND home v2 · value chain in 3D (index.html)
    --------------------------------------------------------------------------
    A small fab line on a blueprint floor: seven stations (wafer → lithography
    → etch → deposition → CMP → packaging → device), each a procedural model on
@@ -622,7 +622,7 @@ export function mountValueChain(root, { reduceMotion = false } = {}) {
 
 /* ------------------------------------------------- single model (product pages)
    One station model on a hex pedestal, slowly turning, on a transparent canvas:
-   used by the hero of preview-details-*.html. kind: wafer | litho | etch | depo | cmp | pack | device | solar */
+   used by the hero of the san-pham-*.html group pages. kind: wafer | litho | etch | depo | cmp | pack | device | solar */
 function mSolar(M) {
     const group = new THREE.Group();
     const tex = canvasTex(512, 320, (g, w, h) => {

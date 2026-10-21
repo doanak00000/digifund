@@ -93,13 +93,22 @@
             return '<div class="pd-sum"><div class="pd-sum__cap">' + esc(cap) + '</div><div class="pd-sum__grid">' + cells + '</div></div>';
         }
 
+        // Sơ đồ quy trình dưới bảng tổng hợp: flow = [{ t, svg } | { alt: [{ t, svg }, ...] }] (svg là chuỗi tin cậy từ file data)
+        function renderFlow(flow) {
+            if (!flow || !flow.length) return '';
+            function step(s) { return '<figure class="pd-flow__step">' + s.svg + '<figcaption>' + esc(T(s.t)) + '</figcaption></figure>'; }
+            return '<ol class="pd-flow">' + flow.map(function (s) {
+                return '<li class="pd-flow__item' + (s.alt ? ' pd-flow__item--alt' : '') + '">' + (s.alt ? s.alt.map(step).join('') : step(s)) + '</li>';
+            }).join('') + '</ol>';
+        }
+
         function renderSpec(it, itemKey, baseIdx) {
             var variants = it.variants || [];
             var famImg = it.img || (variants[0] && variants[0].img) || '';
             var summaryHtml = renderSummary2(it.summary);
             var split = '<div class="pd-spec">' +
                 (famImg ? '<div class="pd-spec__media"><img src="' + famImg + '" alt=""></div>' : '') +
-                '<div class="pd-spec__info">' + (summaryHtml || '<div class="pd-empty-note">' + esc(T(STR.updating)) + '</div>') + '</div>' +
+                '<div class="pd-spec__info">' + (summaryHtml || '<div class="pd-empty-note">' + esc(T(STR.updating)) + '</div>') + renderFlow(it.flow) + '</div>' +
             '</div>';
 
             var bsHtml = '';
