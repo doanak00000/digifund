@@ -21,7 +21,7 @@
 
 - **Lâm Kim Thao** — CEO & đồng sáng lập (Co-founder)
 - **Lâm Khả Doãn** — Đồng sáng lập (Co-founder), Senior Software Engineer
-- **Trần Mỹ Nghệ** — Đồng sáng lập (Co-founder), Chuyên gia Silicon Wafer; Thạc sĩ, chuyên gia wafer tại châu Âu
+- **Trần Mỹ Nghệ** — Tiến sĩ (Dr.), Đồng sáng lập (Co-founder), chuyên gia chế tạo chip bán dẫn tại IMEC, Bỉ
 
 ## Sản phẩm chính (Main products) — 5 nhóm
 
@@ -57,4 +57,9 @@
 - [Làm sạch Silicon Wafer: RCA, Piranha, HF](https://digifund.vn/lam-sach-wafer-quy-trinh-rca.html): các loại nhiễm bẩn, quy trình RCA (SC-1/SC-2), HF dip, piranha, an toàn hoá chất, cầm nắm & bảo quản wafer (English: https://digifund.vn/silicon-wafer-cleaning-rca.html)
 - [Kích thước Silicon Wafer: 2–12 inch, độ dày & cách chọn](https://digifund.vn/kich-thuoc-silicon-wafer.html): quy đổi inch/mm, độ dày tiêu chuẩn, flat và notch, kích thước theo vật liệu, chọn cỡ cho phòng lab (English: https://digifund.vn/silicon-wafer-sizes.html)
 - [Chi tiết sản phẩm](https://digifund.vn/product-detail.html)
+- [Mua Photoresist tại Việt Nam: Dương, Âm, SU-8](https://digifund.vn/photoresist-viet-nam.html) (English: https://digifund.vn/photoresist-supplier-vietnam.html)
+- [Mua Bia Phún Xạ (Sputtering Target) tại Việt Nam](https://digifund.vn/sputtering-target-viet-nam.html) (English: https://digifund.vn/sputtering-target-supplier-vietnam.html)
+- [Wafer SiC (Silicon Carbide): 4H/6H, N-type, HPSI](https://digifund.vn/wafer-sic-silicon-carbide.html) (English: https://digifund.vn/sic-wafer-silicon-carbide.html)
+- [Wafer Prime, Test, Dummy: Khác Nhau & Cách Chọn](https://digifund.vn/wafer-prime-test-dummy.html) (English: https://digifund.vn/prime-test-dummy-wafer.html)
+- [Về Digifund – Nhà cung cấp vật liệu bán dẫn](https://digifund.vn/ve-digifund.html) (English: https://digifund.vn/about-digifund.html)
 - [Kiến thức bán dẫn](https://digifund.vn/kien-thuc.html)

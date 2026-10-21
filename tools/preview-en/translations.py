@@ -15,6 +15,7 @@ T = {
     "Tủ hút, wet bench, spin coater, mask aligner, hệ CVD, RIE, phún xạ và thiết bị đo lường cho phòng sạch và phòng thí nghiệm bán dẫn.": "Fume hoods, wet benches, spin coaters, mask aligners, CVD, RIE and sputtering systems, and metrology for cleanrooms and semiconductor labs.",
     "Lò phản ứng quang–nhiệt–điện xúc tác, trạm thử pin nhiên liệu, thiết bị nghiên cứu pin và vật liệu nano cho năng lượng sạch.": "Photo-thermal-electrocatalytic reactors, fuel cell test stations, battery research equipment and nanomaterials for clean energy.",
     "Xem sản phẩm": "View products",
+    "Về Digifund": "About Digifund",
     "Xem ứng dụng": "View applications",
     "Đóng gói tiên tiến": "Advanced packaging",
     "Phòng sạch &amp; thiết bị": "Cleanroom &amp; equipment",
@@ -91,6 +92,11 @@ T = {
     "Lắng đọng màng mỏng bằng phún xạ": "Sputtered thin-film deposition",
     "Gachon, Hàn Quốc": "Gachon, Korea",
     "Chế tạo chip bán dẫn": "Semiconductor chip fabrication",
+    "Đồng sáng lập · Chế tạo chip bán dẫn": "Co-founder · Semiconductor chip fabrication",
+    "Đội ngũ sáng lập &amp; chuyên gia cố vấn": "Founding team &amp; expert advisors",
+    "Tiến sĩ Trần Mỹ Nghệ (IMEC, Bỉ) đồng sáng lập Digifund, cùng các chuyên gia cố vấn từ CNRS (Pháp) và Gachon University (Hàn Quốc).": "Dr. My Nghe TRAN (IMEC, Belgium) co-founded Digifund, alongside expert advisors from CNRS (France) and Gachon University (South Korea).",
+    "Dr. My Nghe TRAN - đồng sáng lập Digifund, chuyên gia chế tạo chip bán dẫn, IMEC Bỉ": "Dr. My Nghe TRAN - Digifund co-founder, semiconductor chip fabrication, IMEC Belgium",
+    "Tiến sĩ, đồng sáng lập Digifund, chuyên gia chế tạo chip bán dẫn tại IMEC, Bỉ": "PhD, Digifund co-founder, semiconductor chip fabrication expert at IMEC, Belgium",
     "IMEC, Bỉ": "IMEC, Belgium",
     "Đồng hành cùng các viện nghiên cứu và trường đại học hàng đầu thế giới về lĩnh vực bán dẫn": "Working with the world's leading semiconductor research institutes and universities",
     "Sản phẩm tiêu biểu": "Featured products",
@@ -297,6 +303,7 @@ LINKS = {
     "./san-pham-vat-lieu-dong-goi.html": "./advanced-packaging-materials.html",
     "./san-pham-thiet-bi-phong-sach.html": "./cleanroom-lab-equipment.html",
     "./san-pham-nang-luong-tai-tao.html": "./renewable-energy-materials.html",
+    "./ve-digifund.html": "./about-digifund.html",
 }
 
 # structured data (JSON-LD) in <head>; people's names stay as they are
