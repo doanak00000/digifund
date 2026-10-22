@@ -243,4 +243,129 @@
             if (f && !it.img) img(it, './assets/images/prod-' + f + '.jpg');
         });
     });
+
+    // thông số tiêu biểu cho các mục mới (fresh) chưa có thông số; khoá như PHOTOS; dòng: [k vi, k en, v vi, v en?]
+    var SPECS = {
+        '1': {
+            '1D': [['Phương pháp phủ', 'Deposition', 'LPCVD / PECVD'], ['Độ dày màng', 'Film thickness', '50 nm – 1 µm'],
+                   ['Ứng suất', 'Stress', 'Stoichiometric (tensile) / Low-stress (< 250 MPa)'], ['Chiết suất @633 nm', 'Refractive index @633 nm', '≈ 2.0 – 2.3'],
+                   ['Đế', 'Substrate', 'Si prime / test, 4" – 8"'], ['Độ đồng đều', 'Uniformity', '≤ ±5 %']],
+            '2D': [['Đường kính', 'Diameter', '2" / 4" / 6" (GaN-on-Si tới 8")', '2" / 4" / 6" (GaN-on-Si up to 8")'], ['Định hướng', 'Orientation', 'c-plane (0001)'],
+                   ['Cấu trúc', 'Structure', 'Epi GaN, HEMT AlGaN/GaN, GaN tự đứng', 'Epi GaN, AlGaN/GaN HEMT, free-standing GaN'],
+                   ['Pha tạp', 'Doping', 'Undoped / n-type (Si) / bán cách điện (Fe, C)', 'Undoped / n-type (Si) / semi-insulating (Fe, C)'],
+                   ['Độ dày lớp GaN', 'GaN thickness', '1 – 5 µm (epi); 350 – 450 µm (tự đứng)', '1 – 5 µm (epi); 350 – 450 µm (free-standing)']],
+            '3A': [['Đường kính', 'Diameter', '100 – 300 mm'], ['Độ dày', 'Thickness', '525 – 775 µm (SEMI) hoặc theo yêu cầu', '525 – 775 µm (SEMI) or custom'],
+                   ['TTV', 'TTV', '≤ 2 – 5 µm'], ['Bow / Warp', 'Bow / Warp', '≤ 30 µm'], ['Bề mặt', 'Surface', 'SSP / DSP'], ['Notch / Flat', 'Notch / Flat', 'Theo SEMI', 'Per SEMI']],
+            '3B': [['Vật liệu', 'Material', 'Borosilicate / Fused silica (quartz)'], ['Đường kính', 'Diameter', '100 – 300 mm'], ['Độ dày', 'Thickness', '0.5 – 1.1 mm'],
+                   ['TTV', 'TTV', '≤ 2 – 5 µm'], ['CTE', 'CTE', '≈ 3.3 ppm/K (borosilicate); ≈ 0.5 ppm/K (quartz)'],
+                   ['Truyền qua', 'Transmission', 'Cao ở dải UV / laser, phù hợp debond laser & UV', 'High UV / laser transmission for laser & UV debond']]
+        },
+        '2': {
+            '1C': [['Hoá chất', 'Chemical', 'HMDS (Hexamethyldisilazane)'], ['Độ tinh khiết', 'Purity', '≥ 99 %, cấp điện tử', '≥ 99 %, electronic grade'],
+                   ['Phương pháp', 'Method', 'Prime pha hơi / phủ quay', 'Vapor prime / spin coat'], ['Nhiệt độ prime', 'Prime temperature', '100 – 150 °C'],
+                   ['Bề mặt áp dụng', 'Surfaces', 'Si, SiO₂, SiN, kim loại', 'Si, SiO₂, SiN, metals']],
+            '1D': [['Loại', 'Type', 'Dung môi (NMP-free, PGMEA) / kiềm', 'Solvent-based (NMP-free, PGMEA) / alkaline'], ['Nhiệt độ làm việc', 'Operating temperature', 'RT – 80 °C'],
+                   ['Tương thích', 'Compatibility', 'PR dương / âm; an toàn với Al, Cu', 'Positive / negative PR; Al- and Cu-safe'],
+                   ['Phương pháp', 'Method', 'Ngâm, phun, single-wafer', 'Immersion, spray, single-wafer']],
+            '1E': [['Loại', 'Type', 'BARC hữu cơ / TARC', 'Organic BARC / TARC'], ['Bước sóng', 'Wavelength', 'i-line 365 nm, KrF 248 nm, ArF 193 nm'],
+                   ['Độ dày', 'Thickness', '≈ 30 – 100 nm'], ['Phủ & sấy', 'Coat & bake', 'Phủ quay, sấy ≈ 175 – 215 °C', 'Spin coat, bake ≈ 175 – 215 °C']],
+            '2B': [['Loại', 'Type', 'Pad cứng polyurethane / pad mềm poromeric', 'Hard polyurethane / soft poromeric pads'], ['Cấu trúc', 'Construction', 'Đơn lớp / chồng sub-pad', 'Single layer / stacked with sub-pad'],
+                   ['Rãnh', 'Grooving', 'XY, K-groove, đồng tâm', 'XY, K-groove, concentric'], ['Kích thước', 'Size', 'Theo máy CMP 200 / 300 mm', 'To fit 200 / 300 mm CMP tools'],
+                   ['Ứng dụng', 'Application', 'Oxide, Cu, W, Si']],
+            '2C': [['Pad conditioner', 'Pad conditioner', 'Đĩa kim cương (mạ / CVD)', 'Diamond disc (plated / CVD)'], ['Lọc slurry', 'Slurry filters', 'Lọc sâu 0.5 – 10 µm', 'Depth filters 0.5 – 10 µm'],
+                   ['Phụ kiện khác', 'Others', 'Retaining ring, chổi PVA làm sạch sau CMP', 'Retaining rings, post-CMP PVA brushes']],
+            '3B': [['Kim loại', 'Metals', 'Au, Ag, Al, Cu, Ti, Cr, Ni, Pt, Ge, …'], ['Độ tinh khiết', 'Purity', '99.99 % – 99.999 %'],
+                   ['Dạng', 'Form', 'Viên, dây, hạt, khối', 'Pellets, wire, shot, slugs'], ['Kích thước viên', 'Pellet size', 'Φ3 × 3 mm, Φ6 × 6 mm hoặc theo yêu cầu', 'Φ3 × 3 mm, Φ6 × 6 mm or custom'],
+                   ['Tương thích', 'Compatibility', 'Bốc bay nhiệt / e-beam; chén W, Mo, graphite, BN', 'Thermal / e-beam; W, Mo, graphite, BN crucibles']]
+        },
+        '3': {
+            '1B': [['Phương pháp debond', 'Debond method', 'Thermal slide / Mechanical / Laser / UV'], ['Hoá chất', 'Chemicals', 'Dung môi tách keo, chất làm sạch cặn', 'Debond solvent, residue cleaner'],
+                   ['Nhiệt độ làm sạch', 'Cleaning temperature', 'RT – 80 °C'], ['Tương thích', 'Compatibility', 'Keo bonding tạm thời nhiệt / UV', 'Thermal / UV temporary bonding adhesives'],
+                   ['Ứng dụng', 'Application', 'Mỏng hoá wafer, TSV, fan-out', 'Wafer thinning, TSV, fan-out']],
+            '2A': [['Vật liệu', 'Material', 'Si / Borosilicate / Quartz'], ['Đường kính', 'Diameter', '4" – 12"'], ['Độ dày', 'Thickness', '500 – 1100 µm'],
+                   ['TTV', 'TTV', '≤ 2 – 5 µm'], ['CTE', 'CTE', 'Chọn khớp với wafer linh kiện', 'Matched to device wafer']],
+            '2B': [['Vật liệu', 'Material', 'Si / Glass'], ['Đường kính', 'Diameter', '4" – 12"'], ['TTV', 'TTV', '≤ 5 µm'],
+                   ['Debond', 'Debond', 'Thermal / Mechanical / Laser / UV'], ['Tái sử dụng', 'Reuse', 'Làm sạch & tái sử dụng nhiều lần', 'Cleanable, multi-reuse']],
+            '3A': [['Loại', 'Type', 'UV-curable / non-UV'], ['Độ dày', 'Thickness', '≈ 80 – 200 µm'],
+                   ['Độ bám dính', 'Adhesion', 'Cao khi cắt, giảm mạnh sau chiếu UV', 'High during dicing, drops sharply after UV'], ['Liều UV', 'UV dose', '≈ 200 – 500 mJ/cm²'],
+                   ['Khổ', 'Size', 'Theo frame 6" / 8" / 12"', 'For 6" / 8" / 12" frames']],
+            '3B': [['Loại', 'Type', 'Hub / Hubless'], ['Liên kết', 'Bond', 'Nickel mạ điện / resin / kim loại thiêu kết', 'Electroformed nickel / resin / sintered metal'],
+                   ['Cỡ hạt kim cương', 'Diamond grit', '#600 – #5000'], ['Độ dày lưỡi', 'Blade thickness', '≈ 15 – 300 µm'],
+                   ['Vật liệu cắt', 'Cuts', 'Si, glass, sapphire, ceramic, package']],
+            '4A': [['Kim loại', 'Metals', 'Cu, Ni, Au'], ['Phương pháp', 'Process', 'Mạ điện; Au/Ni mạ hoá học (ENIG)', 'Electroplating; electroless Ni/Au (ENIG)'],
+                   ['Hệ Au', 'Au chemistry', 'Cyanide-free (sulfite)'], ['Ứng dụng', 'Application', 'Bump, Cu pillar, RDL, lấp TSV', 'Bumps, Cu pillars, RDL, TSV fill']],
+            '5A': [['Loại', 'Type', 'Capillary underfill (CUF), epoxy'], ['Tg', 'Tg', '≈ 110 – 160 °C'], ['CTE (α1)', 'CTE (α1)', '≈ 20 – 40 ppm/K'],
+                   ['Đóng rắn', 'Cure', '≈ 150 – 165 °C'], ['Ứng dụng', 'Application', 'Flip-chip, BGA, CSP']],
+            '5B': [['Thành phần', 'Composition', 'Epoxy độn bạc, 1 hoặc 2 thành phần', 'Silver-filled epoxy, 1- or 2-part'], ['Điện trở suất', 'Volume resistivity', '≈ 10⁻⁴ – 10⁻³ Ω·cm'],
+                   ['Đóng rắn', 'Cure', 'RT – 150 °C'], ['Ứng dụng', 'Application', 'Die attach, gắn linh kiện, sửa mạch', 'Die attach, component bonding, circuit repair']],
+            '5C': [['Dạng', 'Format', 'DAF / DDAF (kết hợp dicing tape)', 'DAF / DDAF (combined with dicing tape)'], ['Độ dày', 'Thickness', '≈ 10 – 60 µm'],
+                   ['Loại', 'Type', 'Dẫn điện / không dẫn điện', 'Conductive / non-conductive'], ['Đóng rắn', 'Cure', '≈ 120 – 180 °C'],
+                   ['Ứng dụng', 'Application', 'Xếp chồng die, bộ nhớ, die mỏng', 'Die stacking, memory, thin die']],
+            '5D': [['Loại', 'Type', 'ICA (đẳng hướng) / ACA, ACF (dị hướng)', 'ICA (isotropic) / ACA, ACF (anisotropic)'],
+                   ['Hạt dẫn', 'Conductive filler', 'Ag (ICA); hạt Ni / polymer phủ Au (ACF)', 'Ag (ICA); Ni or Au-coated polymer particles (ACF)'],
+                   ['Đóng rắn', 'Cure', 'Nhiệt / UV', 'Thermal / UV'], ['Ứng dụng', 'Application', 'COG, COF, FOG, linh kiện nhạy nhiệt', 'COG, COF, FOG, heat-sensitive parts']],
+            '6A': [['Loại', 'Type', 'Epoxy mold compound (EMC)'], ['Dạng', 'Form', 'Viên (transfer) / hạt (compression) / lỏng', 'Tablet (transfer) / granule (compression) / liquid'],
+                   ['Độn silica', 'Silica filler', '≈ 70 – 90 wt%'], ['CTE (α1)', 'CTE (α1)', '≈ 7 – 15 ppm/K'], ['Đúc', 'Molding', '≈ 175 °C + post-mold cure'],
+                   ['Chống cháy', 'Flammability', 'Halogen-free (green), UL94 V-0']]
+        },
+        '4': {
+            '1A': [['Chiều rộng', 'Width', '1.2 / 1.5 / 1.8 m'], ['Vận tốc mặt hút', 'Face velocity', '0.4 – 0.6 m/s'],
+                   ['Vật liệu', 'Material', 'Thép sơn tĩnh điện / PP chịu axit / inox', 'Powder-coated steel / acid-resistant PP / stainless steel'],
+                   ['Tiêu chuẩn', 'Standards', 'EN 14175 / ASHRAE 110'], ['Phụ kiện', 'Accessories', 'Báo động lưu lượng, đèn, van gas / nước', 'Airflow alarm, lighting, gas / water valves']],
+            '1B': [['Vật liệu', 'Material', 'PP / PVDF (axit, HF); inox 316 (dung môi)', 'PP / PVDF (acids, HF); SS316 (solvents)'],
+                   ['Bể', 'Tanks', 'Tĩnh, tuần hoàn, gia nhiệt, siêu âm, QDR', 'Static, recirculating, heated, ultrasonic, QDR'],
+                   ['Vận hành', 'Operation', 'Thủ công / bán tự động / tự động', 'Manual / semi-auto / automatic'], ['Kích thước wafer', 'Wafer size', '2" – 12"'],
+                   ['An toàn', 'Safety', 'Hút khí tích hợp, EMO, cảm biến rò rỉ', 'Integrated exhaust, EMO, leak sensors']],
+            '2A': [['Tốc độ quay', 'Spin speed', '100 – 10 000 rpm'], ['Gia tốc', 'Acceleration', 'Lập trình được', 'Programmable'],
+                   ['Kích thước mẫu', 'Substrate size', 'Mẫu nhỏ – 8"', 'Small pieces – 8"'], ['Giữ mẫu', 'Chuck', 'Chân không', 'Vacuum'],
+                   ['Chương trình', 'Recipes', 'Nhiều bước, lưu công thức', 'Multi-step, stored recipes'], ['Tuỳ chọn', 'Options', 'Hotplate, nhỏ keo tự động', 'Hotplate, auto dispense']],
+            '2B': [['Kích thước wafer', 'Wafer size', 'Mẫu nhỏ – 6"', 'Small pieces – 6"'], ['Nguồn UV', 'UV source', 'Đèn Hg / UV-LED, 365 – 436 nm', 'Hg lamp / UV-LED, 365 – 436 nm'],
+                   ['Chế độ tiếp xúc', 'Contact modes', 'Proximity / soft / hard / vacuum'], ['Độ phân giải', 'Resolution', '≈ 1 – 2 µm'],
+                   ['Căn chỉnh', 'Alignment', 'Mặt trước; mặt sau (tuỳ chọn)', 'Top side; backside (optional)']],
+            '2C': [['Bước sóng laser', 'Laser wavelength', '375 / 405 nm'], ['Kích thước nhỏ nhất', 'Min. feature', '≈ 0.6 – 1 µm'],
+                   ['Vùng ghi', 'Write area', 'Tới 150 × 150 mm (theo model)', 'Up to 150 × 150 mm (model dependent)'], ['Grayscale', 'Grayscale', 'Tuỳ chọn', 'Optional'],
+                   ['Định dạng dữ liệu', 'Data formats', 'GDSII, DXF, CIF, BMP'], ['Ứng dụng', 'Application', 'Quang khắc không mask, chế tạo mask, MEMS', 'Maskless lithography, mask making, MEMS']],
+            '2E': [['Kích thước wafer', 'Wafer size', 'Tới 8"', 'Up to 8"'], ['Nguồn plasma', 'Plasma source', 'RF 13.56 MHz, 300 – 600 W; ICP (tuỳ chọn)', 'RF 13.56 MHz, 300 – 600 W; ICP (optional)'],
+                   ['Khí', 'Gases', 'CF₄, SF₆, CHF₃, O₂, Ar, Cl₂ (theo cấu hình)', 'CF₄, SF₆, CHF₃, O₂, Ar, Cl₂ (as configured)'], ['Áp suất làm việc', 'Process pressure', '≈ 10 – 500 mTorr'],
+                   ['Vật liệu khắc', 'Etches', 'SiO₂, SiN, Si, polymer, kim loại', 'SiO₂, SiN, Si, polymers, metals']],
+            '2F': [['Kiểu phún xạ', 'Mode', 'DC / RF / pulsed-DC magnetron'], ['Số súng', 'Guns', '1 – 4, target 2" – 4"'], ['Áp suất nền', 'Base pressure', '≤ 5 × 10⁻⁷ Torr'],
+                   ['Gia nhiệt đế', 'Substrate heating', 'Tới ≈ 500 °C', 'Up to ≈ 500 °C'], ['Tuỳ chọn', 'Options', 'Xoay đế, co-sputter, load-lock, phún xạ phản ứng', 'Substrate rotation, co-sputter, load-lock, reactive sputtering']],
+            '3A': [['Loại', 'Type', 'Kính hiển vi kim tương / kiểm tra wafer', 'Metallurgical / wafer inspection'], ['Độ phóng đại', 'Magnification', '50× – 1000×'],
+                   ['Chế độ quan sát', 'Modes', 'BF / DF / DIC / phân cực', 'BF / DF / DIC / polarized'], ['Bàn mẫu', 'Stage', 'Cho wafer 4" – 8"', 'For 4" – 8" wafers'],
+                   ['Camera', 'Camera', 'Camera số + phần mềm đo', 'Digital camera + measurement software']],
+            '3B': [['Loại', 'Type', 'Đầu dò (stylus) / quang học không tiếp xúc', 'Stylus / non-contact optical'], ['Dải đo bậc', 'Step height range', 'Vài nm – ≈ 1 mm', 'A few nm – ≈ 1 mm'],
+                   ['Độ phân giải dọc', 'Vertical resolution', 'Tới ≈ 0.1 nm', 'Down to ≈ 0.1 nm'], ['Lực đầu dò', 'Stylus force', '≈ 1 – 15 mg, điều chỉnh được', '≈ 1 – 15 mg, adjustable'],
+                   ['Ứng dụng', 'Application', 'Độ dày màng, độ nhám, cong vênh', 'Film thickness, roughness, bow']],
+            '4A': [['Bơm sơ cấp', 'Roughing pumps', 'Rotary vane, scroll khô', 'Rotary vane, dry scroll'], ['Bơm cao chân không', 'High-vacuum pumps', 'Turbo, cryo, ion'],
+                   ['Áp suất đạt', 'Ultimate pressure', '10⁻³ – 10⁻⁹ Torr (theo cấu hình)', '10⁻³ – 10⁻⁹ Torr (as configured)'],
+                   ['Đo chân không', 'Gauges', 'Pirani, cold cathode, Bayard-Alpert, capacitance manometer'], ['Phụ kiện', 'Fittings', 'Van, mặt bích KF / CF / ISO', 'Valves, KF / CF / ISO flanges']],
+            '4B': [['Thành phần', 'Components', 'Tủ khí, VMB / VMP, panel điều áp, MFC', 'Gas cabinets, VMB / VMP, regulator panels, MFCs'], ['Đường ống', 'Tubing', 'SS316L EP, hàn orbital', 'SS316L EP, orbital welded'],
+                   ['Độ kín', 'Leak rate', '≤ 1 × 10⁻⁹ mbar·L/s (He)'], ['Loại khí', 'Gases', 'Trơ, độc, ăn mòn, dễ cháy', 'Inert, toxic, corrosive, flammable'],
+                   ['An toàn', 'Safety', 'Cảm biến khí, ngắt khẩn cấp, purge N₂', 'Gas detection, emergency shut-off, N₂ purge']],
+            '4C': [['Hạng mục', 'Parameters', 'Hạt bụi, nhiệt độ, độ ẩm, chênh áp, khí độc', 'Particles, temperature, humidity, differential pressure, toxic gas'],
+                   ['Đếm hạt', 'Particle counter', '0.1 / 0.3 / 0.5 µm; 2.83 hoặc 28.3 L/phút', '0.1 / 0.3 / 0.5 µm; 2.83 or 28.3 L/min'],
+                   ['Kết nối', 'Connectivity', 'Modbus, Ethernet, phần mềm FMS', 'Modbus, Ethernet, FMS software'], ['Cảnh báo', 'Alarms', 'Theo ngưỡng, ghi dữ liệu liên tục', 'Threshold alarms, continuous logging']]
+        },
+        '5': {
+            '1B': [['Loại pin', 'Cell type', 'PEMFC, DMFC'], ['Công suất', 'Power', '≈ 50 W – 10 kW (theo model)', '≈ 50 W – 10 kW (model dependent)'],
+                   ['Điều khiển', 'Control', 'Lưu lượng (MFC), nhiệt độ, độ ẩm, áp suất khí', 'Flow (MFC), temperature, humidity, gas pressure'],
+                   ['Phép đo', 'Measurements', 'Đường I-V, HFR, EIS (tuỳ chọn)', 'I-V curves, HFR, EIS (optional)'], ['Phần mềm', 'Software', 'Tự động hoá & ghi dữ liệu', 'Automated testing & data logging']],
+            '2A': [['Chế tạo điện cực', 'Electrode prep', 'Máy tráng màng, máy cán, máy đột', 'Film coater, calender, electrode punch'],
+                   ['Lắp ráp cell', 'Cell assembly', 'Máy đóng coin cell, glovebox Ar (H₂O, O₂ < 1 ppm)', 'Coin-cell crimper, Ar glovebox (H₂O, O₂ < 1 ppm)'],
+                   ['Định dạng cell', 'Cell formats', 'Coin (CR2032), pouch, trụ', 'Coin (CR2032), pouch, cylindrical'],
+                   ['Thử nghiệm', 'Testing', 'Máy thử pin đa kênh, EIS', 'Multi-channel battery cycler, EIS']],
+            '2B': [['Vật liệu điện cực', 'Electrode materials', 'LFP, NMC, LCO, graphite, Si-C'], ['Điện giải', 'Electrolytes', 'LiPF₆ trong EC/DMC, điện giải rắn', 'LiPF₆ in EC/DMC, solid electrolytes'],
+                   ['Màng ngăn', 'Separators', 'PP / PE, phủ ceramic', 'PP / PE, ceramic-coated'], ['Phụ trợ', 'Auxiliaries', 'Binder PVDF / CMC / SBR, carbon dẫn, lá Cu / Al', 'PVDF / CMC / SBR binders, conductive carbon, Cu / Al foil']]
+        }
+    };
+    Object.keys(SPECS).forEach(function (g) {
+        window.PD_DATA_V2[g].items.forEach(function (it) {
+            var r = SPECS[g][parseInt(it.section.vi, 10) + it.code];
+            if (!r) return;
+            var rows = r.map(function (x) { return { k: S(x[0], x[1]), v: S(x[2], x[3]) }; });
+            // mục một dòng (không có danh mục con): modal cũng hiện bảng thông số
+            if (!it.summary) it.variants.forEach(function (v) { v.specs = rows.concat(v.specs); });
+            it.summary = it.summary ? { title: it.summary.title, rows: it.summary.rows.concat(rows) } : { title: S('Thông số kỹ thuật tiêu biểu', 'Typical specifications'), rows: rows };
+        });
+    });
 })();
