@@ -3,7 +3,7 @@
 # modal, engine) with the top header and hero swapped for the new-style ones. Data: products-data-v2.js (5 groups).
 import html, json, re, subprocess
 
-V = "20261022a"
+V = "20261023a"
 DATA = json.loads(subprocess.run(["node", "tools/preview-details/dump-data.js"], capture_output=True, check=True, encoding="utf-8").stdout)
 TPL = {"vi": open("tools/preview-details/template.html", encoding="utf-8").read(),
        "en": open("tools/preview-details/template-en.html", encoding="utf-8").read()}
