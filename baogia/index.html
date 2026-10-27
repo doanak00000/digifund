@@ -75,6 +75,7 @@
     border-right:1px solid var(--line);
     height:calc(100vh - 53px);
     overflow-y:auto;
+    overscroll-behavior:contain;
     padding:18px 18px 90px;
   }
   @media (max-width:980px){ .editor{height:auto;border-right:none;border-bottom:1px solid var(--line);} }
@@ -151,8 +152,11 @@
     background:
       radial-gradient(circle at 1px 1px, #e3e7ee 1px, transparent 0) 0 0/16px 16px,
       var(--bg);
+    height:calc(100vh - 53px);
     overflow:auto;
+    overscroll-behavior:contain;
   }
+  @media (max-width:980px){ .preview-wrap{height:auto;} }
   .page{
     width:210mm;
     min-height:275mm; /* < (297mm - 8mm lề trên/dưới khi xuất PDF) để 1 trang ngắn không bị tràn thêm trang trắng, có chừa đệm cho sai số làm tròn px<->mm */
@@ -276,7 +280,7 @@
   @media print{
     .topbar,.editor{display:none !important;}
     .layout{display:block;}
-    .preview-wrap{padding:0;background:#fff;display:block;}
+    .preview-wrap{padding:0;background:#fff;display:block;height:auto;overflow:visible;}
     .page{box-shadow:none;width:auto;min-height:0;margin:0;padding:4mm 14mm;}
     @page{size:A4;margin:8mm 0;} /* lề trên/dưới cố định ở mỗi trang, kể cả chỗ ngắt trang giữa nội dung dài */
   }
