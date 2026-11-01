@@ -21,7 +21,6 @@
 
 - **Lâm Kim Thao** — CEO & đồng sáng lập (Co-founder)
 - **Lâm Khả Doãn** — Đồng sáng lập (Co-founder), Senior Software Engineer
-- **Trần Mỹ Nghệ** — Tiến sĩ (Dr.), Đồng sáng lập (Co-founder), chuyên gia chế tạo chip bán dẫn tại IMEC, Bỉ
 
 ## Sản phẩm chính (Main products) — 5 nhóm
 
