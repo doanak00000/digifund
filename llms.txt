@@ -60,5 +60,6 @@
 - [Mua Bia Phún Xạ (Sputtering Target) tại Việt Nam](https://digifund.vn/sputtering-target-viet-nam.html) (English: https://digifund.vn/sputtering-target-supplier-vietnam.html)
 - [Wafer SiC (Silicon Carbide): 4H/6H, N-type, HPSI](https://digifund.vn/wafer-sic-silicon-carbide.html) (English: https://digifund.vn/sic-wafer-silicon-carbide.html)
 - [Wafer Prime, Test, Dummy: Khác Nhau & Cách Chọn](https://digifund.vn/wafer-prime-test-dummy.html) (English: https://digifund.vn/prime-test-dummy-wafer.html)
+- [CMP Slurry & Pad: Đánh Bóng Hoá Cơ Wafer](https://digifund.vn/cmp-slurry-pad-danh-bong-wafer.html) (English: https://digifund.vn/cmp-slurry-pad-guide.html)
 - [Về Digifund – Nhà cung cấp vật liệu bán dẫn](https://digifund.vn/ve-digifund.html) (English: https://digifund.vn/about-digifund.html)
 - [Kiến thức bán dẫn](https://digifund.vn/kien-thuc.html)

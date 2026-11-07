@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMP Slurry &amp; Pad Guide: Chemical Mechanical Planarization | Digifund</title>
+<meta name="description" content="CMP guide: how chemical mechanical planarization works, oxide / W / Cu slurries, hard vs soft pads, conditioning, process parameters, post-CMP clean and the CMP supplies Digifund offers in Vietnam.">
+<meta name="keywords" content="CMP slurry, CMP pad, chemical mechanical planarization, chemical mechanical polishing, oxide slurry, copper CMP slurry, tungsten CMP slurry, pad conditioner, CMP supplier Vietnam">
+<meta name="author" content="Digifund">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#2563eb">
+<link rel="canonical" href="https://digifund.vn/cmp-slurry-pad-guide.html">
+<link rel="alternate" hreflang="en" href="https://digifund.vn/cmp-slurry-pad-guide.html">
+<link rel="alternate" hreflang="vi" href="https://digifund.vn/cmp-slurry-pad-danh-bong-wafer.html">
+<link rel="alternate" hreflang="x-default" href="https://digifund.vn/cmp-slurry-pad-danh-bong-wafer.html">
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="./favicon.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="vi_VN">
+<meta property="og:site_name" content="Digifund">
+<meta property="og:url" content="https://digifund.vn/cmp-slurry-pad-guide.html">
+<meta property="og:title" content="CMP Slurry &amp; Pad Guide: How Chemical Mechanical Planarization Works and How to Choose Consumables">
+<meta property="og:description" content="CMP guide: how chemical mechanical planarization works, oxide / W / Cu slurries, hard vs soft pads, conditioning, process parameters, post-CMP clean and the CMP supplies Digifund offers in Vietnam.">
+<meta property="og:image" content="https://digifund.vn/assets/images/cmp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./assets/fonts/google-titillium.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./assets/css/kien-thuc.css">
+<script>(function(){var K='digifund-theme';function get(){try{return localStorage.getItem(K)==='dark'?'dark':'light';}catch(e){return 'light';}}
+try{document.documentElement.setAttribute('data-theme',get());}catch(e){}
+function paint(t){document.documentElement.setAttribute('data-theme',t);var b=document.querySelectorAll('.bl-theme-btn');for(var i=0;i<b.length;i++)b[i].innerHTML=(t==='dark'?'<i class="fas fa-moon"></i>':'<i class="fas fa-sun"></i>');}
+function init(){paint(get());var b=document.querySelectorAll('.bl-theme-btn');for(var i=0;i<b.length;i++){b[i].addEventListener('click',function(e){e.preventDefault();var n=get()==='dark'?'light':'dark';try{localStorage.setItem(K,n);}catch(err){}paint(n);});}}
+if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);})();</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "CMP Slurry & Pad Guide: How Chemical Mechanical Planarization Works and How to Choose Consumables",
+      "description": "CMP guide: how chemical mechanical planarization works, oxide / W / Cu slurries, hard vs soft pads, conditioning, process parameters, post-CMP clean and the CMP supplies Digifund offers in Vietnam.",
+      "image": "https://digifund.vn/assets/images/cmp.jpg",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "name": "Digifund"
+      },
+      "publisher": {
+        "@id": "https://digifund.vn/#organization"
+      },
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07",
+      "mainEntityOfPage": "https://digifund.vn/cmp-slurry-pad-guide.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://digifund.vn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://digifund.vn/semiconductor-knowledge.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CMP slurry & pad",
+          "item": "https://digifund.vn/cmp-slurry-pad-guide.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is CMP different from ordinary mechanical polishing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mechanical polishing relies on abrasives alone and tends to leave scratches and subsurface damage. CMP combines chemistry that softens or oxidises the surface with very fine abrasives, so it planarises the whole wafer and leaves a nanometre-smooth, low-defect surface."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use silica or ceria slurry for oxide CMP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alkaline silica slurry is the common, easy-to-use choice for ILD oxide. Ceria slurry gives high oxide removal at low particle loading and can reach high oxide-to-nitride selectivity, so it is often used for STI. The final choice depends on the stop layer and the process's defect requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use a hard pad and when a soft pad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hard polyurethane pads deform little and planarise well, so they are used for main removal and planarisation. Soft poromeric pads conform more and scratch less, so they are used for final polish, buffing or final silicon wafer polishing. A hard pad stacked on a soft sub-pad balances local planarity and whole-wafer uniformity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which CMP consumables does Digifund supply?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Digifund supplies CMP slurries for oxide, copper and tungsten, hard polyurethane and soft poromeric pads (single layer or stacked with sub-pad, XY, K-groove or concentric grooves, sized for 200 / 300 mm tools), and accessories such as diamond conditioner discs, 0.5–10 µm slurry filters, retaining rings and post-CMP PVA brushes."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="blog-page">
+    <!--Start Preloader-->
+    <div id="site-preloader" class="js-preloader" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#ffffff;">
+        <img src="./assets/images/logo-2.png" alt="Digifund" style="width:170px;height:auto;animation:sitePreloaderPulse 1.4s ease-in-out infinite;">
+    </div>
+    <style>@keyframes sitePreloaderPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.94)}}</style>
+    <script>(function(){function hide(){var p=document.getElementById('site-preloader');if(!p)return;p.style.transition='opacity .45s ease';p.style.opacity='0';setTimeout(function(){p.style.display='none';},450);}if(document.readyState==='complete'){setTimeout(hide,300);}else{window.addEventListener('load',function(){setTimeout(hide,300);});}setTimeout(hide,6000);})();</script>
+    <!--End Preloader-->
+
+
+<header class="bl-header">
+  <div class="bl-container bl-header__inner">
+    <a href="./" class="bl-brand"><img src="./assets/images/logo-2.png" alt="Digifund - Silicon Wafer Supplier Vietnam"><span class="bl-brand__name">DIGIFUND</span></a>
+    <nav class="bl-nav">
+      <div class="bl-nav__links" id="blNavLinks">
+        <a href="./#about"><span class="lang-en">About</span></a>
+        <a href="./#products"><span class="lang-en">Products</span></a>
+        <a href="./semiconductor-knowledge.html">Blog</a>
+        <a href="./#contact"><span class="lang-en">Contact</span></a>
+        <a href="./silicon-wafer-substrate-products.html" class="bl-nav__cta"><span class="lang-en">View Silicon Wafer</span></a>
+      </div>
+      <a href="#" class="bl-theme-btn" role="button" aria-label="Light/Dark" title="Light/Dark"><i class="fas fa-moon"></i></a>
+      <a href="./cmp-slurry-pad-danh-bong-wafer.html" class="bl-lang-btn" role="button" hreflang="vi" aria-label="Doc ban tieng Viet" title="Tiếng Việt">VI</a>
+      <button class="bl-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="blNavLinks"><i class="fas fa-bars" aria-hidden="true"></i></button>
+    </nav>
+  </div>
+</header>
+
+<div class="bl-container">
+  <nav class="bl-crumb"><a href="./"><span class="lang-en">Home</span></a> › <a href="./semiconductor-knowledge.html">Blog</a> › <span class="lang-en">CMP slurry &amp; pad</span></nav>
+</div>
+
+<section class="bl-hero">
+  <div class="bl-container">
+    <span class="bl-hero__tag lang-en">Fabrication process</span>
+    
+    <h1 class="lang-en">CMP Slurry &amp; Pad Guide: How Chemical Mechanical Planarization Works and How to Choose Consumables</h1>
+    
+    <p class="bl-hero__lead lang-en">CMP (chemical mechanical planarization) flattens the wafer surface between fabrication layers; without it, modern chips could not stack many metal layers. This guide explains how CMP works, how slurries and pads differ by application (oxide, tungsten, copper, silicon), which process parameters to watch, post-CMP cleaning, and the CMP consumables Digifund supplies in Vietnam.</p>
+  </div>
+</section>
+
+<main class="bl-article">
+  <div class="bl-container">
+    <div class="bl-article__wrap">
+
+      <div class="bl-toc">
+        <h4 class="lang-en">Contents</h4>
+        
+        <ol class="lang-en">
+          <li><a href="#cmp-la-gi">What is CMP and why is it needed?</a></li>
+          <li><a href="#co-che">Mechanism: chemistry plus mechanics</a></li>
+          <li><a href="#ung-dung">Main CMP steps in chip fabrication</a></li>
+          <li><a href="#slurry">CMP slurry: composition and selection</a></li>
+          <li><a href="#pad">CMP pads: hard, soft and stacked</a></li>
+          <li><a href="#conditioner">Conditioners, filters and accessories</a></li>
+          <li><a href="#thong-so">Process parameters and metrics</a></li>
+          <li><a href="#lam-sach">Post-CMP cleaning</a></li>
+          <li><a href="#san-pham">CMP consumables Digifund supplies</a></li>
+          <li><a href="#bao-gia">Specifications to send for a quote</a></li>
+        </ol>
+      </div>
+
+      
+      <h2 id="cmp-la-gi" class="lang-en">1. What is CMP and why is it needed?</h2>
+      
+      <p class="lang-en"><strong>CMP</strong> (chemical mechanical planarization, or chemical mechanical polishing) presses a wafer face-down onto a rotating <strong>pad</strong> while a liquid of abrasive particles and chemicals, the <strong>slurry</strong>, is fed continuously onto the pad. The chemistry softens or oxidises the surface layer, and the abrasive and pad sweep it away. The result is a surface that is planarised across the whole wafer, not just locally polished.</p>
+      
+      <p class="lang-en">Every deposition and etch step adds topography. Without planarisation, upper layers would fall outside the depth of focus of the lithography tool and metal lines would break over steps. CMP is therefore mandatory for multi-level metal chips, and it is also how copper wiring is formed in the damascene process. Depth-of-focus limits are covered in the <a href="./photolithography-process.html">photolithography process</a> article.</p>
+
+      
+      <h2 id="co-che" class="lang-en">2. Mechanism: chemistry plus mechanics</h2>
+      
+      <p class="lang-en">The material removal rate (MRR) is commonly approximated by the <strong>Preston equation</strong>: MRR ≈ K<sub>p</sub> · P · V, where P is the down-force pressure, V the relative velocity between wafer and pad, and K<sub>p</sub> a coefficient lumping together slurry, pad and material effects. Higher pressure or speed removes material faster but also tends to increase scratches and hurt uniformity.</p>
+      
+      <p class="lang-en">Why does CMP planarise? High points see higher local pressure, so they are removed faster than low areas. The chemistry decides which material is removed quickly and which acts as a stop layer, the slurry's <strong>selectivity</strong>.</p>
+
+      
+      <h2 id="ung-dung" class="lang-en">3. Main CMP steps in chip fabrication</h2>
+      
+      <p class="lang-en">Each application needs its own slurry – pad pairing. The table summarises common systems; exact formulations vary by supplier and process.</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-en">CMP step</span></th><th><span class="lang-en">Typical abrasive</span></th><th><span class="lang-en">Chemistry</span></th><th><span class="lang-en">Goal / stop layer</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="lang-en">ILD oxide (interlayer dielectric)</span></td><td><span class="lang-en">Silica (fumed / colloidal)</span></td><td><span class="lang-en">Alkaline, pH ≈ 10–11</span></td><td><span class="lang-en">Planarise oxide, timed removal</span></td></tr>
+            <tr><td>STI (shallow trench isolation)</td><td><span class="lang-en">Ceria (CeO₂) or silica</span></td><td><span class="lang-en">With selectivity additives</span></td><td><span class="lang-en">Remove oxide, stop on nitride (Si₃N₄)</span></td></tr>
+            <tr><td><span class="lang-en">Tungsten (W plug)</span></td><td><span class="lang-en">Silica or alumina</span></td><td><span class="lang-en">Acidic, with oxidiser (often H₂O₂)</span></td><td><span class="lang-en">Remove excess W, stop on oxide / barrier</span></td></tr>
+            <tr><td><span class="lang-en">Copper (Cu damascene)</span></td><td><span class="lang-en">Colloidal silica, low loading</span></td><td><span class="lang-en">Oxidiser, complexing agent, corrosion inhibitor (e.g. BTA)</span></td><td><span class="lang-en">Step 1 removes Cu, stops on barrier; step 2 removes barrier (Ta/TaN)</span></td></tr>
+            <tr><td><span class="lang-en">Polysilicon</span></td><td><span class="lang-en">Silica</span></td><td><span class="lang-en">Alkaline</span></td><td><span class="lang-en">Planarise poly, stop on oxide</span></td></tr>
+            <tr><td><span class="lang-en">Silicon wafer polishing</span></td><td><span class="lang-en">Colloidal silica</span></td><td><span class="lang-en">Alkaline</span></td><td><span class="lang-en">Stock removal, then final polish to a mirror surface</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p class="lang-en">Copper must be protected from corrosion and dishing during polishing, so copper slurries are always more complex than oxide slurries. Silicon wafer polishing is the last step of wafer manufacturing and sets the roughness and flatness you see on a datasheet; see <a href="./what-is-a-silicon-wafer.html">what is a silicon wafer</a>.</p>
+
+      
+      <h2 id="slurry" class="lang-en">4. CMP slurry: composition and selection</h2>
+      <figure>
+        <img src="./assets/images/cmp.jpg" alt="Digifund CMP slurry" width="1000" height="1000" loading="lazy" style="max-width:360px;display:block;margin:0 auto;">
+        <figcaption><span class="lang-en">CMP slurry</span></figcaption>
+      </figure>
+      
+      <p class="lang-en">A CMP slurry has these main components:</p>
+      
+      <ul class="lang-en">
+  <li><strong>Abrasive</strong> — colloidal silica, fumed silica, ceria or alumina, typically tens to a few hundred nanometres. More uniform particles with fewer oversized ones mean fewer scratches.</li>
+  <li><strong>Solids loading</strong> — in wt%; oxide slurries are usually more concentrated than copper slurries.</li>
+  <li><strong>pH and buffer</strong> — control reaction rate and particle stability.</li>
+  <li><strong>Oxidiser</strong> — for metal slurries (W, Cu), usually H₂O₂, added just before use.</li>
+  <li><strong>Complexing agents, corrosion inhibitors, surfactants</strong> — tune selectivity, limit dishing and reduce defects.</li>
+</ul>
+      
+      <p class="lang-en">To choose a slurry, start from the <strong>material to remove</strong> and the <strong>material to stop on</strong>, then the target removal rate and the acceptable defect level. A few handling notes:</p>
+      
+      <ul class="lang-en">
+  <li>Do not let slurry freeze or overheat; particles can agglomerate irreversibly.</li>
+  <li>Shake or stir before use, as particles settle over time.</li>
+  <li>Slurry mixed with oxidiser has a limited pot life; mix only what you need.</li>
+  <li>Use point-of-use filters to catch agglomerates that cause scratches.</li>
+  <li>Follow the shelf life and storage conditions on each lot's label.</li>
+</ul>
+
+      
+      <h2 id="pad" class="lang-en">5. CMP pads: hard, soft and stacked</h2>
+      <figure>
+        <img src="./assets/images/prod-cmp-pad.jpg" alt="CMP polishing pad" width="800" height="1000" loading="lazy" style="max-width:300px;display:block;margin:0 auto;">
+        <figcaption><span class="lang-en">CMP polishing pad</span></figcaption>
+      </figure>
+      
+      <p class="lang-en">The pad holds and distributes slurry and transmits pressure to the wafer. Its stiffness decides how it "sees" surface topography:</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th></th><th><span class="lang-en">Hard pad</span></th><th><span class="lang-en">Soft pad</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="lang-en">Material</span></td><td><span class="lang-en">Cast microporous polyurethane</span></td><td><span class="lang-en">Poromeric (polyurethane-impregnated felt)</span></td></tr>
+            <tr><td><span class="lang-en">Strength</span></td><td><span class="lang-en">Good planarisation, conforms little</span></td><td><span class="lang-en">Low scratching, smooth finish</span></td></tr>
+            <tr><td><span class="lang-en">Used for</span></td><td><span class="lang-en">Main removal steps: oxide, W, Cu</span></td><td><span class="lang-en">Final polish, buffing, final silicon wafer polish</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p class="lang-en">A <strong>stacked pad</strong> (a hard pad laminated on a soft sub-pad) is the compromise: the hard top keeps local planarity while the soft base lets the pad follow whole-wafer curvature for better uniformity. <strong>Grooves</strong> on the pad surface (XY, concentric K-groove…) distribute fresh slurry and carry spent slurry and debris away. Pad size must match the CMP tool's platen.</p>
+
+      
+      <h2 id="conditioner" class="lang-en">6. Conditioners, filters and accessories</h2>
+      
+      <ul class="lang-en">
+  <li><strong>Pad conditioner</strong> — a diamond disc (plated or CVD) that lightly abrades the pad to reopen pores clogged by slurry and debris ("glazing"). Without conditioning, removal rate decays wafer after wafer.</li>
+  <li><strong>Slurry filters</strong> — depth filters of roughly 0.5–10 µm that stop agglomerates before they reach the pad.</li>
+  <li><strong>Retaining ring</strong> — holds the wafer in the polishing head and also affects edge uniformity; a wear part.</li>
+  <li><strong>PVA brushes</strong> — used in post-CMP cleaning.</li>
+</ul>
+
+      
+      <h2 id="thong-so" class="lang-en">7. Process parameters and metrics</h2>
+      
+      <p class="lang-en">The ranges below are common reference values for 200 / 300 mm wafer CMP tools; the actual operating point must be tuned for the specific tool, slurry and pad.</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-en">Parameter</span></th><th><span class="lang-en">Reference range</span></th><th><span class="lang-en">Effect</span></th></tr></thead>
+          <tbody>
+            <tr><td><span class="lang-en">Down-force</span></td><td>~1–6 psi (~7–40 kPa)</td><td><span class="lang-en">Raises MRR; too high causes scratches, dishing</span></td></tr>
+            <tr><td><span class="lang-en">Platen / head speed</span></td><td>~30–120 rpm</td><td><span class="lang-en">Raises MRR, affects uniformity</span></td></tr>
+            <tr><td><span class="lang-en">Slurry flow</span></td><td>~100–300 mL/min</td><td><span class="lang-en">Too little runs dry and hot; too much wastes slurry</span></td></tr>
+            <tr><td><span class="lang-en">Pad temperature</span></td><td><span class="lang-en">Monitored, typically a few tens of °C</span></td><td><span class="lang-en">Changes chemical reaction rate</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p class="lang-en">Metrics used to judge a CMP result:</p>
+      
+      <ul class="lang-en">
+  <li><strong>MRR</strong> — removal rate in nm/min or Å/min.</li>
+  <li><strong>WIWNU</strong> — within-wafer non-uniformity, %.</li>
+  <li><strong>Dishing</strong> (recess in wide metal lines) and <strong>erosion</strong> (dielectric loss in dense line arrays).</li>
+  <li><strong>Selectivity</strong> — removal-rate ratio between the target material and the stop layer.</li>
+  <li><strong>Defects</strong> — scratches, particles, corrosion, organic residue.</li>
+</ul>
+
+      
+      <h2 id="lam-sach" class="lang-en">8. Post-CMP cleaning</h2>
+      
+      <p class="lang-en">After CMP, the wafer carries abrasive particles, metal ions and inhibitor residue. It must be cleaned immediately, before slurry dries on. A typical sequence is <strong>PVA brush</strong> scrubbing with a cleaning chemistry (dilute alkaline for oxide, mildly acidic or complexing chemistry for Cu), DI water rinse, optional megasonic, then spin dry. General cleaning chemistry and wafer handling are covered in <a href="./silicon-wafer-cleaning-rca.html">silicon wafer cleaning (RCA)</a>.</p>
+      
+      <div class="bl-note lang-en"><strong>In the lab:</strong> on bench-top polishers for small samples, keep slurry from drying on the pad between runs, rinse the pad after use and dedicate a pad to each slurry type to avoid cross-contamination.</div>
+
+      
+      <h2 id="san-pham" class="lang-en">9. CMP consumables Digifund supplies</h2>
+      
+      <p class="lang-en">Digifund supplies CMP consumables for fabs and labs in Vietnam:</p>
+      <div class="bl-table-wrap">
+        <table class="bl-table">
+          <thead><tr><th><span class="lang-en">Group</span></th><th><span class="lang-en">Options</span></th></tr></thead>
+          <tbody>
+            <tr><td>CMP slurries</td><td><span class="lang-en">Silica slurries for oxide, copper (Cu) and tungsten (W)</span></td></tr>
+            <tr><td>CMP pads</td><td><span class="lang-en">Hard polyurethane / soft poromeric pads; single layer or stacked with sub-pad; XY, K-groove or concentric grooves; sized for 200 / 300 mm CMP tools; for oxide, Cu, W, Si</span></td></tr>
+            <tr><td><span class="lang-en">CMP accessories</span></td><td><span class="lang-en">Diamond conditioner discs (plated / CVD), 0.5–10 µm slurry filters, retaining rings, post-CMP PVA brushes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="bl-note lang-en"><strong>Note:</strong> exact specifications (particle size, solids, pH, pad dimensions) are confirmed per item with the quote. See the range at <a href="./chemicals-and-supplies.html">Semiconductor fabrication materials</a>.</div>
+
+      
+      <h2 id="bao-gia" class="lang-en">10. Specifications to send for a quote</h2>
+      
+      <ul class="lang-en">
+  <li>Material to polish and the stop layer (for example oxide on nitride, W on oxide, Cu on Ta/TaN, bare Si wafer).</li>
+  <li>CMP tool or polisher in use, platen diameter and wafer / sample size.</li>
+  <li>Target removal rate and roughness, flatness and defect requirements.</li>
+  <li>Pad type (hard / soft / stacked), groove pattern, and whether a pressure-sensitive adhesive backing is needed.</li>
+  <li>Current slurry (if you need an equivalent) and monthly quantity.</li>
+  <li>Accessories needed: conditioners, filters, retaining rings, PVA brushes.</li>
+</ul>
+
+      
+      <h2 class="lang-en">Frequently asked questions</h2>
+      <div class="bl-faq">
+        <details class="bl-faq__item" open>
+          <summary><span class="lang-en">How is CMP different from ordinary mechanical polishing?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Mechanical polishing relies on abrasives alone and tends to leave scratches and subsurface damage. CMP combines chemistry that softens or oxidises the surface with very fine abrasives, so it planarises the whole wafer and leaves a nanometre-smooth, low-defect surface.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Should I use silica or ceria slurry for oxide CMP?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Alkaline silica slurry is the common, easy-to-use choice for ILD oxide. Ceria slurry gives high oxide removal at low particle loading and can reach high oxide-to-nitride selectivity, so it is often used for STI. The final choice depends on the stop layer and the process's defect requirements.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">When should I use a hard pad and when a soft pad?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Hard polyurethane pads deform little and planarise well, so they are used for main removal and planarisation. Soft poromeric pads conform more and scratch less, so they are used for final polish, buffing or final silicon wafer polishing. A hard pad stacked on a soft sub-pad balances local planarity and whole-wafer uniformity.</p>
+          </div>
+        </details>
+        <details class="bl-faq__item">
+          <summary><span class="lang-en">Which CMP consumables does Digifund supply?</span></summary>
+          <div class="bl-faq__ans">
+            
+            <p class="lang-en">Digifund supplies CMP slurries for oxide, copper and tungsten, hard polyurethane and soft poromeric pads (single layer or stacked with sub-pad, XY, K-groove or concentric grooves, sized for 200 / 300 mm tools), and accessories such as diamond conditioner discs, 0.5–10 µm slurry filters, retaining rings and post-CMP PVA brushes.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="bl-cta">
+        
+        <h3 class="lang-en">Need CMP slurry or pads for your process?</h3>
+        
+        <p class="lang-en">Send the material to polish, the stop layer, your CMP tool and wafer size, and Digifund's technical team will recommend a matching slurry – pad pair and send a quote.</p>
+        <a href="./index-en.html#contact" class="bl-btn"><span class="lang-en">Get technical advice</span> <i class="fas fa-arrow-right"></i></a>
+        <a href="./chemicals-and-supplies.html" class="bl-btn bl-btn--ghost"><span class="lang-en">View fabrication materials</span></a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<section class="bl-related">
+  <div class="bl-container">
+    <h2 class="lang-en">Related articles</h2>
+    <div class="bl-grid">
+      <a class="bl-card" href="./photolithography-process.html">
+        <div class="bl-card__media"><i class="fas fa-lightbulb"></i></div>
+        <div class="bl-card__body"><span class="bl-card__tag lang-en">Process</span><h3 class="bl-card__title"><span class="lang-en">Photolithography process</span></h3><span class="bl-card__more"><span class="lang-en">Read more →</span></span></div>
+      </a>
+      <a class="bl-card" href="./silicon-wafer-cleaning-rca.html">
+        <div class="bl-card__media"><i class="fas fa-droplet"></i></div>
+        <div class="bl-card__body"><span class="bl-card__tag lang-en">Process</span><h3 class="bl-card__title"><span class="lang-en">Silicon wafer cleaning (RCA)</span></h3><span class="bl-card__more"><span class="lang-en">Read more →</span></span></div>
+      </a>
+      <a class="bl-card" href="./sputtering-target-supplier-vietnam.html">
+        <div class="bl-card__media"><i class="fas fa-atom"></i></div>
+        <div class="bl-card__body"><span class="bl-card__tag lang-en">Thin film</span><h3 class="bl-card__title"><span class="lang-en">Sputtering targets in Vietnam</span></h3><span class="bl-card__more"><span class="lang-en">Read more →</span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="bl-footer">
+  <div class="bl-container">
+    <div class="bl-footer__top">
+      <div class="bl-footer__brand">
+        <img src="./assets/images/logo-2.png" alt="Digifund">
+        
+        <p class="lang-en">Digifund — supplier of high-purity silicon wafers, substrates and semiconductor materials in Vietnam.</p>
+      </div>
+      <div class="bl-footer__col">
+        <h4 class="lang-en">Products</h4>
+        <ul>
+          <li><a href="./silicon-wafer-substrate-products.html">Silicon Wafer &amp; Substrate</a></li>
+          <li><a href="./chemicals-and-supplies.html"><span class="lang-en">Semiconductor Fabrication Materials</span></a></li>
+          <li><a href="./advanced-packaging-materials.html"><span class="lang-en">Advanced Packaging Materials</span></a></li>
+          <li><a href="./cleanroom-lab-equipment.html"><span class="lang-en">Cleanroom &amp; Hi-Tech Equipment</span></a></li>
+          <li><a href="./renewable-energy-materials.html"><span class="lang-en">Renewable Energy Materials</span></a></li>
+        </ul>
+      </div>
+      <div class="bl-footer__col">
+        <h4>Blog</h4>
+        <ul>
+          <li><a href="./what-is-a-silicon-wafer.html"><span class="lang-en">What is a silicon wafer?</span></a></li>
+          <li><a href="./types-of-silicon-wafer.html"><span class="lang-en">Types of silicon wafer</span></a></li>
+          <li><a href="./cz-vs-fz-wafer-comparison.html"><span class="lang-en">CZ vs FZ silicon wafer</span></a></li>
+        </ul>
+      </div>
+      <div class="bl-footer__col">
+        <h4 class="lang-en">Contact</h4>
+        <ul>
+          <li><a href="tel:+84979324567">+84 979 324 567</a></li>
+          <li><a href="mailto:semiconductor@digifund.vn">semiconductor@digifund.vn</a></li>
+          <li><span class="lang-en">Ho Chi Minh City, Vietnam</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./assets/js/blog-nav.js"></script>
+</body>
+</html>
